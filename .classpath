@@ -2,12 +2,13 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/Scorpion/Downloads/jcalendar-1.4/lib/jcalendar-1.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Scorpion/Downloads/jcalendar-1.4/lib/jgoodies-common-1.2.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Scorpion/Downloads/jcalendar-1.4/lib/jgoodies-looks-2.4.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Scorpion/Downloads/jcalendar-1.4/lib/junit-4.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Scorpion/Downloads/postgresql-9.3-1104.jdbc41.jar"/>
-	<classpathentry kind="lib" path="/Unidad 3E/lib/JPanelImagen.jar"/>
-	<classpathentry kind="lib" path="/Unidad 3E/lib/JTextFieldValidator.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Scorpion/OneDrive/Documentos/workspace_java/Red-de-Clinicas/lib/Conexion.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Scorpion/OneDrive/Documentos/workspace_java/Red-de-Clinicas/lib/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Scorpion/OneDrive/Documentos/workspace_java/Red-de-Clinicas/lib/jgoodies-common-1.2.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Scorpion/OneDrive/Documentos/workspace_java/Red-de-Clinicas/lib/jgoodies-looks-2.4.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Scorpion/OneDrive/Documentos/workspace_java/Red-de-Clinicas/lib/JPanelImagen.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Scorpion/OneDrive/Documentos/workspace_java/Red-de-Clinicas/lib/JTextFieldValidator.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Scorpion/OneDrive/Documentos/workspace_java/Red-de-Clinicas/lib/junit-4.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Scorpion/OneDrive/Documentos/workspace_java/Red-de-Clinicas/lib/postgresql-9.3-1104.jdbc41.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
