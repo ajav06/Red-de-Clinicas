@@ -3,10 +3,7 @@ import java.util.Date;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
-import java.text.SimpleDateFormat;
-import java.text.ParseException;
 import java.awt.Color;
-import javax.swing.JTextField;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.GroupLayout;
@@ -16,18 +13,19 @@ import javax.swing.border.TitledBorder;
 import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
+import com.toedter.calendar.JDateChooser;
+import bean.*;
 
 
 public class VentanaActualizarPaciente extends javax.swing.JFrame{
-	private SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-	private JTextField textField_NroHist;
-	private JTextField textField_NroSeguro;
-	private JTextField textField_Ced;
-	private JTextField textField_Nomb;
-	private JTextField textField_Apelli;
-	private JTextField textField_FechaN;
+	private JTextFieldValidator textField_NroHist;
+	private JTextFieldValidator textField_NroSeguro;
+	private JTextFieldValidator textField_Ced;
+	private JTextFieldValidator textField_Nomb;
+	private JTextFieldValidator textField_Apelli;
 	private JTextPane textPane_AntFam;
 	private JTextPane textPane_AntPer;
+	private JDateChooser fechaNac;
 	
 	public VentanaActualizarPaciente() {
 		super();
@@ -43,7 +41,7 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 			
 			JLabel lblNroHist = new JLabel("Nro. Historial :");
 			
-			textField_NroHist = new JTextField();
+			textField_NroHist = new JTextFieldValidator(20,JTextFieldValidator.SOLO_NUMEROS);
 			textField_NroHist.setEditable(false);
 			textField_NroHist.setColumns(10);
 			
@@ -55,7 +53,7 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 			
 			JLabel lblNroSeguro = new JLabel("Nro. Seguro :");
 			
-			textField_NroSeguro = new JTextField();
+			textField_NroSeguro = new JTextFieldValidator(20,JTextFieldValidator.SOLO_NUMEROS);
 			textField_NroSeguro.setColumns(10);
 			
 			JScrollPane scrollPane_1 = new JScrollPane();
@@ -121,22 +119,21 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 			
 			JLabel lblCed = new JLabel("Cedula : ");
 			
-			textField_Ced = new JTextField();
+			textField_Ced = new JTextFieldValidator(8,JTextFieldValidator.SOLO_NUMEROS);
 			textField_Ced.setEditable(false);
 			textField_Ced.setColumns(10);
 			
-			textField_Nomb = new JTextField();
+			textField_Nomb = new JTextFieldValidator(50,JTextFieldValidator.LETRAS_Y_ESPACIOS);
 			textField_Nomb.setColumns(10);
 			
 			JLabel lblFechaN = new JLabel("Fecha Nac. :");
 			
 			JLabel lblApelli = new JLabel("Apellidos :");
 			
-			textField_Apelli = new JTextField();
+			textField_Apelli = new JTextFieldValidator(50,JTextFieldValidator.LETRAS_Y_ESPACIOS);
 			textField_Apelli.setColumns(10);
 			
-			textField_FechaN = new JTextField();
-			textField_FechaN.setColumns(10);
+			fechaNac = new JDateChooser();
 			GroupLayout gl_panel_DPer = new GroupLayout(panel_DPer);
 			gl_panel_DPer.setHorizontalGroup(
 				gl_panel_DPer.createParallelGroup(Alignment.LEADING)
@@ -159,23 +156,27 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 								.addComponent(lblApelli, GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)))
 						.addGap(18)
 						.addGroup(gl_panel_DPer.createParallelGroup(Alignment.LEADING)
-							.addComponent(textField_Apelli, GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
-							.addComponent(textField_FechaN, GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
+							.addComponent(fechaNac, GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+							.addComponent(textField_Apelli, GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
 						.addContainerGap())
 			);
 			gl_panel_DPer.setVerticalGroup(
 				gl_panel_DPer.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_panel_DPer.createSequentialGroup()
-						.addGap(19)
 						.addGroup(gl_panel_DPer.createParallelGroup(Alignment.LEADING)
 							.addGroup(gl_panel_DPer.createSequentialGroup()
-								.addGap(6)
-								.addComponent(lblFechaN, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addComponent(textField_FechaN, GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-							.addGroup(gl_panel_DPer.createSequentialGroup()
-								.addGap(6)
-								.addComponent(lblCed, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addComponent(textField_Ced))
+								.addGap(19)
+								.addGroup(gl_panel_DPer.createParallelGroup(Alignment.LEADING)
+									.addGroup(gl_panel_DPer.createSequentialGroup()
+										.addGap(6)
+										.addComponent(lblFechaN, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+									.addGroup(gl_panel_DPer.createSequentialGroup()
+										.addGap(6)
+										.addComponent(lblCed, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+									.addComponent(textField_Ced)))
+							.addGroup(Alignment.TRAILING, gl_panel_DPer.createSequentialGroup()
+								.addGap(19)
+								.addComponent(fechaNac, GroupLayout.PREFERRED_SIZE, 12, Short.MAX_VALUE)))
 						.addPreferredGap(ComponentPlacement.RELATED)
 						.addGroup(gl_panel_DPer.createParallelGroup(Alignment.LEADING)
 							.addGroup(gl_panel_DPer.createSequentialGroup()
@@ -263,9 +264,9 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 		textField_Ced.setText("");
 		textField_Nomb.setText("");
 		textField_Apelli.setText("");
-		textField_FechaN.setText("");
 		textPane_AntFam.setText("");
 		textPane_AntPer.setText("");
+		fechaNac.setDate(null);
 	}
 	
 	public void setCedula(String ced) {
@@ -280,8 +281,8 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 		textField_Apelli.setText(apell);
 	}
 	
-	public void getFechaNac(Date fecha){
-		textField_FechaN.setText(formatter.format(fecha));		
+	public void setFechaNac(Date fecha){
+		fechaNac.setDate(fecha);	
 	}
 	
 	public void setNroHist(int nroHist) {
@@ -312,8 +313,8 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 		return textField_Apelli.getText();
 	}
 	
-	public Date getFechaNac() throws ParseException {
-		return formatter.parse(textField_FechaN.getText());		
+	public Date getFechaNac() {
+		return fechaNac.getDate();
 	}
 	
 	public int getNroHist() {

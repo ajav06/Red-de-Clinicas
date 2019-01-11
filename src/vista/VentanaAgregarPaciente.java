@@ -2,11 +2,8 @@ package vista;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.awt.Color;
-import javax.swing.JTextField;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.GroupLayout;
@@ -16,18 +13,19 @@ import javax.swing.border.TitledBorder;
 import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
+import com.toedter.calendar.JDateChooser;
+import bean.*;
 
 
 public class VentanaAgregarPaciente extends javax.swing.JFrame{
-	private SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-	private JTextField textField_NroHist;
-	private JTextField textField_NroSeguro;
-	private JTextField textField_Ced;
-	private JTextField textField_Nomb;
-	private JTextField textField_Apelli;
-	private JTextField textField_FechaN;
+	private JTextFieldValidator textField_NroHist;
+	private JTextFieldValidator textField_NroSeguro;
+	private JTextFieldValidator textField_Ced;
+	private JTextFieldValidator textField_Nomb;
+	private JTextFieldValidator textField_Apelli;
 	private JTextPane textPane_AntFam;
 	private JTextPane textPane_AntPer;
+	private JDateChooser fechaNac;
 	
 	public VentanaAgregarPaciente() {
 		super();
@@ -49,12 +47,12 @@ public class VentanaAgregarPaciente extends javax.swing.JFrame{
 			
 			JLabel lblNroHist = new JLabel("Nro. Historial :");
 			
-			textField_NroHist = new JTextField();
+			textField_NroHist = new JTextFieldValidator(20,JTextFieldValidator.SOLO_NUMEROS);
 			textField_NroHist.setColumns(10);
 			
 			JLabel lblNroSeguro = new JLabel("Nro. Seguro :");
 			
-			textField_NroSeguro = new JTextField();
+			textField_NroSeguro = new JTextFieldValidator(20,JTextFieldValidator.SOLO_NUMEROS);
 			textField_NroSeguro.setColumns(10);
 			
 			JLabel lblAntecedentesPersonales = new JLabel("Antecedentes Personales: ");
@@ -133,21 +131,20 @@ public class VentanaAgregarPaciente extends javax.swing.JFrame{
 			
 			JLabel label_1 = new JLabel("Cedula : ");
 			
-			textField_Ced = new JTextField();
+			textField_Ced = new JTextFieldValidator(8,JTextFieldValidator.SOLO_NUMEROS);
 			textField_Ced.setColumns(10);
 			
-			textField_Nomb = new JTextField();
+			textField_Nomb = new JTextFieldValidator(50,JTextFieldValidator.LETRAS_Y_ESPACIOS);
 			textField_Nomb.setColumns(10);
 			
 			JLabel label_2 = new JLabel("Fecha Nac. :");
 			
 			JLabel label_3 = new JLabel("Apellidos :");
 			
-			textField_Apelli = new JTextField();
+			textField_Apelli = new JTextFieldValidator(50,JTextFieldValidator.LETRAS_Y_ESPACIOS);
 			textField_Apelli.setColumns(10);
 			
-			textField_FechaN = new JTextField();
-			textField_FechaN.setColumns(10);
+			fechaNac = new JDateChooser();
 			GroupLayout gl_panel = new GroupLayout(panel);
 			gl_panel.setHorizontalGroup(
 				gl_panel.createParallelGroup(Alignment.LEADING)
@@ -170,23 +167,27 @@ public class VentanaAgregarPaciente extends javax.swing.JFrame{
 								.addComponent(label_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 						.addGap(18)
 						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-							.addComponent(textField_Apelli, GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-							.addComponent(textField_FechaN, GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
+							.addComponent(fechaNac, GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+							.addComponent(textField_Apelli, GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
 						.addContainerGap())
 			);
 			gl_panel.setVerticalGroup(
 				gl_panel.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_panel.createSequentialGroup()
-						.addGap(19)
 						.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-							.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
-								.addGap(6)
-								.addComponent(label_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addComponent(textField_FechaN, GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-							.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
-								.addGap(6)
-								.addComponent(label_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addComponent(textField_Ced))
+							.addGroup(gl_panel.createSequentialGroup()
+								.addGap(19)
+								.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+									.addGroup(gl_panel.createSequentialGroup()
+										.addGap(6)
+										.addComponent(label_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+									.addGroup(gl_panel.createSequentialGroup()
+										.addGap(6)
+										.addComponent(label_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+									.addComponent(textField_Ced)))
+							.addGroup(gl_panel.createSequentialGroup()
+								.addGap(19)
+								.addComponent(fechaNac, GroupLayout.PREFERRED_SIZE, 12, Short.MAX_VALUE)))
 						.addPreferredGap(ComponentPlacement.RELATED)
 						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 							.addGroup(gl_panel.createSequentialGroup()
@@ -251,9 +252,9 @@ public class VentanaAgregarPaciente extends javax.swing.JFrame{
 		textField_Ced.setText("");
 		textField_Nomb.setText("");
 		textField_Apelli.setText("");
-		textField_FechaN.setText("");
 		textPane_AntFam.setText("");
 		textPane_AntPer.setText("");
+		fechaNac.setDate(null);
 	}
 	
 	public String getCedula() {
@@ -268,8 +269,8 @@ public class VentanaAgregarPaciente extends javax.swing.JFrame{
 		return textField_Apelli.getText();
 	}
 	
-	public Date getFechaNac() throws ParseException {
-		return formatter.parse(textField_FechaN.getText());		
+	public Date getFechaNac() {
+		return fechaNac.getDate();
 	}
 	
 	public int getNroHist() {

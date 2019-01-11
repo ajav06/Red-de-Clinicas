@@ -15,14 +15,15 @@ import javax.swing.border.TitledBorder;
 import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
+import bean.*;
 
 public class VentanaEliminarPaciente extends javax.swing.JFrame{
 	private SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-	private JTextField textField_NroHist;
-	private JTextField textField_NroSeguro;
-	private JTextField textField_Ced;
-	private JTextField textField_Nomb;
-	private JTextField textField_Apelli;
+	private JTextFieldValidator  textField_NroHist;
+	private JTextFieldValidator  textField_NroSeguro;
+	private JTextFieldValidator  textField_Ced;
+	private JTextFieldValidator  textField_Nomb;
+	private JTextFieldValidator  textField_Apelli;
 	private JTextField textField_FechaN;
 	private JTextPane textPane_AntFam;
 	private JTextPane textPane_AntPer;
@@ -46,13 +47,13 @@ public class VentanaEliminarPaciente extends javax.swing.JFrame{
 			
 			JLabel lblNroHist = new JLabel("Nro. Historial :");
 			
-			textField_NroHist = new JTextField();
+			textField_NroHist = new JTextFieldValidator(20,JTextFieldValidator.SOLO_NUMEROS);
 			textField_NroHist.setEditable(false);
 			textField_NroHist.setColumns(10);
 			
 			JLabel lblNroSeguro = new JLabel("Nro. Seguro :");
 			
-			textField_NroSeguro = new JTextField();
+			textField_NroSeguro = new JTextFieldValidator(20,JTextFieldValidator.SOLO_NUMEROS);
 			textField_NroSeguro.setEditable(false);
 			textField_NroSeguro.setColumns(10);
 			
@@ -137,11 +138,11 @@ public class VentanaEliminarPaciente extends javax.swing.JFrame{
 			
 			JLabel lblCed = new JLabel("Cedula : ");
 			
-			textField_Ced = new JTextField();
+			textField_Ced = new JTextFieldValidator(8,JTextFieldValidator.SOLO_NUMEROS);
 			textField_Ced.setEditable(false);
 			textField_Ced.setColumns(10);
 			
-			textField_Nomb = new JTextField();
+			textField_Nomb = new JTextFieldValidator(50,JTextFieldValidator.LETRAS_Y_ESPACIOS);
 			textField_Nomb.setEditable(false);
 			textField_Nomb.setColumns(10);
 			
@@ -149,7 +150,7 @@ public class VentanaEliminarPaciente extends javax.swing.JFrame{
 			
 			JLabel lblApelli = new JLabel("Apellidos :");
 			
-			textField_Apelli = new JTextField();
+			textField_Apelli = new JTextFieldValidator(50,JTextFieldValidator.LETRAS_Y_ESPACIOS);
 			textField_Apelli.setEditable(false);
 			textField_Apelli.setColumns(10);
 			
@@ -285,7 +286,7 @@ public class VentanaEliminarPaciente extends javax.swing.JFrame{
 		textField_Apelli.setText(apell);
 	}
 	
-	public void getFechaNac(Date fecha){
+	public void setFechaNac(Date fecha){
 		textField_FechaN.setText(formatter.format(fecha));		
 	}
 	
