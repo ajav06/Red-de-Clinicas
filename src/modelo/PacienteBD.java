@@ -7,36 +7,38 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import modelo.Paciente;
-import modelo.Conexion;
+import modelo.ConexionBD;
 
-public class PacienteBD extends Conexion{
+public class PacienteBD extends ConexionBD{
 	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+	private ResultSet resultSet;
 	
 	public PacienteBD() {
 		super();
 	}
 	
 	public void registrarPaciente(Paciente paciente) {
-		this.crearRegistro("paciente", "cedula, nombre,apellido,fechaNacimiento,antePersonales,anteFamiliares,nroSeguro,nroHistorial", "'"+paciente.getCedula()
-				+"','"+paciente.getNombre()+"','"+paciente.getApellido()+"',"+paciente.getFechaNacimiento().toString()+",'"+paciente.getAntePersonales()+"','"+paciente.getAnteFamiliares()+"',"
+		this.crearRegistro("paciente", "cedula, nombres,apellidos,fechaNacimiento,antePersonales,anteFamiliares,nroSeguro,nroHistorial", "'"+paciente.getCedula()
+				+"','"+paciente.getNombre()+"','"+paciente.getApellido()+"','"+formatter.format(paciente.getFechaNacimiento())+"','"+paciente.getAntePersonales()+"','"+paciente.getAnteFamiliares()+"',"
 				+Integer.toString(paciente.getNroSeguro())+","+Integer.toString(paciente.getNroHistorial()));
 	}
 	
 	public List<Paciente> consultarEstudiantes() throws ParseException {
 		List<Paciente> pacientes = new ArrayList<Paciente>();
-		ResultSet resultSet = null;
-		this.consultarTabla("paciente", "cedula, nombre,apellido,fechaNacimiento,antePersonales,anteFamiliares,nroSeguro,nroHistorial", " WHERE estatus='a' ", resultSet);
+		ResultSet rs = null;
+		resultSet = null;
+		this.consultarTabla("paciente", "cedula, nombres,apellidos,fechanacimiento,antepersonales,antefamiliares,nrofeguro,nrohistorial", " WHERE estatus='a' ", rs);
+		resultSet = rs;
 		try {
 			while (resultSet.next()) {
-				
 				String cedula = resultSet.getString("cedula");
-				String nombre = resultSet.getString("nombre");
-				String apellido = resultSet.getString("apellido");
-				String antePersonales = resultSet.getString("antePersonales");
-				String anteFamiliares = resultSet.getString("anteFamiliares");
-				int nroSeguro = Integer.parseInt(resultSet.getString("nroSeguro"));
-				int nroHistorial = Integer.parseInt(resultSet.getString("nroHistorial"));
-				Date fechaNacimiento = formatter.parse(resultSet.getString("fechaNacimiento"));
+				String nombre = resultSet.getString("nombres");
+				String apellido = resultSet.getString("apellidos");
+				String antePersonales = resultSet.getString("antepersonales");
+				String anteFamiliares = resultSet.getString("antefamiliares");
+				int nroSeguro = Integer.parseInt(resultSet.getString("nroseguro"));
+				int nroHistorial = Integer.parseInt(resultSet.getString("nrohistorial"));
+				Date fechaNacimiento = formatter.parse(resultSet.getString("fechanacimiento"));
 				Paciente paciente = new Paciente(cedula,nombre, apellido,antePersonales,anteFamiliares,nroSeguro,nroHistorial,fechaNacimiento);
 				pacientes.add(paciente);
 			}
@@ -47,9 +49,26 @@ public class PacienteBD extends Conexion{
 	}
 	
 	public void actualizarPaciente(Paciente paciente) {
-		this.actuRegistro("paciente", "nombre,apellido,fechaNacimiento,antePersonales,anteFamiliares,nroSeguro,nroHistorial","'"+paciente.getNombre()+"','"
-				+paciente.getApellido()+"',"+paciente.getFechaNacimiento().toString()+",'"+paciente.getAntePersonales()+"','"+paciente.getAnteFamiliares()+"',"
+		this.actuRegistro("paciente", "nombres,apellidos,fechaNacimiento,antePersonales,anteFamiliares,nroSeguro,nroHistorial","'"+paciente.getNombre()+"','"
+				+paciente.getApellido()+"','"+formatter.format(paciente.getFechaNacimiento())+"','"+paciente.getAntePersonales()+"','"+paciente.getAnteFamiliares()+"',"
 				+Integer.toString(paciente.getNroSeguro())+","+Integer.toString(paciente.getNroHistorial()), "cedula", "'"+paciente.getCedula()+"'");
+	}
+	
+	public Paciente buscarPaciente(String ced) throws SQLException, ParseException {
+		ResultSet rs = null;
+		resultSet = null;
+		this.buscarRegistro("paciente", "cedula, nombres,apellidos,fechanacimiento,antepersonales,antefamiliares,nrofeguro,nrohistorial", "cedula", ced, rs);
+		resultSet = rs;
+		String cedula = resultSet.getString("cedula");
+		String nombre = resultSet.getString("nombres");
+		String apellido = resultSet.getString("apellidos");
+		String antePersonales = resultSet.getString("antepersonales");
+		String anteFamiliares = resultSet.getString("antefamiliares");
+		int nroSeguro = Integer.parseInt(resultSet.getString("nroseguro"));
+		int nroHistorial = Integer.parseInt(resultSet.getString("nrohistorial"));
+		Date fechaNacimiento = formatter.parse(resultSet.getString("fechanacimiento"));
+		Paciente paciente = new Paciente(cedula,nombre, apellido,antePersonales,anteFamiliares,nroSeguro,nroHistorial,fechaNacimiento);
+		return paciente;
 	}
 
 }

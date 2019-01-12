@@ -41,6 +41,7 @@ public class VentanaAgregarPaciente extends javax.swing.JFrame{
 	private void initGUI() {
 		try {
 			getContentPane().setForeground(Color.BLUE);
+			setTitle("Registrar Paciente");
 			
 			JLabel lblRegistrarP = new JLabel("Registrar Paciente");
 			lblRegistrarP.setForeground(Color.BLUE);
@@ -252,13 +253,13 @@ public class VentanaAgregarPaciente extends javax.swing.JFrame{
 	}
 	
 	public void blanquearCampos() {
-		textField_NroHist.setText("");
-		textField_NroSeguro.setText("");
-		textField_Ced.setText("");
-		textField_Nomb.setText("");
-		textField_Apelli.setText("");
-		textArea_AntFam.setText("");
-		textArea_AntPer.setText("");
+		textField_NroHist.setText(null);
+		textField_NroSeguro.setText(null);
+		textField_Ced.setText(null);
+		textField_Nomb.setText(null);
+		textField_Apelli.setText(null);
+		textArea_AntFam.setText(null);
+		textArea_AntPer.setText(null);
 		fechaNac.setDate(null);
 	}
 	

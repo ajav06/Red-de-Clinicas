@@ -3,6 +3,8 @@ import java.util.Date;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
+
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.Color;
@@ -40,7 +42,10 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 	
 	private void initGUI() {
 		try {
+			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+			getContentPane().setLayout(null);
 			getContentPane().setForeground(Color.BLUE);
+			setTitle("Actualizar Paciente");
 			
 			JPanel panel_DMed = new JPanel();
 			panel_DMed.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Datos Medicos", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
@@ -48,7 +53,6 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 			JLabel lblNroHist = new JLabel("Nro. Historial :");
 			
 			textField_NroHist = new JTextFieldValidator(20,JTextFieldValidator.SOLO_NUMEROS);
-			textField_NroHist.setEditable(false);
 			textField_NroHist.setColumns(10);
 			
 			JLabel lblAntecedentesPersonales = new JLabel("Antecedentes Personales: ");
@@ -161,48 +165,43 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 								.addGap(12)
 								.addComponent(lblApelli, GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)))
 						.addGap(18)
-						.addGroup(gl_panel_DPer.createParallelGroup(Alignment.LEADING)
-							.addComponent(fechaNac, GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
-							.addComponent(textField_Apelli, GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
+						.addGroup(gl_panel_DPer.createParallelGroup(Alignment.TRAILING)
+							.addComponent(textField_Apelli, GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+							.addComponent(fechaNac, GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
 						.addContainerGap())
 			);
 			gl_panel_DPer.setVerticalGroup(
 				gl_panel_DPer.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_panel_DPer.createSequentialGroup()
-						.addGroup(gl_panel_DPer.createParallelGroup(Alignment.LEADING)
-							.addGroup(gl_panel_DPer.createSequentialGroup()
-								.addGap(19)
-								.addGroup(gl_panel_DPer.createParallelGroup(Alignment.LEADING)
-									.addGroup(gl_panel_DPer.createSequentialGroup()
-										.addGap(6)
-										.addComponent(lblFechaN, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-									.addGroup(gl_panel_DPer.createSequentialGroup()
-										.addGap(6)
-										.addComponent(lblCed, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-									.addComponent(textField_Ced)))
-							.addGroup(Alignment.TRAILING, gl_panel_DPer.createSequentialGroup()
-								.addGap(19)
-								.addComponent(fechaNac, GroupLayout.PREFERRED_SIZE, 12, Short.MAX_VALUE)))
+						.addGap(19)
+						.addGroup(gl_panel_DPer.createParallelGroup(Alignment.TRAILING)
+							.addGroup(Alignment.LEADING, gl_panel_DPer.createSequentialGroup()
+								.addGap(6)
+								.addComponent(lblFechaN, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addGroup(Alignment.LEADING, gl_panel_DPer.createSequentialGroup()
+								.addGap(6)
+								.addComponent(lblCed, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addComponent(textField_Ced, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(fechaNac, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 						.addPreferredGap(ComponentPlacement.RELATED)
 						.addGroup(gl_panel_DPer.createParallelGroup(Alignment.LEADING)
 							.addGroup(gl_panel_DPer.createSequentialGroup()
-								.addGap(6)
-								.addComponent(lblNomb, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addComponent(textField_Nomb)
+								.addGroup(gl_panel_DPer.createParallelGroup(Alignment.LEADING)
+									.addGroup(gl_panel_DPer.createSequentialGroup()
+										.addGap(6)
+										.addComponent(lblNomb, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+									.addComponent(textField_Nomb, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addGroup(gl_panel_DPer.createSequentialGroup()
+										.addGap(6)
+										.addComponent(lblApelli, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+								.addGap(17))
 							.addGroup(gl_panel_DPer.createSequentialGroup()
-								.addGap(6)
-								.addComponent(lblApelli, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addComponent(textField_Apelli))
-						.addGap(17))
+								.addComponent(textField_Apelli, GroupLayout.PREFERRED_SIZE, 14, Short.MAX_VALUE)
+								.addGap(17))))
 			);
 			panel_DPer.setLayout(gl_panel_DPer);
 			
 			btnCancelar = new JButton("No");
-			btnCancelar.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-				}
-			});
-			btnCancelar.setForeground(Color.BLACK);
 			btnCancelar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 			btnCancelar.setBackground(Color.RED);
 			
@@ -216,31 +215,30 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 			lblActualizarP.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 25));
 			
 			JLabel lblseguroQueDesea = new JLabel("\u00BFSeguro que desea Actualizar?");
+			lblseguroQueDesea.setHorizontalAlignment(SwingConstants.CENTER);
 			lblseguroQueDesea.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 13));
 			GroupLayout groupLayout = new GroupLayout(getContentPane());
 			groupLayout.setHorizontalGroup(
-				groupLayout.createParallelGroup(Alignment.LEADING)
-					.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+				groupLayout.createParallelGroup(Alignment.TRAILING)
+					.addGroup(groupLayout.createSequentialGroup()
 						.addGap(30)
 						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 							.addGroup(groupLayout.createSequentialGroup()
 								.addGap(83)
-								.addComponent(lblActualizarP, GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+								.addComponent(lblActualizarP, GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
 								.addGap(92))
+							.addComponent(panel_DMed, GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
 							.addGroup(groupLayout.createSequentialGroup()
-								.addComponent(panel_DPer, GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
-								.addGap(2))
-							.addComponent(panel_DMed, GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
-							.addGroup(groupLayout.createSequentialGroup()
-								.addGap(124)
-								.addComponent(lblseguroQueDesea, GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+								.addGap(118)
+								.addComponent(lblseguroQueDesea, GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
 								.addGap(125))
 							.addGroup(groupLayout.createSequentialGroup()
 								.addGap(15)
-								.addComponent(btnCancelar, GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+								.addComponent(btnCancelar, GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
 								.addGap(43)
-								.addComponent(btnAceptar, GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
-								.addGap(21)))
+								.addComponent(btnAceptar, GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+								.addGap(21))
+							.addComponent(panel_DPer, GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE))
 						.addGap(23))
 			);
 			groupLayout.setVerticalGroup(
@@ -253,11 +251,11 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 						.addGap(28)
 						.addComponent(panel_DMed, GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
 						.addGap(18)
-						.addComponent(lblseguroQueDesea, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblseguroQueDesea, GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
 						.addGap(11)
 						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-							.addComponent(btnCancelar, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-							.addComponent(btnAceptar, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE))
+							.addComponent(btnAceptar, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+							.addComponent(btnCancelar, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
 						.addGap(34))
 			);
 			getContentPane().setLayout(groupLayout);
@@ -269,14 +267,25 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 	}
 	
 	public void blanquearCampos() {
-		textField_NroHist.setText("");
-		textField_NroSeguro.setText("");
-		textField_Ced.setText("");
-		textField_Nomb.setText("");
-		textField_Apelli.setText("");
-		textArea_AntFam.setText("");
-		textArea_AntPer.setText("");
+		textField_NroHist.setText(null);
+		textField_NroSeguro.setText(null);
+		textField_Ced.setText(null);
+		textField_Nomb.setText(null);
+		textField_Apelli.setText(null);
+		textArea_AntFam.setText(null);
+		textArea_AntPer.setText(null);
 		fechaNac.setDate(null);
+	}
+	
+	public void llenarCampos(String ced,String nom,String apell, Date fecha, int nroH, int nroS, String anteP, String anteF) {
+		textField_NroHist.setText(Integer.toString(nroH));
+		textField_NroSeguro.setText(Integer.toString(nroS));
+		textField_Ced.setText(ced);
+		textField_Nomb.setText(nom);
+		textField_Apelli.setText(apell);
+		textArea_AntFam.setText(anteF);
+		textArea_AntPer.setText(anteP);
+		fechaNac.setDate(fecha);
 	}
 	
 	public void addListener(ActionListener actionListener) {

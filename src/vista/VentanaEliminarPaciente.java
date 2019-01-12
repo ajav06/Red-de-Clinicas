@@ -41,6 +41,7 @@ public class VentanaEliminarPaciente extends javax.swing.JFrame{
 	private void initGUI() {
 		try {
 			getContentPane().setForeground(Color.BLUE);
+			setTitle("Eliminar Paciente");
 			
 			JLabel lblEliminarP = new JLabel("Eliminar Paciente");
 			lblEliminarP.setForeground(Color.BLUE);
@@ -132,6 +133,7 @@ public class VentanaEliminarPaciente extends javax.swing.JFrame{
 			btnAceptar.setBackground(Color.GREEN);
 			
 			JLabel lblseguroQueDesea = new JLabel("\u00BFSeguro que desea Eliminarlo?");
+			lblseguroQueDesea.setHorizontalAlignment(SwingConstants.CENTER);
 			lblseguroQueDesea.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 13));
 			
 			JPanel panel_DPer = new JPanel();
@@ -267,14 +269,25 @@ public class VentanaEliminarPaciente extends javax.swing.JFrame{
 	}
 	
 	public void blanquearCampos() {
-		textField_NroHist.setText("");
-		textField_NroSeguro.setText("");
-		textField_Ced.setText("");
-		textField_Nomb.setText("");
-		textField_Apelli.setText("");
-		textField_FechaN.setText("");
-		textArea_AntFam.setText("");
-		textArea_AntPer.setText("");
+		textField_NroHist.setText(null);
+		textField_NroSeguro.setText(null);
+		textField_Ced.setText(null);
+		textField_Nomb.setText(null);
+		textField_Apelli.setText(null);
+		textField_FechaN.setText(null);
+		textArea_AntFam.setText(null);
+		textArea_AntPer.setText(null);
+	}
+	
+	public void llenarCampos(String ced,String nom,String apell, Date fecha, int nroH, int nroS, String anteP, String anteF) {
+		textField_NroHist.setText(Integer.toString(nroH));
+		textField_NroSeguro.setText(Integer.toString(nroS));
+		textField_Ced.setText(ced);
+		textField_Nomb.setText(nom);
+		textField_Apelli.setText(apell);
+		textArea_AntFam.setText(anteF);
+		textArea_AntPer.setText(anteP);
+		textField_FechaN.setText(formatter.format(fecha));
 	}
 	
 	public void addListener(ActionListener actionListener) {

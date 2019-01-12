@@ -9,21 +9,24 @@ import vista.VentanaActualizarPaciente;
 public class ControladorVtnActuPaciente implements ActionListener{
 	private VentanaActualizarPaciente vtnActuPac;
 	
-	public ControladorVtnActuPaciente() {
+	public ControladorVtnActuPaciente(Paciente paciente) {
 		super();
 		this.vtnActuPac = new VentanaActualizarPaciente();
 		this.vtnActuPac.setLocation(480, 210);
 		this.vtnActuPac.setVisible(true);
 		this.vtnActuPac.addListener(this);
+		this.vtnActuPac.llenarCampos(paciente.getCedula(), paciente.getNombre(), paciente.getApellido(), 
+				paciente.getFechaNacimiento(), paciente.getNroHistorial(), paciente.getNroSeguro(), 
+				paciente.getAntePersonales(), paciente.getAnteFamiliares());
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String actionCommand = e.getActionCommand();
-		if (actionCommand.equals("Incluir")) {
+		if (actionCommand.equals("Si")) {
 			actualizarPaciente();
 		}		
-		else if (actionCommand.equals("Cancelar")) {
+		else if (actionCommand.equals("No")) {
 			vtnActuPac.blanquearCampos();
 		}
 	}
@@ -39,15 +42,16 @@ public class ControladorVtnActuPaciente implements ActionListener{
 	    	else
 	    	{
 	    		PacienteBD pacienteBD = new PacienteBD();
-		    	Paciente paciente = new Paciente(vtnActuPac.getCedula(),vtnActuPac.getNombre(),vtnActuPac.getApellido(),vtnActuPac.getAntPer()
-		    			,vtnActuPac.getAntFam(),vtnActuPac.getNroSgro(),vtnActuPac.getNroHist(),vtnActuPac.getFechaNac());		    
+		    	Paciente paciente = new Paciente(vtnActuPac.getCedula(),vtnActuPac.getNombre(),
+		    			vtnActuPac.getApellido(),vtnActuPac.getAntPer(),vtnActuPac.getAntFam(),
+		    			vtnActuPac.getNroSgro(),vtnActuPac.getNroHist(),vtnActuPac.getFechaNac());		    
 		    	pacienteBD.actualizarPaciente(paciente);
 		    	vtnActuPac.mostrarMensaje("El Paciente fue incluido con exito");
 		    	vtnActuPac.blanquearCampos();
 	    	}
 		}catch(Exception e)
 		{
-			vtnActuPac.mostrarMensaje("No se pudo registrar el Paciente, verifique que los datos sean correctos");
+			vtnActuPac.mostrarMensaje("No se pudo actualizar el Paciente, verifique que los datos sean correctos");
 			vtnActuPac.blanquearCampos();
 		}
 	}
