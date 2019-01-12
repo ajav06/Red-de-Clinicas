@@ -13,6 +13,11 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JSeparator;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
+import javax.swing.JList;
+import javax.swing.table.DefaultTableModel;
 
 public class VentanaConModRegMedico {
 
@@ -29,6 +34,13 @@ public class VentanaConModRegMedico {
 	private JLabel lblEspecialidad;
 	private JTextField textField_6;
 	private JTextField textField_7;
+	private JCheckBox chckbxactualmenteEstudiando;
+	private JTable table;
+	private JLabel lblHorarioDeTrabajo;
+	private JButton btnRegistrar;
+	private JButton btnSalir;
+	private JButton btnModificar;
+	private JButton btnEliminar;
 
 	/**
 	 * Launch the application.
@@ -58,7 +70,7 @@ public class VentanaConModRegMedico {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 579, 460);
+		frame.setBounds(100, 100, 579, 351);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblNombre = new JLabel("Cédula:");
@@ -81,12 +93,12 @@ public class VentanaConModRegMedico {
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
 		
-		lblNmeroDeTelfono = new JLabel("Número de Teléfono:");
+		lblNmeroDeTelfono = new JLabel("Tlf. Casa:");
 		
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
 		
-		lblNmeroCelular = new JLabel("Número Celular:");
+		lblNmeroCelular = new JLabel("Tlf. Celular:");
 		
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
@@ -108,15 +120,29 @@ public class VentanaConModRegMedico {
 		textField_7 = new JTextField();
 		textField_7.setColumns(10);
 		
-		JCheckBox chckbxpostgrados = new JCheckBox("¿Postgrados?");
+		JButton btnConsultar = new JButton("Consultar Postgrados");
 		
-		JButton btnConsultar = new JButton("Consultar");
+		chckbxactualmenteEstudiando = new JCheckBox("¿Actualmente estudiando?");
+		
+		JScrollPane scrollPane = new JScrollPane();
+		
+		lblHorarioDeTrabajo = new JLabel("Horario de Trabajo:");
+		
+		btnRegistrar = new JButton("Registrar");
+		
+		btnSalir = new JButton("Salir");
+		
+		btnModificar = new JButton("Modificar");
+		
+		btnEliminar = new JButton("Eliminar");
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
+						.addComponent(lblHorarioDeTrabajo, GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(lblNombre)
 							.addGap(6)
@@ -124,26 +150,23 @@ public class VentanaConModRegMedico {
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(lblApellido)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(textField_1, GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))
+							.addComponent(textField_1, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-								.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
-									.addComponent(chckbxpostgrados)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(btnConsultar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-								.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(btnConsultar, GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblAlmaMter)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_6))
-								.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+									.addComponent(textField_6, 181, 181, 181))
+								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblEspecialidad)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(comboBox, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-								.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+									.addComponent(comboBox, 0, 172, Short.MAX_VALUE))
+								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblNmeroDeTelfono)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_4))
-								.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+									.addComponent(textField_4, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblFechaDeNacimiento)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
@@ -156,12 +179,21 @@ public class VentanaConModRegMedico {
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblEmail)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_3, GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
+									.addComponent(textField_3, GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblNmeroCelular)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_5, GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
-								.addComponent(btnEditarEspecialidades, GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE))))
+									.addComponent(textField_5, GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
+								.addComponent(btnEditarEspecialidades, GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+								.addComponent(chckbxactualmenteEstudiando, GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(btnRegistrar)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(btnModificar)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(btnEliminar)
+							.addPreferredGap(ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+							.addComponent(btnSalir)))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -198,10 +230,39 @@ public class VentanaConModRegMedico {
 						.addComponent(textField_7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(chckbxpostgrados)
-						.addComponent(btnConsultar))
-					.addContainerGap(240, Short.MAX_VALUE))
+						.addComponent(btnConsultar)
+						.addComponent(chckbxactualmenteEstudiando))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(lblHorarioDeTrabajo)
+					.addPreferredGap(ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnRegistrar)
+						.addComponent(btnSalir)
+						.addComponent(btnModificar)
+						.addComponent(btnEliminar))
+					.addGap(111))
 		);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{"Matutino", null, null, null, null, null},
+				{"Vespertino", null, null, null, null, null},
+			},
+			new String[] {
+				"Horario", "Lunes", "Martes", "Mi\u00E9rcoles", "Jueves", "Viernes"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, true, true, true, true, true
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		scrollPane.setViewportView(table);
 		frame.getContentPane().setLayout(groupLayout);
 	}
 }

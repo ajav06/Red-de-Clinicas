@@ -11,6 +11,8 @@ import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class VentanaListaMedicos {
 
@@ -51,6 +53,12 @@ public class VentanaListaMedicos {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		txtIntroduzcaCdulaNombre = new JTextField();
+		txtIntroduzcaCdulaNombre.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent arg0) {
+				txtIntroduzcaCdulaNombre.setText("");
+			}
+		});
 		txtIntroduzcaCdulaNombre.setText("Introduzca cédula, nombre o especialidad");
 		txtIntroduzcaCdulaNombre.setColumns(10);
 		
@@ -60,8 +68,6 @@ public class VentanaListaMedicos {
 		
 		JButton btnConsultar = new JButton("Consultar");
 		
-		JButton btnModificar = new JButton("Modificar");
-		
 		JButton btnNewButton_1 = new JButton("Registrar Nuevo");
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -69,21 +75,16 @@ public class VentanaListaMedicos {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(txtIntroduzcaCdulaNombre, GroupLayout.PREFERRED_SIZE, 310, GroupLayout.PREFERRED_SIZE)
-									.addGap(18)
-									.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)))
-							.addContainerGap())
+							.addComponent(txtIntroduzcaCdulaNombre, GroupLayout.PREFERRED_SIZE, 310, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(btnConsultar)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(btnModificar)
-							.addPreferredGap(ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-							.addComponent(btnNewButton_1)
-							.addGap(21))))
+							.addPreferredGap(ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
+							.addComponent(btnNewButton_1)))
+					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -97,7 +98,6 @@ public class VentanaListaMedicos {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnConsultar)
-						.addComponent(btnModificar)
 						.addComponent(btnNewButton_1))
 					.addGap(5))
 		);
@@ -111,7 +111,7 @@ public class VentanaListaMedicos {
 				{null, null, null, null},
 			},
 			new String[] {
-				"New column", "New column", "New column", "Test"
+				"Cédula", "Nombre", "Especialidad"
 			}
 		));
 		scrollPane.setViewportView(table);
