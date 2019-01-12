@@ -1,4 +1,4 @@
-package vista;
+package vista.Paciente;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -12,12 +12,12 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.TitledBorder;
-import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import com.toedter.calendar.JDateChooser;
 import bean.*;
 import javax.swing.JTextArea;
+import javax.swing.JFrame;
 
 
 public class VentanaAgregarPaciente extends javax.swing.JFrame{
@@ -34,8 +34,10 @@ public class VentanaAgregarPaciente extends javax.swing.JFrame{
 	
 	public VentanaAgregarPaciente() {
 		super();
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		initGUI();
 		blanquearCampos();
+		setSize(540, 553);
 	}
 	
 	private void initGUI() {
@@ -77,19 +79,19 @@ public class VentanaAgregarPaciente extends javax.swing.JFrame{
 							.addGroup(gl_panel_DPer.createSequentialGroup()
 								.addComponent(lblNroHist, GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
 								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(textField_NroHist, GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
-							.addComponent(lblAntecedentesPersonales, GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-							.addComponent(scrollPane_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))
+								.addComponent(textField_NroHist, GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
+							.addComponent(lblAntecedentesPersonales, GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+							.addComponent(scrollPane_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))
 						.addGap(35)
 						.addGroup(gl_panel_DPer.createParallelGroup(Alignment.LEADING)
 							.addGroup(gl_panel_DPer.createSequentialGroup()
-								.addComponent(lblAntecedentesFamiliares, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+								.addComponent(lblAntecedentesFamiliares, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addGap(69))
 							.addGroup(gl_panel_DPer.createSequentialGroup()
 								.addComponent(lblNroSeguro, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addGap(18)
-								.addComponent(textField_NroSeguro, GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
-							.addComponent(scrollPane_2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE))
+								.addComponent(textField_NroSeguro, GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
+							.addComponent(scrollPane_2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))
 						.addContainerGap())
 			);
 			gl_panel_DPer.setVerticalGroup(
@@ -109,8 +111,8 @@ public class VentanaAgregarPaciente extends javax.swing.JFrame{
 							.addComponent(lblAntecedentesFamiliares, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 						.addPreferredGap(ComponentPlacement.RELATED)
 						.addGroup(gl_panel_DPer.createParallelGroup(Alignment.TRAILING)
-							.addComponent(scrollPane_2, GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
+							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+							.addComponent(scrollPane_2, GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
 						.addGap(18))
 			);
 			
@@ -209,25 +211,25 @@ public class VentanaAgregarPaciente extends javax.swing.JFrame{
 			panel.setLayout(gl_panel);
 			GroupLayout groupLayout = new GroupLayout(getContentPane());
 			groupLayout.setHorizontalGroup(
-				groupLayout.createParallelGroup(Alignment.TRAILING)
+				groupLayout.createParallelGroup(Alignment.LEADING)
 					.addGroup(groupLayout.createSequentialGroup()
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-							.addGroup(groupLayout.createSequentialGroup()
-								.addGap(102)
-								.addComponent(lblRegistrarP, GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
-								.addGap(100))
-							.addGroup(groupLayout.createSequentialGroup()
-								.addGap(27)
-								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-									.addComponent(panel_DPer, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addGroup(groupLayout.createSequentialGroup()
-										.addGap(20)
-										.addComponent(btnCancelar, GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-										.addGap(43)
-										.addComponent(btnGuardar, GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
-										.addGap(16))
-									.addComponent(panel, GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE))))
+						.addGap(102)
+						.addComponent(lblRegistrarP, GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+						.addGap(120))
+					.addGroup(groupLayout.createSequentialGroup()
+						.addGap(27)
+						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
 						.addGap(20))
+					.addGroup(groupLayout.createSequentialGroup()
+						.addGap(27)
+						.addComponent(panel_DPer, GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
+						.addGap(20))
+					.addGroup(groupLayout.createSequentialGroup()
+						.addGap(47)
+						.addComponent(btnCancelar, GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+						.addGap(43)
+						.addComponent(btnGuardar, GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+						.addGap(36))
 			);
 			groupLayout.setVerticalGroup(
 				groupLayout.createParallelGroup(Alignment.LEADING)
@@ -239,9 +241,11 @@ public class VentanaAgregarPaciente extends javax.swing.JFrame{
 						.addGap(26)
 						.addComponent(panel_DPer, GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
 						.addGap(23)
-						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-							.addComponent(btnGuardar, GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-							.addComponent(btnCancelar, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addComponent(btnCancelar, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+							.addGroup(groupLayout.createSequentialGroup()
+								.addGap(1)
+								.addComponent(btnGuardar, GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)))
 						.addGap(22))
 			);
 			getContentPane().setLayout(groupLayout);

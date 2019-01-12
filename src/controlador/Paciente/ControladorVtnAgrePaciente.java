@@ -1,10 +1,10 @@
-package controlador;
+package controlador.Paciente;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import modelo.Paciente;
-import modelo.PacienteBD;
-import vista.VentanaAgregarPaciente;
+import modelo.Paciente.Paciente;
+import modelo.Paciente.PacienteBD;
+import vista.Paciente.VentanaAgregarPaciente;
 
 public class ControladorVtnAgrePaciente implements ActionListener{
 	private VentanaAgregarPaciente vtnAgrePac;
@@ -12,7 +12,7 @@ public class ControladorVtnAgrePaciente implements ActionListener{
 	public ControladorVtnAgrePaciente() {
 		super();
 		this.vtnAgrePac = new VentanaAgregarPaciente();
-		this.vtnAgrePac.setLocation(480, 210);
+		this.vtnAgrePac.setLocationRelativeTo(null);
 		this.vtnAgrePac.setVisible(true);
 		this.vtnAgrePac.addListener(this);
 	}
@@ -48,7 +48,6 @@ public class ControladorVtnAgrePaciente implements ActionListener{
 		}catch(Exception e)
 		{
 			vtnAgrePac.mostrarMensaje("No se pudo registrar el Paciente, verifique que los datos sean correctos");
-			vtnAgrePac.blanquearCampos();
 		}
 	}
 }

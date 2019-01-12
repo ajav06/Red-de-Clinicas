@@ -1,5 +1,7 @@
-package modelo;
+package modelo.Paciente;
 import java.util.Date;
+
+import modelo.Persona;
 
 public class Paciente extends Persona{
 	String antePersonales, anteFamiliares;

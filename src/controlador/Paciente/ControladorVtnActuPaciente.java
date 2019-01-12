@@ -1,10 +1,10 @@
-package controlador;
+package controlador.Paciente;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import modelo.Paciente;
-import modelo.PacienteBD;
-import vista.VentanaActualizarPaciente;
+import modelo.Paciente.Paciente;
+import modelo.Paciente.PacienteBD;
+import vista.Paciente.VentanaActualizarPaciente;
 
 public class ControladorVtnActuPaciente implements ActionListener{
 	private VentanaActualizarPaciente vtnActuPac;
@@ -12,7 +12,7 @@ public class ControladorVtnActuPaciente implements ActionListener{
 	public ControladorVtnActuPaciente(Paciente paciente) {
 		super();
 		this.vtnActuPac = new VentanaActualizarPaciente();
-		this.vtnActuPac.setLocation(480, 210);
+		this.vtnActuPac.setLocationRelativeTo(null);
 		this.vtnActuPac.setVisible(true);
 		this.vtnActuPac.addListener(this);
 		this.vtnActuPac.llenarCampos(paciente.getCedula(), paciente.getNombre(), paciente.getApellido(), 

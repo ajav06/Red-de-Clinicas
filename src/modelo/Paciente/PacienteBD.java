@@ -1,4 +1,4 @@
-package modelo;
+package modelo.Paciente;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -6,8 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import modelo.Paciente;
+
 import modelo.ConexionBD;
+import modelo.Paciente.Paciente;
 
 public class PacienteBD extends ConexionBD{
 	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -69,6 +70,10 @@ public class PacienteBD extends ConexionBD{
 		Date fechaNacimiento = formatter.parse(resultSet.getString("fechanacimiento"));
 		Paciente paciente = new Paciente(cedula,nombre, apellido,antePersonales,anteFamiliares,nroSeguro,nroHistorial,fechaNacimiento);
 		return paciente;
+	}
+	
+	public void eliminarPaciente(String ced) {
+		this.elimLogica("paciente", "cedula", ced);
 	}
 
 }
