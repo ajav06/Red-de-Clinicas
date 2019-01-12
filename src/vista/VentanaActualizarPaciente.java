@@ -1,8 +1,10 @@
 package vista;
 import java.util.Date;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.event.ActionListener;
 import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
@@ -15,6 +17,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import com.toedter.calendar.JDateChooser;
 import bean.*;
+import java.awt.event.ActionEvent;
 
 
 public class VentanaActualizarPaciente extends javax.swing.JFrame{
@@ -26,6 +29,8 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 	private JTextPane textPane_AntFam;
 	private JTextPane textPane_AntPer;
 	private JDateChooser fechaNac;
+	private JButton btnCancelar;
+	private JButton btnAceptar;
 	
 	public VentanaActualizarPaciente() {
 		super();
@@ -191,14 +196,18 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 			);
 			panel_DPer.setLayout(gl_panel_DPer);
 			
-			JButton btnAceptar = new JButton("No");
-			btnAceptar.setForeground(Color.BLACK);
-			btnAceptar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-			btnAceptar.setBackground(Color.RED);
+			btnCancelar = new JButton("No");
+			btnCancelar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
+			btnCancelar.setForeground(Color.BLACK);
+			btnCancelar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+			btnCancelar.setBackground(Color.RED);
 			
-			JButton button_1 = new JButton("Si");
-			button_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-			button_1.setBackground(Color.GREEN);
+			btnAceptar = new JButton("Si");
+			btnAceptar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+			btnAceptar.setBackground(Color.GREEN);
 			
 			JLabel lblActualizarP = new JLabel("Actualizar Paciente");
 			lblActualizarP.setHorizontalAlignment(SwingConstants.CENTER);
@@ -227,9 +236,9 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 								.addGap(125))
 							.addGroup(groupLayout.createSequentialGroup()
 								.addGap(15)
-								.addComponent(btnAceptar, GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+								.addComponent(btnCancelar, GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
 								.addGap(43)
-								.addComponent(button_1, GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+								.addComponent(btnAceptar, GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
 								.addGap(21)))
 						.addGap(23))
 			);
@@ -246,8 +255,8 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 						.addComponent(lblseguroQueDesea, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
 						.addGap(11)
 						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-							.addComponent(btnAceptar, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-							.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE))
+							.addComponent(btnCancelar, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+							.addComponent(btnAceptar, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE))
 						.addGap(34))
 			);
 			getContentPane().setLayout(groupLayout);
@@ -267,6 +276,11 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 		textPane_AntFam.setText("");
 		textPane_AntPer.setText("");
 		fechaNac.setDate(null);
+	}
+	
+	public void addListener(ActionListener actionListener) {
+		btnAceptar.addActionListener(actionListener);
+		btnCancelar.addActionListener(actionListener);		
 	}
 	
 	public void setCedula(String ced) {
@@ -331,5 +345,9 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 	
 	public String getAntPer() {
 		return textPane_AntPer.getText();
+	}
+	
+	public void mostrarMensaje(String mensaje) {
+		JOptionPane.showMessageDialog(this, mensaje);
 	}
 }

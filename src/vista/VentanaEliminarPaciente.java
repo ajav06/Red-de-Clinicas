@@ -1,7 +1,9 @@
 package vista;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.awt.Color;
@@ -27,6 +29,8 @@ public class VentanaEliminarPaciente extends javax.swing.JFrame{
 	private JTextField textField_FechaN;
 	private JTextPane textPane_AntFam;
 	private JTextPane textPane_AntPer;
+	private JButton btnCancelar;
+	private JButton btnAceptar;
 			
 	public VentanaEliminarPaciente () {
 		super();
@@ -119,12 +123,12 @@ public class VentanaEliminarPaciente extends javax.swing.JFrame{
 			scrollPane_1.setViewportView(textPane_AntPer);
 			panel_DMed.setLayout(gl_panel_DMed);
 			
-			JButton btnCancelar = new JButton("No");
+			btnCancelar = new JButton("No");
 			btnCancelar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 			btnCancelar.setBackground(Color.RED);
 			btnCancelar.setForeground(Color.BLACK);
 			
-			JButton btnAceptar = new JButton("Si");
+			btnAceptar = new JButton("Si");
 			btnAceptar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 			btnAceptar.setBackground(Color.GREEN);
 			
@@ -274,6 +278,11 @@ public class VentanaEliminarPaciente extends javax.swing.JFrame{
 		textPane_AntPer.setText("");
 	}
 	
+	public void addListener(ActionListener actionListener) {
+		btnAceptar.addActionListener(actionListener);
+		btnCancelar.addActionListener(actionListener);		
+	}
+	
 	public void setCedula(String ced) {
 		textField_Ced.setText(ced);
 	}
@@ -304,5 +313,9 @@ public class VentanaEliminarPaciente extends javax.swing.JFrame{
 	
 	public void setAntPer(String antePer) {
 		textPane_AntPer.setText(antePer);
+	}
+	
+	public void mostrarMensaje(String mensaje) {
+		JOptionPane.showMessageDialog(this, mensaje);
 	}
 }

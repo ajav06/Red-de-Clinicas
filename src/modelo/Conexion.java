@@ -1,7 +1,8 @@
 package modelo;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
-public class Conexion {
+public class Conexion extends javax.swing.JFrame{
 	Connection c = null;
 	Statement stmt = null;
 	
@@ -15,10 +16,9 @@ public class Conexion {
 	         c = DriverManager.getConnection(url+nombBD,usuario, contraseña);
 	      } catch (Exception e) {
 	         e.printStackTrace();
-	         System.err.println(e.getClass().getName()+": "+e.getMessage());
-	         System.exit(0);
+	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 	      }
-	      System.out.println("Opened database successfully");
+	      JOptionPane.showMessageDialog(this, "Conexión Exitosa con la Base de Datos");
 	}
 	
 	public void crearTabla(String nombTabla, String campos) {
@@ -28,11 +28,11 @@ public class Conexion {
 	          stmt.executeUpdate(sql);
 	          stmt.close();
 	          c.close();
-	       } catch ( Exception e ) {
-	          System.err.println( e.getClass().getName()+": "+ e.getMessage() );
-	          System.exit(0);
-	       }
-	       System.out.println("Table created successfully");
+	      } catch (Exception e) {
+		      e.printStackTrace();
+		      JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+		  }
+		  JOptionPane.showMessageDialog(this, "Tabla Creada con Éxito");
 	}
 	
 	public void crearRegistro(String nombTabla, String nombCampos, String valorCampos) {
@@ -44,11 +44,11 @@ public class Conexion {
 	         stmt.close();
 	         c.commit();
 	         c.close();
-	      } catch (Exception e) {
-	         System.err.println( e.getClass().getName()+": "+ e.getMessage() );
-	         System.exit(0);
+		  } catch (Exception e) {
+	         e.printStackTrace();
+	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 	      }
-	      System.out.println("Records created successfully");
+	      JOptionPane.showMessageDialog(this, "Registro Creado de Manera Exitosa");
 	}
 	
 	public void actuRegistro(String nombTabla, String nombCampos, String valorCampos, String id, String valorId) {
@@ -61,11 +61,11 @@ public class Conexion {
 	         c.commit();
 	         stmt.close();
 	         c.close();
-	      } catch ( Exception e ) {
-	         System.err.println( e.getClass().getName()+": "+ e.getMessage() );
-	         System.exit(0);
+		  } catch (Exception e) {
+	         e.printStackTrace();
+	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 	      }
-	      System.out.println("Operation done successfully");
+	      JOptionPane.showMessageDialog(this, "Registro Actualizado de Manera Exitosa");
 	}
 	
 	public void elimLogica(String nombTabla, String id, String valorId) {
@@ -78,11 +78,11 @@ public class Conexion {
 	         c.commit();
 	         stmt.close();
 	         c.close();
-	      } catch ( Exception e ) {
-	         System.err.println( e.getClass().getName()+": "+ e.getMessage() );
-	         System.exit(0);
+		  } catch (Exception e) {
+	         e.printStackTrace();
+	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 	      }
-	      System.out.println("Operation done successfully");
+	      JOptionPane.showMessageDialog(this, "Registro Eliminado de Manera Exitosa");
 	}
 	
 	public void buscarRegistro(String nombTabla, String nombCampos, String id, String valorId, ResultSet rs) {
@@ -91,24 +91,24 @@ public class Conexion {
 	         rs = stmt.executeQuery( "SELECT "+ nombCampos +" FROM "+nombTabla+" WHERE"+ id +"="+valorId+ ";" );
 	         stmt.close();
 	         c.close();
-	      } catch ( Exception e ) {
-	         System.err.println( e.getClass().getName()+": "+ e.getMessage() );
-	         System.exit(0);
+		  } catch (Exception e) {
+	         e.printStackTrace();
+	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 	      }
-	      System.out.println("Operation done successfully");		
+	      JOptionPane.showMessageDialog(this, "Registro Buscado de Manera Exitosa");		
 	}
 	
-	public void consultarTabla(String nombTabla, String nombCampos, String id, String valorId, ResultSet rs) {
+	public void consultarTabla(String nombTabla, String nombCampos, String adicional, ResultSet rs) {
 		try {
 	         stmt = c.createStatement();
-	         rs = stmt.executeQuery( "SELECT "+ nombCampos +" FROM "+nombTabla+" WHERE"+ id +"="+valorId+ ";" );
+	         rs = stmt.executeQuery( "SELECT "+ nombCampos +" FROM "+nombTabla+adicional+";" );
 	         stmt.close();
 	         c.close();
-	      } catch ( Exception e ) {
-	         System.err.println( e.getClass().getName()+": "+ e.getMessage() );
-	         System.exit(0);
+		  } catch (Exception e) {
+	         e.printStackTrace();
+	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 	      }
-	      System.out.println("Operation done successfully");		
+	      JOptionPane.showMessageDialog(this, "Operación Realizada de Manera Exitosa");		
 	}
 	
 	
