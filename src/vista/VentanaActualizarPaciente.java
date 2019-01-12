@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import com.toedter.calendar.JDateChooser;
 import bean.*;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextArea;
 
 
 public class VentanaActualizarPaciente extends javax.swing.JFrame{
@@ -26,8 +27,8 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 	private JTextFieldValidator textField_Ced;
 	private JTextFieldValidator textField_Nomb;
 	private JTextFieldValidator textField_Apelli;
-	private JTextPane textPane_AntFam;
-	private JTextPane textPane_AntPer;
+	private JTextArea textArea_AntFam;
+	private JTextArea textArea_AntPer;
 	private JDateChooser fechaNac;
 	private JButton btnCancelar;
 	private JButton btnAceptar;
@@ -110,11 +111,11 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 						.addGap(18))
 			);
 			
-			textPane_AntFam = new JTextPane();
-			scrollPane_1.setViewportView(textPane_AntFam);
+			textArea_AntFam = new JTextArea();
+			scrollPane_1.setViewportView(textArea_AntFam);
 			
-			textPane_AntPer = new JTextPane();
-			scrollPane.setViewportView(textPane_AntPer);
+			textArea_AntPer = new JTextArea();
+			scrollPane.setViewportView(textArea_AntPer);
 			panel_DMed.setLayout(gl_panel_DMed);
 			
 			JPanel panel_DPer = new JPanel();
@@ -273,8 +274,8 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 		textField_Ced.setText("");
 		textField_Nomb.setText("");
 		textField_Apelli.setText("");
-		textPane_AntFam.setText("");
-		textPane_AntPer.setText("");
+		textArea_AntFam.setText("");
+		textArea_AntPer.setText("");
 		fechaNac.setDate(null);
 	}
 	
@@ -308,11 +309,11 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 	}
 	
 	public void setAntFam(String anteFam) {
-		textPane_AntFam.setText(anteFam);
+		textArea_AntFam.setText(anteFam);
 	}
 	
 	public void setAntPer(String antePer) {
-		textPane_AntPer.setText(antePer);
+		textArea_AntPer.setText(antePer);
 	}
 	
 	public String getCedula() {
@@ -340,11 +341,11 @@ public class VentanaActualizarPaciente extends javax.swing.JFrame{
 	}
 	
 	public String getAntFam() {
-		return textPane_AntFam.getText();
+		return textArea_AntFam.getText();
 	}
 	
 	public String getAntPer() {
-		return textPane_AntPer.getText();
+		return textArea_AntPer.getText();
 	}
 	
 	public void mostrarMensaje(String mensaje) {

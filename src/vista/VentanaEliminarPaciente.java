@@ -18,6 +18,7 @@ import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import bean.*;
+import javax.swing.JTextArea;
 
 public class VentanaEliminarPaciente extends javax.swing.JFrame{
 	private SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -27,8 +28,8 @@ public class VentanaEliminarPaciente extends javax.swing.JFrame{
 	private JTextFieldValidator  textField_Nomb;
 	private JTextFieldValidator  textField_Apelli;
 	private JTextField textField_FechaN;
-	private JTextPane textPane_AntFam;
-	private JTextPane textPane_AntPer;
+	private JTextArea textArea_AntFam;
+	private JTextArea textArea_AntPer;
 	private JButton btnCancelar;
 	private JButton btnAceptar;
 			
@@ -114,13 +115,11 @@ public class VentanaEliminarPaciente extends javax.swing.JFrame{
 						.addGap(18))
 			);
 			
-			textPane_AntFam = new JTextPane();
-			textPane_AntFam.setEditable(false);
-			scrollPane_2.setViewportView(textPane_AntFam);
+			textArea_AntFam = new JTextArea();
+			scrollPane_2.setViewportView(textArea_AntFam);
 			
-			textPane_AntPer = new JTextPane();
-			textPane_AntPer.setEditable(false);
-			scrollPane_1.setViewportView(textPane_AntPer);
+			textArea_AntPer = new JTextArea();
+			scrollPane_1.setViewportView(textArea_AntPer);
 			panel_DMed.setLayout(gl_panel_DMed);
 			
 			btnCancelar = new JButton("No");
@@ -274,8 +273,8 @@ public class VentanaEliminarPaciente extends javax.swing.JFrame{
 		textField_Nomb.setText("");
 		textField_Apelli.setText("");
 		textField_FechaN.setText("");
-		textPane_AntFam.setText("");
-		textPane_AntPer.setText("");
+		textArea_AntFam.setText("");
+		textArea_AntPer.setText("");
 	}
 	
 	public void addListener(ActionListener actionListener) {
@@ -308,11 +307,11 @@ public class VentanaEliminarPaciente extends javax.swing.JFrame{
 	}
 	
 	public void setAntFam(String anteFam) {
-		textPane_AntFam.setText(anteFam);
+		textArea_AntFam.setText(anteFam);
 	}
 	
 	public void setAntPer(String antePer) {
-		textPane_AntPer.setText(antePer);
+		textArea_AntPer.setText(antePer);
 	}
 	
 	public void mostrarMensaje(String mensaje) {
