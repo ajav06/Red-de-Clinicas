@@ -70,14 +70,14 @@ public class Conexion extends javax.swing.JFrame{
 	      JOptionPane.showMessageDialog(this, "Registro Creado de Manera Exitosa");
 	}
 	
-	public void actuRegistro(String nombTabla, String nombCampos, String valorCampos, String id, String valorId) {
+	public void actuRegistro(String nombTabla, String nombYvalorCampos, String id, String valorId) {
 		try {
 			 Class.forName(getDriver());
 		     c = DriverManager.getConnection(getUrl()+getNombBD(),getUsuario(), getContrasenna());
 	         c.setAutoCommit(false);
 			
 	         stmt = c.createStatement();
-	         String sql = "UPDATE " + nombTabla +" SET " + " ( "+ nombCampos + " ) VALUES ( " + valorCampos + " ) WHERE "+ 
+	         String sql = "UPDATE " + nombTabla +" SET " +  nombYvalorCampos + " WHERE "+ 
 	         id + "="+ valorId +";";
 	         stmt.executeUpdate(sql);
 	         
@@ -96,7 +96,7 @@ public class Conexion extends javax.swing.JFrame{
 	         c.setAutoCommit(false);
 			
 	         stmt = c.createStatement();
-	         String sql = "UPDATE " + nombTabla +" set " + " estatus = 'e' WHERE "+ 
+	         String sql = "UPDATE " + nombTabla +" SET " + " estatus = 'e' WHERE "+ 
 	         id + "="+ valorId +";";
 	         stmt.executeUpdate(sql);
 	         
@@ -135,7 +135,7 @@ public class Conexion extends javax.swing.JFrame{
 	         c.setAutoCommit(false);
 			
 	         stmt = c.createStatement();
-	         String sql = "SELECT * FROM "+nombTabla+adicional+" WHERE estatus='a';";
+	         String sql = "SELECT * FROM "+nombTabla+adicional+";";
 	         rs = stmt.executeQuery(sql);
 	         
 		  } catch (Exception e) {

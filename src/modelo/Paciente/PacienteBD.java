@@ -48,9 +48,10 @@ public class PacienteBD extends ConexionBD{
 	}
 	
 	public void actualizarPaciente(Paciente paciente) {
-		this.actuRegistro("paciente", "nombres,apellidos,fechaNacimiento,antePersonales,anteFamiliares,nroSeguro,nroHistorial","'"+paciente.getNombre()+"','"
-				+paciente.getApellido()+"','"+formatter.format(paciente.getFechaNacimiento())+"','"+paciente.getAntePersonales()+"','"+paciente.getAnteFamiliares()+"',"
-				+Integer.toString(paciente.getNroSeguro())+","+Integer.toString(paciente.getNroHistorial()), "cedula", "'"+paciente.getCedula()+"'");
+		this.actuRegistro("paciente", "nombres='"+paciente.getNombre()+"',apellidos='"+paciente.getApellido()+"',fechaNacimiento='"+
+				formatter.format(paciente.getFechaNacimiento())+"',antePersonales='"+paciente.getAntePersonales()+"',anteFamiliares='"+
+				paciente.getAnteFamiliares()+"',nroSeguro="+Integer.toString(paciente.getNroSeguro())+",nroHistorial="+
+				Integer.toString(paciente.getNroHistorial()),"cedula", "'"+paciente.getCedula()+"'");
 	}
 	
 	public Paciente buscarPaciente(String ced) throws SQLException {
@@ -78,6 +79,29 @@ public class PacienteBD extends ConexionBD{
 	
 	public void eliminarPaciente(String ced) {
 		this.elimLogica("paciente", "cedula",  "'"+ced+"'");
+	}
+	
+	public List<Paciente> consultarFiltrarPacientes(String filtro) throws SQLException {
+		List<Paciente> pacientes = new ArrayList<Paciente>();
+		resultSet = this.consultarTabla("paciente", " WHERE "+filtro);
+		try {
+			while (resultSet.next()) {
+				String cedula = resultSet.getString("cedula");
+				String nombre = resultSet.getString("nombres");
+				String apellido = resultSet.getString("apellidos");
+				String antePersonales = resultSet.getString("antepersonales");
+				String anteFamiliares = resultSet.getString("antefamiliares");
+				int nroSeguro = resultSet.getInt("nroseguro");
+				int nroHistorial = resultSet.getInt("nrohistorial");
+				Date fechaNacimiento = resultSet.getDate("fechanacimiento");
+				Paciente paciente = new Paciente(cedula,nombre, apellido,antePersonales,anteFamiliares,nroSeguro,nroHistorial,fechaNacimiento);
+				pacientes.add(paciente);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		this.cerrarComando();
+		return pacientes;
 	}
 
 }

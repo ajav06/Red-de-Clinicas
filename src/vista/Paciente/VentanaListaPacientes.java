@@ -8,10 +8,12 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.JFrame;
@@ -20,12 +22,12 @@ import bean.JTextFieldValidator;
 import javax.swing.JButton;
 
 public class VentanaListaPacientes extends javax.swing.JFrame{
-	private JTable table;
 	private JTextFieldValidator textField_Ced;
 	private JButton btnIncliur;
 	private JButton btnActualizar;
 	private JButton btnEliminar;
 	private JButton btnBuscar;
+	private JTable tblPacientes;
 	
 	public VentanaListaPacientes() {
 		super();
@@ -88,7 +90,8 @@ public class VentanaListaPacientes extends javax.swing.JFrame{
 			btnEliminar = new JButton("Eliminar");
 			btnEliminar.setBackground(new Color(204, 51, 51));
 			
-			btnBuscar = new JButton("...");
+			btnBuscar = new JButton(". . .");
+			btnBuscar.setBackground(Color.DARK_GRAY);
 			GroupLayout gl_panel = new GroupLayout(panel);
 			gl_panel.setHorizontalGroup(
 				gl_panel.createParallelGroup(Alignment.TRAILING)
@@ -146,37 +149,8 @@ public class VentanaListaPacientes extends javax.swing.JFrame{
 						.addContainerGap())
 			);
 			
-			table = new JTable();
-			table.setModel(new DefaultTableModel(
-				new Object[][] {
-				},
-				new String[] {
-					"Cedula", "Nombres", "Apellidos", "Fecha de Nacimiento", "Nro Historial Medico", "Nro Seguro Medico"
-				}
-			) {
-				Class[] columnTypes = new Class[] {
-					String.class, String.class, String.class, String.class, String.class, String.class
-				};
-				public Class getColumnClass(int columnIndex) {
-					return columnTypes[columnIndex];
-				}
-				boolean[] columnEditables = new boolean[] {
-					false, false, false, false, false, false
-				};
-				public boolean isCellEditable(int row, int column) {
-					return columnEditables[column];
-				}
-			});
-			table.getColumnModel().getColumn(0).setMinWidth(75);
-			table.getColumnModel().getColumn(1).setMinWidth(75);
-			table.getColumnModel().getColumn(2).setMinWidth(75);
-			table.getColumnModel().getColumn(3).setMinWidth(109);
-			table.getColumnModel().getColumn(4).setMinWidth(104);
-			table.getColumnModel().getColumn(5).setMinWidth(100);
-			table.setFillsViewportHeight(true);
-			table.setColumnSelectionAllowed(true);
-			table.setCellSelectionEnabled(true);
-			scrollPane.setViewportView(table);
+			tblPacientes = new JTable();
+			scrollPane.setViewportView(tblPacientes);
 			panel_1.setLayout(gl_panel_1);
 			getContentPane().setLayout(groupLayout);
 		} catch (Exception e){
@@ -191,7 +165,10 @@ public class VentanaListaPacientes extends javax.swing.JFrame{
 		btnIncliur.addActionListener(actionListener);
 		btnBuscar.addActionListener(actionListener);
 	}
-
+	
+	public void setResultados(AbstractTableModel abstractTableModel) {
+		tblPacientes.setModel(abstractTableModel);
+	}
 	
 	public String getCedula() {
 		return textField_Ced.getText();
@@ -204,6 +181,4 @@ public class VentanaListaPacientes extends javax.swing.JFrame{
 	public void mostrarMensaje(String mensaje) {
 		JOptionPane.showMessageDialog(this, mensaje);
 	}
-
-	
 }
