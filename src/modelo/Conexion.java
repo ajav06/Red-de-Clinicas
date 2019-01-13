@@ -3,8 +3,8 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 
 public class Conexion extends javax.swing.JFrame{
-	private Connection c = null;
-	private Statement stmt = null;
+	protected Connection c = null;
+	protected Statement stmt = null;
 	private String driver;
 	private String url;
 	private String nombBD;
@@ -62,9 +62,7 @@ public class Conexion extends javax.swing.JFrame{
 	         String sql = "INSERT INTO " + nombTabla + " ("+ nombCampos + ") " + "VALUES" + " (" + valorCampos + ");";
 	         stmt.executeUpdate(sql);
 
-	         stmt.close();
-	         c.commit();
-	         c.close();
+	         cerrarComando();
 		  } catch (Exception e) {
 	         e.printStackTrace();
 	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
@@ -79,13 +77,11 @@ public class Conexion extends javax.swing.JFrame{
 	         c.setAutoCommit(false);
 			
 	         stmt = c.createStatement();
-	         String sql = "UPDATE " + nombTabla +" set " + " ( "+ nombCampos + " ) " + "VALUES" + " ( " + valorCampos + " ) WHERE "+ 
+	         String sql = "UPDATE " + nombTabla +" SET " + " ( "+ nombCampos + " ) VALUES ( " + valorCampos + " ) WHERE "+ 
 	         id + "="+ valorId +";";
 	         stmt.executeUpdate(sql);
 	         
-	         c.commit();
-	         stmt.close();
-	         c.close();
+	         cerrarComando();
 		  } catch (Exception e) {
 	         e.printStackTrace();
 	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
@@ -100,13 +96,11 @@ public class Conexion extends javax.swing.JFrame{
 	         c.setAutoCommit(false);
 			
 	         stmt = c.createStatement();
-	         String sql = "UPDATE " + nombTabla +" set " + " estatus = 'e' where "+ 
+	         String sql = "UPDATE " + nombTabla +" set " + " estatus = 'e' WHERE "+ 
 	         id + "="+ valorId +";";
 	         stmt.executeUpdate(sql);
 	         
-	         c.commit();
-	         stmt.close();
-	         c.close();
+	         cerrarComando();
 		  } catch (Exception e) {
 	         e.printStackTrace();
 	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
@@ -114,42 +108,42 @@ public class Conexion extends javax.swing.JFrame{
 	      JOptionPane.showMessageDialog(this, "Registro Eliminado de Manera Exitosa");
 	}
 	
-	public void buscarRegistro(String nombTabla, String nombCampos, String id, String valorId, ResultSet rs) {
+	public ResultSet buscarRegistro(String nombTabla, String id, String valorId) {
+		ResultSet rs=null;
 		try {
 			 Class.forName(getDriver());
 		     c = DriverManager.getConnection(getUrl()+getNombBD(),getUsuario(), getContrasenna());
 	         c.setAutoCommit(false);
 			
 	         stmt = c.createStatement();
-	         String sql = "SELECT "+ nombCampos +" FROM "+nombTabla+" WHERE"+ id +"="+valorId+ ";";
+	         String sql = "SELECT * FROM "+nombTabla+" WHERE "+ id +"="+valorId+ "AND estatus='a';";
 	         rs = stmt.executeQuery(sql);
 	         
-	         stmt.close();
-	         c.close();
 		  } catch (Exception e) {
 	         e.printStackTrace();
 	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 	      }
-	      JOptionPane.showMessageDialog(this, "Registro Buscado de Manera Exitosa");		
+	      JOptionPane.showMessageDialog(this, "Registro Buscado de Manera Exitosa");
+		return rs;		
 	}
 	
-	public void consultarTabla(String nombTabla, String nombCampos, String adicional, ResultSet rs) {
+	public ResultSet consultarTabla(String nombTabla, String adicional) {
+		ResultSet rs=null;
 		try {
 			 Class.forName(getDriver());
 		     c = DriverManager.getConnection(getUrl()+getNombBD(),getUsuario(), getContrasenna());
 	         c.setAutoCommit(false);
 			
 	         stmt = c.createStatement();
-	         String sql = "SELECT "+ nombCampos +" FROM "+nombTabla+adicional+";";
+	         String sql = "SELECT * FROM "+nombTabla+adicional+" WHERE estatus='a';";
 	         rs = stmt.executeQuery(sql);
 	         
-	         stmt.close();
-	         c.close();
 		  } catch (Exception e) {
 	         e.printStackTrace();
 	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 	      }
-	      JOptionPane.showMessageDialog(this, "Operación Realizada de Manera Exitosa");		
+	      JOptionPane.showMessageDialog(this, "Operación Realizada de Manera Exitosa");
+	      return rs;
 	}
 
 	public String getDriver() {
@@ -192,4 +186,9 @@ public class Conexion extends javax.swing.JFrame{
 		this.contrasenna = contraseña;
 	}
 	
+	public void cerrarComando() throws SQLException {
+		c.commit();
+        stmt.close();
+        c.close();
+	}
 }

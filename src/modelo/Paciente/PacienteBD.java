@@ -19,17 +19,14 @@ public class PacienteBD extends ConexionBD{
 	}
 	
 	public void registrarPaciente(Paciente paciente) {
-		this.crearRegistro("paciente", "cedula, nombres,apellidos,fechaNacimiento,antePersonales,anteFamiliares,nroSeguro,nroHistorial", "'"+paciente.getCedula()
+		this.crearRegistro("paciente", "cedula,nombres,apellidos,fechaNacimiento,antePersonales,anteFamiliares,nroSeguro,nroHistorial", "'"+paciente.getCedula()
 				+"','"+paciente.getNombre()+"','"+paciente.getApellido()+"','"+formatter.format(paciente.getFechaNacimiento())+"','"+paciente.getAntePersonales()+"','"+paciente.getAnteFamiliares()+"',"
 				+Integer.toString(paciente.getNroSeguro())+","+Integer.toString(paciente.getNroHistorial()));
 	}
 	
-	public List<Paciente> consultarEstudiantes() throws ParseException {
+	public List<Paciente> consultarPacientes() throws SQLException {
 		List<Paciente> pacientes = new ArrayList<Paciente>();
-		ResultSet rs = null;
-		resultSet = null;
-		this.consultarTabla("paciente", "cedula, nombres,apellidos,fechanacimiento,antepersonales,antefamiliares,nrofeguro,nrohistorial", " WHERE estatus='a' ", rs);
-		resultSet = rs;
+		resultSet = this.consultarTabla("paciente", " WHERE estatus='a' ");
 		try {
 			while (resultSet.next()) {
 				String cedula = resultSet.getString("cedula");
@@ -37,15 +34,16 @@ public class PacienteBD extends ConexionBD{
 				String apellido = resultSet.getString("apellidos");
 				String antePersonales = resultSet.getString("antepersonales");
 				String anteFamiliares = resultSet.getString("antefamiliares");
-				int nroSeguro = Integer.parseInt(resultSet.getString("nroseguro"));
-				int nroHistorial = Integer.parseInt(resultSet.getString("nrohistorial"));
-				Date fechaNacimiento = formatter.parse(resultSet.getString("fechanacimiento"));
+				int nroSeguro = resultSet.getInt("nroseguro");
+				int nroHistorial = resultSet.getInt("nrohistorial");
+				Date fechaNacimiento = resultSet.getDate("fechanacimiento");
 				Paciente paciente = new Paciente(cedula,nombre, apellido,antePersonales,anteFamiliares,nroSeguro,nroHistorial,fechaNacimiento);
 				pacientes.add(paciente);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		this.cerrarComando();
 		return pacientes;
 	}
 	
@@ -55,25 +53,31 @@ public class PacienteBD extends ConexionBD{
 				+Integer.toString(paciente.getNroSeguro())+","+Integer.toString(paciente.getNroHistorial()), "cedula", "'"+paciente.getCedula()+"'");
 	}
 	
-	public Paciente buscarPaciente(String ced) throws SQLException, ParseException {
-		ResultSet rs = null;
-		resultSet = null;
-		this.buscarRegistro("paciente", "cedula, nombres,apellidos,fechanacimiento,antepersonales,antefamiliares,nrofeguro,nrohistorial", "cedula", ced, rs);
-		resultSet = rs;
-		String cedula = resultSet.getString("cedula");
-		String nombre = resultSet.getString("nombres");
-		String apellido = resultSet.getString("apellidos");
-		String antePersonales = resultSet.getString("antepersonales");
-		String anteFamiliares = resultSet.getString("antefamiliares");
-		int nroSeguro = Integer.parseInt(resultSet.getString("nroseguro"));
-		int nroHistorial = Integer.parseInt(resultSet.getString("nrohistorial"));
-		Date fechaNacimiento = formatter.parse(resultSet.getString("fechanacimiento"));
-		Paciente paciente = new Paciente(cedula,nombre, apellido,antePersonales,anteFamiliares,nroSeguro,nroHistorial,fechaNacimiento);
+	public Paciente buscarPaciente(String ced) throws SQLException {
+		Paciente paciente = null;
+		resultSet = this.buscarRegistro("paciente", "cedula", "'"+ced+"'");
+		
+		try {
+			while (resultSet.next()) {
+				String cedula = resultSet.getString("cedula");
+				String nombre = resultSet.getString("nombres");
+				String apellido = resultSet.getString("apellidos");
+				String antePersonales = resultSet.getString("antepersonales");
+				String anteFamiliares = resultSet.getString("antefamiliares");
+				int nroSeguro = resultSet.getInt("nroseguro");
+				int nroHistorial = resultSet.getInt("nrohistorial");
+				Date fechaNacimiento = resultSet.getDate("fechanacimiento");
+				paciente = new Paciente(cedula,nombre, apellido,antePersonales,anteFamiliares,nroSeguro,nroHistorial,fechaNacimiento);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		this.cerrarComando();
 		return paciente;
 	}
 	
 	public void eliminarPaciente(String ced) {
-		this.elimLogica("paciente", "cedula", ced);
+		this.elimLogica("paciente", "cedula",  "'"+ced+"'");
 	}
 
 }
