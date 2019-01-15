@@ -19,7 +19,7 @@ import javax.swing.JList;
 public class VentanaListaClinicas {
 
 	private JFrame frame;
-	private JTextField textField;
+	private JTextField textFieldCodigo;
 
 	/**
 	 * Launch the application.
@@ -60,7 +60,8 @@ public class VentanaListaClinicas {
 		lblListaClinicas.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 25));
 		lblListaClinicas.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JList list = new JList();
+		JPanel panelLista = new JPanel();
+		panelLista.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -73,7 +74,7 @@ public class VentanaListaClinicas {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(32)
 							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(list, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(panelLista, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addComponent(panelBuscar, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 462, GroupLayout.PREFERRED_SIZE))))
 					.addContainerGap(36, Short.MAX_VALUE))
 		);
@@ -84,13 +85,31 @@ public class VentanaListaClinicas {
 					.addComponent(lblListaClinicas)
 					.addGap(18)
 					.addComponent(panelBuscar, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
-					.addGap(19)
-					.addComponent(list, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(19, Short.MAX_VALUE))
+					.addGap(32)
+					.addComponent(panelLista, GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		JList listClinicas = new JList();
+		GroupLayout gl_panelLista = new GroupLayout(panelLista);
+		gl_panelLista.setHorizontalGroup(
+			gl_panelLista.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelLista.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(listClinicas, GroupLayout.PREFERRED_SIZE, 443, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		gl_panelLista.setVerticalGroup(
+			gl_panelLista.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelLista.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(listClinicas, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		panelLista.setLayout(gl_panelLista);
+		
+		textFieldCodigo = new JTextField();
+		textFieldCodigo.setColumns(10);
 		
 		JButton btnIncluir = new JButton("Incluir");
 		
@@ -110,7 +129,7 @@ public class VentanaListaClinicas {
 						.addGroup(gl_panelBuscar.createSequentialGroup()
 							.addComponent(lblCodigo)
 							.addGap(16)
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)
+							.addComponent(textFieldCodigo, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(btnNewButton, 0, 0, Short.MAX_VALUE))
 						.addComponent(btnIncluir, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE))
@@ -125,7 +144,7 @@ public class VentanaListaClinicas {
 				.addGroup(gl_panelBuscar.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_panelBuscar.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textFieldCodigo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblCodigo)
 						.addComponent(btnNewButton)
 						.addComponent(btnActualizar))

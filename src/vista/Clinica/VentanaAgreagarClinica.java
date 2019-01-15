@@ -26,13 +26,13 @@ import javax.swing.JTextField;
 public class VentanaAgreagarClinica {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
+	private JTextField textFieldNomre;
+	private JTextField textFieldCodigo;
+	private JTextField textFieldEstado;
+	private JTextField textFieldCiudad;
+	private JTextField textFieldUbicacion;
+	private JTextField textFieldTelefono;
+	private JTextField textFieldCorreo;
 
 	/**
 	 * Launch the application.
@@ -124,26 +124,26 @@ public class VentanaAgreagarClinica {
 		
 		JLabel lblCorreo = new JLabel("Correo :");
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		textFieldNomre = new JTextField();
+		textFieldNomre.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
+		textFieldCodigo = new JTextField();
+		textFieldCodigo.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
+		textFieldEstado = new JTextField();
+		textFieldEstado.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
+		textFieldCiudad = new JTextField();
+		textFieldCiudad.setColumns(10);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
+		textFieldUbicacion = new JTextField();
+		textFieldUbicacion.setColumns(10);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
+		textFieldTelefono = new JTextField();
+		textFieldTelefono.setColumns(10);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
+		textFieldCorreo = new JTextField();
+		textFieldCorreo.setColumns(10);
 		GroupLayout gl_panDC = new GroupLayout(panDC);
 		gl_panDC.setHorizontalGroup(
 			gl_panDC.createParallelGroup(Alignment.LEADING)
@@ -153,31 +153,31 @@ public class VentanaAgreagarClinica {
 						.addGroup(gl_panDC.createSequentialGroup()
 							.addComponent(lblCorreo)
 							.addGap(18)
-							.addComponent(textField_6))
+							.addComponent(textFieldCorreo))
 						.addGroup(gl_panDC.createSequentialGroup()
 							.addComponent(lblCiudad)
 							.addGap(18)
-							.addComponent(textField_3))
+							.addComponent(textFieldCiudad))
 						.addGroup(gl_panDC.createSequentialGroup()
 							.addComponent(lblEstado)
 							.addGap(18)
-							.addComponent(textField_2))
+							.addComponent(textFieldEstado))
 						.addGroup(gl_panDC.createSequentialGroup()
 							.addComponent(lblCodigo)
 							.addGap(18)
-							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 266, GroupLayout.PREFERRED_SIZE))
+							.addComponent(textFieldCodigo, GroupLayout.PREFERRED_SIZE, 266, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panDC.createSequentialGroup()
 							.addComponent(lblNombre)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 266, GroupLayout.PREFERRED_SIZE))
+							.addComponent(textFieldNomre, GroupLayout.PREFERRED_SIZE, 266, GroupLayout.PREFERRED_SIZE))
 						.addGroup(Alignment.TRAILING, gl_panDC.createSequentialGroup()
 							.addComponent(lblTelefono)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(textField_5))
+							.addComponent(textFieldTelefono))
 						.addGroup(gl_panDC.createSequentialGroup()
 							.addComponent(lblUbicacion)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, 262, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(textFieldUbicacion, GroupLayout.PREFERRED_SIZE, 262, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(97, Short.MAX_VALUE))
 		);
 		gl_panDC.setVerticalGroup(
@@ -186,19 +186,19 @@ public class VentanaAgreagarClinica {
 					.addGap(35)
 					.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblCodigo)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textFieldCodigo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNombre)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textFieldNomre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblEstado)
-						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textFieldEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblCiudad)
-						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textFieldCiudad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panDC.createSequentialGroup()
@@ -206,12 +206,12 @@ public class VentanaAgreagarClinica {
 							.addGap(18)
 							.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lblTelefono)
-								.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addComponent(textFieldTelefono, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 							.addGap(18)
 							.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lblCorreo)
-								.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(textFieldCorreo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(textFieldUbicacion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 		);
 		panDC.setLayout(gl_panDC);
 		panel_2.setLayout(gl_panel_2);

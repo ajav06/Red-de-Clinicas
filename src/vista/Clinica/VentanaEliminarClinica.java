@@ -21,11 +21,11 @@ public class VentanaEliminarClinica {
 	private JFrame frame;
 	private JTextField textFieldCodigo;
 	private JTextField textFieldNombre;
-	private JTextField textField;
+	private JTextField textFieldEstado;
 	private JTextField textFieldCiudad;
 	private JTextField textFieldUbicacion;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField textFieldTelefono;
+	private JTextField textFieldCorreo;
 
 	/**
 	 * Launch the application.
@@ -118,9 +118,9 @@ public class VentanaEliminarClinica {
 		
 		JLabel lblEstado = new JLabel("Estado :");
 		
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setColumns(10);
+		textFieldEstado = new JTextField();
+		textFieldEstado.setEditable(false);
+		textFieldEstado.setColumns(10);
 		
 		JLabel lblCiudad = new JLabel("Ciudad :");
 		
@@ -134,17 +134,17 @@ public class VentanaEliminarClinica {
 		
 		JLabel lblUbicacion = new JLabel("Ubicacion :");
 		
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		textField_1.setColumns(10);
+		textFieldTelefono = new JTextField();
+		textFieldTelefono.setEditable(false);
+		textFieldTelefono.setColumns(10);
 		
 		JLabel lblTelefono = new JLabel("Telefono :");
 		
 		JLabel lblCorreo = new JLabel("Correo :");
 		
-		textField_2 = new JTextField();
-		textField_2.setEditable(false);
-		textField_2.setColumns(10);
+		textFieldCorreo = new JTextField();
+		textFieldCorreo.setEditable(false);
+		textFieldCorreo.setColumns(10);
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -160,11 +160,11 @@ public class VentanaEliminarClinica {
 						.addComponent(lblCorreo))
 					.addPreferredGap(ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(textField_2)
-						.addComponent(textField_1)
+						.addComponent(textFieldCorreo)
+						.addComponent(textFieldTelefono)
 						.addComponent(textFieldUbicacion)
 						.addComponent(textFieldCiudad)
-						.addComponent(textField)
+						.addComponent(textFieldEstado)
 						.addComponent(textFieldNombre)
 						.addComponent(textFieldCodigo, GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE))
 					.addGap(25))
@@ -183,7 +183,7 @@ public class VentanaEliminarClinica {
 					.addGap(18)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblEstado)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textFieldEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblCiudad)
@@ -194,12 +194,12 @@ public class VentanaEliminarClinica {
 						.addComponent(lblUbicacion))
 					.addGap(18)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textFieldTelefono, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblTelefono))
 					.addGap(18)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblCorreo)
-						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textFieldCorreo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(58, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);

@@ -19,13 +19,13 @@ import javax.swing.JButton;
 public class VentanaActualizarClinica {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
+	private JTextField textFieldCodigo;
+	private JTextField textFieldNombre;
+	private JTextField textFieldEstado;
+	private JTextField textFieldCiudad;
+	private JTextField textFieldUbicacion;
+	private JTextField textFieldTelefono;
+	private JTextField textFieldCorreo;
 
 	/**
 	 * Launch the application.
@@ -103,28 +103,28 @@ public class VentanaActualizarClinica {
 					.addContainerGap(40, Short.MAX_VALUE))
 		);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		textFieldCodigo = new JTextField();
+		textFieldCodigo.setColumns(10);
 		
 		JLabel lblCodigo = new JLabel("Codigo :");
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
+		textFieldNombre = new JTextField();
+		textFieldNombre.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
+		textFieldEstado = new JTextField();
+		textFieldEstado.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
+		textFieldCiudad = new JTextField();
+		textFieldCiudad.setColumns(10);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
+		textFieldUbicacion = new JTextField();
+		textFieldUbicacion.setColumns(10);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
+		textFieldTelefono = new JTextField();
+		textFieldTelefono.setColumns(10);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
+		textFieldCorreo = new JTextField();
+		textFieldCorreo.setColumns(10);
 		
 		JLabel lblNombre = new JLabel("Nombre :");
 		
@@ -152,13 +152,13 @@ public class VentanaActualizarClinica {
 						.addComponent(lblCorreo))
 					.addGap(23)
 					.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(textField_6, Alignment.LEADING)
-						.addComponent(textField_5, Alignment.LEADING)
-						.addComponent(textField_4, Alignment.LEADING)
-						.addComponent(textField_3, Alignment.LEADING)
-						.addComponent(textField_2, Alignment.LEADING)
-						.addComponent(textField_1, Alignment.LEADING)
-						.addComponent(textField, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
+						.addComponent(textFieldCorreo, Alignment.LEADING)
+						.addComponent(textFieldTelefono, Alignment.LEADING)
+						.addComponent(textFieldUbicacion, Alignment.LEADING)
+						.addComponent(textFieldCiudad, Alignment.LEADING)
+						.addComponent(textFieldEstado, Alignment.LEADING)
+						.addComponent(textFieldNombre, Alignment.LEADING)
+						.addComponent(textFieldCodigo, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
 					.addContainerGap(24, Short.MAX_VALUE))
 		);
 		gl_panelDatosClin.setVerticalGroup(
@@ -166,31 +166,31 @@ public class VentanaActualizarClinica {
 				.addGroup(gl_panelDatosClin.createSequentialGroup()
 					.addGap(23)
 					.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textFieldCodigo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblCodigo))
 					.addGap(18)
 					.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textFieldNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNombre))
 					.addGap(18)
 					.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textFieldEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblEstado))
 					.addGap(18)
 					.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textFieldCiudad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblCiudad))
 					.addGap(18)
 					.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textFieldUbicacion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblUbicacion))
 					.addGap(18)
 					.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textFieldTelefono, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblTelefono))
 					.addGap(18)
 					.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textFieldCorreo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblCorreo))
 					.addContainerGap(57, Short.MAX_VALUE))
 		);
