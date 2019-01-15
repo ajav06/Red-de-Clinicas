@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -32,10 +33,18 @@ public class MedicoBD extends ConexionBD{
 				String cedula = resultSet.getString("cedula");
 				String nombre = resultSet.getString("nombres");
 				String apellido = resultSet.getString("apellidos");
-				Date fechaNacimiento = resultSet.getDate("fechan");
+				Date fechan = resultSet.getDate("fechan");
 				String email = resultSet.getString("email");
-				
-				Medico medico = new Medico(cedula,nombre, apellido,antePersonales,anteFamiliares,nroSeguro,nroHistorial,fechaNacimiento);
+				String tlfcasa = resultSet.getString("tlfcasa");
+				String tlfcelu = resultSet.getString("tlfcelu");
+				String codespec = resultSet.getString("codespec");
+				String almamater = resultSet.getString("almamater");
+				int annogrado = resultSet.getInt("annogrado");
+				String[] horariomat = {"Proximamente"};
+				String[] horariovesp = {"Proximamente"};
+				boolean estudia = resultSet.getBoolean("estudia");
+				char estatus = resultSet.getString("estatus").charAt(0);
+				Medico medico = new Medico(cedula,nombre,apellido,fechan,email,tlfcasa,tlfcelu,codespec,almamater,annogrado,horariomat,horariovesp,estudia,estatus);
 				medicos.add(medico);
 			}
 		} catch (SQLException e) {
