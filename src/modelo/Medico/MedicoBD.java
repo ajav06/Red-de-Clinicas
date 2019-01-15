@@ -4,14 +4,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import com.sun.xml.internal.ws.commons.xmlutil.Converter;
 
 import modelo.ConexionBD;
-import modelo.Paciente.Paciente;
 
 public class MedicoBD extends ConexionBD{
 	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
