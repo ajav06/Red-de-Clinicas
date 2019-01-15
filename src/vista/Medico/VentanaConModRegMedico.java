@@ -18,14 +18,17 @@ import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
+import com.toedter.calendar.JDateChooser;
 
 public class VentanaConModRegMedico {
 
 	private JFrame frame;
 	private JTextField textField_Cedula;
 	private JTextField textField_Nombre;
-	private JTextField textField_FechaN;
+	private JDateChooser textField_FechaN;
 	private JLabel lblEmail;
 	private JTextField textField_Email;
 	private JLabel lblNmeroDeTelfono;
@@ -86,8 +89,7 @@ public class VentanaConModRegMedico {
 		
 		JLabel lblFechaDeNacimiento = new JLabel("Fecha de Nacimiento:");
 		
-		textField_FechaN = new JTextField();
-		textField_FechaN.setColumns(10);
+		textField_FechaN = new JDateChooser();
 		
 		lblEmail = new JLabel("E-Mail:");
 		
@@ -106,8 +108,8 @@ public class VentanaConModRegMedico {
 		
 		lblEspecialidad = new JLabel("Especialidad:");
 		
-		JComboBox comboBox_Especialidad = new JComboBox();
-		comboBox_Especialidad.setModel(new DefaultComboBoxModel(new String[] {"Urólogo", "Neurólogo", "Perro Loco"}));
+		JComboBox cB_Especialidad = new JComboBox();
+		cB_Especialidad.setModel(new DefaultComboBoxModel(new String[] {"Urólogo", "Neurólogo", "Perro Loco"}));
 		
 		JButton btnEditarEspecialidades = new JButton("Editar Especialidades");
 		
@@ -162,7 +164,7 @@ public class VentanaConModRegMedico {
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblEspecialidad)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(comboBox_Especialidad, 0, 172, Short.MAX_VALUE))
+									.addComponent(cB_Especialidad, 0, 172, Short.MAX_VALUE))
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblNmeroDeTelfono)
 									.addPreferredGap(ComponentPlacement.RELATED)
@@ -221,7 +223,7 @@ public class VentanaConModRegMedico {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblEspecialidad)
-						.addComponent(comboBox_Especialidad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(cB_Especialidad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnEditarEspecialidades))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
@@ -256,6 +258,10 @@ public class VentanaConModRegMedico {
 				"Horario", "Lunes", "Martes", "Mi\u00E9rcoles", "Jueves", "Viernes"
 			}
 		) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
 			boolean[] columnEditables = new boolean[] {
 				false, true, true, true, true, true
 			};
@@ -270,7 +276,7 @@ public class VentanaConModRegMedico {
 	public void blanquearCampos() {
 		textField_Cedula.setText(null);
 		textField_Nombre.setText(null);
-		textField_FechaN.setText(null);
+		textField_FechaN.setDate(null);
 		textField_AlmaMater.setText(null);
 		textField_AnnoG.setText(null);
 		textField_Email.setText(null);
@@ -288,7 +294,7 @@ public class VentanaConModRegMedico {
 	public void llenarCampos(String cedula, String nombre, Date fechan, String email, String tlfcasa, String tlfcelu, String codespec, String almamater, int annogrado, String[] horariomat, String[] horariovesp, boolean estudia) {
 		textField_Cedula.setText(cedula);
 		textField_Nombre.setText(nombre);
-		textField_FechaN.setText(fechan.toString());
+		textField_FechaN.setDate(fechan);
 		textField_AlmaMater.setText(almamater);
 		textField_AnnoG.setText(Integer.toString(annogrado));
 		textField_Email.setText(email);
@@ -323,11 +329,11 @@ public class VentanaConModRegMedico {
 		this.textField_Nombre = textField_Nombre;
 	}
 
-	public JTextField getTextField_FechaN() {
+	public JDateChooser getTextField_FechaN() {
 		return textField_FechaN;
 	}
 
-	public void setTextField_FechaN(JTextField textField_FechaN) {
+	public void setTextField_FechaN(JDateChooser textField_FechaN) {
 		this.textField_FechaN = textField_FechaN;
 	}
 
@@ -387,4 +393,91 @@ public class VentanaConModRegMedico {
 		this.table_Horario = table;
 	}
 
+	public void interfazRegistro() {
+		btnEliminar.setEnabled(false);;
+		btnModificar.setEnabled(false);
+		btnEliminar.setVisible(false);
+		btnModificar.setVisible(false);
+	}
+	
+	public void interfazConsulta() {
+		btnRegistrar.setEnabled(false);
+		btnRegistrar.setVisible(false);
+		textField_Cedula.setEditable(false);
+		textField_AlmaMater.setEditable(false);
+		textField_AnnoG.setEditable(false);
+	}
+	
+	public boolean chequearLlenos() { //Chequea y verifica que todos los campos estén actualmente llenos.
+		return (textField_AlmaMater.getText().equals("") ||	textField_Cedula.getText().equals("") || 
+				textField_Nombre.getText().equals("") || textField_FechaN.getDate().equals("") || 
+				textField_AlmaMater.getText().equals("") || textField_AnnoG.getText().equals("") ||
+				textField_Email.getText().equals("") || textField_TlfCasa.getText().equals("") ||
+				textField_TlfCelular.getText().equals(""));
+	}
+	
+	public void mostrarMensaje(String mensaje) {
+		JOptionPane.showMessageDialog(frame, mensaje);
+	}
+	
+	public String getCedula() {
+		return textField_Cedula.getText();
+	}
+	
+	public String getNombre() {
+		return textField_Nombre.getText();
+	}
+	
+	public Date getFechaN() {
+		return textField_FechaN.getDate();
+	}
+	
+	public String getEmail() {
+		return textField_Email.getText();
+	}
+	
+	public String getTlfCasa() {
+		return textField_TlfCasa.getText();
+	}
+	
+	public String getTlfCelular() {
+		return textField_TlfCelular.getText();
+	}
+	
+	public String getEspecialidad() {
+		return "Proximamente"; 
+	}
+	
+	public String getAlmaMater() {
+		return textField_AlmaMater.getText();
+	}
+	
+	public int getAnnoG() {
+		return Integer.parseInt(textField_AnnoG.getText());
+	}
+	
+	public boolean getEstudiando() {
+		return chckbxactualmenteEstudiando.isSelected();
+	}
+	
+	public String[] getHorarioMatu() {
+		String[] hor = {null,null,null,null,null};
+		for (int i=1;i<6;i++) {
+			hor[(i-1)] = table_Horario.getValueAt(i, 1).toString();
+		}
+		return hor;
+	}
+	
+	public String[] getHorarioVesper() {
+		String[] hor = {null,null,null,null,null};
+		for (int i=1;i<6;i++) {
+			hor[(i-1)] = table_Horario.getValueAt(i, 2).toString();
+		}
+		return hor;
+	}
+	
+	public void salir() {
+		frame.setVisible(false);
+		frame.dispose();
+	}
 }

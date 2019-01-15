@@ -11,7 +11,8 @@ public class Medico extends Persona {
 	boolean estudia;
 	char estatus;
 	
-	public Medico(String cedula, String nombre, String apellido, Date fechaNacimiento, String em, String tlfc, String tlfce, String cespec, String almam, int annog, String[] hmat, String[] hvesp, boolean e, char s) {
+	public Medico(String cedula, String nombre, String apellido, Date fechaNacimiento, String em, String tlfc, String tlfce, 
+			String cespec, String almam, int annog, String[] hmat, String[] hvesp, boolean e, char s) {
 		super();
 		this.cedula=cedula;
 		this.nombre=nombre;
