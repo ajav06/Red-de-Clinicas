@@ -2,10 +2,13 @@ package modelo;
 import java.util.Date;
 
 public class Persona {
-	String cedula, nombre, apellido, direccion;
+	protected String cedula;
+	protected String nombre;
+	protected String apellido;
+	String direccion;
 	int nroTelefonico;
 	float peso;
-	Date fechaNacimiento;
+	protected Date fechaNacimiento;
 	
 	public Persona() {
 		super();

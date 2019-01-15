@@ -1,4 +1,4 @@
-package vista;
+package vista.Paciente;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -14,10 +14,11 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.TitledBorder;
-import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import bean.*;
+import javax.swing.JTextArea;
+import javax.swing.JFrame;
 
 public class VentanaEliminarPaciente extends javax.swing.JFrame{
 	private SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -27,19 +28,22 @@ public class VentanaEliminarPaciente extends javax.swing.JFrame{
 	private JTextFieldValidator  textField_Nomb;
 	private JTextFieldValidator  textField_Apelli;
 	private JTextField textField_FechaN;
-	private JTextPane textPane_AntFam;
-	private JTextPane textPane_AntPer;
+	private JTextArea textArea_AntFam;
+	private JTextArea textArea_AntPer;
 	private JButton btnCancelar;
 	private JButton btnAceptar;
 			
 	public VentanaEliminarPaciente () {
 		super();
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		initGUI();
+		setSize(540, 591);
 	}
 
 	private void initGUI() {
 		try {
 			getContentPane().setForeground(Color.BLUE);
+			setTitle("Eliminar Paciente");
 			
 			JLabel lblEliminarP = new JLabel("Eliminar Paciente");
 			lblEliminarP.setForeground(Color.BLUE);
@@ -114,13 +118,11 @@ public class VentanaEliminarPaciente extends javax.swing.JFrame{
 						.addGap(18))
 			);
 			
-			textPane_AntFam = new JTextPane();
-			textPane_AntFam.setEditable(false);
-			scrollPane_2.setViewportView(textPane_AntFam);
+			textArea_AntFam = new JTextArea();
+			scrollPane_2.setViewportView(textArea_AntFam);
 			
-			textPane_AntPer = new JTextPane();
-			textPane_AntPer.setEditable(false);
-			scrollPane_1.setViewportView(textPane_AntPer);
+			textArea_AntPer = new JTextArea();
+			scrollPane_1.setViewportView(textArea_AntPer);
 			panel_DMed.setLayout(gl_panel_DMed);
 			
 			btnCancelar = new JButton("No");
@@ -133,6 +135,7 @@ public class VentanaEliminarPaciente extends javax.swing.JFrame{
 			btnAceptar.setBackground(Color.GREEN);
 			
 			JLabel lblseguroQueDesea = new JLabel("\u00BFSeguro que desea Eliminarlo?");
+			lblseguroQueDesea.setHorizontalAlignment(SwingConstants.CENTER);
 			lblseguroQueDesea.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 13));
 			
 			JPanel panel_DPer = new JPanel();
@@ -141,6 +144,7 @@ public class VentanaEliminarPaciente extends javax.swing.JFrame{
 			JLabel lblNomb = new JLabel("Nombres :");
 			
 			JLabel lblCed = new JLabel("Cedula : ");
+			lblCed.setHorizontalAlignment(SwingConstants.CENTER);
 			
 			textField_Ced = new JTextFieldValidator(8,JTextFieldValidator.SOLO_NUMEROS);
 			textField_Ced.setEditable(false);
@@ -164,54 +168,52 @@ public class VentanaEliminarPaciente extends javax.swing.JFrame{
 			GroupLayout gl_panel_DPer = new GroupLayout(panel_DPer);
 			gl_panel_DPer.setHorizontalGroup(
 				gl_panel_DPer.createParallelGroup(Alignment.LEADING)
-					.addGap(0, 448, Short.MAX_VALUE)
 					.addGroup(gl_panel_DPer.createSequentialGroup()
 						.addContainerGap()
 						.addGroup(gl_panel_DPer.createParallelGroup(Alignment.TRAILING)
-							.addComponent(lblNomb, GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
-							.addGroup(gl_panel_DPer.createSequentialGroup()
-								.addGap(6)
-								.addComponent(lblCed, GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)))
+							.addComponent(lblCed, GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+							.addComponent(lblNomb, GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE))
 						.addGap(18)
 						.addGroup(gl_panel_DPer.createParallelGroup(Alignment.LEADING)
-							.addComponent(textField_Ced, GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-							.addComponent(textField_Nomb, GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
+							.addComponent(textField_Ced, GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+							.addComponent(textField_Nomb, GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))
 						.addGap(44)
 						.addGroup(gl_panel_DPer.createParallelGroup(Alignment.TRAILING)
-							.addComponent(lblFechaN, GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+							.addComponent(lblFechaN, GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
 							.addGroup(gl_panel_DPer.createSequentialGroup()
 								.addGap(12)
-								.addComponent(lblApelli, GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)))
+								.addComponent(lblApelli, GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)))
 						.addGap(18)
 						.addGroup(gl_panel_DPer.createParallelGroup(Alignment.LEADING)
-							.addComponent(textField_Apelli, GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
-							.addComponent(textField_FechaN, GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
+							.addComponent(textField_Apelli, GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+							.addComponent(textField_FechaN, GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
 						.addContainerGap())
 			);
 			gl_panel_DPer.setVerticalGroup(
 				gl_panel_DPer.createParallelGroup(Alignment.LEADING)
-					.addGap(0, 103, Short.MAX_VALUE)
 					.addGroup(gl_panel_DPer.createSequentialGroup()
-						.addGap(19)
 						.addGroup(gl_panel_DPer.createParallelGroup(Alignment.LEADING)
 							.addGroup(gl_panel_DPer.createSequentialGroup()
-								.addGap(6)
-								.addComponent(lblFechaN, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addComponent(textField_FechaN, GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+								.addGap(19)
+								.addGroup(gl_panel_DPer.createParallelGroup(Alignment.LEADING)
+									.addGroup(gl_panel_DPer.createSequentialGroup()
+										.addGap(6)
+										.addComponent(lblFechaN, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+									.addComponent(textField_FechaN, GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+									.addComponent(textField_Ced, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 							.addGroup(gl_panel_DPer.createSequentialGroup()
-								.addGap(6)
-								.addComponent(lblCed, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addComponent(textField_Ced))
+								.addGap(25)
+								.addComponent(lblCed, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 						.addPreferredGap(ComponentPlacement.RELATED)
 						.addGroup(gl_panel_DPer.createParallelGroup(Alignment.LEADING)
 							.addGroup(gl_panel_DPer.createSequentialGroup()
 								.addGap(6)
 								.addComponent(lblNomb, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addComponent(textField_Nomb)
+							.addComponent(textField_Nomb, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addGroup(gl_panel_DPer.createSequentialGroup()
 								.addGap(6)
 								.addComponent(lblApelli, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addComponent(textField_Apelli))
+							.addComponent(textField_Apelli, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 						.addGap(17))
 			);
 			panel_DPer.setLayout(gl_panel_DPer);
@@ -268,14 +270,25 @@ public class VentanaEliminarPaciente extends javax.swing.JFrame{
 	}
 	
 	public void blanquearCampos() {
-		textField_NroHist.setText("");
-		textField_NroSeguro.setText("");
-		textField_Ced.setText("");
-		textField_Nomb.setText("");
-		textField_Apelli.setText("");
-		textField_FechaN.setText("");
-		textPane_AntFam.setText("");
-		textPane_AntPer.setText("");
+		textField_NroHist.setText(null);
+		textField_NroSeguro.setText(null);
+		textField_Ced.setText(null);
+		textField_Nomb.setText(null);
+		textField_Apelli.setText(null);
+		textField_FechaN.setText(null);
+		textArea_AntFam.setText(null);
+		textArea_AntPer.setText(null);
+	}
+	
+	public void llenarCampos(String ced,String nom,String apell, Date fecha, int nroH, int nroS, String anteP, String anteF) {
+		textField_NroHist.setText(Integer.toString(nroH));
+		textField_NroSeguro.setText(Integer.toString(nroS));
+		textField_Ced.setText(ced);
+		textField_Nomb.setText(nom);
+		textField_Apelli.setText(apell);
+		textArea_AntFam.setText(anteF);
+		textArea_AntPer.setText(anteP);
+		textField_FechaN.setText(formatter.format(fecha));
 	}
 	
 	public void addListener(ActionListener actionListener) {
@@ -308,14 +321,18 @@ public class VentanaEliminarPaciente extends javax.swing.JFrame{
 	}
 	
 	public void setAntFam(String anteFam) {
-		textPane_AntFam.setText(anteFam);
+		textArea_AntFam.setText(anteFam);
 	}
 	
 	public void setAntPer(String antePer) {
-		textPane_AntPer.setText(antePer);
+		textArea_AntPer.setText(antePer);
 	}
 	
 	public void mostrarMensaje(String mensaje) {
 		JOptionPane.showMessageDialog(this, mensaje);
+	}
+	
+	public String getCedula() {
+		return textField_Ced.getText();
 	}
 }
