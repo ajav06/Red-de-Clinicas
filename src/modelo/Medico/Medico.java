@@ -9,8 +9,9 @@ public class Medico extends Persona {
 	int annogrado;
 	String[] horariomat, horariovesp;
 	boolean estudia;
+	char estatus;
 	
-	public Medico(String cedula, String nombre, String apellido, Date fechaNacimiento, String em, String tlfc, String tlfce, String cespec, String almam, int annog, String[] hmat, String[] hvesp, boolean e) {
+	public Medico(String cedula, String nombre, String apellido, Date fechaNacimiento, String em, String tlfc, String tlfce, String cespec, String almam, int annog, String[] hmat, String[] hvesp, boolean e, char s) {
 		super();
 		this.cedula=cedula;
 		this.nombre=nombre;
@@ -25,6 +26,7 @@ public class Medico extends Persona {
 		this.horariomat = hmat;
 		this.horariovesp = hvesp;
 		this.estudia = e;
+		this.estatus = s;
 	}
 
 	public String getEmail() {
