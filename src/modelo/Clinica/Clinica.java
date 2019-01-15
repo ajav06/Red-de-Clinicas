@@ -1,4 +1,4 @@
-package modelo;
+package modelo.Clinica;
 
 public class Clinica {
 	

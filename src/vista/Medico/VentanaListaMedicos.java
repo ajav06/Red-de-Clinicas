@@ -1,4 +1,4 @@
-package vista;
+package vista.Medico;
 
 import java.awt.EventQueue;
 
