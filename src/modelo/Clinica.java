@@ -6,9 +6,20 @@ public class Clinica {
 	private String nombre;
 	private String  estado;
 	private String ciudad;
-	private String direccion;
+	private String Ubicacion;
 	private String telefono;
+	private String correo;
+	public Clinica(String codigo, String nombre, String estado, String ciudad, String ubicacion,String telefono,String correo)
+	{
+		super();
+	}
 	
+	public String getCorreo() {
+		return correo;
+	}
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
 	public Clinica()
 	{
 		super();
@@ -37,11 +48,12 @@ public class Clinica {
 	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
 	}
-	public String getDireccion() {
-		return direccion;
+	
+	public String getUbicacion() {
+		return Ubicacion;
 	}
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+	public void setUbicacion(String ubicacion) {
+		Ubicacion = ubicacion;
 	}
 	public String getTelefono() {
 		return telefono;

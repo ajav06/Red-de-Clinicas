@@ -3,6 +3,7 @@ package vista.Clinica;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.util.Date;
 
 import javax.swing.JFrame;
 import javax.swing.GroupLayout;
@@ -12,6 +13,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -26,7 +28,8 @@ public class VentanaActualizarClinica {
 	private JTextField textFieldUbicacion;
 	private JTextField textFieldTelefono;
 	private JTextField textFieldCorreo;
-
+	private JButton btnCancelar;
+	private JButton btnActualizar;
 	/**
 	 * Launch the application.
 	 */
@@ -48,6 +51,7 @@ public class VentanaActualizarClinica {
 	 */
 	public VentanaActualizarClinica() {
 		initialize();
+		
 	}
 
 	/**
@@ -57,6 +61,7 @@ public class VentanaActualizarClinica {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 495);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		
 		JPanel panelDatosClin = new JPanel();
 		panelDatosClin.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Datos de la Clinica", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
@@ -196,5 +201,85 @@ public class VentanaActualizarClinica {
 		);
 		panelDatosClin.setLayout(gl_panelDatosClin);
 		frame.getContentPane().setLayout(groupLayout);
+	}
+	public void blanquearCampos() {
+		textFieldCodigo.setText(null);
+		textFieldNombre.setText(null);
+		textFieldEstado.setText(null);
+		textFieldCiudad.setText(null);
+		textFieldUbicacion.setText(null);
+		textFieldTelefono.setText(null);
+		textFieldCorreo.setText(null);
+	
+	}
+	public void llenarCampos(String cod,String nom,String est, String ciu, String ubi, String tel, String cor) {
+		textFieldCodigo.setText(cod);
+		textFieldNombre.setText(nom);
+		textFieldCiudad.setText(est);
+		textFieldEstado.setText(ciu);
+		textFieldUbicacion.setText(ubi);
+		textFieldTelefono.setText(tel);
+		textFieldCorreo.setText(cor);
+		
+	}
+	
+	public void setCodigo(String cod) {
+		textFieldCodigo.setText(cod);
+	}
+	
+	public void setNombre(String nom) {
+		textFieldNombre.setText(nom);
+	}
+	
+	public void setEstado(String est) {
+		textFieldEstado.setText(est);
+	}
+	
+	public void setCiudad(String ciu){
+		textFieldCiudad.setText(ciu);	
+	}
+	
+	public void setUbicacion(String ubi) {
+		textFieldUbicacion.setText(ubi);
+	}
+	
+	public void setTelefono(String tel) {
+		textFieldTelefono.setText(tel);
+	}
+	
+	public void setCorreo(String cor) {
+		textFieldCorreo.setText(cor);
+	}
+	
+	public String getCodigo() {
+		return textFieldCodigo.getText();
+	}
+	
+	public String getNombre() {
+		return textFieldNombre.getText();
+	}
+	
+	public String  getEstado() {
+		return textFieldEstado.getText();
+	}
+	
+	public String getCiudad() {
+		return textFieldCiudad.getText();
+	}
+	
+	public String getUbicacion() {
+		return textFieldUbicacion.getText();
+	}
+	
+	public String getTelefono() {
+		return textFieldTelefono.getText();
+	}
+	
+	public String getCorreo() {
+		return textFieldCorreo.getText();
+	}
+	
+	public void mostrarMensaje(String mensaje) {
+		JOptionPane.showMessageDialog(this, mensaje);
 	}
 }

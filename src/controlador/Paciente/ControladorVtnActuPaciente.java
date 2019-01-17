@@ -1,12 +1,12 @@
 package controlador.Paciente;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import modelo.Paciente.Paciente;
 import modelo.Paciente.PacienteBD;
 import vista.Paciente.VentanaActualizarPaciente;
 
 public class ControladorVtnActuPaciente implements ActionListener{
+	
 	private VentanaActualizarPaciente vtnActuPac;
 	
 	public ControladorVtnActuPaciente(Paciente paciente) {
