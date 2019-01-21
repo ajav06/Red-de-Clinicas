@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.toedter.calendar.JDateChooser;
 
-public class VentanaConModRegMedico {
+public class VentanaConModRegMedico extends javax.swing.JFrame{
 
 	private JFrame frame;
 	private JTextField textField_Cedula;
