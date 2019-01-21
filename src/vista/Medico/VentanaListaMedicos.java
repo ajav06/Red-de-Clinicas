@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
-public class VentanaListaMedicos {
+public class VentanaListaMedicos extends javax.swing.JFrame{
 
 	private JFrame frame;
 	private JTextField txtIntroduzcaCdulaNombre;

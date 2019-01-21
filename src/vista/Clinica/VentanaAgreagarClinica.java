@@ -15,28 +15,36 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.TitledBorder;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
-//import com.toedter.calendar.JDateChooser;
-//import bean.*;
+import com.toedter.calendar.JDateChooser;
+import bean.*;
 import javax.swing.JTextArea;
 import javax.swing.JFrame;
 import java.awt.EventQueue;
 import javax.swing.JTextField;
+import java.awt.event.ActionEvent;
 
 
-public class VentanaAgreagarClinica {
+public class VentanaAgreagarClinica extends javax.swing.JFrame{
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-
+	private JTextField textFieldNomre;
+	private JTextField textFieldCodigo;
+	private JTextField textFieldEstado;
+	private JTextField textFieldCiudad;
+	private JTextField textFieldUbicacion;
+	private JTextField textFieldTelefono;
+	private JTextField textFieldCorreo;
+	private JButton btnCancelar;
+	private JButton btnRegistrar;
 	/**
 	 * Launch the application.
 	 */
+	public VentanaAgreagarClinica() {
+		super();
+		//setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		initialize();
+		blanquearCampos();
+	}
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -53,10 +61,7 @@ public class VentanaAgreagarClinica {
 	/**
 	 * Create the application.
 	 */
-	public VentanaAgreagarClinica() {
-		initialize();
-	}
-
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -75,9 +80,19 @@ public class VentanaAgreagarClinica {
 		JPanel panDC = new JPanel();
 		panDC.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Datos de la Clinica", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		
-		JButton btnRegistar = new JButton("Registar");
+		JButton btnRegistrar = new JButton("Registrar");
+		btnRegistrar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		btnRegistrar.setBackground(Color.GREEN);
+		btnRegistrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		btnCancelar.setBackground(Color.RED);
+		btnCancelar.setForeground(Color.BLACK);
+		
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
@@ -91,7 +106,7 @@ public class VentanaAgreagarClinica {
 					.addContainerGap(71, Short.MAX_VALUE))
 				.addGroup(gl_panel_2.createSequentialGroup()
 					.addGap(127)
-					.addComponent(btnRegistar)
+					.addComponent(btnRegistrar)
 					.addGap(77)
 					.addComponent(btnCancelar)
 					.addContainerGap(116, Short.MAX_VALUE))
@@ -105,7 +120,7 @@ public class VentanaAgreagarClinica {
 					.addComponent(panDC, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnRegistar)
+						.addComponent(btnRegistrar)
 						.addComponent(btnCancelar))
 					.addContainerGap(28, Short.MAX_VALUE))
 		);
@@ -124,26 +139,29 @@ public class VentanaAgreagarClinica {
 		
 		JLabel lblCorreo = new JLabel("Correo :");
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		textFieldNomre = new JTextField();
+		textFieldNomre.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
+		textFieldCodigo = new JTextField();
+		textFieldCodigo.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
+		textFieldEstado = new JTextField();
+		textFieldEstado.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
+		textFieldCiudad = new JTextField();
+		textFieldCiudad.setColumns(10);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
+		textFieldUbicacion = new JTextField();
+		textFieldUbicacion.setColumns(10);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
+		textFieldTelefono = new JTextField();
+		textFieldTelefono.setColumns(10);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
+		textFieldCorreo = new JTextField();
+		textFieldCorreo.setColumns(10);
+		
+		
+		
 		GroupLayout gl_panDC = new GroupLayout(panDC);
 		gl_panDC.setHorizontalGroup(
 			gl_panDC.createParallelGroup(Alignment.LEADING)
@@ -153,31 +171,31 @@ public class VentanaAgreagarClinica {
 						.addGroup(gl_panDC.createSequentialGroup()
 							.addComponent(lblCorreo)
 							.addGap(18)
-							.addComponent(textField_6))
+							.addComponent(textFieldCorreo))
 						.addGroup(gl_panDC.createSequentialGroup()
 							.addComponent(lblCiudad)
 							.addGap(18)
-							.addComponent(textField_3))
+							.addComponent(textFieldCiudad))
 						.addGroup(gl_panDC.createSequentialGroup()
 							.addComponent(lblEstado)
 							.addGap(18)
-							.addComponent(textField_2))
+							.addComponent(textFieldEstado))
 						.addGroup(gl_panDC.createSequentialGroup()
 							.addComponent(lblCodigo)
 							.addGap(18)
-							.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 266, GroupLayout.PREFERRED_SIZE))
+							.addComponent(textFieldCodigo, GroupLayout.PREFERRED_SIZE, 266, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panDC.createSequentialGroup()
 							.addComponent(lblNombre)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 266, GroupLayout.PREFERRED_SIZE))
+							.addComponent(textFieldNomre, GroupLayout.PREFERRED_SIZE, 266, GroupLayout.PREFERRED_SIZE))
 						.addGroup(Alignment.TRAILING, gl_panDC.createSequentialGroup()
 							.addComponent(lblTelefono)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(textField_5))
+							.addComponent(textFieldTelefono))
 						.addGroup(gl_panDC.createSequentialGroup()
 							.addComponent(lblUbicacion)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, 262, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(textFieldUbicacion, GroupLayout.PREFERRED_SIZE, 262, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(97, Short.MAX_VALUE))
 		);
 		gl_panDC.setVerticalGroup(
@@ -186,19 +204,19 @@ public class VentanaAgreagarClinica {
 					.addGap(35)
 					.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblCodigo)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textFieldCodigo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNombre)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textFieldNomre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblEstado)
-						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textFieldEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblCiudad)
-						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textFieldCiudad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panDC.createSequentialGroup()
@@ -206,12 +224,12 @@ public class VentanaAgreagarClinica {
 							.addGap(18)
 							.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lblTelefono)
-								.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addComponent(textFieldTelefono, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 							.addGap(18)
 							.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lblCorreo)
-								.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(textFieldCorreo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(textFieldUbicacion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 		);
 		panDC.setLayout(gl_panDC);
 		panel_2.setLayout(gl_panel_2);
@@ -226,4 +244,54 @@ public class VentanaAgreagarClinica {
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
+	public void blanquearCampos() {
+		
+		textFieldCodigo.setText(null);
+		textFieldNomre.setText(null);
+		textFieldEstado.setText(null);
+		textFieldCiudad.setText(null);
+		textFieldUbicacion.setText(null);
+		textFieldCorreo.setText(null);
+		textFieldTelefono.setText(null);
+	
+	}
+	
+	public void addListener(ActionListener actionListener) {
+		btnRegistrar.addActionListener(actionListener);
+		btnCancelar.addActionListener(actionListener);		
+	}
+	
+	public String getCodigo() {
+		return textFieldCodigo.getText();
+	}
+	
+	public String getNombre() {
+		return textFieldNomre.getText();
+	}
+	
+	public String  getEstado() {
+		return textFieldEstado.getText();
+	}
+	
+	public String getCiudad() {
+		return textFieldCiudad.getText();
+	}
+	
+	public String getUbicacion() {
+		return textFieldUbicacion.getText();
+	}
+	
+	public String getTelefono() {
+		return textFieldTelefono.getText();
+	}
+	
+	public String getCorreo() {
+		return textFieldCorreo.getText();
+	}
+	
+	public void mostrarMensaje(String mensaje) {
+		JOptionPane.showMessageDialog(this, mensaje);
+	}
+	
+	
 }

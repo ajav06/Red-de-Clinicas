@@ -20,7 +20,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
-public class VentanaConsultarPostgrados {
+public class VentanaConsultarPostgrados extends javax.swing.JFrame{
 
 	private JFrame frame;
 	private JTextField textField;

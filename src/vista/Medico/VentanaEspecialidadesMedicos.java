@@ -13,7 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class VentanaEspecialidadesMedicos {
+public class VentanaEspecialidadesMedicos extends javax.swing.JFrame{
 
 	private JFrame frame;
 	private JTextField textField;
