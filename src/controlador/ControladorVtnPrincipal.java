@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
+import controlador.Medico.ControladorVtnEspecialidades;
+import controlador.Medico.ControladorVtnListMedicos;
 import controlador.Paciente.ControladorVtnListPacientes;
 import vista.VentanaPrincipal;
 
@@ -25,10 +27,10 @@ public class ControladorVtnPrincipal implements ActionListener{
 			
 		}		
 		else if (actionCommand.equals("Especialidades")) {
-			
+			new ControladorVtnEspecialidades();
 		}
 		else if (actionCommand.equals("Medicos")) {
-			
+			new ControladorVtnListMedicos();
 		}
 		else if (actionCommand.equals("Pacientes")) {
 			try {
