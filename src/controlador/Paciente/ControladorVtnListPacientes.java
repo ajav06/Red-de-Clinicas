@@ -11,7 +11,8 @@ import vista.Paciente.VentanaPacienteModeloTabla;
 import modelo.Paciente.Paciente;
 import modelo.Paciente.PacienteBD;
 
-public class ControladorVtnListPacientes implements ActionListener{
+public class ControladorVtnListPacientes implements ActionListener
+{
 	private VentanaListaPacientes vtnListPac;
 	Paciente paciente;
 	

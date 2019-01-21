@@ -3,6 +3,7 @@ package vista.Clinica;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.GroupLayout;
@@ -10,13 +11,14 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 
-public class VentanaEliminarClinica {
+public class VentanaEliminarClinica extends javax.swing.JFrame {
 
 	private JFrame frame;
 	private JTextField textFieldCodigo;
@@ -26,10 +28,17 @@ public class VentanaEliminarClinica {
 	private JTextField textFieldUbicacion;
 	private JTextField textFieldTelefono;
 	private JTextField textFieldCorreo;
+	private JButton btnCancelar;
+	private JButton btnEliminar;
 
-	/**
-	 * Launch the application.
-	 */
+	
+	public VentanaEliminarClinica() {
+		super();
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		initialize();
+		setSize(540, 591);
+	}
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -46,9 +55,7 @@ public class VentanaEliminarClinica {
 	/**
 	 * Create the application.
 	 */
-	public VentanaEliminarClinica() {
-		initialize();
-	}
+	
 
 	/**
 	 * Initialize the contents of the frame.
@@ -69,8 +76,13 @@ public class VentanaEliminarClinica {
 		panel.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Datos de la Clinica", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		
 		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		btnEliminar.setBackground(Color.GREEN);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		btnCancelar.setBackground(Color.RED);
+		btnCancelar.setForeground(Color.BLACK);
 		
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -205,4 +217,88 @@ public class VentanaEliminarClinica {
 		panel.setLayout(gl_panel);
 		frame.getContentPane().setLayout(groupLayout);
 	}
+	public void blanquearCampos() {
+		textFieldCodigo.setText(null);
+		textFieldNombre.setText(null);
+		textFieldEstado.setText(null);
+		textFieldCiudad.setText(null);
+		textFieldUbicacion.setText(null);
+		textFieldTelefono.setText(null);
+		textFieldCorreo.setText(null);
+	
+	}
+	public void llenarCampos(String cod,String nom,String est, String ciu, String ubi, String tel, String cor) {
+		textFieldCodigo.setText(cod);
+		textFieldNombre.setText(nom);
+		textFieldCiudad.setText(est);
+		textFieldEstado.setText(ciu);
+		textFieldUbicacion.setText(ubi);
+		textFieldTelefono.setText(tel);
+		textFieldCorreo.setText(cor);
+		
+	}
+	public void addListener(ActionListener actionListener) {
+		btnEliminar.addActionListener(actionListener);
+		btnCancelar.addActionListener(actionListener);		
+	}
+	public void setCodigo(String cod) {
+		textFieldCodigo.setText(cod);
+	}
+	
+	public void setNombre(String nom) {
+		textFieldNombre.setText(nom);
+	}
+	
+	public void setEstado(String est) {
+		textFieldEstado.setText(est);
+	}
+	
+	public void setCiudad(String ciu){
+		textFieldCiudad.setText(ciu);	
+	}
+	
+	public void setUbicacion(String ubi) {
+		textFieldUbicacion.setText(ubi);
+	}
+	
+	public void setTelefono(String tel) {
+		textFieldTelefono.setText(tel);
+	}
+	
+	public void setCorreo(String cor) {
+		textFieldCorreo.setText(cor);
+	}
+	
+	public String getCodigo() {
+		return textFieldCodigo.getText();
+	}
+	
+	public String getNombre() {
+		return textFieldNombre.getText();
+	}
+	
+	public String  getEstado() {
+		return textFieldEstado.getText();
+	}
+	
+	public String getCiudad() {
+		return textFieldCiudad.getText();
+	}
+	
+	public String getUbicacion() {
+		return textFieldUbicacion.getText();
+	}
+	
+	public String getTelefono() {
+		return textFieldTelefono.getText();
+	}
+	
+	public String getCorreo() {
+		return textFieldCorreo.getText();
+	}
+	public void mostrarMensaje(String mensaje) {
+		JOptionPane.showMessageDialog(this, mensaje);
+	}
+	
+	
 }

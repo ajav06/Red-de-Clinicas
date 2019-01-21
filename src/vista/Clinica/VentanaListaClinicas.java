@@ -8,19 +8,29 @@ import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.LineBorder;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
-public class VentanaListaClinicas {
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class VentanaListaClinicas extends javax.swing.JFrame {
 
 	private JFrame frame;
 	private JTextField textFieldCodigo;
-
+	private JButton btnIncliur;
+	private JButton btnActualizar;
+	private JButton btnEliminar;
+	private JButton btnBuscar;
+	private JTable tblPacientes;
 	/**
 	 * Launch the application.
 	 */
@@ -41,6 +51,9 @@ public class VentanaListaClinicas {
 	 * Create the application.
 	 */
 	public VentanaListaClinicas() {
+		super();
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setSize(540, 591);
 		initialize();
 	}
 
@@ -112,14 +125,23 @@ public class VentanaListaClinicas {
 		textFieldCodigo.setColumns(10);
 		
 		JButton btnIncluir = new JButton("Incluir");
+		btnIncliur.setBackground(Color.LIGHT_GRAY);
 		
 		JButton btnActualizar = new JButton("Actualizar");
+		btnActualizar.setBackground(new Color(0, 102, 51));
 		
 		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.setBackground(new Color(204, 51, 51));
 		
 		JLabel lblCodigo = new JLabel("Codigo :");
 		
-		JButton btnNewButton = new JButton("New button");
+		JButton btnBuscar = new JButton("New button");
+		btnBuscar.setBackground(Color.DARK_GRAY);
+		
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		GroupLayout gl_panelBuscar = new GroupLayout(panelBuscar);
 		gl_panelBuscar.setHorizontalGroup(
 			gl_panelBuscar.createParallelGroup(Alignment.LEADING)
@@ -131,7 +153,7 @@ public class VentanaListaClinicas {
 							.addGap(16)
 							.addComponent(textFieldCodigo, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(btnNewButton, 0, 0, Short.MAX_VALUE))
+							.addComponent(btnBuscar, 0, 0, Short.MAX_VALUE))
 						.addComponent(btnIncluir, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_panelBuscar.createParallelGroup(Alignment.LEADING)
@@ -146,7 +168,7 @@ public class VentanaListaClinicas {
 					.addGroup(gl_panelBuscar.createParallelGroup(Alignment.BASELINE)
 						.addComponent(textFieldCodigo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblCodigo)
-						.addComponent(btnNewButton)
+						.addComponent(btnBuscar)
 						.addComponent(btnActualizar))
 					.addGap(15)
 					.addGroup(gl_panelBuscar.createParallelGroup(Alignment.BASELINE)
@@ -157,4 +179,25 @@ public class VentanaListaClinicas {
 		panelBuscar.setLayout(gl_panelBuscar);
 		frame.getContentPane().setLayout(groupLayout);
 	}
-}
+	public void addListener(ActionListener actionListener) {
+		btnActualizar.addActionListener(actionListener);
+		btnEliminar.addActionListener(actionListener);
+		btnIncliur.addActionListener(actionListener);
+		btnBuscar.addActionListener(actionListener);
+		
+	}
+		public String getCodigo()
+		{
+			return textFieldCodigo.getText();
+		}
+
+		public void setTextFieldCodigo(String codigo) {
+			this.textFieldCodigo.setText(codigo);
+		}
+	
+		
+		public void mostrarMensaje(String mensaje) {
+			JOptionPane.showMessageDialog(this, mensaje);
+		}
+	}
+

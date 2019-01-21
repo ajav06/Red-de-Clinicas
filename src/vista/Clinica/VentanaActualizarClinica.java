@@ -3,6 +3,7 @@ package vista.Clinica;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionListener;
 import java.util.Date;
 
 import javax.swing.JFrame;
@@ -18,7 +19,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-public class VentanaActualizarClinica {
+public class VentanaActualizarClinica extends javax.swing.JFrame{
 
 	private JFrame frame;
 	private JTextField textFieldCodigo;
@@ -221,6 +222,10 @@ public class VentanaActualizarClinica {
 		textFieldTelefono.setText(tel);
 		textFieldCorreo.setText(cor);
 		
+	}
+	public void addListener(ActionListener actionListener) {
+		btnActualizar.addActionListener(actionListener);
+		btnCancelar.addActionListener(actionListener);		
 	}
 	
 	public void setCodigo(String cod) {

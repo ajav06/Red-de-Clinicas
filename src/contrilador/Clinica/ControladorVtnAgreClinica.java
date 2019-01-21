@@ -13,8 +13,8 @@ public class ControladorVtnAgreClinica implements ActionListener
 	public ControladorVtnAgreClinica() {
 		super();
 		this.vtnAgreCli = new VentanaAgreagarClinica();
-		this.vtnAgreCli.setLocationRelativeTo(null);
-		this.vtnAgreCli.setVisible(true);
+		//this.vtnAgreCli.setLocationRelativeTo(null);
+		//this.vtnAgreCli.setVisible(true);
 		this.vtnAgreCli.addListener(this);
 	}
 	
@@ -42,7 +42,7 @@ public class ControladorVtnAgreClinica implements ActionListener
 	    		ClinicaBD clinicaBD = new ClinicaBD();
 		        Clinica clinica = new Clinica(vtnAgreCli.getCodigo(),vtnAgreCli.getNombre(),vtnAgreCli.getEstado(),vtnAgreCli.getCiudad()
 		    			,vtnAgreCli.getUbicacion(),vtnAgreCli.getTelefono(),vtnAgreCli.getCorreo());		    
-		        ClinicaBD.registrarClinica(clinica);
+		        //ClinicaBD.registrarClinica(clinica);
 		    	vtnAgreCli.mostrarMensaje("El Paciente fue incluido con exito");
 		    	vtnAgreCli.blanquearCampos();
 	    	}

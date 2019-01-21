@@ -24,7 +24,7 @@ import javax.swing.JTextField;
 import java.awt.event.ActionEvent;
 
 
-public class VentanaAgreagarClinica {
+public class VentanaAgreagarClinica extends javax.swing.JFrame {
 
 	private JFrame frame;
 	private JTextField textFieldNomre;
