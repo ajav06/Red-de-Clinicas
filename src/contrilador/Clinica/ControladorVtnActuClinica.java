@@ -38,15 +38,14 @@ public class ControladorVtnActuClinica implements ActionListener
 	    	if(vtnActuCli.getCodigo().equals("") || vtnActuCli.getNombre().equals("") || vtnActuCli.getEstado().equals("") 
 	    			|| vtnActuCli.getCiudad().equals("") || vtnActuCli.getUbicacion().equals("")|| vtnActuCli.getTelefono().equals("")|| vtnActuCli.getCorreo().equals("") )
 	    		 //Deben estar todos los campos llenos para poder actualizar al paciente
-	    	//	vtnActuCli.mostrarMensaje("Debe llenar todos los datos para poder actualizar al paciente");
+	    	vtnActuCli.mostrarMensaje("Debe llenar todos los datos para poder actualizar al paciente");
 	    		else
 	    	{
 	    		ClinicaBD clinicaBD = new ClinicaBD();
 		    	Clinica clinica = new Clinica(vtnActuCli.getCodigo(),vtnActuCli.getNombre(),
 		    		vtnActuCli.getEstado(),vtnActuCli.getCiudad(),vtnActuCli.getUbicacion(),
 		    		vtnActuCli.getTelefono(),vtnActuCli.getCorreo());		    
-		    	ClinicaBD.a);
-		    //	vtnActuCli.mostrarMensaje("El Paciente fue incluido con exito");
+		       vtnActuCli.mostrarMensaje("El Paciente fue incluido con exito");
 		    	vtnActuCli.blanquearCampos();
 	    	}
 		}catch(Exception e)

@@ -43,4 +43,4 @@ public class ControladorElimClinica implements ActionListener
 		}
 	}
 
-}
+
