@@ -60,7 +60,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 						.addGap(39))
 			);
 			
-			btnClinicas = new JButton("Cl\u00EDnicas");
+			btnClinicas = new JButton("Clinica");
 			btnClinicas.setBackground(new Color(70, 130, 180));
 			
 			btnEspecialidades = new JButton("Especialidades");

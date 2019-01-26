@@ -1,5 +1,6 @@
 package vista.Medico;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionListener;
 import java.util.Date;
@@ -10,6 +11,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -25,7 +27,6 @@ import com.toedter.calendar.JDateChooser;
 
 public class VentanaConModRegMedico extends javax.swing.JFrame{
 
-	private JFrame frame;
 	private JTextField textField_Cedula;
 	private JTextField textField_Nombre;
 	private JDateChooser textField_FechaN;
@@ -47,35 +48,22 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 	private JButton btnEliminar;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaConModRegMedico window = new VentanaConModRegMedico();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the application.
 	 */
 	public VentanaConModRegMedico() {
+		super();
 		initialize();
+		setSize(579, 351);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 579, 351);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		try {
+		setBounds(100, 100, 579, 351);
+		getContentPane().setForeground(Color.BLUE);
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		
 		JLabel lblNombre = new JLabel("Cédula:");
 		
@@ -138,7 +126,7 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 		btnModificar = new JButton("Modificar");
 		
 		btnEliminar = new JButton("Eliminar");
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -270,7 +258,10 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 			}
 		});
 		scrollPane.setViewportView(table_Horario);
-		frame.getContentPane().setLayout(groupLayout);
+		getContentPane().setLayout(groupLayout);
+		} catch (Exception e){
+			e.printStackTrace();
+		}
 	}
 	
 	public void blanquearCampos() {
@@ -417,7 +408,7 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 	}
 	
 	public void mostrarMensaje(String mensaje) {
-		JOptionPane.showMessageDialog(frame, mensaje);
+		JOptionPane.showMessageDialog(this, mensaje);
 	}
 	
 	public String getCedula() {
@@ -477,7 +468,7 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 	}
 	
 	public void salir() {
-		frame.setVisible(false);
-		frame.dispose();
+		setVisible(false);
+		dispose();
 	}
 }

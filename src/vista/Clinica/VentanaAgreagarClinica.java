@@ -24,9 +24,8 @@ import javax.swing.JTextField;
 import java.awt.event.ActionEvent;
 
 
-public class VentanaAgreagarClinica extends javax.swing.JFrame{
+public class VentanaAgreagarClinica extends javax.swing.JFrame {
 
-	private JFrame frame;
 	private JTextField textFieldNomre;
 	private JTextField textFieldCodigo;
 	private JTextField textFieldEstado;
@@ -50,7 +49,7 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame{
 			public void run() {
 				try {
 					VentanaAgreagarClinica window = new VentanaAgreagarClinica();
-					window.frame.setVisible(true);
+					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -66,9 +65,8 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 498, 496);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 498, 496);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel_2 = new JPanel();
 		
@@ -80,7 +78,7 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame{
 		JPanel panDC = new JPanel();
 		panDC.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Datos de la Clinica", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		
-		JButton btnRegistrar = new JButton("Registrar");
+		btnRegistrar = new JButton("Registrar");
 		btnRegistrar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		btnRegistrar.setBackground(Color.GREEN);
 		btnRegistrar.addActionListener(new ActionListener() {
@@ -88,7 +86,7 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame{
 			}
 		});
 		
-		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		btnCancelar.setBackground(Color.RED);
 		btnCancelar.setForeground(Color.BLACK);
@@ -233,7 +231,7 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame{
 		);
 		panDC.setLayout(gl_panDC);
 		panel_2.setLayout(gl_panel_2);
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
@@ -242,7 +240,7 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame{
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
 		);
-		frame.getContentPane().setLayout(groupLayout);
+		getContentPane().setLayout(groupLayout);
 	}
 	public void blanquearCampos() {
 		

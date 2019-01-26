@@ -1,10 +1,10 @@
 package controlador.Clinica;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import modelo.Clinica.Clinica;
 import modelo.Clinica.ClinicaBD;
 import vista.Clinica.VentanaAgreagarClinica;
+import vista.Paciente.VentanaAgregarPaciente;
 
 public class ControladorVtnAgreClinica implements ActionListener
 {
@@ -42,7 +42,7 @@ public class ControladorVtnAgreClinica implements ActionListener
 	    		ClinicaBD clinicaBD = new ClinicaBD();
 		        Clinica clinica = new Clinica(vtnAgreCli.getCodigo(),vtnAgreCli.getNombre(),vtnAgreCli.getEstado(),vtnAgreCli.getCiudad()
 		    			,vtnAgreCli.getUbicacion(),vtnAgreCli.getTelefono(),vtnAgreCli.getCorreo());		    
-		        clinicaBD.registrarClinica(clinica);
+		        clinicaBD .registrarClinica(clinica);
 		    	vtnAgreCli.mostrarMensaje("El Paciente fue incluido con exito");
 		    	vtnAgreCli.blanquearCampos();
 	    	}

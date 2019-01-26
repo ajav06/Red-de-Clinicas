@@ -31,7 +31,7 @@ public class Conexion extends javax.swing.JFrame{
 	         e.printStackTrace();
 	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 	      }
-	      JOptionPane.showMessageDialog(this, "Conexión Exitosa con la Base de Datos");
+	      JOptionPane.showMessageDialog(this, "Conexiï¿½n Exitosa con la Base de Datos");
 	}
 	
 	public void crearTabla(String nombTabla, String campos) {
@@ -49,7 +49,7 @@ public class Conexion extends javax.swing.JFrame{
 		      e.printStackTrace();
 		      JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 		  }
-		  JOptionPane.showMessageDialog(this, "Tabla Creada con Éxito");
+		  JOptionPane.showMessageDialog(this, "Tabla Creada con ï¿½xito");
 	}
 	
 	public void crearRegistro(String nombTabla, String nombCampos, String valorCampos) {
@@ -142,7 +142,7 @@ public class Conexion extends javax.swing.JFrame{
 	         e.printStackTrace();
 	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 	      }
-	      JOptionPane.showMessageDialog(this, "Operación Realizada de Manera Exitosa");
+	      JOptionPane.showMessageDialog(this, "Operaciï¿½n Realizada de Manera Exitosa");
 	      return rs;
 	}
 
@@ -182,8 +182,8 @@ public class Conexion extends javax.swing.JFrame{
 		return contrasenna;
 	}
 
-	public void setContrasenna(String contraseña) {
-		this.contrasenna = contraseña;
+	public void setContrasenna(String contrasenna) {
+		this.contrasenna = contrasenna;
 	}
 	
 	public void cerrarComando() throws SQLException {
