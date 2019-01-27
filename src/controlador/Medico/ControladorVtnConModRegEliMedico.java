@@ -48,21 +48,19 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 	private void registrarMedico(){
 	  	try
 		{
-	    	//if(vtnMedico.chequearLlenos())
-	    		
-	    	   //Deben estar todos los campos llenos para poder actualizar al paciente
-	    		//vtnMedico.mostrarMensaje("Debe llenar todos los datos para poder registrar al médico");
-	    	//else
-	    	//{
+	  		if(vtnMedico.chequearLlenos())//Deben estar todos los campos llenos para poder incluir al médico
+	    		vtnMedico.mostrarMensaje("Debe llenar todos los datos para poder registrar al médico");
+	    	else
+	    	{
 	    		MedicoBD medicoBD = new MedicoBD();
-//		    	Medico medico = new Medico(vtnMedico.getCedula(),vtnMedico.getNombre(),"",vtnMedico.getFechaN(),
-//		    			vtnMedico.getEmail(),vtnMedico.getTlfCasa(),vtnMedico.getTlfCelular(),
-//		    			vtnMedico.getEspecialidad(),vtnMedico.getAlmaMater(),vtnMedico.getAnnoG(),vtnMedico.getHorarioMatu(),vtnMedico.getHorarioVesper(),
-//		    			vtnMedico.getEstudiando(),'a');
-//		    	medicoBD.registrarMedico(medico);
+		    	Medico medico = new Medico(vtnMedico.getCedula(),vtnMedico.getEspecialidad(),
+		    			vtnMedico.getNombre(),vtnMedico.getApellido(),vtnMedico.getFechaN(),
+		    			vtnMedico.getEdoC(),vtnMedico.getEstado(),vtnMedico.getDireccion(),
+		    			vtnMedico.getTlfCasa(),vtnMedico.getTlfCelular(),vtnMedico.getEmail());
+		    	medicoBD.registrarMedico(medico);
 		    	vtnMedico.mostrarMensaje("El Médico fue incluido con exito");
 		    	vtnMedico.blanquearCampos();
-	    	//}
+	    	}
 		}catch(Exception e)
 		{
 			vtnMedico.mostrarMensaje(e.toString());

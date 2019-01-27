@@ -494,10 +494,11 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 	}
 	
 	public boolean chequearLlenos() { //Chequea y verifica que todos los campos estén actualmente llenos.
-		return (textField_Cedula.getText().equals("") || textField_TlfCelular.getText().equals("") ||
-				textField_Nombre.getText().equals("") || textField_FechaN.getDate().toString().equals("") || 
-				textField_Email.getText().equals("") || textField_TlfCasa.getText().equals("")
-				);
+		return (textField_Cedula.getText().equals("") ||
+				textField_Nombre.getText().equals("") || textField_Apellido.getText().equals("") ||
+				textField_FechaN.getDate().toString().equals("") || textPane_Direccion.getText().equals("") ||
+				textField_TlfCasa.getText().equals("") || textField_TlfCelular.getText().equals("") ||
+				textField_Email.getText().equals(""));
 	}
 	
 	public void mostrarMensaje(String mensaje) {
@@ -508,19 +509,51 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 		return textField_Cedula.getText();
 	}
 	
+	public String getEspecialidad() {
+		return String.valueOf(cB_Especialidad.getSelectedIndex());
+	}
+	
 	public String getNombre() {
 		return textField_Nombre.getText();
 	}
 	
+	public String getApellido() {
+		return textField_Apellido.getText();
+	}
+		
 	public Date getFechaN() {
 		return textField_FechaN.getDate();
 	}
 	
-	public String getEmail() {
-		return textField_Email.getText();
+	public char getEdoC() {
+		switch (comboBox_edoCivil.getSelectedIndex()) {
+		case 0:
+			return 'S';
+			
+		case 1:
+			return 'C';
+			
+		case 2:
+			return 'A';
+			
+		case 3:
+			return 'D';
+			
+		case 4:
+			return 'V';
+		}
+		return 'S';
 	}
 	
-	public String getTlfCasa() {
+	public String getEstado() {
+		return comboBox_Estado.getSelectedItem().toString();
+	}
+	
+	public String getDireccion() {
+		return textPane_Direccion.getText();
+	}
+	
+		public String getTlfCasa() {
 		return textField_TlfCasa.getText();
 	}
 	
@@ -528,8 +561,8 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 		return textField_TlfCelular.getText();
 	}
 	
-	public String getEspecialidad() {
-		return "Proximamente"; 
+	public String getEmail() {
+		return textField_Email.getText();
 	}
 
 	public void salir() {

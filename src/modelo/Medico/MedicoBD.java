@@ -22,10 +22,10 @@ public class MedicoBD extends ConexionBD{
 	public void registrarMedico(Medico medico) {
 		this.crearRegistro("medico", 
 				"cedula,cod_especialidad,nombres,apellidos,fecha_nacimiento,edo_civil,"
-				+ "estado,direccion,tlf_casa,tlf_movil,e-mail",
+				+ "estado,direccion,tlf_casa,tlf_movil,email",
 				"'"+medico.getCedula()+"','"+medico.getCod_especialidad()+"','"+medico.getNombre()+
-				"','"+medico.getApellido()+"','"+formatter.format(medico.getFechaNacimiento())+"','"+medico.getFechaNacimiento()+
-				"','"+medico.getEdo_civil()+"','"+medico.getEstado()+medico.getDireccion()+
+				"','"+medico.getApellido()+"','"+formatter.format(medico.getFechaNacimiento())+
+				"','"+medico.getEdo_civil()+"','"+medico.getEstado()+"','"+medico.getDireccion()+
 				"','"+medico.getTlf_casa()+"','"+medico.getNroTelefonico()+
 				"','"+medico.getEmail()+"'");
 	}
