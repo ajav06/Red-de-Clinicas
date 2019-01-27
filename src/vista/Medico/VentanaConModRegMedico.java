@@ -588,6 +588,52 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 		return textField_Email.getText();
 	}
 
+	public void setHorario(String[] cod_clinica, String[] turno) {
+		for (int i=0;i<turno.length;i++) {
+			switch (Integer.parseInt(turno[i])) {
+			case 1:
+				comboBox_LunesMat.setSelectedIndex(Integer.parseInt(cod_clinica[i]));
+				break;
+				
+			case 2:
+				comboBox_LunesVesp.setSelectedIndex(Integer.parseInt(cod_clinica[i]));
+				break;
+				
+			case 3:
+				comboBox_MartesMat.setSelectedIndex(Integer.parseInt(cod_clinica[i]));
+				break;
+				
+			case 4:
+				comboBox_MartesVesp.setSelectedIndex(Integer.parseInt(cod_clinica[i]));
+				break;
+				
+			case 5:
+				comboBox_MiercolesMat.setSelectedIndex(Integer.parseInt(cod_clinica[i]));
+				break;
+				
+			case 6:
+				comboBox_MiercolesVesp.setSelectedIndex(Integer.parseInt(cod_clinica[i]));
+				break;
+				
+			case 7:
+				comboBox_JuevesMat.setSelectedIndex(Integer.parseInt(cod_clinica[i]));
+				break;
+				
+			case 8:
+				comboBox_JuevesVesp.setSelectedIndex(Integer.parseInt(cod_clinica[i]));
+				break;
+				
+			case 9:
+				comboBox_ViernesMat.setSelectedIndex(Integer.parseInt(cod_clinica[i]));
+				break;
+				
+			case 10:
+				comboBox_ViernesVesp.setSelectedIndex(Integer.parseInt(cod_clinica[i]));
+				break;
+			}
+		}
+	}
+	
 	public void salir() {
 		setVisible(false);
 		dispose();

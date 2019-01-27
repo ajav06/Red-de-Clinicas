@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import modelo.Medico.Trabajo;
 
 import javax.swing.JOptionPane;
 
@@ -121,5 +122,23 @@ public class MedicoBD extends ConexionBD{
 		}
 		this.cerrarComando();
 		return medicos;
+	}
+	
+	public List<Trabajo> consultarHorario(String cedula){
+		Trabajo trabajo = null;
+		List<Trabajo> trabajos = new ArrayList<Trabajo>();
+		resultSet = this.buscarRegistro("trabajomedico", "ced_medico", cedula);
+		try {
+			while (resultSet.next()){
+				String codigo = resultSet.getString("codigo");
+				String cod_clinica = resultSet.getString("cod_clinica");
+				String turno = resultSet.getString("turno");
+				trabajo = new Trabajo(codigo, cod_clinica, turno);
+				trabajos.add(trabajo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return trabajos;
 	}
 }

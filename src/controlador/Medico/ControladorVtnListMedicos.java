@@ -45,6 +45,8 @@ public class ControladorVtnListMedicos implements ActionListener {
 		}
 		else if (actionCommand.equals("Salir")) {
 			salir();
+		} else if (actionCommand.isEmpty()) {
+			cargarDatosMedico();
 		}
 	}
 	

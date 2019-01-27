@@ -31,6 +31,7 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.JComboBox;
+import javax.swing.ImageIcon;
 
 public class VentanaListaMedicos extends javax.swing.JFrame{
 
@@ -40,13 +41,14 @@ public class VentanaListaMedicos extends javax.swing.JFrame{
 	private JButton btnRegistrarNvo;
 	private JButton btnBuscar;
 	private JButton btnSalir;
+	private JButton btnRefrescar;
 	private JComboBox comboBox_Especialidad;
 
-	public VentanaListaMedicos(DefaultComboBoxModel especialidades) {
+		public VentanaListaMedicos(DefaultComboBoxModel especialidades) {
 		super();
 		setTitle("Listado de Médicos");
 		initialize(especialidades);
-		setSize(585,579);
+		setSize(585,598);
 	}
 	
 	/**
@@ -72,26 +74,33 @@ public class VentanaListaMedicos extends javax.swing.JFrame{
 		panel.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Buscar m\u00E9dicos", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLACK));
 		
 		btnSalir = new JButton("Salir");
+		
+		btnRefrescar = new JButton("");
+		btnRefrescar.setIcon(new ImageIcon(VentanaListaMedicos.class.getResource("/javax/swing/plaf/metal/icons/ocean/minimize.gif")));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+							.addGroup(groupLayout.createSequentialGroup()
+								.addComponent(lblMdicosDeLa)
+								.addGap(138))
+							.addGroup(groupLayout.createSequentialGroup()
+								.addComponent(btnConsultar, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+								.addGap(18)
+								.addComponent(btnRegistrarNvo)
+								.addPreferredGap(ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
+								.addComponent(btnSalir, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)
+								.addContainerGap())
+							.addGroup(groupLayout.createSequentialGroup()
+								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+									.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+									.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE))
+								.addContainerGap()))
 						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-							.addComponent(lblMdicosDeLa)
-							.addGap(138))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnConsultar, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(btnRegistrarNvo)
-							.addPreferredGap(ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
-							.addComponent(btnSalir, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap())
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
-								.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE))
+							.addComponent(btnRefrescar, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
 							.addContainerGap())))
 		);
 		groupLayout.setVerticalGroup(
@@ -101,14 +110,16 @@ public class VentanaListaMedicos extends javax.swing.JFrame{
 					.addComponent(lblMdicosDeLa)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 124, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnRefrescar)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 286, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
 						.addComponent(btnSalir, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(btnConsultar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(btnRegistrarNvo, GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
-					.addContainerGap(16, Short.MAX_VALUE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		
 		txtCedula_Nombre = new JTextField();
@@ -177,6 +188,7 @@ public class VentanaListaMedicos extends javax.swing.JFrame{
 		btnRegistrarNvo.addActionListener(actionListener);
 		btnConsultar.addActionListener(actionListener);
 		btnSalir.addActionListener(actionListener);
+		btnRefrescar.addActionListener(actionListener);
 		comboBox_Especialidad.addActionListener(actionListener);
 	}
 	
@@ -199,6 +211,5 @@ public class VentanaListaMedicos extends javax.swing.JFrame{
 	
 	public void mostrarMensaje(String mensaje) {
 		JOptionPane.showMessageDialog(this, mensaje);
-	};
-
+	}
 }
