@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import java.awt.event.ActionListener;
 import java.util.Date;
 
+import java.util.List;
+import java.util.Vector;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -13,6 +16,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.JComboBox;
+import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -75,11 +79,22 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 	/**
 	 * Create the application.
 	 */
-	public VentanaConModRegMedico() {
+	public VentanaConModRegMedico(DefaultComboBoxModel clinicas, DefaultComboBoxModel especialidades) {
 		super();
 		setTitle("Actualizar Médico");
 		initialize();
 		setSize(711, 713);
+		cB_Especialidad.setModel(especialidades);
+		comboBox_LunesMat.setModel(clinicas);
+		comboBox_LunesVesp.setModel(clinicas);
+		comboBox_MartesMat.setModel(clinicas);
+		comboBox_MartesVesp.setModel(clinicas);
+		comboBox_MiercolesMat.setModel(clinicas);
+		comboBox_MiercolesVesp.setModel(clinicas);
+		comboBox_JuevesMat.setModel(clinicas);
+		comboBox_JuevesVesp.setModel(clinicas);
+		comboBox_ViernesMat.setModel(clinicas);
+		comboBox_ViernesVesp.setModel(clinicas);
 	}
 
 	/**

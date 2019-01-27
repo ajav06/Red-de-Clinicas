@@ -2,8 +2,11 @@ package controlador.Medico;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.Date;
 
+import modelo.Clinica.ClinicaBD;
+import modelo.Especialidad.EspecialidadBD;
 import modelo.Medico.Medico;
 import modelo.Medico.MedicoBD;
 import modelo.Paciente.PacienteBD;
@@ -12,10 +15,13 @@ import vista.Medico.VentanaConModRegMedico;
 public class ControladorVtnConModRegEliMedico implements ActionListener{
 	private VentanaConModRegMedico vtnMedico;
 	
-	public ControladorVtnConModRegEliMedico(Medico medico, int accion) {
+	public ControladorVtnConModRegEliMedico(Medico medico, int accion) throws SQLException {
 		super();
 
-		this.vtnMedico = new VentanaConModRegMedico();
+		ClinicaBD cli = new ClinicaBD();
+		EspecialidadBD esp = new EspecialidadBD();
+		
+		this.vtnMedico = new VentanaConModRegMedico(cli.nombresClinicas(),esp.nombresEspecialidades());
 		this.vtnMedico.setLocationRelativeTo(null);
 		this.vtnMedico.setVisible(true);
 		this.vtnMedico.addListener(this);

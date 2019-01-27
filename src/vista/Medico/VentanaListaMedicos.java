@@ -3,6 +3,7 @@ package vista.Medico;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -18,6 +19,9 @@ import com.sun.corba.se.impl.encoding.CodeSetConversion.BTCConverter;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -38,17 +42,17 @@ public class VentanaListaMedicos extends javax.swing.JFrame{
 	private JButton btnSalir;
 	private JComboBox comboBox_Especialidad;
 
-	public VentanaListaMedicos() {
+	public VentanaListaMedicos(DefaultComboBoxModel especialidades) {
 		super();
 		setTitle("Listado de Médicos");
-		initialize();
+		initialize(especialidades);
 		setSize(585,579);
 	}
-
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(DefaultComboBoxModel especialidades) {
 		setTitle("Listado de Médicos");
 		setAutoRequestFocus(false);
 		setBounds(100, 100, 585, 579);
@@ -165,6 +169,7 @@ public class VentanaListaMedicos extends javax.swing.JFrame{
 		));
 		scrollPane.setViewportView(table_Medicos);
 		getContentPane().setLayout(groupLayout);
+		comboBox_Especialidad.setModel(especialidades);
 	}
 	
 	public void addListener(ActionListener actionListener) {

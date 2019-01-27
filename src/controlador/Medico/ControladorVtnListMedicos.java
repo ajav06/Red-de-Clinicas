@@ -11,15 +11,17 @@ import javax.swing.JTable;
 import controlador.Medico.ControladorVtnConModRegEliMedico;
 import vista.Medico.VentanaMedicoModeloTabla;
 import vista.Medico.VentanaListaMedicos;
+import modelo.Especialidad.EspecialidadBD;
 import modelo.Medico.*;
 
 public class ControladorVtnListMedicos implements ActionListener {
 	private VentanaListaMedicos vtnListMed;
 	Medico medico;
 	
-	public ControladorVtnListMedicos() {
+	public ControladorVtnListMedicos() throws SQLException {
 		super();
-		this.vtnListMed = new VentanaListaMedicos();
+		EspecialidadBD e = new EspecialidadBD();
+		this.vtnListMed = new VentanaListaMedicos(e.nombresEspecialidades());
 		this.vtnListMed.setLocationRelativeTo(null);
 		this.vtnListMed.setVisible(true);
 		cargarDatosMedico();

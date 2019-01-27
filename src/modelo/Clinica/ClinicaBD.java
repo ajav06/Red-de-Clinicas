@@ -3,6 +3,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.DefaultComboBoxModel;
+
 import modelo.ConexionBD;
 
 public class ClinicaBD extends ConexionBD
@@ -92,12 +95,12 @@ public class ClinicaBD extends ConexionBD
 		return clinicas;
 	}
 
-	public List<String> nombresClinicas() throws SQLException{
-		List<String> nombres = new ArrayList<String>();
+	public DefaultComboBoxModel nombresClinicas() throws SQLException{
+		DefaultComboBoxModel nombres = new DefaultComboBoxModel();
 		resultSet = this.ejecutarQuery("SELECT nombre FROM clinica WHERE estatus = 'A' ORDER BY codigo DESC");
 		try {
 			while (resultSet.next())
-				nombres.add(resultSet.getString(0));
+				nombres.addElement(resultSet.getString(0));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
