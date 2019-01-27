@@ -97,10 +97,10 @@ public class ClinicaBD extends ConexionBD
 
 	public DefaultComboBoxModel nombresClinicas() throws SQLException{
 		DefaultComboBoxModel nombres = new DefaultComboBoxModel();
-		resultSet = this.ejecutarQuery("SELECT nombre FROM clinica WHERE estatus = 'A' ORDER BY codigo DESC");
+		resultSet = this.ejecutarQuery("SELECT nombre FROM clinica WHERE estatus = 'a' ORDER BY codigo ASC");
 		try {
 			while (resultSet.next())
-				nombres.addElement(resultSet.getString(0));
+				nombres.addElement(resultSet.getString("nombre"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

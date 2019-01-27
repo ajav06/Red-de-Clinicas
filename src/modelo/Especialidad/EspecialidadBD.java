@@ -19,7 +19,7 @@ public class EspecialidadBD extends ConexionBD {
 
 	public DefaultComboBoxModel nombresEspecialidades() throws SQLException{
 		DefaultComboBoxModel nombres = new DefaultComboBoxModel();
-		resultSet = this.ejecutarQuery("SELECT nombre FROM especialidad WHERE estatus = 'a' ORDER BY codigo DESC");
+		resultSet = this.ejecutarQuery("SELECT nombre FROM especialidad WHERE estatus = 'a' ORDER BY codigo ASC");
 		try {
 			while (resultSet.next())
 				nombres.addElement(resultSet.getString("nombre"));

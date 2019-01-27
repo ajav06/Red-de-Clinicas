@@ -95,6 +95,7 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 		comboBox_JuevesVesp.setModel(clinicas);
 		comboBox_ViernesMat.setModel(clinicas);
 		comboBox_ViernesVesp.setModel(clinicas);
+		comboBox_LunesMat.setSelectedIndex(0);
 	}
 
 	/**
