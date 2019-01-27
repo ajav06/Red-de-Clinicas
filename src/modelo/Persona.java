@@ -6,7 +6,7 @@ public class Persona {
 	protected String nombre;
 	protected String apellido;
 	protected String direccion;
-	protected int nroTelefonico;
+	protected String nroTelefonico;
 	protected float peso;
 	protected Date fechaNacimiento;
 	
@@ -43,11 +43,11 @@ public class Persona {
 		this.apellido = apellido;
 	}
 	
-	public int getNroTelefonico() {
+	public String getNroTelefonico() {
 		return nroTelefonico;
 	}
 	
-	public void setNroTelefonico(int nroTelefonico) {
+	public void setNroTelefonico(String nroTelefonico) {
 		this.nroTelefonico = nroTelefonico;
 	}
 	
