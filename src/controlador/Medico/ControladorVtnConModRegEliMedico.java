@@ -48,12 +48,12 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 	private void registrarMedico(){
 	  	try
 		{
-	    	if(vtnMedico.chequearLlenos())
+	    	//if(vtnMedico.chequearLlenos())
 	    		
 	    	   //Deben estar todos los campos llenos para poder actualizar al paciente
-	    		vtnMedico.mostrarMensaje("Debe llenar todos los datos para poder registrar al médico");
-	    	else
-	    	{
+	    		//vtnMedico.mostrarMensaje("Debe llenar todos los datos para poder registrar al médico");
+	    	//else
+	    	//{
 	    		MedicoBD medicoBD = new MedicoBD();
 		    	Medico medico = new Medico(vtnMedico.getCedula(),vtnMedico.getNombre(),"",vtnMedico.getFechaN(),
 		    			vtnMedico.getEmail(),vtnMedico.getTlfCasa(),vtnMedico.getTlfCelular(),
@@ -62,11 +62,11 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 		    	medicoBD.registrarMedico(medico);
 		    	vtnMedico.mostrarMensaje("El Médico fue incluido con exito");
 		    	vtnMedico.blanquearCampos();
-	    	}
+	    	//}
 		}catch(Exception e)
 		{
+			vtnMedico.mostrarMensaje(e.toString());
 			vtnMedico.mostrarMensaje("No se pudo registrar el médico, verifique que los datos sean correctos");
-			vtnMedico.blanquearCampos();
 		}
 	}
 	
@@ -91,7 +91,6 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 		}catch(Exception e)
 		{
 			vtnMedico.mostrarMensaje("No se pudo actualizar el médico, verifique que los datos sean correctos");
-			vtnMedico.blanquearCampos();
 		}
 	}
 	
@@ -105,7 +104,6 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 		}catch(Exception e)
 		{
 			vtnMedico.mostrarMensaje("No se pudo eliminar el médico, verifique que los datos sean correctos");
-			vtnMedico.blanquearCampos();
 		}
 	}
 	

@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 import controlador.Clinica.ControladorVtnAgreClinica;
 import controlador.Clinica.ControladorVtnLista;
+import controlador.Especialidad.ControladorVtnEspecialidades;
 import controlador.Medico.ControladorVtnConModRegEliMedico;
-import controlador.Medico.ControladorVtnEspecialidades;
 import controlador.Paciente.ControladorVtnListPacientes;
 import vista.VentanaPrincipal;
 

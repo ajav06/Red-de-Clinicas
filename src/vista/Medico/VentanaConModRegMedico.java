@@ -24,6 +24,17 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import com.toedter.calendar.JDateChooser;
+import java.awt.Font;
+import javax.swing.JPanel;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
+import java.awt.GridBagLayout;
+import javax.swing.border.TitledBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
 
 public class VentanaConModRegMedico extends javax.swing.JFrame{
 
@@ -32,28 +43,28 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 	private JDateChooser textField_FechaN;
 	private JLabel lblEmail;
 	private JTextField textField_Email;
-	private JLabel lblNmeroDeTelfono;
-	private JTextField textField_TlfCasa;
 	private JLabel lblNmeroCelular;
 	private JTextField textField_TlfCelular;
 	private JLabel lblEspecialidad;
-	private JTextField textField_AlmaMater;
-	private JTextField textField_AnnoG;
-	private JCheckBox chckbxactualmenteEstudiando;
-	private JTable table_Horario;
-	private JLabel lblHorarioDeTrabajo;
 	private JButton btnRegistrar;
 	private JButton btnSalir;
 	private JButton btnModificar;
 	private JButton btnEliminar;
+	private JLabel lblApellido;
+	private JTextField textField_Apellido;
+	private JLabel lblTlfCasa;
+	private JTextField textField_TlfCasa;
+	private JPanel panel_1;
+	private JLabel lblEstado;
 
 	/**
 	 * Create the application.
 	 */
 	public VentanaConModRegMedico() {
 		super();
+		setTitle("Actualizar Médico");
 		initialize();
-		setSize(579, 351);
+		setSize(711, 713);
 	}
 
 	/**
@@ -65,60 +76,6 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 		getContentPane().setForeground(Color.BLUE);
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		
-		JLabel lblNombre = new JLabel("Cédula:");
-		
-		textField_Cedula = new JTextField();
-		textField_Cedula.setColumns(10);
-		
-		JLabel lblApellido = new JLabel("Nombre y Apellido:");
-		
-		textField_Nombre = new JTextField();
-		textField_Nombre.setColumns(10);
-		
-		JLabel lblFechaDeNacimiento = new JLabel("Fecha de Nacimiento:");
-		
-		textField_FechaN = new JDateChooser();
-		
-		lblEmail = new JLabel("E-Mail:");
-		
-		textField_Email = new JTextField();
-		textField_Email.setColumns(10);
-		
-		lblNmeroDeTelfono = new JLabel("Tlf. Casa:");
-		
-		textField_TlfCasa = new JTextField();
-		textField_TlfCasa.setColumns(10);
-		
-		lblNmeroCelular = new JLabel("Tlf. Celular:");
-		
-		textField_TlfCelular = new JTextField();
-		textField_TlfCelular.setColumns(10);
-		
-		lblEspecialidad = new JLabel("Especialidad:");
-		
-		JComboBox cB_Especialidad = new JComboBox();
-		cB_Especialidad.setModel(new DefaultComboBoxModel(new String[] {"Urólogo", "Neurólogo", "Perro Loco"}));
-		
-		JButton btnEditarEspecialidades = new JButton("Editar Especialidades");
-		
-		JLabel lblAlmaMter = new JLabel("Alma Máter:");
-		
-		textField_AlmaMater = new JTextField();
-		textField_AlmaMater.setColumns(10);
-		
-		JLabel lblAoDeGraduacin = new JLabel("Año de Graduación:");
-		
-		textField_AnnoG = new JTextField();
-		textField_AnnoG.setColumns(10);
-		
-		JButton btnConsultar = new JButton("Consultar Postgrados");
-		
-		chckbxactualmenteEstudiando = new JCheckBox("¿Actualmente estudiando?");
-		
-		JScrollPane scrollPane = new JScrollPane();
-		
-		lblHorarioDeTrabajo = new JLabel("Horario de Trabajo:");
-		
 		btnRegistrar = new JButton("Registrar");
 		
 		btnSalir = new JButton("Salir");
@@ -126,138 +83,315 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 		btnModificar = new JButton("Modificar");
 		
 		btnEliminar = new JButton("Eliminar");
+		
+		JLabel lblDatosDelMdico = new JLabel("Actualizar Médico");
+		lblDatosDelMdico.setForeground(Color.BLUE);
+		lblDatosDelMdico.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 25));
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Datos del M\u00E9dico", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLACK));
+		
+		panel_1 = new JPanel();
+		panel_1.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Ubicaci\u00F3n del M\u00E9dico", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLACK));
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Horario", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLACK));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
-						.addComponent(lblHorarioDeTrabajo, GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblNombre)
-							.addGap(6)
-							.addComponent(textField_Cedula, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblApellido)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(textField_Nombre, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnConsultar, GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblAlmaMter)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_AlmaMater, 181, 181, 181))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblEspecialidad)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(cB_Especialidad, 0, 172, Short.MAX_VALUE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblNmeroDeTelfono)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_TlfCasa, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblFechaDeNacimiento)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_FechaN, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblAoDeGraduacin)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_AnnoG, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblEmail)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_Email, GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblNmeroCelular)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_TlfCelular, GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
-								.addComponent(btnEditarEspecialidades, GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-								.addComponent(chckbxactualmenteEstudiando, GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnRegistrar)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+							.addComponent(btnRegistrar, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(btnModificar)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(btnEliminar)
-							.addPreferredGap(ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
-							.addComponent(btnSalir)))
-					.addContainerGap())
+							.addPreferredGap(ComponentPlacement.RELATED, 293, Short.MAX_VALUE)
+							.addComponent(btnSalir, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblDatosDelMdico)
+							.addGap(200))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(panel_2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(panel_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addContainerGap())))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNombre)
-						.addComponent(textField_Cedula, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblApellido)
-						.addComponent(textField_Nombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(10)
+					.addComponent(lblDatosDelMdico)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblFechaDeNacimiento)
-						.addComponent(textField_FechaN, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblEmail)
-						.addComponent(textField_Email, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNmeroDeTelfono)
-						.addComponent(textField_TlfCasa, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNmeroCelular)
-						.addComponent(textField_TlfCelular, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblEspecialidad)
-						.addComponent(cB_Especialidad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnEditarEspecialidades))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblAlmaMter)
-						.addComponent(textField_AlmaMater, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblAoDeGraduacin)
-						.addComponent(textField_AnnoG, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnConsultar)
-						.addComponent(chckbxactualmenteEstudiando))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(lblHorarioDeTrabajo)
-					.addPreferredGap(ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnRegistrar)
-						.addComponent(btnSalir)
-						.addComponent(btnModificar)
-						.addComponent(btnEliminar))
-					.addGap(111))
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(31)
+					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 167, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(Alignment.TRAILING, groupLayout.createParallelGroup(Alignment.BASELINE)
+							.addComponent(btnRegistrar, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnSalir, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnModificar, GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+						.addComponent(btnEliminar, GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
+					.addContainerGap())
 		);
 		
-		table_Horario = new JTable();
-		table_Horario.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"Matutino", null, null, null, null, null},
-				{"Vespertino", null, null, null, null, null},
-			},
-			new String[] {
-				"Horario", "Lunes", "Martes", "Mi\u00E9rcoles", "Jueves", "Viernes"
-			}
-		) {
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-			boolean[] columnEditables = new boolean[] {
-				false, true, true, true, true, true
-			};
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
-			}
-		});
-		scrollPane.setViewportView(table_Horario);
+		JLabel lblMatutino = new JLabel("Matutino:");
+		
+		JLabel lblVespertino = new JLabel("Vespertino:");
+		
+		JComboBox comboBox_LunesMat = new JComboBox();
+		
+		JComboBox comboBox_MartesMat = new JComboBox();
+		
+		JComboBox comboBox_MiercolesMat = new JComboBox();
+		
+		JComboBox comboBox_JuevesMat = new JComboBox();
+		
+		JComboBox comboBox_ViernesMat = new JComboBox();
+		
+		JComboBox comboBox_LunesVesp = new JComboBox();
+		
+		JComboBox comboBox_MartesVesp = new JComboBox();
+		
+		JComboBox comboBox_MiercolesVesp = new JComboBox();
+		
+		JComboBox comboBox_JuevesVesp = new JComboBox();
+		
+		JComboBox comboBox_ViernesVesp = new JComboBox();
+		
+		JLabel lblLunMarMier = new JLabel("Lun                    Mar                     Mier                     Jue                         Vie");
+		lblLunMarMier.setHorizontalAlignment(SwingConstants.LEFT);
+		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
+		gl_panel_2.setHorizontalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblMatutino)
+						.addComponent(lblVespertino))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_2.createSequentialGroup()
+							.addComponent(comboBox_LunesMat, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(comboBox_MartesMat, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(comboBox_MiercolesMat, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(comboBox_JuevesMat, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(comboBox_ViernesMat, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel_2.createSequentialGroup()
+							.addComponent(comboBox_LunesVesp, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(comboBox_MartesVesp, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(comboBox_MiercolesVesp, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(comboBox_JuevesVesp, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(comboBox_ViernesVesp, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(22, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, gl_panel_2.createSequentialGroup()
+					.addContainerGap(137, Short.MAX_VALUE)
+					.addComponent(lblLunMarMier)
+					.addGap(58))
+		);
+		gl_panel_2.setVerticalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblMatutino)
+						.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
+							.addComponent(comboBox_LunesMat, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(comboBox_MartesMat, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(comboBox_MiercolesMat, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(comboBox_JuevesMat, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(comboBox_ViernesMat, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addGap(15)
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
+							.addComponent(comboBox_LunesVesp, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblVespertino))
+						.addComponent(comboBox_MartesVesp, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(comboBox_MiercolesVesp, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(comboBox_JuevesVesp, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(comboBox_ViernesVesp, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblLunMarMier)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		panel_2.setLayout(gl_panel_2);
+		
+		lblEstado = new JLabel("Estado:");
+		
+		JComboBox comboBox_Estado = new JComboBox();
+		
+		JLabel lblDireccin = new JLabel("Dirección:");
+		
+		JScrollPane scrollPane = new JScrollPane();
+		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
+		gl_panel_1.setHorizontalGroup(
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_1.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblDireccin)
+						.addComponent(lblEstado))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
+						.addComponent(comboBox_Estado, 0, 513, Short.MAX_VALUE))
+					.addContainerGap())
+		);
+		gl_panel_1.setVerticalGroup(
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_1.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblEstado)
+						.addComponent(comboBox_Estado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblDireccin)
+						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE))
+					.addContainerGap())
+		);
+		
+		JTextPane textPane_Direccion = new JTextPane();
+		scrollPane.setViewportView(textPane_Direccion);
+		panel_1.setLayout(gl_panel_1);
+		
+		JLabel lblCedula = new JLabel("Cédula:");
+		
+		textField_Cedula = new JTextField();
+		textField_Cedula.setColumns(10);
+		
+		JLabel lblNombre = new JLabel("Nombre:");
+		
+		textField_Nombre = new JTextField();
+		textField_Nombre.setColumns(10);
+		
+		lblApellido = new JLabel("Apellido:");
+		
+		textField_Apellido = new JTextField();
+		textField_Apellido.setColumns(10);
+		
+		JLabel lblFechaDeNacimiento = new JLabel("Fecha de Nacimiento:");
+		
+		textField_FechaN = new JDateChooser();
+		
+		lblEspecialidad = new JLabel("Especialidad:");
+		
+		JComboBox cB_Especialidad = new JComboBox();
+		cB_Especialidad.setModel(new DefaultComboBoxModel(new String[] {"Urólogo", "Neurólogo", "Perro Loco"}));
+		
+		JButton btnEditarEspecialidades = new JButton("Consultar Especialidades");
+		
+		lblEmail = new JLabel("E-Mail:");
+		
+		textField_Email = new JTextField();
+		textField_Email.setColumns(10);
+		
+		lblNmeroCelular = new JLabel("Tlf. Celular:");
+		
+		textField_TlfCelular = new JTextField();
+		textField_TlfCelular.setColumns(10);
+		
+		lblTlfCasa = new JLabel("Tlf. Casa:");
+		
+		textField_TlfCasa = new JTextField();
+		textField_TlfCasa.setColumns(10);
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(lblCedula)
+							.addGap(18)
+							.addComponent(textField_Cedula, GroupLayout.PREFERRED_SIZE, 205, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+								.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+									.addComponent(lblNmeroCelular)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(textField_TlfCelular))
+								.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+									.addComponent(lblEmail)
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(textField_Email))
+								.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+									.addComponent(lblFechaDeNacimiento)
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(textField_FechaN, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+								.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+									.addComponent(lblNombre)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(textField_Nombre, GroupLayout.PREFERRED_SIZE, 205, GroupLayout.PREFERRED_SIZE)))
+							.addGap(23)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+									.addComponent(lblTlfCasa)
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(textField_TlfCasa, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE))
+								.addComponent(btnEditarEspecialidades, GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+								.addGroup(gl_panel.createSequentialGroup()
+									.addComponent(lblApellido)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(textField_Apellido))
+								.addGroup(gl_panel.createSequentialGroup()
+									.addComponent(lblEspecialidad)
+									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addComponent(cB_Especialidad, GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE)))))
+					.addContainerGap())
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblCedula)
+						.addComponent(textField_Cedula, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+							.addComponent(textField_Nombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblApellido)
+							.addComponent(textField_Apellido, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblNombre))
+					.addGap(18)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+							.addComponent(lblEspecialidad)
+							.addComponent(cB_Especialidad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+							.addComponent(textField_FechaN, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblFechaDeNacimiento)))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(btnEditarEspecialidades, 0, 0, Short.MAX_VALUE)
+						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+							.addComponent(lblEmail)
+							.addComponent(textField_Email)))
+					.addGap(16)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNmeroCelular)
+						.addComponent(textField_TlfCelular, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblTlfCasa)
+						.addComponent(textField_TlfCasa, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(17, Short.MAX_VALUE))
+		);
+		panel.setLayout(gl_panel);
 		getContentPane().setLayout(groupLayout);
 		} catch (Exception e){
 			e.printStackTrace();
@@ -268,33 +402,18 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 		textField_Cedula.setText(null);
 		textField_Nombre.setText(null);
 		textField_FechaN.setDate(null);
-		textField_AlmaMater.setText(null);
-		textField_AnnoG.setText(null);
 		textField_Email.setText(null);
 		textField_TlfCasa.setText(null);
 		textField_TlfCelular.setText(null);
-		DefaultTableModel model = (DefaultTableModel) table_Horario.getModel();
-		Object[] empty = {null,null,null,null,null};
-		model.removeRow(0);
-		model.removeRow(0);
-		model.addRow(empty);
-		model.addRow(empty);
-		chckbxactualmenteEstudiando.setSelected(false);
 	}
 	
 	public void llenarCampos(String cedula, String nombre, Date fechan, String email, String tlfcasa, String tlfcelu, String codespec, String almamater, int annogrado, String[] horariomat, String[] horariovesp, boolean estudia) {
 		textField_Cedula.setText(cedula);
 		textField_Nombre.setText(nombre);
 		textField_FechaN.setDate(fechan);
-		textField_AlmaMater.setText(almamater);
-		textField_AnnoG.setText(Integer.toString(annogrado));
 		textField_Email.setText(email);
 		textField_TlfCasa.setText(tlfcasa);
 		textField_TlfCelular.setText(tlfcelu);
-		DefaultTableModel model = (DefaultTableModel) table_Horario.getModel();
-		model.addRow(horariomat);
-		model.addRow(horariovesp);
-		chckbxactualmenteEstudiando.setSelected(estudia);
 	}
 	
 	public void addListener(ActionListener actionListener) {
@@ -302,86 +421,6 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 		btnModificar.addActionListener(actionListener);
 		btnEliminar.addActionListener(actionListener);
 		btnSalir.addActionListener(actionListener);
-	}
-
-	public JTextField getTextField_Cedula() {
-		return textField_Cedula;
-	}
-
-	public void setTextField_Cedula(JTextField textField_Cedula) {
-		this.textField_Cedula = textField_Cedula;
-	}
-
-	public JTextField getTextField_Nombre() {
-		return textField_Nombre;
-	}
-
-	public void setTextField_Nombre(JTextField textField_Nombre) {
-		this.textField_Nombre = textField_Nombre;
-	}
-
-	public JDateChooser getTextField_FechaN() {
-		return textField_FechaN;
-	}
-
-	public void setTextField_FechaN(JDateChooser textField_FechaN) {
-		this.textField_FechaN = textField_FechaN;
-	}
-
-	public JTextField getTextField_Email() {
-		return textField_Email;
-	}
-
-	public void setTextField_Email(JTextField textField_Email) {
-		this.textField_Email = textField_Email;
-	}
-
-	public JTextField getTextField_TlfCasa() {
-		return textField_TlfCasa;
-	}
-
-	public void setTextField_TlfCasa(JTextField textField_TlfCasa) {
-		this.textField_TlfCasa = textField_TlfCasa;
-	}
-
-	public JTextField getTextField_TlfCelular() {
-		return textField_TlfCelular;
-	}
-
-	public void setTextField_TlfCelular(JTextField textField_TlfCelular) {
-		this.textField_TlfCelular = textField_TlfCelular;
-	}
-
-	public JTextField getTextField_AlmaMater() {
-		return textField_AlmaMater;
-	}
-
-	public void setTextField_AlmaMater(JTextField textField_AlmaMater) {
-		this.textField_AlmaMater = textField_AlmaMater;
-	}
-
-	public JTextField getTextField_AnnoG() {
-		return textField_AnnoG;
-	}
-
-	public void setTextField_AnnoG(JTextField textField_AnnoG) {
-		this.textField_AnnoG = textField_AnnoG;
-	}
-
-	public JCheckBox getChckbxactualmenteEstudiando() {
-		return chckbxactualmenteEstudiando;
-	}
-
-	public void setChckbxactualmenteEstudiando(JCheckBox chckbxactualmenteEstudiando) {
-		this.chckbxactualmenteEstudiando = chckbxactualmenteEstudiando;
-	}
-
-	public JTable getTable() {
-		return table_Horario;
-	}
-
-	public void setTable(JTable table) {
-		this.table_Horario = table;
 	}
 
 	public void interfazRegistro() {
@@ -395,16 +434,13 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 		btnRegistrar.setEnabled(false);
 		btnRegistrar.setVisible(false);
 		textField_Cedula.setEditable(false);
-		textField_AlmaMater.setEditable(false);
-		textField_AnnoG.setEditable(false);
 	}
 	
 	public boolean chequearLlenos() { //Chequea y verifica que todos los campos estén actualmente llenos.
-		return (textField_AlmaMater.getText().equals("") ||	textField_Cedula.getText().equals("") || 
-				textField_Nombre.getText().equals("") || textField_FechaN.getDate().equals("") || 
-				textField_AlmaMater.getText().equals("") || textField_AnnoG.getText().equals("") ||
-				textField_Email.getText().equals("") || textField_TlfCasa.getText().equals("") ||
-				textField_TlfCelular.getText().equals(""));
+		return (textField_Cedula.getText().equals("") || textField_TlfCelular.getText().equals("") ||
+				textField_Nombre.getText().equals("") || textField_FechaN.getDate().toString().equals("") || 
+				textField_Email.getText().equals("") || textField_TlfCasa.getText().equals("")
+				);
 	}
 	
 	public void mostrarMensaje(String mensaje) {
@@ -438,35 +474,7 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 	public String getEspecialidad() {
 		return "Proximamente"; 
 	}
-	
-	public String getAlmaMater() {
-		return textField_AlmaMater.getText();
-	}
-	
-	public int getAnnoG() {
-		return Integer.parseInt(textField_AnnoG.getText());
-	}
-	
-	public boolean getEstudiando() {
-		return chckbxactualmenteEstudiando.isSelected();
-	}
-	
-	public String[] getHorarioMatu() {
-		String[] hor = {null,null,null,null,null};
-		for (int i=1;i<6;i++) {
-			hor[(i-1)] = table_Horario.getValueAt(i, 1).toString();
-		}
-		return hor;
-	}
-	
-	public String[] getHorarioVesper() {
-		String[] hor = {null,null,null,null,null};
-		for (int i=1;i<6;i++) {
-			hor[(i-1)] = table_Horario.getValueAt(i, 2).toString();
-		}
-		return hor;
-	}
-	
+
 	public void salir() {
 		setVisible(false);
 		dispose();
