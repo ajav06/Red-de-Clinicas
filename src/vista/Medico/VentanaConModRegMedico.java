@@ -56,6 +56,21 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 	private JTextField textField_TlfCasa;
 	private JPanel panel_1;
 	private JLabel lblEstado;
+	private JComboBox comboBox_LunesMat;
+	private JComboBox comboBox_MartesMat;
+	private JComboBox comboBox_MiercolesMat;
+	private JComboBox comboBox_JuevesMat;
+	private JComboBox comboBox_ViernesMat;
+	private JComboBox comboBox_LunesVesp;
+	private JComboBox comboBox_MartesVesp;
+	private JComboBox comboBox_MiercolesVesp;
+	private JComboBox comboBox_JuevesVesp;
+	private JComboBox comboBox_ViernesVesp;
+	private JComboBox comboBox_Estado;
+	private JComboBox cB_Especialidad;
+	private JComboBox comboBox_edoCivil;
+	private JTextPane textPane_Direccion;
+	
 
 	/**
 	 * Create the application.
@@ -146,25 +161,25 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 		
 		JLabel lblVespertino = new JLabel("Vespertino:");
 		
-		JComboBox comboBox_LunesMat = new JComboBox();
+		comboBox_LunesMat = new JComboBox();
 		
-		JComboBox comboBox_MartesMat = new JComboBox();
+		comboBox_MartesMat = new JComboBox();
 		
-		JComboBox comboBox_MiercolesMat = new JComboBox();
+		comboBox_MiercolesMat = new JComboBox();
 		
-		JComboBox comboBox_JuevesMat = new JComboBox();
+		comboBox_JuevesMat = new JComboBox();
 		
-		JComboBox comboBox_ViernesMat = new JComboBox();
+		comboBox_ViernesMat = new JComboBox();
 		
-		JComboBox comboBox_LunesVesp = new JComboBox();
+		comboBox_LunesVesp = new JComboBox();
 		
-		JComboBox comboBox_MartesVesp = new JComboBox();
+		comboBox_MartesVesp = new JComboBox();
 		
-		JComboBox comboBox_MiercolesVesp = new JComboBox();
+		comboBox_MiercolesVesp = new JComboBox();
 		
-		JComboBox comboBox_JuevesVesp = new JComboBox();
+		comboBox_JuevesVesp = new JComboBox();
 		
-		JComboBox comboBox_ViernesVesp = new JComboBox();
+		comboBox_ViernesVesp = new JComboBox();
 		
 		JLabel lblLunMarMier = new JLabel("Lun                    Mar                     Mier                     Jue                         Vie");
 		lblLunMarMier.setHorizontalAlignment(SwingConstants.LEFT);
@@ -233,7 +248,8 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 		
 		lblEstado = new JLabel("Estado:");
 		
-		JComboBox comboBox_Estado = new JComboBox();
+		comboBox_Estado = new JComboBox();
+		comboBox_Estado.setModel(new DefaultComboBoxModel(new String[] {"Amazonas", "Anzoátegui", "Apure", "Aragua", "Barinas", "Bolívar", "Carabobo", "Cojedes", "Delta Amacuro", "Distrito Capital", "Falcón", "Guárico", "Lara", "Mérida", "Miranda", "Monagas", "Nueva Esparta", "Portuguesa", "Sucre", "Táchira", "Trujillo", "Vargas", "Yaracuy", "Zulia"}));
 		
 		JLabel lblDireccin = new JLabel("Dirección:");
 		
@@ -266,7 +282,7 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 					.addContainerGap())
 		);
 		
-		JTextPane textPane_Direccion = new JTextPane();
+		textPane_Direccion = new JTextPane();
 		scrollPane.setViewportView(textPane_Direccion);
 		panel_1.setLayout(gl_panel_1);
 		
@@ -291,7 +307,7 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 		
 		lblEspecialidad = new JLabel("Especialidad:");
 		
-		JComboBox cB_Especialidad = new JComboBox();
+		cB_Especialidad = new JComboBox();
 		cB_Especialidad.setModel(new DefaultComboBoxModel(new String[] {"Urólogo", "Neurólogo", "Perro Loco"}));
 		
 		JButton btnEditarEspecialidades = new JButton("Consultar Especialidades");
@@ -310,6 +326,11 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 		
 		textField_TlfCasa = new JTextField();
 		textField_TlfCasa.setColumns(10);
+		
+		JLabel lblEdoCivil = new JLabel("Edo. Civil:");
+		
+		comboBox_edoCivil = new JComboBox();
+		comboBox_edoCivil.setModel(new DefaultComboBoxModel(new String[] {"Soltero/a", "Comprometido/a", "Casado/a", "Divorciado/a", "Viudo/a"}));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -317,42 +338,47 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 					.addContainerGap()
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(lblCedula)
-							.addGap(18)
-							.addComponent(textField_Cedula, GroupLayout.PREFERRED_SIZE, 205, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-								.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel.createSequentialGroup()
 									.addComponent(lblNmeroCelular)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_TlfCelular))
-								.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+									.addComponent(textField_TlfCelular, 210, 210, 210))
+								.addGroup(gl_panel.createSequentialGroup()
 									.addComponent(lblEmail)
 									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(textField_Email))
-								.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+									.addComponent(textField_Email, 238, 238, 238))
+								.addGroup(gl_panel.createSequentialGroup()
 									.addComponent(lblFechaDeNacimiento)
 									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(textField_FechaN, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-								.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
-									.addComponent(lblNombre)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_Nombre, GroupLayout.PREFERRED_SIZE, 205, GroupLayout.PREFERRED_SIZE)))
-							.addGap(23)
+									.addComponent(textField_FechaN, GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)))
+							.addGap(23))
+						.addGroup(gl_panel.createSequentialGroup()
 							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-									.addComponent(lblTlfCasa)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(textField_TlfCasa, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE))
-								.addComponent(btnEditarEspecialidades, GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
-								.addGroup(gl_panel.createSequentialGroup()
-									.addComponent(lblApellido)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_Apellido))
-								.addGroup(gl_panel.createSequentialGroup()
-									.addComponent(lblEspecialidad)
-									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(cB_Especialidad, GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE)))))
+								.addComponent(lblCedula)
+								.addComponent(lblApellido))
+							.addGap(10)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addComponent(textField_Apellido, 247, 247, 247)
+								.addComponent(textField_Cedula, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE))
+							.addGap(7)))
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(lblNombre)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(textField_Nombre, GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
+						.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+							.addComponent(lblTlfCasa)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(textField_TlfCasa, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnEditarEspecialidades, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(lblEspecialidad)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(cB_Especialidad, 0, 215, Short.MAX_VALUE))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(lblEdoCivil)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(comboBox_edoCivil, 0, 241, Short.MAX_VALUE)))
 					.addContainerGap())
 		);
 		gl_panel.setVerticalGroup(
@@ -361,14 +387,15 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 					.addContainerGap()
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblCedula)
-						.addComponent(textField_Cedula, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textField_Cedula, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNombre)
+						.addComponent(textField_Nombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
-					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-							.addComponent(textField_Nombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addComponent(lblApellido)
-							.addComponent(textField_Apellido, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addComponent(lblNombre))
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblApellido)
+						.addComponent(textField_Apellido, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblEdoCivil)
+						.addComponent(comboBox_edoCivil, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
@@ -382,7 +409,7 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 						.addComponent(btnEditarEspecialidades, 0, 0, Short.MAX_VALUE)
 						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 							.addComponent(lblEmail)
-							.addComponent(textField_Email)))
+							.addComponent(textField_Email, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 					.addGap(16)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNmeroCelular)
@@ -407,13 +434,43 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 		textField_TlfCelular.setText(null);
 	}
 	
-	public void llenarCampos(String cedula, String nombre, Date fechan, String email, String tlfcasa, String tlfcelu, String codespec, String almamater, int annogrado, String[] horariomat, String[] horariovesp, boolean estudia) {
-		textField_Cedula.setText(cedula);
-		textField_Nombre.setText(nombre);
-		textField_FechaN.setDate(fechan);
+	public void llenarCampos(String ced, String cod_espec, String nombres, String apellidos, Date fecha_n,
+			char edo_c, String estado, String direccion, String tlf_casa, String tlf_movil, String email) {
+		textField_Cedula.setText(ced);
+		cB_Especialidad.setSelectedIndex(Integer.parseInt(cod_espec));
+		textField_Nombre.setText(nombres);
+		textField_Apellido.setText(apellidos);
+		textField_FechaN.setDate(fecha_n);
+		cargarEdoCivil(edo_c);
+		comboBox_Estado.setSelectedItem(estado);
+		textPane_Direccion.setText(direccion);
+		textField_TlfCasa.setText(tlf_casa);
+		textField_TlfCelular.setText(tlf_movil);
 		textField_Email.setText(email);
-		textField_TlfCasa.setText(tlfcasa);
-		textField_TlfCelular.setText(tlfcelu);
+	}
+	
+	public void cargarEdoCivil(char edo_c) {
+		switch (edo_c) {
+		case 'S':
+			comboBox_edoCivil.setSelectedIndex(0);
+			break;
+			
+		case 'C':
+			comboBox_edoCivil.setSelectedIndex(1);
+			break;
+			
+		case 'A':
+			comboBox_edoCivil.setSelectedIndex(2);
+			break;
+			
+		case 'D':
+			comboBox_edoCivil.setSelectedIndex(3);
+			break;
+			
+		case 'V':
+			comboBox_edoCivil.setSelectedIndex(4);
+			break;
+		}
 	}
 	
 	public void addListener(ActionListener actionListener) {

@@ -19,7 +19,7 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 		this.vtnMedico.setLocationRelativeTo(null);
 		this.vtnMedico.setVisible(true);
 		this.vtnMedico.addListener(this);
-//		this.vtnMedico.llenarCampos(medico.getCedula(), medico.getNombre(),medico.getFechaNacimiento(),medico.getEmail(),medico.getTlfcasa(),medico.getTlfcelular(),medico.getCodespec(),medico.getAlmamater(),medico.getAnnogrado(),medico.getHorariomat(),medico.getHorariovesp(),medico.isEstudia());
+		this.vtnMedico.llenarCampos(medico.getCedula(),medico.getCod_especialidad(),medico.getNombre(),medico.getApellido(),medico.getFechaNacimiento(),medico.getEdo_civil(),medico.getEstado(),medico.getDireccion(),medico.getTlf_casa(),medico.getNroTelefonico(),medico.getEmail());
 
 		if (accion==1) {
 			this.vtnMedico.interfazRegistro();

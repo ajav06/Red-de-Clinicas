@@ -77,11 +77,11 @@ public class ControladorVtnListMedicos implements ActionListener {
 	
 	private void consultarMedicos() {
 		try {
-			if ("".equals(vtnListMed.getCedula())) {
-				vtnListMed.mostrarMensaje("Introduzca un número de cédula para realizar la búsqueda.");
+			JTable tabla = vtnListMed.getTable_Medicos();
+			int fila = tabla.getSelectedRow();
+			if (fila == -1) {
+				vtnListMed.mostrarMensaje("Seleccione un médico del listado para consultarlo.");
 			} else {
-				JTable tabla = vtnListMed.getTable_Medicos();
-				int fila = tabla.getSelectedRow();
 				String cedula = String.valueOf(tabla.getModel().getValueAt(fila, 0));
 				MedicoBD medicoBD = new MedicoBD();
 				medico = medicoBD.buscarMedico(cedula);
