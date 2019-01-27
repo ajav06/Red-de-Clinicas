@@ -26,7 +26,7 @@ public class MedicoBD extends ConexionBD{
 				"'"+medico.getCedula()+"','"+medico.getCod_especialidad()+"','"+medico.getNombre()+
 				"','"+medico.getApellido()+"','"+formatter.format(medico.getFechaNacimiento())+"','"+medico.getFechaNacimiento()+
 				"','"+medico.getEdo_civil()+"','"+medico.getEstado()+medico.getDireccion()+
-				"','"+medico.getTlf_casa()+"','"+Integer.toString(medico.getNroTelefonico())+
+				"','"+medico.getTlf_casa()+"','"+medico.getNroTelefonico()+
 				"','"+medico.getEmail()+"'");
 	}
 	
@@ -45,7 +45,7 @@ public class MedicoBD extends ConexionBD{
 				String edo = resultSet.getString("estado");
 				String dir = resultSet.getString("direccion");
 				String tlfcasa = resultSet.getString("tlf_casa");
-				int tlfcelu = resultSet.getInt("tlf_movil");
+				String tlfcelu = resultSet.getString("tlf_movil");
 				String email = resultSet.getString("email");
 				medico = new Medico(cedula, codespec, nombre, apellido, fechan, edoc, edo, dir, tlfcasa, tlfcelu, email);
 				medicos.add(medico);
@@ -80,7 +80,7 @@ public class MedicoBD extends ConexionBD{
 				String edo = resultSet.getString("estado");
 				String dir = resultSet.getString("direccion");
 				String tlfcasa = resultSet.getString("tlf_casa");
-				int tlfcelu = resultSet.getInt("tlf_movil");
+				String tlfcelu = resultSet.getString("tlf_movil");
 				String email = resultSet.getString("email");
 				medico = new Medico(cedula, codespec, nombre, apellido, fechan, edoc, edo, dir, tlfcasa, tlfcelu, email);
 			}
@@ -110,7 +110,7 @@ public class MedicoBD extends ConexionBD{
 				String edo = resultSet.getString("estado");
 				String dir = resultSet.getString("direccion");
 				String tlfcasa = resultSet.getString("tlf_casa");
-				int tlfcelu = resultSet.getInt("tlf_movil");
+				String tlfcelu = resultSet.getString("tlf_movil");
 				String email = resultSet.getString("email");
 				medico = new Medico(cedula, codespec, nombre, apellido, fechan, edoc, edo, dir, tlfcasa, tlfcelu, email);
 				medicos.add(medico);

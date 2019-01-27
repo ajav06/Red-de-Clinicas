@@ -22,6 +22,7 @@ public class ControladorVtnListMedicos implements ActionListener {
 		this.vtnListMed = new VentanaListaMedicos();
 		this.vtnListMed.setLocationRelativeTo(null);
 		this.vtnListMed.setVisible(true);
+		cargarDatosMedico();
 		this.vtnListMed.addListener(this);
 		cargarDatosMedico();
 	}
