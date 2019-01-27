@@ -5,25 +5,35 @@ public class Clinica {
 	private String codigo;
 	private String nombre;
 	private String  estado;
-	private String ciudad;
-	private String Ubicacion;
+	private String direccion;
 	private String telefono;
 	private String correo;
-	public Clinica(String codigo, String nombre, String estado, String ciudad, String ubicacion,String telefono,String correo)
+	
+
+
+	public Clinica(String codigo, String nombre, String estado, String direccion,String telefono,String correo)
+	{
+		super();
+		this.codigo=codigo;
+		this.nombre=nombre;
+		this.estado=estado;
+		this.direccion=direccion;
+		this.telefono=telefono;
+		this.correo=correo;
+		
+	}
+	public Clinica()
 	{
 		super();
 	}
-	
+
 	public String getCorreo() {
 		return correo;
 	}
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-	public Clinica()
-	{
-		super();
-	}
+	
 	public String getCodigo() {
 		return codigo;
 	}
@@ -42,19 +52,14 @@ public class Clinica {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public String getCiudad() {
-		return ciudad;
+	public String getDireccion() {
+		return direccion;
 	}
-	public void setCiudad(String ciudad) {
-		this.ciudad = ciudad;
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 	
-	public String getUbicacion() {
-		return Ubicacion;
-	}
-	public void setUbicacion(String ubicacion) {
-		Ubicacion = ubicacion;
-	}
+	
 	public String getTelefono() {
 		return telefono;
 	}

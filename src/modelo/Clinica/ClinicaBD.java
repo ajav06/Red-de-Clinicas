@@ -16,25 +16,23 @@ public class ClinicaBD extends ConexionBD
 	
 	public void registrarClinica(Clinica clinica) 
 	{
-		this.crearRegistro("clinica", "codigo,nombres,estado,ciudad,ubicacion,telefono,correo", "'"+clinica.getCodigo()
-				+"','"+clinica.getNombre()+"','"+clinica.getEstado()+"','"+clinica.getCiudad()+"','"+clinica.getUbicacion()+"','"+clinica.getTelefono()+"',"
-				+clinica.getCorreo());
+		this.crearRegistro("Clinica", "codigo,nombre,estado,direccion,telefono,email", "'"+clinica.getCodigo()
+				+"','"+clinica.getNombre()+"','"+clinica.getEstado()+"','"+clinica.getDireccion()+"','"+clinica.getTelefono()+","+clinica.getCorreo());
 	}
 	
 	public List<Clinica> consultarClinicas() throws SQLException {
 		List<Clinica> Clinicas = new ArrayList<Clinica>();
-		resultSet = this.consultarTabla("clinica", " WHERE estatus='a' ");
+		resultSet = this.consultarTabla("Clinica", " WHERE estatus='a' ");
 		try {
 			while (resultSet.next()) {
 				String codigo = resultSet.getString("codigo");
-				String nombre = resultSet.getString("nombres");
-				String estado = resultSet.getString("estados");
-				String ciudad = resultSet.getString("ciudad");
-				String ubicacion = resultSet.getString("ubicacion");
+				String nombre = resultSet.getString("nombre");
+				String estado = resultSet.getString("estado");
+				String direccion = resultSet.getString("direccion");
 				String telefono = resultSet.getString("telefono");
-				String correo = resultSet.getString("nrohistorial");
-				Clinica clinica = new Clinica(codigo,nombre,estado,ciudad,ubicacion,telefono,correo);
-				Clinicas.add(clinica);
+				String correo = resultSet.getString("e-mail");
+				Clinica Clinica = new Clinica(codigo,nombre,estado,direccion,telefono,correo);
+				Clinicas.add(Clinica);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -44,26 +42,24 @@ public class ClinicaBD extends ConexionBD
 	}
 	
 	public void actualizarClinica(Clinica clinica) {
-		this.actuRegistro("clinica", "nombres='"+clinica.getNombre()+"',estado='"+clinica.getEstado()+"',ciudad='"+
-				clinica.getCiudad()+"',ubicacion='"+clinica.getUbicacion()+"',telefono='"+
-				clinica.getTelefono()+"',correo="+clinica.getCorreo(),"codigo", "'"+clinica.getCodigo()+"'");
+		this.actuRegistro("Clinica", "nombre='"+clinica.getNombre()+"',estado='"+clinica.getEstado()+"',direccion='"+
+				clinica.getDireccion()+"',telefono='"+clinica.getTelefono()+"',e-mail="+clinica.getCorreo(),"codigo", "'"+clinica.getCodigo()+"'");
 	}
 	
 	public Clinica buscarClinica(String cod) throws SQLException 
 	{
 		Clinica clinica = null;
-		resultSet = this.buscarRegistro("clinica", "codigo", "'"+cod+"'");
+		resultSet = this.buscarRegistro("Clinica", "codigo", "'"+cod+"'");
 		
 		try {
 			while (resultSet.next()) {
 				String codigo = resultSet.getString("codigo");
 				String nombre = resultSet.getString("nombres");
 				String estado = resultSet.getString("estado");
-				String ciudad = resultSet.getString("ciudad");
-				String ubicacion = resultSet.getString("ubicacion");
+				String direccion = resultSet.getString("direccion");
 				String telefono = resultSet.getString("telefono");
-				String correo = resultSet.getString("correo");
-				clinica = new Clinica(codigo,nombre, estado,ciudad,ubicacion,telefono,correo);
+				String correo = resultSet.getString("email");
+				clinica = new Clinica(codigo,nombre, estado,direccion,telefono,correo);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -72,22 +68,21 @@ public class ClinicaBD extends ConexionBD
 		return clinica;
 	}
 	public void eliminarClinica(String cod) {
-		this.elimLogica("clinica", "codigo",  "'"+cod+"'");
+		this.elimLogica("Clinica", "codigo",  "'"+cod+"'");
 	}
 	
 	public List<Clinica> consultarFiltrarClinicas(String filtro) throws SQLException {
 		List<Clinica> clinicas = new ArrayList<Clinica>();
-		resultSet = this.consultarTabla("clinica", " WHERE "+filtro);
+		resultSet = this.consultarTabla("Clinica", " WHERE "+filtro);
 		try {
 			while (resultSet.next()) {
 				String codigo = resultSet.getString("codido");
 				String nombre = resultSet.getString("nombre");
 				String estado = resultSet.getString("estado");
-				String ciudad = resultSet.getString("ciudad");
-				String ubicacion = resultSet.getString("ubicacion");
+				String direccion = resultSet.getString("direccion");
 				String telefono = resultSet.getString("telefono");
-				String correo = resultSet.getString("correo");
-				Clinica clinica = new Clinica(codigo,nombre,estado,ciudad,ubicacion,telefono,correo);
+				String correo = resultSet.getString("email");
+				Clinica clinica = new Clinica(codigo,nombre,estado,direccion,telefono,correo);
 				clinicas.add(clinica);
 			}
 		} catch (SQLException e) {
