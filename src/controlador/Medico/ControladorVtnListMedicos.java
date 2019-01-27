@@ -24,7 +24,6 @@ public class ControladorVtnListMedicos implements ActionListener {
 		this.vtnListMed.setVisible(true);
 		cargarDatosMedico();
 		this.vtnListMed.addListener(this);
-		cargarDatosMedico();
 	}
 	
 	@Override
@@ -45,7 +44,6 @@ public class ControladorVtnListMedicos implements ActionListener {
 	}
 	
 	private void cargarDatosMedico() {
-		vtnListMed.mostrarMensaje("yo sirvo sabes?");
 		try{
 			MedicoBD medicoBD = new MedicoBD();
 			List<Medico> medicos = medicoBD.consultarMedicos();
@@ -63,8 +61,13 @@ public class ControladorVtnListMedicos implements ActionListener {
 				MedicoBD medicoBD = new MedicoBD();
 				List<Medico> medicos = new ArrayList<Medico>();
 				medico = medicoBD.buscarMedico(vtnListMed.getCedula());
-				medicos.add(medico);
-				this.vtnListMed.setResultados(new VentanaMedicoModeloTabla(medicos));
+				if (medico.equals(null)) {
+					this.vtnListMed.mostrarMensaje("Médico no encontrado.");
+					cargarDatosMedico();
+				} else {
+					medicos.add(medico);
+					this.vtnListMed.setResultados(new VentanaMedicoModeloTabla(medicos));
+				}
 			}
 		} catch (Exception e) {
 			vtnListMed.mostrarMensaje(e.getMessage());
