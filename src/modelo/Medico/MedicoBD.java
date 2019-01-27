@@ -67,7 +67,7 @@ public class MedicoBD extends ConexionBD{
 	
 	public Medico buscarMedico(String ced) throws SQLException {
 		Medico medico = null;
-		resultSet = this.buscarRegistro("medico", "cedula", "'"+ced+"'");
+		resultSet = this.buscarRegistro("Medico", "cedula", "'"+ced+"'");
 		
 		try {
 			while (resultSet.next()) {
