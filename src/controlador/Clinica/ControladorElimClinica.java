@@ -1,9 +1,10 @@
-package contrilador.Clinica;
+package controlador.Clinica;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import modelo.Clinica;
-import modelo.ClinicaBD;
+
+import modelo.Clinica.Clinica;
+import modelo.Clinica.ClinicaBD;
 import vista.Clinica.VentanaEliminarClinica;
 
 public class ControladorElimClinica implements ActionListener

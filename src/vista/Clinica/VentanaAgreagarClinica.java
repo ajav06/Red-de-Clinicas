@@ -26,12 +26,10 @@ import java.awt.event.ActionEvent;
 
 public class VentanaAgreagarClinica extends javax.swing.JFrame {
 
-	private JFrame frame;
 	private JTextField textFieldNomre;
 	private JTextField textFieldCodigo;
 	private JTextField textFieldEstado;
-	private JTextField textFieldCiudad;
-	private JTextField textFieldUbicacion;
+	private JTextField textFieldDireccion;
 	private JTextField textFieldTelefono;
 	private JTextField textFieldCorreo;
 	private JButton btnCancelar;
@@ -50,7 +48,7 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 			public void run() {
 				try {
 					VentanaAgreagarClinica window = new VentanaAgreagarClinica();
-					window.frame.setVisible(true);
+					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -66,9 +64,8 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 498, 496);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 498, 459);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel_2 = new JPanel();
 		
@@ -80,7 +77,7 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 		JPanel panDC = new JPanel();
 		panDC.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Datos de la Clinica", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		
-		JButton btnRegistrar = new JButton("Registrar");
+		btnRegistrar = new JButton("Registrar");
 		btnRegistrar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		btnRegistrar.setBackground(Color.GREEN);
 		btnRegistrar.addActionListener(new ActionListener() {
@@ -88,7 +85,7 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 			}
 		});
 		
-		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		btnCancelar.setBackground(Color.RED);
 		btnCancelar.setForeground(Color.BLACK);
@@ -97,19 +94,19 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-					.addContainerGap(142, Short.MAX_VALUE)
+					.addContainerGap(102, Short.MAX_VALUE)
 					.addComponent(lblEnunciado, GroupLayout.PREFERRED_SIZE, 264, GroupLayout.PREFERRED_SIZE)
 					.addGap(116))
 				.addGroup(gl_panel_2.createSequentialGroup()
 					.addGap(28)
 					.addComponent(panDC, GroupLayout.PREFERRED_SIZE, 423, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(71, Short.MAX_VALUE))
+					.addContainerGap(31, Short.MAX_VALUE))
 				.addGroup(gl_panel_2.createSequentialGroup()
 					.addGap(127)
 					.addComponent(btnRegistrar)
-					.addGap(77)
+					.addGap(74)
 					.addComponent(btnCancelar)
-					.addContainerGap(116, Short.MAX_VALUE))
+					.addContainerGap(115, Short.MAX_VALUE))
 		);
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
@@ -117,12 +114,12 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 					.addGap(33)
 					.addComponent(lblEnunciado, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panDC, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE)
+					.addComponent(panDC, GroupLayout.PREFERRED_SIZE, 296, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnRegistrar)
 						.addComponent(btnCancelar))
-					.addContainerGap(28, Short.MAX_VALUE))
+					.addContainerGap(58, Short.MAX_VALUE))
 		);
 		
 		JLabel lblNombre = new JLabel("Nombre :");
@@ -131,9 +128,7 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 		
 		JLabel lblEstado = new JLabel("Estado :");
 		
-		JLabel lblCiudad = new JLabel("Ciudad :");
-		
-		JLabel lblUbicacion = new JLabel("Ubicacion :");
+		JLabel lblDireccion = new JLabel("Direccion :");
 		
 		JLabel lblTelefono = new JLabel("Telefono :");
 		
@@ -148,11 +143,8 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 		textFieldEstado = new JTextField();
 		textFieldEstado.setColumns(10);
 		
-		textFieldCiudad = new JTextField();
-		textFieldCiudad.setColumns(10);
-		
-		textFieldUbicacion = new JTextField();
-		textFieldUbicacion.setColumns(10);
+		textFieldDireccion = new JTextField();
+		textFieldDireccion.setColumns(10);
 		
 		textFieldTelefono = new JTextField();
 		textFieldTelefono.setColumns(10);
@@ -167,36 +159,39 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 			gl_panDC.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panDC.createSequentialGroup()
 					.addGap(31)
-					.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING, false)
+					.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panDC.createSequentialGroup()
 							.addComponent(lblCorreo)
 							.addGap(18)
-							.addComponent(textFieldCorreo))
-						.addGroup(gl_panDC.createSequentialGroup()
-							.addComponent(lblCiudad)
-							.addGap(18)
-							.addComponent(textFieldCiudad))
-						.addGroup(gl_panDC.createSequentialGroup()
-							.addComponent(lblEstado)
-							.addGap(18)
-							.addComponent(textFieldEstado))
-						.addGroup(gl_panDC.createSequentialGroup()
-							.addComponent(lblCodigo)
-							.addGap(18)
-							.addComponent(textFieldCodigo, GroupLayout.PREFERRED_SIZE, 266, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panDC.createSequentialGroup()
-							.addComponent(lblNombre)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(textFieldNomre, GroupLayout.PREFERRED_SIZE, 266, GroupLayout.PREFERRED_SIZE))
-						.addGroup(Alignment.TRAILING, gl_panDC.createSequentialGroup()
-							.addComponent(lblTelefono)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(textFieldTelefono))
-						.addGroup(gl_panDC.createSequentialGroup()
-							.addComponent(lblUbicacion)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(textFieldUbicacion, GroupLayout.PREFERRED_SIZE, 262, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(97, Short.MAX_VALUE))
+							.addComponent(textFieldCorreo, 265, 265, 265))
+						.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_panDC.createSequentialGroup()
+								.addComponent(lblTelefono)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(textFieldTelefono, GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))
+							.addGroup(gl_panDC.createSequentialGroup()
+								.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING)
+									.addGroup(Alignment.TRAILING, gl_panDC.createParallelGroup(Alignment.LEADING)
+										.addGroup(Alignment.TRAILING, gl_panDC.createParallelGroup(Alignment.LEADING)
+											.addGroup(Alignment.TRAILING, gl_panDC.createSequentialGroup()
+												.addComponent(lblCodigo)
+												.addGap(18))
+											.addGroup(gl_panDC.createSequentialGroup()
+												.addComponent(lblNombre)
+												.addGap(7)))
+										.addGroup(gl_panDC.createSequentialGroup()
+											.addComponent(lblEstado)
+											.addGap(12)))
+									.addGroup(gl_panDC.createSequentialGroup()
+										.addComponent(lblDireccion)
+										.addGap(7)))
+								.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING)
+									.addComponent(textFieldDireccion, GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+									.addGroup(Alignment.TRAILING, gl_panDC.createParallelGroup(Alignment.LEADING, false)
+										.addComponent(textFieldEstado)
+										.addComponent(textFieldNomre)
+										.addComponent(textFieldCodigo, GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE))))))
+					.addGap(62))
 		);
 		gl_panDC.setVerticalGroup(
 			gl_panDC.createParallelGroup(Alignment.LEADING)
@@ -215,25 +210,21 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 						.addComponent(textFieldEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblCiudad)
-						.addComponent(textFieldCiudad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblDireccion)
+						.addComponent(textFieldDireccion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panDC.createSequentialGroup()
-							.addComponent(lblUbicacion)
-							.addGap(18)
-							.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblTelefono)
-								.addComponent(textFieldTelefono, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
-							.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblCorreo)
-								.addComponent(textFieldCorreo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-						.addComponent(textFieldUbicacion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(lblTelefono)
+						.addComponent(textFieldTelefono, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(14)
+					.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblCorreo)
+						.addComponent(textFieldCorreo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(44))
 		);
 		panDC.setLayout(gl_panDC);
 		panel_2.setLayout(gl_panel_2);
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
@@ -242,15 +233,14 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
 		);
-		frame.getContentPane().setLayout(groupLayout);
+		getContentPane().setLayout(groupLayout);
 	}
 	public void blanquearCampos() {
 		
 		textFieldCodigo.setText(null);
 		textFieldNomre.setText(null);
 		textFieldEstado.setText(null);
-		textFieldCiudad.setText(null);
-		textFieldUbicacion.setText(null);
+		textFieldDireccion.setText(null);
 		textFieldCorreo.setText(null);
 		textFieldTelefono.setText(null);
 	
@@ -273,13 +263,11 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 		return textFieldEstado.getText();
 	}
 	
-	public String getCiudad() {
-		return textFieldCiudad.getText();
+	public String getDireccion() {
+		return textFieldDireccion.getText();
 	}
 	
-	public String getUbicacion() {
-		return textFieldUbicacion.getText();
-	}
+	
 	
 	public String getTelefono() {
 		return textFieldTelefono.getText();

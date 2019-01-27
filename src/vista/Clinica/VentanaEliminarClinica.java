@@ -20,7 +20,6 @@ import javax.swing.JButton;
 
 public class VentanaEliminarClinica extends javax.swing.JFrame {
 
-	private JFrame frame;
 	private JTextField textFieldCodigo;
 	private JTextField textFieldNombre;
 	private JTextField textFieldEstado;
@@ -44,7 +43,7 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 			public void run() {
 				try {
 					VentanaEliminarClinica window = new VentanaEliminarClinica();
-					window.frame.setVisible(true);
+					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -61,9 +60,8 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 452);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 452);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
 		
@@ -84,7 +82,7 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 		btnCancelar.setBackground(Color.RED);
 		btnCancelar.setForeground(Color.BLACK);
 		
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -215,7 +213,7 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 					.addContainerGap(58, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
-		frame.getContentPane().setLayout(groupLayout);
+		getContentPane().setLayout(groupLayout);
 	}
 	public void blanquearCampos() {
 		textFieldCodigo.setText(null);

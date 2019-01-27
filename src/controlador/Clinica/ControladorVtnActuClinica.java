@@ -1,8 +1,8 @@
-package contrilador.Clinica;
+package controlador.Clinica;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import modelo.Clinica;
-import modelo.ClinicaBD;
+import modelo.Clinica.Clinica;
+import modelo.Clinica.ClinicaBD;
 import vista.Clinica.VentanaActualizarClinica;
 
 public class ControladorVtnActuClinica implements ActionListener
@@ -13,8 +13,8 @@ public class ControladorVtnActuClinica implements ActionListener
 	{
 		super();
 		this.vtnActuCli = new VentanaActualizarClinica();
-		//this.vtnActuCli.setLocationRelativeTo(null);
-		//this.vtnActuCli.setVisible(true);
+		this.vtnActuCli.setLocationRelativeTo(null);
+		this.vtnActuCli.setVisible(true);
 		this.vtnActuCli.addListener(this);
 		this.vtnActuCli.llenarCampos(clinica.getCodigo(), clinica.getNombre(), clinica.getEstado(), 
 				clinica.getCiudad(), clinica.getUbicacion(), clinica.getTelefono(), 
@@ -44,7 +44,8 @@ public class ControladorVtnActuClinica implements ActionListener
 	    		ClinicaBD clinicaBD = new ClinicaBD();
 		    	Clinica clinica = new Clinica(vtnActuCli.getCodigo(),vtnActuCli.getNombre(),
 		    		vtnActuCli.getEstado(),vtnActuCli.getCiudad(),vtnActuCli.getUbicacion(),
-		    		vtnActuCli.getTelefono(),vtnActuCli.getCorreo());		    
+		    		vtnActuCli.getTelefono(),vtnActuCli.getCorreo());	
+		    	clinicaBD.actualizarClinica(clinica);
 		       vtnActuCli.mostrarMensaje("El Paciente fue incluido con exito");
 		    	vtnActuCli.blanquearCampos();
 	    	}

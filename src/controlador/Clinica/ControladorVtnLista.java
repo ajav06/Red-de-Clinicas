@@ -1,29 +1,28 @@
-package contrilador.Clinica;
+package controlador.Clinica;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import vista.Clinica.VentanaClinicaModeloTabla;
+import controlador.Clinica.ControladorVtnActuClinica;
+import controlador.Clinica.ControladorVtnAgreClinica;
 
-import controlador.Paciente.ControladorVtnActuPaciente;
-import controlador.Paciente.ControladorVtnAgrePaciente;
-import controlador.Paciente.ControladorVtnElimPaciente;
-
-import vista.Clinica.VentanaListaClinicas;
-import modelo.Clinica;
-import modelo.ClinicaBD;;
+import vista.Clinica.VentanaListaClinica;
+import modelo.Clinica.Clinica;
+import modelo.Clinica.ClinicaBD;
 public class ControladorVtnLista implements ActionListener
 {
-	private VentanaListaClinicas vtnListCli;
+	private VentanaListaClinica vtnListCli;
 	Clinica clinica;
 	
 	public ControladorVtnLista() throws SQLException {
 		super();
-		this.vtnListCli = new VentanaListaClinicas();
+		this.vtnListCli = new VentanaListaClinica();
 		this.vtnListCli.setLocationRelativeTo(null);
 		this.vtnListCli.setVisible(true);
 		this.vtnListCli.addListener(this);
-		cargarDatosPacientes();
+		cargarDatosClinicas();
 	}
 	
 	@Override
@@ -32,14 +31,14 @@ public class ControladorVtnLista implements ActionListener
 		if (actionCommand.equals("...")) {
 			buscarClinica();
 		}		
-		else if (actionCommand.equals("Actualizar")) {
-			actualizarPaciente();
+		/*else if (actionCommand.equals("Actualizar")) {
+			actualizarClinica();
 		}
 		else if (actionCommand.equals("Eliminar")) {
-			eliminarPaciente();
-		}
+			new ControladorVtnActuClinica();
+		}*/
 		else if (actionCommand.equals("Incluir")) {
-			new ControladorVtnAgrePaciente();
+			new ControladorVtnAgreClinica();
 		}
 	}
 	
@@ -103,10 +102,10 @@ public class ControladorVtnLista implements ActionListener
 		}
 	}
 	
-	public void cargarDatosPacientes() throws SQLException {
+	public void cargarDatosClinicas() throws SQLException {
 		ClinicaBD clinicaBD = new ClinicaBD();
-		List<Clinica> pacientes = clinicaBD.consultarClinicas();
-	//	this.vtnListCli.setResultados(new VentanaPacienteModeloTabla(pacientes));
+		List<Clinica> clinicas = clinicaBD.consultarClinicas();
+	this.vtnListCli.setResultados(new VentanaClinicaModeloTabla(clinicas));
 	}
 
 }
