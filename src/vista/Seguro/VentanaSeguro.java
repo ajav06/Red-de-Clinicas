@@ -223,8 +223,8 @@ public class VentanaSeguro extends javax.swing.JFrame{
 		
 	}
 	
-	public int getCodigo() {
-		return Integer.parseInt(this.textField_Codigo.getText());
+	public String getCodigo() {
+		return this.textField_Codigo.getText();
 	}
 	
 	public String getNombre() {
