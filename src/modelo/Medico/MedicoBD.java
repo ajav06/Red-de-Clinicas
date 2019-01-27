@@ -19,30 +19,34 @@ public class MedicoBD extends ConexionBD{
 	}
 	
 	public void registrarMedico(Medico medico) {
-		this.crearRegistro("medico", "cedula,nombre,apellido,fechan,email,tlfcasa,tlfcelu,codespec,almamater,annogrado,horariomat,horariovesp,estudia,estatus", "'"+medico.getCedula()
-		+"','"+medico.getNombre()+"','"+medico.getApellido()+"','"+formatter.format(medico.getFechaNacimiento())+"','"+medico.getEmail()+"','"+medico.getTlfcasa()+"','"+medico.getTlfcelular()+medico.getCodespec()+"','"+medico.getAlmamater()+"','"+Integer.toString(medico.getAnnogrado())+"','"+generarArrayHorarios(medico)+"','"+String.valueOf(medico.isEstudia())+"','a'");
+		this.crearRegistro("Medico", 
+				"cedula,cod_especialidad,nombres,apellidos,fecha_nacimiento,edo_civil,"
+				+ "estado,direccion,tlf_casa,tlf_movil,e-mail",
+				"'"+medico.getCedula()+"','"+medico.getCod_especialidad()+"','"+medico.getNombre()+
+				"','"+medico.getApellido()+"','"+formatter.format(medico.getFechaNacimiento())+"','"+medico.getFechaNacimiento()+
+				"','"+medico.getEdo_civil()+"','"+medico.getEstado()+medico.getDireccion()+
+				"','"+medico.getTlf_casa()+"','"+Integer.toString(medico.getNroTelefonico())+
+				"','"+medico.getEmail()+"'");
 	}
 	
 	public List<Medico> consultarMedicos() throws SQLException {
 		List<Medico> medicos = new ArrayList<Medico>();
-		resultSet = this.consultarTabla("medico", " WHERE estatus='a' ");
+		Medico medico = null;
+		resultSet = this.consultarTabla("Medico", " WHERE estatus='a' ");
 		try {
 			while (resultSet.next()) {
 				String cedula = resultSet.getString("cedula");
+				String codespec = resultSet.getString("cod_especialidad");
 				String nombre = resultSet.getString("nombres");
 				String apellido = resultSet.getString("apellidos");
-				Date fechan = resultSet.getDate("fechan");
+				Date fechan = resultSet.getDate("fecha_nacimiento");
+				char edoc = resultSet.getString("edo_civil").charAt(0);
+				String edo = resultSet.getString("estado");
+				String dir = resultSet.getString("direccion");
+				String tlfcasa = resultSet.getString("tlf_casa");
+				String tlfcelu = resultSet.getString("tlf_movil");
 				String email = resultSet.getString("email");
-				String tlfcasa = resultSet.getString("tlfcasa");
-				String tlfcelu = resultSet.getString("tlfcelu");
-				String codespec = resultSet.getString("codespec");
-				String almamater = resultSet.getString("almamater");
-				int annogrado = resultSet.getInt("annogrado");
-				String[] horariomat = {"Proximamente"};
-				String[] horariovesp = {"Proximamente"};
-				boolean estudia = resultSet.getBoolean("estudia");
-				char estatus = resultSet.getString("estatus").charAt(0);
-				Medico medico = new Medico(cedula,nombre,apellido,fechan,email,tlfcasa,tlfcelu,codespec,almamater,annogrado,horariomat,horariovesp,estudia,estatus);
+				medico = new Medico(cedula, codespec, nombre, apellido, fechan, edoc, edo, dir, tlfcasa, tlfcelu, email);
 				medicos.add(medico);
 			}
 		} catch (SQLException e) {
@@ -53,7 +57,10 @@ public class MedicoBD extends ConexionBD{
 	}
 	
 	public void actualizarMedico(Medico medico) {
-		this.actuRegistro("medico", "nombre='"+medico.getNombre()+"',apellido='"+medico.getApellido()+"',fechan='"+formatter.format(medico.getFechaNacimiento())+"',email='"+medico.getEmail()+"',tlfcasa='"+medico.getTlfcasa()+"',tlfcelu='"+medico.getTlfcelular()+"',horariomat='{\"Proximamente\"}',horariovesp='{\\\"Proximamente\\\"}',estudia='"+String.valueOf(medico.isEstudia()),"cedula",medico.getCedula());
+		this.actuRegistro("Medico", "nombres='"+medico.getNombre()+"',apellidos='"+
+	medico.getApellido()+"',fechaa_nacimiento='"+formatter.format(medico.getFechaNacimiento())+
+	"',email='"+medico.getEmail()+"',tlfcasa='"+medico.getTlf_casa()+"',tlfcelu='"+
+	medico.getNroTelefonico()+"'","cedula",medico.getCedula());
 	}
 	
 	public Medico buscarMedico(String ced) throws SQLException {
@@ -63,20 +70,17 @@ public class MedicoBD extends ConexionBD{
 		try {
 			while (resultSet.next()) {
 				String cedula = resultSet.getString("cedula");
+				String codespec = resultSet.getString("cod_especialidad");
 				String nombre = resultSet.getString("nombres");
 				String apellido = resultSet.getString("apellidos");
-				Date fechan = resultSet.getDate("fechan");
+				Date fechan = resultSet.getDate("fecha_nacimiento");
+				char edoc = resultSet.getString("edo_civil").charAt(0);
+				String edo = resultSet.getString("estado");
+				String dir = resultSet.getString("direccion");
+				String tlfcasa = resultSet.getString("tlf_casa");
+				String tlfcelu = resultSet.getString("tlf_movil");
 				String email = resultSet.getString("email");
-				String tlfcasa = resultSet.getString("tlfcasa");
-				String tlfcelu = resultSet.getString("tlfcelu");
-				String codespec = resultSet.getString("codespec");
-				String almamater = resultSet.getString("almamater");
-				int annogrado = resultSet.getInt("annogrado");
-				String[] horariomat = {"Proximamente"};
-				String[] horariovesp = {"Proximamente"};
-				boolean estudia = resultSet.getBoolean("estudia");
-				char estatus = resultSet.getString("estatus").charAt(0);
-				medico = new Medico(cedula,nombre,apellido,fechan,email,tlfcasa,tlfcelu,codespec,almamater,annogrado,horariomat,horariovesp,estudia,estatus);
+				medico = new Medico(cedula, codespec, nombre, apellido, fechan, edoc, edo, dir, tlfcasa, tlfcelu, email);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -86,29 +90,27 @@ public class MedicoBD extends ConexionBD{
 	}
 	
 	public void eliminarMedico(String ced) {
-		this.elimLogica("medico", "cedula",  "'"+ced+"'");
+		this.elimLogica("Medico", "cedula",  "'"+ced+"'");
 	}
 	
 	public List<Medico> consultarFiltrarMedicos(String filtro) throws SQLException {
+		Medico medico = null;
 		List<Medico> medicos = new ArrayList<Medico>();
 		resultSet = this.consultarTabla("medico", " WHERE "+filtro);
 		try {
 			while (resultSet.next()) {
 				String cedula = resultSet.getString("cedula");
+				String codespec = resultSet.getString("cod_especialidad");
 				String nombre = resultSet.getString("nombres");
 				String apellido = resultSet.getString("apellidos");
-				Date fechan = resultSet.getDate("fechan");
+				Date fechan = resultSet.getDate("fecha_nacimiento");
+				char edoc = resultSet.getString("edo_civil").charAt(0);
+				String edo = resultSet.getString("estado");
+				String dir = resultSet.getString("direccion");
+				String tlfcasa = resultSet.getString("tlf_casa");
+				String tlfcelu = resultSet.getString("tlf_movil");
 				String email = resultSet.getString("email");
-				String tlfcasa = resultSet.getString("tlfcasa");
-				String tlfcelu = resultSet.getString("tlfcelu");
-				String codespec = resultSet.getString("codespec");
-				String almamater = resultSet.getString("almamater");
-				int annogrado = resultSet.getInt("annogrado");
-				String[] horariomat = {"Proximamente"};
-				String[] horariovesp = {"Proximamente"};
-				boolean estudia = resultSet.getBoolean("estudia");
-				char estatus = resultSet.getString("estatus").charAt(0);
-				Medico medico = new Medico(cedula,nombre,apellido,fechan,email,tlfcasa,tlfcelu,codespec,almamater,annogrado,horariomat,horariovesp,estudia,estatus);
+				medico = new Medico(cedula, codespec, nombre, apellido, fechan, edoc, edo, dir, tlfcasa, tlfcelu, email);
 				medicos.add(medico);
 			}
 		} catch (SQLException e) {
@@ -116,22 +118,5 @@ public class MedicoBD extends ConexionBD{
 		}
 		this.cerrarComando();
 		return medicos;
-	}
-	
-	public String generarArrayHorarios(Medico medico) {
-		String horarios="{\"";
-		for (int i = 0; i < medico.getHorariomat().length; i++) {
-			horarios += medico.getHorariomat()[i];
-			if (i != (medico.getHorariomat().length-1))
-				horarios += "\",\"";
-		}
-		horarios += "\"}','{\"";
-		for (int i = 0; i < medico.getHorariovesp().length; i++) {
-			horarios += medico.getHorariovesp()[i];
-			if (i != (medico.getHorariovesp().length-1))
-				horarios += "\",\"";
-		}
-		horarios += "\"}";
-		return horarios;
 	}
 }

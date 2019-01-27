@@ -8,6 +8,7 @@ import controlador.Clinica.ControladorVtnAgreClinica;
 import controlador.Clinica.ControladorVtnLista;
 import controlador.Especialidad.ControladorVtnEspecialidades;
 import controlador.Medico.ControladorVtnConModRegEliMedico;
+import controlador.Medico.ControladorVtnListMedicos;
 import controlador.Paciente.ControladorVtnListPacientes;
 import vista.VentanaPrincipal;
 
@@ -37,7 +38,12 @@ public class ControladorVtnPrincipal implements ActionListener{
 			new ControladorVtnEspecialidades();
 		}
 		else if (actionCommand.equals("Medicos")) {
-			new ControladorVtnConModRegEliMedico(null, 0);
+			try {
+				new ControladorVtnListMedicos();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		else if (actionCommand.equals("Pacientes")) {
 			try {

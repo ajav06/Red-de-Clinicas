@@ -176,6 +176,10 @@ public class VentanaListaMedicos extends javax.swing.JFrame{
 		table_Medicos.setModel(abstractTableModel);
 	}
 	
+	public JTable getTable_Medicos() {
+		return table_Medicos;
+	}
+
 	public String getCedula() {
 		return txtCedula_Nombre.getText();
 	}

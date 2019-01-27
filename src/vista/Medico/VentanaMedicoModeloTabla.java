@@ -6,7 +6,6 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 import modelo.Medico.Medico;
-import modelo.Paciente.Paciente;
 
 public class VentanaMedicoModeloTabla extends AbstractTableModel{
 	private static String[] titulos = {"Cedula", "Nombre", "Especialidad"};
