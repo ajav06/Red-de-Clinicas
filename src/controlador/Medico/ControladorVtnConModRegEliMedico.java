@@ -71,18 +71,16 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 	private void modificarMedico(){
 	  	try
 		{
-	    	if(vtnMedico.chequearLlenos())
-	    		
-	    	   //Deben estar todos los campos llenos para poder actualizar al paciente
+	    	if(vtnMedico.chequearLlenos()) //Deben estar todos los campos llenos para poder actualizar al paciente
 	    		vtnMedico.mostrarMensaje("Debe llenar todos los datos para poder modificar al médico");
 	    	else
 	    	{
 	    		MedicoBD medicoBD = new MedicoBD();
-//		    	Medico medico = new Medico(vtnMedico.getCedula(),vtnMedico.getNombre(),"",vtnMedico.getFechaN(),
-//		    			vtnMedico.getEmail(),vtnMedico.getTlfCasa(),vtnMedico.getTlfCelular(),
-//		    			vtnMedico.getEspecialidad(),vtnMedico.getAlmaMater(),vtnMedico.getAnnoG(),vtnMedico.getHorarioMatu(),vtnMedico.getHorarioVesper(),
-//		    			vtnMedico.getEstudiando(),'a');
-//		    	medicoBD.actualizarMedico(medico);
+		    	Medico medico = new Medico(vtnMedico.getCedula(),vtnMedico.getEspecialidad(),
+		    			vtnMedico.getNombre(),vtnMedico.getApellido(),vtnMedico.getFechaN(),
+		    			vtnMedico.getEdoC(),vtnMedico.getEstado(),vtnMedico.getDireccion(),
+		    			vtnMedico.getTlfCasa(),vtnMedico.getTlfCelular(),vtnMedico.getEmail());
+		    	medicoBD.actualizarMedico(medico);
 		    	vtnMedico.mostrarMensaje("El Médico fue actualizado con exito");
 		    	vtnMedico.blanquearCampos();
 	    	}

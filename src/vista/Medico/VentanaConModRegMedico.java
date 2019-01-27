@@ -427,8 +427,13 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 	
 	public void blanquearCampos() {
 		textField_Cedula.setText(null);
+		cB_Especialidad.setSelectedIndex(0);
 		textField_Nombre.setText(null);
+		textField_Apellido.setText(null);
 		textField_FechaN.setDate(null);
+		comboBox_edoCivil.setSelectedIndex(0);
+		comboBox_Estado.setSelectedIndex(0);
+		textPane_Direccion.setText(null);
 		textField_Email.setText(null);
 		textField_TlfCasa.setText(null);
 		textField_TlfCelular.setText(null);

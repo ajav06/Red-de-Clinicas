@@ -16,13 +16,13 @@ public class ClinicaBD extends ConexionBD
 	
 	public void registrarClinica(Clinica clinica) 
 	{
-		this.crearRegistro("Clinica", "codigo,nombre,estado,direccion,telefono,email", "'"+clinica.getCodigo()
+		this.crearRegistro("clinica", "codigo,nombre,estado,direccion,telefono,email", "'"+clinica.getCodigo()
 				+"','"+clinica.getNombre()+"','"+clinica.getEstado()+"','"+clinica.getDireccion()+"','"+clinica.getTelefono()+","+clinica.getCorreo());
 	}
 	
 	public List<Clinica> consultarClinicas() throws SQLException {
 		List<Clinica> Clinicas = new ArrayList<Clinica>();
-		resultSet = this.consultarTabla("Clinica", " WHERE estatus='a' ");
+		resultSet = this.consultarTabla("clinica", " WHERE estatus='a' ");
 		try {
 			while (resultSet.next()) {
 				String codigo = resultSet.getString("codigo");
@@ -42,14 +42,14 @@ public class ClinicaBD extends ConexionBD
 	}
 	
 	public void actualizarClinica(Clinica clinica) {
-		this.actuRegistro("Clinica", "nombre='"+clinica.getNombre()+"',estado='"+clinica.getEstado()+"',direccion='"+
+		this.actuRegistro("clinica", "nombre='"+clinica.getNombre()+"',estado='"+clinica.getEstado()+"',direccion='"+
 				clinica.getDireccion()+"',telefono='"+clinica.getTelefono()+"',e-mail="+clinica.getCorreo(),"codigo", "'"+clinica.getCodigo()+"'");
 	}
 	
 	public Clinica buscarClinica(String cod) throws SQLException 
 	{
 		Clinica clinica = null;
-		resultSet = this.buscarRegistro("Clinica", "codigo", "'"+cod+"'");
+		resultSet = this.buscarRegistro("clinica", "codigo", "'"+cod+"'");
 		
 		try {
 			while (resultSet.next()) {
@@ -68,12 +68,12 @@ public class ClinicaBD extends ConexionBD
 		return clinica;
 	}
 	public void eliminarClinica(String cod) {
-		this.elimLogica("Clinica", "codigo",  "'"+cod+"'");
+		this.elimLogica("clinica", "codigo",  "'"+cod+"'");
 	}
 	
 	public List<Clinica> consultarFiltrarClinicas(String filtro) throws SQLException {
 		List<Clinica> clinicas = new ArrayList<Clinica>();
-		resultSet = this.consultarTabla("Clinica", " WHERE "+filtro);
+		resultSet = this.consultarTabla("clinica", " WHERE "+filtro);
 		try {
 			while (resultSet.next()) {
 				String codigo = resultSet.getString("codido");
@@ -92,6 +92,17 @@ public class ClinicaBD extends ConexionBD
 		return clinicas;
 	}
 
-	
+	public List<String> nombresClinicas() throws SQLException{
+		List<String> nombres = new ArrayList<String>();
+		resultSet = this.ejecutarQuery("SELECT nombre FROM clinica WHERE estatus = 'A' ORDER BY codigo DESC");
+		try {
+			while (resultSet.next())
+				nombres.add(resultSet.getString(0));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		this.cerrarComando();
+		return nombres;
+	}
 }
 

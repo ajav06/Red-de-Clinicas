@@ -2,6 +2,8 @@ package modelo;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
+import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
+
 public class Conexion extends javax.swing.JFrame{
 	protected Connection c = null;
 	protected Statement stmt = null;
@@ -165,6 +167,22 @@ public class Conexion extends javax.swing.JFrame{
 	      return rs;
 	}
 
+	public ResultSet ejecutarQuery(String query) {
+		ResultSet rs=null;
+		try {
+			Class.forName(getDriver());
+		    c = DriverManager.getConnection(getUrl()+getNombBD(),getUsuario(), getContrasenna());
+	        c.setAutoCommit(false);		
+	        stmt = c.createStatement();
+	        rs = stmt.executeQuery(query);
+	    } catch (Exception e) {
+	    	e.printStackTrace();
+	        JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	    }
+	    JOptionPane.showMessageDialog(this, "Operaci�n Realizada de Manera Exitosa");
+	    return rs;
+	}
+	
 	public String getDriver() {
 		return driver;
 	}
