@@ -60,9 +60,10 @@ public class MedicoBD extends ConexionBD{
 	
 	public void actualizarMedico(Medico medico) {
 		this.actuRegistro("medico", "nombres='"+medico.getNombre()+"',apellidos='"+
-	medico.getApellido()+"',fechaa_nacimiento='"+formatter.format(medico.getFechaNacimiento())+
-	"',email='"+medico.getEmail()+"',tlfcasa='"+medico.getTlf_casa()+"',tlfcelu='"+
-	medico.getNroTelefonico()+"'","cedula",medico.getCedula());
+	medico.getApellido()+"',fecha_nacimiento='"+formatter.format(medico.getFechaNacimiento())+
+	"',edo_civil='"+medico.getEdo_civil()+"',estado='"+medico.getEstado()+"',direccion='"+medico.getDireccion()
+	+"',email='"+medico.getEmail()+"',tlf_casa='"+medico.getTlf_casa()+"',tlf_movil='"+
+	medico.getNroTelefonico()+"'","cedula","'"+medico.getCedula()+"'");
 	}
 	
 	public Medico buscarMedico(String ced) throws SQLException {

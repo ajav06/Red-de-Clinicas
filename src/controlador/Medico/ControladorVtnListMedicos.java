@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTable;
 
 import controlador.Medico.ControladorVtnConModRegEliMedico;
@@ -16,12 +17,14 @@ import modelo.Medico.*;
 
 public class ControladorVtnListMedicos implements ActionListener {
 	private VentanaListaMedicos vtnListMed;
+	DefaultComboBoxModel especialidades;
 	Medico medico;
 	
 	public ControladorVtnListMedicos() throws SQLException {
 		super();
 		EspecialidadBD e = new EspecialidadBD();
-		this.vtnListMed = new VentanaListaMedicos(e.nombresEspecialidades());
+		especialidades = e.nombresEspecialidades();
+		this.vtnListMed = new VentanaListaMedicos(especialidades);
 		this.vtnListMed.setLocationRelativeTo(null);
 		this.vtnListMed.setVisible(true);
 		cargarDatosMedico();
@@ -49,7 +52,7 @@ public class ControladorVtnListMedicos implements ActionListener {
 		try{
 			MedicoBD medicoBD = new MedicoBD();
 			List<Medico> medicos = medicoBD.consultarMedicos();
-			this.vtnListMed.setResultados(new VentanaMedicoModeloTabla(medicos));
+			this.vtnListMed.setResultados(new VentanaMedicoModeloTabla(medicos,especialidades));
 		} catch (SQLException e) {
 			vtnListMed.mostrarMensaje(e.getMessage());
 		}
@@ -68,7 +71,7 @@ public class ControladorVtnListMedicos implements ActionListener {
 					cargarDatosMedico();
 				} else {
 					medicos.add(medico);
-					this.vtnListMed.setResultados(new VentanaMedicoModeloTabla(medicos));
+					this.vtnListMed.setResultados(new VentanaMedicoModeloTabla(medicos,especialidades));
 				}
 			}
 		} catch (Exception e) {

@@ -512,6 +512,8 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 		btnRegistrar.setEnabled(false);
 		btnRegistrar.setVisible(false);
 		textField_Cedula.setEditable(false);
+		textField_FechaN.setEnabled(false);
+		cB_Especialidad.setEnabled(false);
 	}
 	
 	public boolean chequearLlenos() { //Chequea y verifica que todos los campos estén actualmente llenos.

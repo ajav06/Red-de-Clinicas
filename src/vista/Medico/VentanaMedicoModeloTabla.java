@@ -3,17 +3,20 @@ package vista.Medico;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.AbstractTableModel;
 
 import modelo.Medico.Medico;
 
 public class VentanaMedicoModeloTabla extends AbstractTableModel{
 	private static String[] titulos = {"Cedula", "Nombre", "Especialidad"};
+	private static DefaultComboBoxModel especialidades;
 	private List<Medico> medicos = new ArrayList<Medico>();
 
-	public VentanaMedicoModeloTabla(List<Medico> medicos) {
+	public VentanaMedicoModeloTabla(List<Medico> medicos, DefaultComboBoxModel dc) {
 		super();
 		this.medicos=medicos;
+		this.especialidades = dc;
 		this.fireTableDataChanged();
 	}
 	
@@ -33,7 +36,7 @@ public class VentanaMedicoModeloTabla extends AbstractTableModel{
 		switch (columnIndex) {
 			case 0: return medico.getCedula();
 			case 1: return (medico.getNombre() + " " + medico.getApellido());
-			case 2: return medico.getCod_especialidad(); 
+			case 2: return especialidades.getElementAt(Integer.parseInt(medico.getCod_especialidad())); 
 			}
 		return null;
 	}
