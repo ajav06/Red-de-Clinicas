@@ -167,11 +167,11 @@ public class VentanaListaPacientes extends javax.swing.JFrame{
 	}
 	
 	public void setResultados(AbstractTableModel abstractTableModel) {
-		tblPacientes.setModel(abstractTableModel);
+		this.tblPacientes.setModel(abstractTableModel);
 	}
 	
 	public String getCedula() {
-		return textField_Ced.getText();
+		return this.textField_Ced.getText();
 	}
 
 	public void setTextField_Ced(String cedula) {
