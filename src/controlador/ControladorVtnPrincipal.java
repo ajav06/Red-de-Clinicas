@@ -28,8 +28,8 @@ public class ControladorVtnPrincipal implements ActionListener{
 		String actionCommand = e.getActionCommand();
 		if (actionCommand.equals("Clinica")) {
 			try {
-				new ControladorVtnAgreClinica();
-			} catch (Exception e1) {
+				new ControladorVtnLista();
+			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}

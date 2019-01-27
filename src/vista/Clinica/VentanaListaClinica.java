@@ -1,6 +1,5 @@
 package vista.Clinica;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 
 import javax.swing.JFrame;
@@ -37,7 +36,7 @@ public class VentanaListaClinica extends javax.swing.JFrame {
 		 */
 		public VentanaListaClinica() {
 			super();
-			//setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			setSize(540, 591);
 			initialize();
 		}
@@ -46,8 +45,8 @@ public class VentanaListaClinica extends javax.swing.JFrame {
 		 * Initialize the contents of the frame.
 		 */
 		private void initialize() {
-			setBounds(100, 100, 546, 424);
-			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			//setBounds(100, 100, 546, 424);
+			//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			
 			JPanel panelBuscar = new JPanel();
 			panelBuscar.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -109,7 +108,7 @@ public class VentanaListaClinica extends javax.swing.JFrame {
 			textFieldCodigo.setColumns(10);
 			
 			JButton btnIncluir = new JButton("Incluir");
-			btnIncliur.setBackground(Color.LIGHT_GRAY);
+	
 			
 			JButton btnActualizar = new JButton("Actualizar");
 			btnActualizar.setBackground(new Color(0, 102, 51));

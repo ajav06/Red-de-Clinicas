@@ -31,12 +31,12 @@ public class ControladorVtnLista implements ActionListener
 		if (actionCommand.equals("...")) {
 			buscarClinica();
 		}		
-		/*else if (actionCommand.equals("Actualizar")) {
-			actualizarClinica();
+		else if (actionCommand.equals("Actualizar")) {
+			buscarClinica();
 		}
 		else if (actionCommand.equals("Eliminar")) {
-			new ControladorVtnActuClinica();
-		}*/
+			new ControladorVtnActuClinica(clinica);
+		}
 		else if (actionCommand.equals("Incluir")) {
 			new ControladorVtnAgreClinica();
 		}

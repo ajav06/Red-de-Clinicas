@@ -16,9 +16,9 @@ public class ControladorElimClinica implements ActionListener
 		this.vtnElimCli.setLocationRelativeTo(null);
 		this.vtnElimCli.setVisible(true);
 		this.vtnElimCli.addListener(this);
-		this.vtnElimCli.llenarCampos(clinica.getCodigo(), clinica.getNombre(), clinica.getEstado(), 
-				clinica.getCiudad(), clinica.getUbicacion(), clinica.getTelefono(), 
-				clinica.getCorreo());
+//		this.vtnElimCli.llenarCampos(clinica.getCodigo(), clinica.getNombre(), clinica.getEstado(), 
+//				clinica.getCiudad(), clinica.getUbicacion(), clinica.getTelefono(), 
+//				clinica.getCorreo());
 	}
 	public void actionPerformed(ActionEvent e) {
 		String actionCommand = e.getActionCommand();

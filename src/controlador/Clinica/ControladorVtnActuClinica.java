@@ -16,9 +16,8 @@ public class ControladorVtnActuClinica implements ActionListener
 		this.vtnActuCli.setLocationRelativeTo(null);
 		this.vtnActuCli.setVisible(true);
 		this.vtnActuCli.addListener(this);
-		this.vtnActuCli.llenarCampos(clinica.getCodigo(), clinica.getNombre(), clinica.getEstado(), 
-				clinica.getCiudad(), clinica.getUbicacion(), clinica.getTelefono(), 
-				clinica.getCorreo());
+//		this.vtnActuCli.llenarCampos(clinica.getCodigo(), clinica.getNombre(), clinica.getEstado(),clinica.getDireccion(), clinica.getTelefono(), 
+//				clinica.getCorreo());
 	}
 	
 	@Override
@@ -42,10 +41,10 @@ public class ControladorVtnActuClinica implements ActionListener
 	    		else
 	    	{
 	    		ClinicaBD clinicaBD = new ClinicaBD();
-		    	Clinica clinica = new Clinica(vtnActuCli.getCodigo(),vtnActuCli.getNombre(),
-		    		vtnActuCli.getEstado(),vtnActuCli.getCiudad(),vtnActuCli.getUbicacion(),
-		    		vtnActuCli.getTelefono(),vtnActuCli.getCorreo());	
-		    	clinicaBD.actualizarClinica(clinica);
+//		    	Clinica clinica = new Clinica(vtnActuCli.getCodigo(),vtnActuCli.getNombre(),
+//		    		vtnActuCli.getEstado(),vtnActuCli.getCiudad(),vtnActuCli.getUbicacion(),
+//		    		vtnActuCli.getTelefono(),vtnActuCli.getCorreo());	
+//		    	clinicaBD.actualizarClinica(clinica);
 		       vtnActuCli.mostrarMensaje("El Paciente fue incluido con exito");
 		    	vtnActuCli.blanquearCampos();
 	    	}
