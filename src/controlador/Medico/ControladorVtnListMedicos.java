@@ -17,13 +17,15 @@ public class ControladorVtnListMedicos implements ActionListener {
 	private VentanaListaMedicos vtnListMed;
 	Medico medico;
 	
-	public ControladorVtnListMedicos() throws SQLException {
-		super();
+	public ControladorVtnListMedicos() {
+		//super();
 		this.vtnListMed = new VentanaListaMedicos();
 		this.vtnListMed.setLocationRelativeTo(null);
 		this.vtnListMed.setVisible(true);
 		this.vtnListMed.addListener(this);
-		cargarDatosMedico();
+		this.cargarDatosMedico();
+		vtnListMed.mostrarMensaje("yo sirvo sabes?");
+
 	}
 	
 	@Override
@@ -44,10 +46,15 @@ public class ControladorVtnListMedicos implements ActionListener {
 		
 	}
 	
-	private void cargarDatosMedico() throws SQLException {
-		MedicoBD medicoBD = new MedicoBD();
-		List<Medico> medicos = medicoBD.consultarMedicos();
-		this.vtnListMed.setResultados(new VentanaMedicoModeloTabla(medicos));
+	private void cargarDatosMedico() {
+		vtnListMed.mostrarMensaje("yo sirvo sabes?");
+		try{
+			MedicoBD medicoBD = new MedicoBD();
+			List<Medico> medicos = medicoBD.consultarMedicos();
+			this.vtnListMed.setResultados(new VentanaMedicoModeloTabla(medicos));
+		} catch (SQLException e) {
+			vtnListMed.mostrarMensaje(e.getMessage());
+		}
 	}
 	
 	private void buscarMedicos() {

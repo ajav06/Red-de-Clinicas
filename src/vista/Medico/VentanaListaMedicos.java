@@ -39,7 +39,10 @@ public class VentanaListaMedicos extends javax.swing.JFrame{
 	private JComboBox comboBox_Especialidad;
 
 	public VentanaListaMedicos() {
+		super();
+		setTitle("Listado de Médicos");
 		initialize();
+		setSize(585,579);
 	}
 
 	/**
@@ -53,9 +56,9 @@ public class VentanaListaMedicos extends javax.swing.JFrame{
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
-		JButton btnConsultar = new JButton("Consultar");
+		btnConsultar = new JButton("Consultar");
 		
-		JButton btnRegistrarNvo = new JButton("Registrar Nuevo");
+		btnRegistrarNvo = new JButton("Registrar Nuevo");
 		
 		JLabel lblMdicosDeLa = new JLabel("Médicos de la Red");
 		lblMdicosDeLa.setForeground(Color.BLUE);
@@ -64,7 +67,7 @@ public class VentanaListaMedicos extends javax.swing.JFrame{
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Buscar m\u00E9dicos", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLACK));
 		
-		JButton btnSalir = new JButton("Salir");
+		btnSalir = new JButton("Salir");
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -114,7 +117,7 @@ public class VentanaListaMedicos extends javax.swing.JFrame{
 		txtCedula_Nombre.setText("Introduzca cédula de identidad o nombre");
 		txtCedula_Nombre.setColumns(10);
 		
-		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar = new JButton("Buscar");
 		
 		JLabel lblFiltrarPorEspecialidad = new JLabel("Filtrar por Especialidad:");
 		

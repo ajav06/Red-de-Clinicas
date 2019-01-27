@@ -40,7 +40,7 @@ public class ControladorVtnPrincipal implements ActionListener{
 		else if (actionCommand.equals("Medicos")) {
 			try {
 				new ControladorVtnListMedicos();
-			} catch (SQLException e1) {
+			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}

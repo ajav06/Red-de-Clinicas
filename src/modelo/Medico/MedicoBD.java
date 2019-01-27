@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.JOptionPane;
 
 import modelo.ConexionBD;
 
@@ -50,6 +51,7 @@ public class MedicoBD extends ConexionBD{
 				medicos.add(medico);
 			}
 		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(this, e.getMessage());
 			e.printStackTrace();
 		}
 		this.cerrarComando();
@@ -96,7 +98,7 @@ public class MedicoBD extends ConexionBD{
 	public List<Medico> consultarFiltrarMedicos(String filtro) throws SQLException {
 		Medico medico = null;
 		List<Medico> medicos = new ArrayList<Medico>();
-		resultSet = this.consultarTabla("medico", " WHERE "+filtro);
+		resultSet = this.consultarTabla("Medico", " WHERE "+filtro);
 		try {
 			while (resultSet.next()) {
 				String cedula = resultSet.getString("cedula");

@@ -19,7 +19,7 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 		this.vtnMedico.setLocationRelativeTo(null);
 		this.vtnMedico.setVisible(true);
 		this.vtnMedico.addListener(this);
-		this.vtnMedico.llenarCampos(medico.getCedula(), medico.getNombre(),medico.getFechaNacimiento(),medico.getEmail(),medico.getTlfcasa(),medico.getTlfcelular(),medico.getCodespec(),medico.getAlmamater(),medico.getAnnogrado(),medico.getHorariomat(),medico.getHorariovesp(),medico.isEstudia());
+//		this.vtnMedico.llenarCampos(medico.getCedula(), medico.getNombre(),medico.getFechaNacimiento(),medico.getEmail(),medico.getTlfcasa(),medico.getTlfcelular(),medico.getCodespec(),medico.getAlmamater(),medico.getAnnogrado(),medico.getHorariomat(),medico.getHorariovesp(),medico.isEstudia());
 
 		if (accion==1) {
 			this.vtnMedico.interfazRegistro();
@@ -55,11 +55,11 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 	    	//else
 	    	//{
 	    		MedicoBD medicoBD = new MedicoBD();
-		    	Medico medico = new Medico(vtnMedico.getCedula(),vtnMedico.getNombre(),"",vtnMedico.getFechaN(),
-		    			vtnMedico.getEmail(),vtnMedico.getTlfCasa(),vtnMedico.getTlfCelular(),
-		    			vtnMedico.getEspecialidad(),vtnMedico.getAlmaMater(),vtnMedico.getAnnoG(),vtnMedico.getHorarioMatu(),vtnMedico.getHorarioVesper(),
-		    			vtnMedico.getEstudiando(),'a');
-		    	medicoBD.registrarMedico(medico);
+//		    	Medico medico = new Medico(vtnMedico.getCedula(),vtnMedico.getNombre(),"",vtnMedico.getFechaN(),
+//		    			vtnMedico.getEmail(),vtnMedico.getTlfCasa(),vtnMedico.getTlfCelular(),
+//		    			vtnMedico.getEspecialidad(),vtnMedico.getAlmaMater(),vtnMedico.getAnnoG(),vtnMedico.getHorarioMatu(),vtnMedico.getHorarioVesper(),
+//		    			vtnMedico.getEstudiando(),'a');
+//		    	medicoBD.registrarMedico(medico);
 		    	vtnMedico.mostrarMensaje("El Médico fue incluido con exito");
 		    	vtnMedico.blanquearCampos();
 	    	//}
@@ -80,11 +80,11 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 	    	else
 	    	{
 	    		MedicoBD medicoBD = new MedicoBD();
-		    	Medico medico = new Medico(vtnMedico.getCedula(),vtnMedico.getNombre(),"",vtnMedico.getFechaN(),
-		    			vtnMedico.getEmail(),vtnMedico.getTlfCasa(),vtnMedico.getTlfCelular(),
-		    			vtnMedico.getEspecialidad(),vtnMedico.getAlmaMater(),vtnMedico.getAnnoG(),vtnMedico.getHorarioMatu(),vtnMedico.getHorarioVesper(),
-		    			vtnMedico.getEstudiando(),'a');
-		    	medicoBD.actualizarMedico(medico);
+//		    	Medico medico = new Medico(vtnMedico.getCedula(),vtnMedico.getNombre(),"",vtnMedico.getFechaN(),
+//		    			vtnMedico.getEmail(),vtnMedico.getTlfCasa(),vtnMedico.getTlfCelular(),
+//		    			vtnMedico.getEspecialidad(),vtnMedico.getAlmaMater(),vtnMedico.getAnnoG(),vtnMedico.getHorarioMatu(),vtnMedico.getHorarioVesper(),
+//		    			vtnMedico.getEstudiando(),'a');
+//		    	medicoBD.actualizarMedico(medico);
 		    	vtnMedico.mostrarMensaje("El Médico fue actualizado con exito");
 		    	vtnMedico.blanquearCampos();
 	    	}
