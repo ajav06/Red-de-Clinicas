@@ -5,9 +5,9 @@ public class Persona {
 	protected String cedula;
 	protected String nombre;
 	protected String apellido;
-	String direccion;
-	int nroTelefonico;
-	float peso;
+	protected String direccion;
+	protected int nroTelefonico;
+	protected float peso;
 	protected Date fechaNacimiento;
 	
 	public Persona() {

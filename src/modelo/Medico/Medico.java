@@ -5,29 +5,52 @@ import java.util.Date;
 import modelo.Persona;
 
 public class Medico extends Persona {
-	String email, tlfcasa, tlfcelular, codespec, almamater;
-	int annogrado;
-	String[] horariomat, horariovesp;
-	boolean estudia;
-	char estatus;
+	String cod_especialidad, estado, tlf_casa, email;
+	char edo_civil;
 	
-	public Medico(String cedula, String nombre, String apellido, Date fechaNacimiento, String em, String tlfc, String tlfce, 
-			String cespec, String almam, int annog, String[] hmat, String[] hvesp, boolean e, char s) {
+	public Medico() {
 		super();
-		this.cedula=cedula;
-		this.nombre=nombre;
-		this.apellido=apellido;
-		this.fechaNacimiento=fechaNacimiento;
+
+	}
+	
+	public Medico(String ced, String codesp, String nomb, String ap, Date fechan, char edoc,
+			String edo, String dir, String tlfc, String tlfm, String em) {
+		super();
+		this.cedula = ced;
+		this.cod_especialidad = codesp;
+		this.nombre = nomb;
+		this.apellido = ap;
+		this.fechaNacimiento = fechan;
+		this.edo_civil = edoc;
+		this.estado = edo;
+		this.direccion = dir;
+		this.tlf_casa = tlfc;
+		this.nroTelefonico = Integer.parseInt(tlfm);
 		this.email = em;
-		this.tlfcasa = tlfc;
-		this.tlfcelular = tlfce;
-		this.codespec = cespec;
-		this.almamater = almam; 
-		this.annogrado = annog;
-		this.horariomat = hmat;
-		this.horariovesp = hvesp;
-		this.estudia = e;
-		this.estatus = s;
+	}
+
+	public String getCod_especialidad() {
+		return cod_especialidad;
+	}
+
+	public void setCod_especialidad(String cod_especialidad) {
+		this.cod_especialidad = cod_especialidad;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public String getTlf_casa() {
+		return tlf_casa;
+	}
+
+	public void setTlf_casa(String tlf_casa) {
+		this.tlf_casa = tlf_casa;
 	}
 
 	public String getEmail() {
@@ -38,69 +61,12 @@ public class Medico extends Persona {
 		this.email = email;
 	}
 
-	public String getTlfcasa() {
-		return tlfcasa;
+	public char getEdo_civil() {
+		return edo_civil;
 	}
 
-	public void setTlfcasa(String tlfcasa) {
-		this.tlfcasa = tlfcasa;
+	public void setEdo_civil(char edo_civil) {
+		this.edo_civil = edo_civil;
 	}
 
-	public String getTlfcelular() {
-		return tlfcelular;
-	}
-
-	public void setTlfcelular(String tlfcelular) {
-		this.tlfcelular = tlfcelular;
-	}
-
-	public String getCodespec() {
-		return codespec;
-	}
-
-	public void setCodespec(String codespec) {
-		this.codespec = codespec;
-	}
-
-	public String getAlmamater() {
-		return almamater;
-	}
-
-	public void setAlmamater(String almamater) {
-		this.almamater = almamater;
-	}
-
-	public int getAnnogrado() {
-		return annogrado;
-	}
-
-	public void setAnnogrado(int annogrado) {
-		this.annogrado = annogrado;
-	}
-
-	public String[] getHorariomat() {
-		return horariomat;
-	}
-
-	public void setHorariomat(String[] horariomat) {
-		this.horariomat = horariomat;
-	}
-
-	public String[] getHorariovesp() {
-		return horariovesp;
-	}
-
-	public void setHorariovesp(String[] horariovesp) {
-		this.horariovesp = horariovesp;
-	}
-
-	public boolean isEstudia() {
-		return estudia;
-	}
-
-	public void setEstudia(boolean estudia) {
-		this.estudia = estudia;
-	}
-	
-	
 }
