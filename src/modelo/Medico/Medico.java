@@ -14,7 +14,7 @@ public class Medico extends Persona {
 	}
 	
 	public Medico(String ced, String codesp, String nomb, String ap, Date fechan, char edoc,
-			String edo, String dir, String tlfc, String tlfm, String em) {
+			String edo, String dir, String tlfc, int tlfm, String em) {
 		super();
 		this.cedula = ced;
 		this.cod_especialidad = codesp;
@@ -25,7 +25,7 @@ public class Medico extends Persona {
 		this.estado = edo;
 		this.direccion = dir;
 		this.tlf_casa = tlfc;
-		this.nroTelefonico = Integer.parseInt(tlfm);
+		this.nroTelefonico = tlfm;
 		this.email = em;
 	}
 

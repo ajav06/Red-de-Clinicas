@@ -18,14 +18,12 @@ public class ControladorVtnListMedicos implements ActionListener {
 	Medico medico;
 	
 	public ControladorVtnListMedicos() {
-		//super();
+		super();
 		this.vtnListMed = new VentanaListaMedicos();
 		this.vtnListMed.setLocationRelativeTo(null);
 		this.vtnListMed.setVisible(true);
 		this.vtnListMed.addListener(this);
-		this.cargarDatosMedico();
-		vtnListMed.mostrarMensaje("yo sirvo sabes?");
-
+		cargarDatosMedico();
 	}
 	
 	@Override
@@ -43,7 +41,6 @@ public class ControladorVtnListMedicos implements ActionListener {
 		else if (actionCommand.equals("Salir")) {
 			salir();
 		}
-		
 	}
 	
 	private void cargarDatosMedico() {
@@ -69,6 +66,7 @@ public class ControladorVtnListMedicos implements ActionListener {
 				this.vtnListMed.setResultados(new VentanaMedicoModeloTabla(medicos));
 			}
 		} catch (Exception e) {
+			vtnListMed.mostrarMensaje(e.getMessage());
 			vtnListMed.mostrarMensaje("No se pudo buscar el médico, verifique que los datos sean correctos");
 		}
 	}

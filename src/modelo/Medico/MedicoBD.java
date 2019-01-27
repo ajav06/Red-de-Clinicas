@@ -20,7 +20,7 @@ public class MedicoBD extends ConexionBD{
 	}
 	
 	public void registrarMedico(Medico medico) {
-		this.crearRegistro("Medico", 
+		this.crearRegistro("medico", 
 				"cedula,cod_especialidad,nombres,apellidos,fecha_nacimiento,edo_civil,"
 				+ "estado,direccion,tlf_casa,tlf_movil,e-mail",
 				"'"+medico.getCedula()+"','"+medico.getCod_especialidad()+"','"+medico.getNombre()+
@@ -33,7 +33,7 @@ public class MedicoBD extends ConexionBD{
 	public List<Medico> consultarMedicos() throws SQLException {
 		List<Medico> medicos = new ArrayList<Medico>();
 		Medico medico = null;
-		resultSet = this.consultarTabla("Medico", " WHERE estatus='a' ");
+		resultSet = this.consultarTabla("medico", " WHERE estatus='a' ");
 		try {
 			while (resultSet.next()) {
 				String cedula = resultSet.getString("cedula");
@@ -45,7 +45,7 @@ public class MedicoBD extends ConexionBD{
 				String edo = resultSet.getString("estado");
 				String dir = resultSet.getString("direccion");
 				String tlfcasa = resultSet.getString("tlf_casa");
-				String tlfcelu = resultSet.getString("tlf_movil");
+				int tlfcelu = resultSet.getInt("tlf_movil");
 				String email = resultSet.getString("email");
 				medico = new Medico(cedula, codespec, nombre, apellido, fechan, edoc, edo, dir, tlfcasa, tlfcelu, email);
 				medicos.add(medico);
@@ -59,7 +59,7 @@ public class MedicoBD extends ConexionBD{
 	}
 	
 	public void actualizarMedico(Medico medico) {
-		this.actuRegistro("Medico", "nombres='"+medico.getNombre()+"',apellidos='"+
+		this.actuRegistro("medico", "nombres='"+medico.getNombre()+"',apellidos='"+
 	medico.getApellido()+"',fechaa_nacimiento='"+formatter.format(medico.getFechaNacimiento())+
 	"',email='"+medico.getEmail()+"',tlfcasa='"+medico.getTlf_casa()+"',tlfcelu='"+
 	medico.getNroTelefonico()+"'","cedula",medico.getCedula());
@@ -80,7 +80,7 @@ public class MedicoBD extends ConexionBD{
 				String edo = resultSet.getString("estado");
 				String dir = resultSet.getString("direccion");
 				String tlfcasa = resultSet.getString("tlf_casa");
-				String tlfcelu = resultSet.getString("tlf_movil");
+				int tlfcelu = resultSet.getInt("tlf_movil");
 				String email = resultSet.getString("email");
 				medico = new Medico(cedula, codespec, nombre, apellido, fechan, edoc, edo, dir, tlfcasa, tlfcelu, email);
 			}
@@ -92,13 +92,13 @@ public class MedicoBD extends ConexionBD{
 	}
 	
 	public void eliminarMedico(String ced) {
-		this.elimLogica("Medico", "cedula",  "'"+ced+"'");
+		this.elimLogica("medico", "cedula",  "'"+ced+"'");
 	}
 	
 	public List<Medico> consultarFiltrarMedicos(String filtro) throws SQLException {
 		Medico medico = null;
 		List<Medico> medicos = new ArrayList<Medico>();
-		resultSet = this.consultarTabla("Medico", " WHERE "+filtro);
+		resultSet = this.consultarTabla("medico", " WHERE "+filtro);
 		try {
 			while (resultSet.next()) {
 				String cedula = resultSet.getString("cedula");
@@ -110,7 +110,7 @@ public class MedicoBD extends ConexionBD{
 				String edo = resultSet.getString("estado");
 				String dir = resultSet.getString("direccion");
 				String tlfcasa = resultSet.getString("tlf_casa");
-				String tlfcelu = resultSet.getString("tlf_movil");
+				int tlfcelu = resultSet.getInt("tlf_movil");
 				String email = resultSet.getString("email");
 				medico = new Medico(cedula, codespec, nombre, apellido, fechan, edoc, edo, dir, tlfcasa, tlfcelu, email);
 				medicos.add(medico);
