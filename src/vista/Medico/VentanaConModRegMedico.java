@@ -39,6 +39,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class VentanaConModRegMedico extends javax.swing.JFrame{
 
@@ -61,7 +63,6 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 	private JPanel panel_1;
 	private JLabel lblEstado;
 	private JComboBox comboBox_LunesMat;
-	private JComboBox comboBox_MartesMat;
 	private JComboBox comboBox_MiercolesMat;
 	private JComboBox comboBox_JuevesMat;
 	private JComboBox comboBox_ViernesMat;
@@ -70,6 +71,7 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 	private JComboBox comboBox_MiercolesVesp;
 	private JComboBox comboBox_JuevesVesp;
 	private JComboBox comboBox_ViernesVesp;
+	private JComboBox comboBox_MartesMat;
 	private JComboBox comboBox_Estado;
 	private JComboBox cB_Especialidad;
 	private JComboBox comboBox_edoCivil;
@@ -85,18 +87,21 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 		initialize();
 		setSize(711, 713);
 		cB_Especialidad.setModel(especialidades);
-		comboBox_LunesMat.setModel(clinicas);
-		comboBox_LunesVesp.setModel(clinicas);
-		comboBox_MartesMat.setModel(clinicas);
-		comboBox_MartesVesp.setModel(clinicas);
-		comboBox_MiercolesMat.setModel(clinicas);
-		comboBox_MiercolesVesp.setModel(clinicas);
-		comboBox_JuevesMat.setModel(clinicas);
-		comboBox_JuevesVesp.setModel(clinicas);
-		comboBox_ViernesMat.setModel(clinicas);
-		comboBox_ViernesVesp.setModel(clinicas);
-		comboBox_LunesMat.setSelectedIndex(0);
-	}
+		Vector v = new Vector();
+		for (int i=0;i<clinicas.getSize();i++) 
+			v.add(clinicas.getElementAt(i));
+
+		comboBox_LunesMat.setModel(new DefaultComboBoxModel(v));
+		comboBox_LunesVesp.setModel(new DefaultComboBoxModel(v));
+		comboBox_MartesMat.setModel(new DefaultComboBoxModel(v));
+		comboBox_MartesVesp.setModel(new DefaultComboBoxModel(v));
+		comboBox_MiercolesMat.setModel(new DefaultComboBoxModel(v));
+		comboBox_MiercolesVesp.setModel(new DefaultComboBoxModel(v));
+		comboBox_JuevesMat.setModel(new DefaultComboBoxModel(v));
+		comboBox_JuevesVesp.setModel(new DefaultComboBoxModel(v));
+		comboBox_ViernesMat.setModel(new DefaultComboBoxModel(v));
+		comboBox_ViernesVesp.setModel(new DefaultComboBoxModel(v));
+		}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -179,8 +184,6 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 		
 		comboBox_LunesMat = new JComboBox();
 		
-		comboBox_MartesMat = new JComboBox();
-		
 		comboBox_MiercolesMat = new JComboBox();
 		
 		comboBox_JuevesMat = new JComboBox();
@@ -199,9 +202,11 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 		
 		JLabel lblLunMarMier = new JLabel("Lun                    Mar                     Mier                     Jue                         Vie");
 		lblLunMarMier.setHorizontalAlignment(SwingConstants.LEFT);
+		
+		comboBox_MartesMat = new JComboBox();
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
+			gl_panel_2.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel_2.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
@@ -230,7 +235,7 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 							.addGap(18)
 							.addComponent(comboBox_ViernesVesp, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(22, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_panel_2.createSequentialGroup()
+				.addGroup(gl_panel_2.createSequentialGroup()
 					.addContainerGap(137, Short.MAX_VALUE)
 					.addComponent(lblLunMarMier)
 					.addGap(58))
@@ -243,10 +248,10 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 						.addComponent(lblMatutino)
 						.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
 							.addComponent(comboBox_LunesMat, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addComponent(comboBox_MartesMat, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addComponent(comboBox_MiercolesMat, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addComponent(comboBox_JuevesMat, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addComponent(comboBox_ViernesMat, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(comboBox_ViernesMat, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(comboBox_MartesMat, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 					.addGap(15)
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
@@ -590,48 +595,125 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 
 	public void setHorario(String[] cod_clinica, String[] turno) {
 		for (int i=0;i<turno.length;i++) {
-			switch (Integer.parseInt(turno[i])) {
+			int t=Integer.parseInt(turno[i]);
+			int c=Integer.parseInt(cod_clinica[i]);
+			mostrarMensaje("turno "+String.valueOf(t)+" clinica "+String.valueOf(c));
+			switch (t) {
+			case -1:
+				break;
+				
 			case 1:
-				comboBox_LunesMat.setSelectedIndex(Integer.parseInt(cod_clinica[i]));
+				comboBox_LunesMat.setSelectedIndex(c);
 				break;
 				
 			case 2:
-				comboBox_LunesVesp.setSelectedIndex(Integer.parseInt(cod_clinica[i]));
+				comboBox_LunesVesp.setSelectedIndex(c);
 				break;
 				
 			case 3:
-				comboBox_MartesMat.setSelectedIndex(Integer.parseInt(cod_clinica[i]));
+				comboBox_MartesMat.setSelectedIndex(c);
 				break;
 				
 			case 4:
-				comboBox_MartesVesp.setSelectedIndex(Integer.parseInt(cod_clinica[i]));
+				comboBox_MartesVesp.setSelectedIndex(c);
 				break;
 				
 			case 5:
-				comboBox_MiercolesMat.setSelectedIndex(Integer.parseInt(cod_clinica[i]));
+				comboBox_MiercolesMat.setSelectedIndex(c);
 				break;
 				
 			case 6:
-				comboBox_MiercolesVesp.setSelectedIndex(Integer.parseInt(cod_clinica[i]));
+				comboBox_MiercolesVesp.setSelectedIndex(c);
 				break;
 				
 			case 7:
-				comboBox_JuevesMat.setSelectedIndex(Integer.parseInt(cod_clinica[i]));
+				comboBox_JuevesMat.setSelectedIndex(c);
 				break;
 				
 			case 8:
-				comboBox_JuevesVesp.setSelectedIndex(Integer.parseInt(cod_clinica[i]));
+				comboBox_JuevesVesp.setSelectedIndex(c);
 				break;
 				
 			case 9:
-				comboBox_ViernesMat.setSelectedIndex(Integer.parseInt(cod_clinica[i]));
+				comboBox_ViernesMat.setSelectedIndex(c);
 				break;
 				
 			case 10:
-				comboBox_ViernesVesp.setSelectedIndex(Integer.parseInt(cod_clinica[i]));
+				comboBox_ViernesVesp.setSelectedIndex(c);
 				break;
 			}
 		}
+	}
+	
+	public String[][] getHorario() {
+		String[][] horario = new String[2][10];
+		String[] clinicas = new String[] {"-1","-1","-1","-1","-1","-1","-1","-1","-1","-1"};
+		String[] turnos = new String[] {"-1","-1","-1","-1","-1","-1","-1","-1","-1","-1"};
+		int apuntador = 0;
+		
+		if (comboBox_LunesMat.getSelectedIndex()!=0) {
+					clinicas[apuntador] = String.valueOf(comboBox_LunesMat.getSelectedIndex());
+					turnos[apuntador] = "1";
+					mostrarMensaje("turno "+ turnos[apuntador] + " clinica " + clinicas[apuntador]);
+					apuntador++;
+		}
+		if (comboBox_LunesVesp.getSelectedIndex()!=0) {
+					clinicas[apuntador] = String.valueOf(comboBox_LunesVesp.getSelectedIndex());
+					turnos[apuntador] = "2";
+					mostrarMensaje("turno "+turnos[apuntador] + " clinica " + clinicas[apuntador]);
+					apuntador++;
+		}
+		if (comboBox_MartesMat.getSelectedIndex()!=0) {
+					clinicas[apuntador] = String.valueOf(comboBox_MartesMat.getSelectedIndex());
+					turnos[apuntador] = "3";
+					mostrarMensaje("turno "+turnos[apuntador] + " clinica " + clinicas[apuntador]);
+					apuntador++;
+		}
+		if (comboBox_MartesVesp.getSelectedIndex()!=0) {
+					clinicas[apuntador] = String.valueOf(comboBox_MartesVesp.getSelectedIndex());
+					turnos[apuntador] = "4";
+					mostrarMensaje("turno "+turnos[apuntador] + " clinica " + clinicas[apuntador]);
+					apuntador++;
+		}
+		if (comboBox_MiercolesMat.getSelectedIndex()!=0) {
+					clinicas[apuntador] = String.valueOf(comboBox_MiercolesMat.getSelectedIndex());
+					turnos[apuntador] = "5";
+					mostrarMensaje("turno "+turnos[apuntador] + " clinica " + clinicas[apuntador]);
+					apuntador++;
+		}
+		if (comboBox_MiercolesVesp.getSelectedIndex()!=0) {
+					clinicas[apuntador] = String.valueOf(comboBox_MiercolesVesp.getSelectedIndex());
+					turnos[apuntador] = "6";
+					mostrarMensaje("turno "+turnos[apuntador] + " clinica " + clinicas[apuntador]);
+					apuntador++;
+		}
+		if (comboBox_JuevesMat.getSelectedIndex()!=0) {
+					clinicas[apuntador] = String.valueOf(comboBox_JuevesMat.getSelectedIndex());
+					turnos[apuntador] = "7";
+					mostrarMensaje("turno "+turnos[apuntador] + " clinica " + clinicas[apuntador]);
+					apuntador++;
+		}
+		if (comboBox_JuevesVesp.getSelectedIndex()!=0) {
+					clinicas[apuntador] = String.valueOf(comboBox_JuevesVesp.getSelectedIndex());
+					turnos[apuntador] = "8";
+					mostrarMensaje("turno "+turnos[apuntador] + " clinica " + clinicas[apuntador]);
+					apuntador++;
+		}
+		if (comboBox_ViernesMat.getSelectedIndex()!=0) {
+					clinicas[apuntador] = String.valueOf(comboBox_ViernesMat.getSelectedIndex());
+					turnos[apuntador] = "9";
+					mostrarMensaje("turno "+turnos[apuntador] + " clinica " + clinicas[apuntador]);
+					apuntador++;
+		}
+		if (comboBox_ViernesVesp.getSelectedIndex()!=0) {
+					clinicas[apuntador] = String.valueOf(comboBox_ViernesVesp.getSelectedIndex());
+					turnos[apuntador] = "10";
+					mostrarMensaje("turno "+turnos[apuntador] + " clinica " + clinicas[apuntador]);
+					apuntador++;
+		}
+		horario[0] = clinicas;
+		horario[1] = turnos;
+		return horario;
 	}
 	
 	public void salir() {

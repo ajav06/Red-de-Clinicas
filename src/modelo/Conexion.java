@@ -148,6 +148,25 @@ public class Conexion extends javax.swing.JFrame{
 		return rs;		
 	}
 	
+	public ResultSet buscarRegistroSinEstatus(String nombTabla, String id, String valorId) {
+		ResultSet rs=null;
+		try {
+			 Class.forName(getDriver());
+		     c = DriverManager.getConnection(getUrl()+getNombBD(),getUsuario(), getContrasenna());
+	         c.setAutoCommit(false);
+			
+	         stmt = c.createStatement();
+	         String sql = "SELECT * FROM "+nombTabla+" WHERE "+ id +"="+valorId+" ;";
+	         rs = stmt.executeQuery(sql);
+	         
+		  } catch (Exception e) {
+	         e.printStackTrace();
+	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	      }
+	      JOptionPane.showMessageDialog(this, "Registro Buscado de Manera Exitosa");
+		return rs;		
+	}
+	
 	public ResultSet consultarTabla(String nombTabla, String adicional) {
 		ResultSet rs=null;
 		try {

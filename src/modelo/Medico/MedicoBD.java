@@ -15,6 +15,7 @@ import modelo.ConexionBD;
 public class MedicoBD extends ConexionBD{
 	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 	private ResultSet resultSet;
+	private List<Trabajo> horario;
 	
 	public MedicoBD() {
 		super();
@@ -126,19 +127,23 @@ public class MedicoBD extends ConexionBD{
 	
 	public List<Trabajo> consultarHorario(String cedula){
 		Trabajo trabajo = null;
-		List<Trabajo> trabajos = new ArrayList<Trabajo>();
-		resultSet = this.buscarRegistro("trabajomedico", "ced_medico", cedula);
+		horario = new ArrayList<Trabajo>();
+		resultSet = this.buscarRegistroSinEstatus("trabajomedico", "ced_medico", "'"+cedula+"'");
 		try {
 			while (resultSet.next()){
 				String codigo = resultSet.getString("codigo");
 				String cod_clinica = resultSet.getString("cod_clinica");
 				String turno = resultSet.getString("turno");
 				trabajo = new Trabajo(codigo, cod_clinica, turno);
-				trabajos.add(trabajo);
+				horario.add(trabajo);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return trabajos;
+		return horario;
+	}
+	
+	public void guardarHorario(List<Trabajo> horario) {
+		
 	}
 }

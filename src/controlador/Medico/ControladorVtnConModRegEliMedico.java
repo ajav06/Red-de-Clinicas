@@ -4,16 +4,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
 import modelo.Clinica.ClinicaBD;
 import modelo.Especialidad.EspecialidadBD;
 import modelo.Medico.Medico;
 import modelo.Medico.MedicoBD;
+import modelo.Medico.Trabajo;
 import modelo.Paciente.PacienteBD;
 import vista.Medico.VentanaConModRegMedico;
 
 public class ControladorVtnConModRegEliMedico implements ActionListener{
 	private VentanaConModRegMedico vtnMedico;
+	private List<Trabajo> horario;
 	
 	public ControladorVtnConModRegEliMedico(Medico medico, int accion) throws SQLException {
 		super();
@@ -27,10 +30,12 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 		this.vtnMedico.addListener(this);
 		this.vtnMedico.llenarCampos(medico.getCedula(),medico.getCod_especialidad(),medico.getNombre(),medico.getApellido(),medico.getFechaNacimiento(),medico.getEdo_civil(),medico.getEstado(),medico.getDireccion(),medico.getTlf_casa(),medico.getNroTelefonico(),medico.getEmail());
 
+		
 		if (accion==1) {
 			this.vtnMedico.interfazRegistro();
 		} else if (accion==2) {
 			this.vtnMedico.interfazConsulta();
+			this.poblarHorario();
 		}
 	}
 
@@ -107,6 +112,33 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 		{
 			vtnMedico.mostrarMensaje("No se pudo eliminar el médico, verifique que los datos sean correctos");
 		}
+	}
+	
+	private void poblarHorario() {
+		String[] turno = new String[] {"-1","-1","-1","-1","-1","-1","-1","-1","-1","-1"};
+		String[] clinicas = new String[] {"-1","-1","-1","-1","-1","-1","-1","-1","-1","-1"};
+		try {
+			MedicoBD medicoBD = new MedicoBD();
+			horario = medicoBD.consultarHorario(vtnMedico.getCedula());
+			for (int i=0;i<horario.size();i++) {
+				turno[i] = horario.get(i).getTurno();
+				clinicas[i] = horario.get(i).getCod_clinica();
+			}
+		} catch (Exception e) {
+			vtnMedico.mostrarMensaje(e.getMessage());
+		}
+		vtnMedico.setHorario(clinicas, turno);
+	}
+	
+	private void guardarHorario() {
+		String[][] h = new String[2][10];
+		h = vtnMedico.getHorario();
+		for (int i=0;i<11;i++) {
+			horario.get(i).setTurno(h[1][i]);
+			horario.get(i).setCod_clinica(h[0][i]);
+		}
+		MedicoBD medicoBD = new MedicoBD();
+		medicoBD.
 	}
 	
 	private void salir() {
