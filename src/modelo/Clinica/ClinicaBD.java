@@ -22,7 +22,7 @@ public class ClinicaBD extends ConexionBD
 	public void registrarClinica(Clinica clinica) 
 	{
 		this.crearRegistro("clinica", "codigo,nombre,estado,direccion,telefono,email", "'"+clinica.getCodigo()
-				+"','"+clinica.getNombre()+"','"+clinica.getEstado()+"','"+clinica.getDireccion()+"','"+clinica.getTelefono()+","+clinica.getCorreo());
+				+"','"+clinica.getNombre()+"','"+clinica.getEstado()+"','"+clinica.getDireccion()+"','"+clinica.getTelefono()+"','"+clinica.getCorreo()+"'");
 	}
 	
 	public List<Clinica> consultarClinicas() throws SQLException {
