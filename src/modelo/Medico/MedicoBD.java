@@ -185,7 +185,7 @@ public class MedicoBD extends ConexionBD{
 	public void actualizarHorario(String cedula, List<Trabajo> horario) throws SQLException {
 		try{
 			for (int i=0;i<10;i++) {
-				this.actuRegistro("trabajomedico", "cod_clinica='"+horario.get(i).getCod_clinica(), "'codigo'", horario.get(i).getCodigo());
+				this.actuRegistro("trabajomedico", "cod_clinica='"+horario.get(i).getCod_clinica()+"'", "codigo", "'"+horario.get(i).getCodigo()+"'");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
