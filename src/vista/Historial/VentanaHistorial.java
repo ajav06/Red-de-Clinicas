@@ -53,6 +53,7 @@ public class VentanaHistorial extends javax.swing.JFrame{
 	private JTextArea textArea_Alergicos;
 	private JTextArea textArea_Epidemiologicos;
 	private JTextArea textArea_OtrosEnf;
+	private JTextArea textArea_EnfInf;
 	private JButton btnIncluir;
 	private JButton btnModificar;
 	private JButton btnVolver;
@@ -89,9 +90,12 @@ public class VentanaHistorial extends javax.swing.JFrame{
 			textField_Peso.setColumns(10);
 			
 			textField_Numero = new JTextFieldValidator(6,JTextFieldValidator.SOLO_NUMEROS);
+			textField_Numero.setToolTipText("");
 			textField_Numero.setColumns(10);
 			
 			textField_Cedula = new JTextFieldValidator(8,JTextFieldValidator.SOLO_NUMEROS);
+			textField_Cedula.setEditable(false);
+			textField_Cedula.setEnabled(false);
 			textField_Cedula.setColumns(10);
 			
 			JLabel lblAltura = new JLabel("Altura :");
@@ -130,7 +134,7 @@ public class VentanaHistorial extends javax.swing.JFrame{
 							.addGroup(gl_panel.createSequentialGroup()
 								.addComponent(lblSexo, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
 								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(comboBox_Sexo, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(comboBox_Sexo, 0, 88, Short.MAX_VALUE)))
 						.addPreferredGap(ComponentPlacement.UNRELATED)
 						.addComponent(textField_Altura, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
 						.addContainerGap())
@@ -138,32 +142,38 @@ public class VentanaHistorial extends javax.swing.JFrame{
 			gl_panel.setVerticalGroup(
 				gl_panel.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_panel.createSequentialGroup()
-						.addContainerGap()
+						.addGap(2)
 						.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
 							.addGroup(gl_panel.createSequentialGroup()
 								.addGap(9)
 								.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 									.addComponent(lblNumero, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(textField_Numero, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGap(18))
+									.addComponent(textField_Numero, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 							.addGroup(gl_panel.createSequentialGroup()
+								.addGap(9)
 								.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 									.addComponent(lblSexo, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(comboBox_Sexo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGap(18)))
+									.addComponent(comboBox_Sexo))))
+						.addGap(18)
 						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-							.addComponent(textField_Altura, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGroup(gl_panel.createSequentialGroup()
+								.addGap(3)
+								.addComponent(textField_Altura, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 							.addGroup(gl_panel.createSequentialGroup()
 								.addGap(6)
-								.addComponent(lblAltura, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+								.addComponent(lblAltura, GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE))
 							.addGroup(gl_panel.createSequentialGroup()
 								.addGap(6)
-								.addComponent(lblPeso, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addComponent(textField_Peso, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblPeso, GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE))
+							.addGroup(gl_panel.createSequentialGroup()
+								.addGap(3)
+								.addComponent(textField_Peso, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 							.addGroup(gl_panel.createSequentialGroup()
 								.addGap(6)
-								.addComponent(lblCedula, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addComponent(textField_Cedula, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addComponent(lblCedula, GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE))
+							.addGroup(gl_panel.createSequentialGroup()
+								.addGap(3)
+								.addComponent(textField_Cedula, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 						.addGap(14))
 			);
 			panel.setLayout(gl_panel);
@@ -187,40 +197,44 @@ public class VentanaHistorial extends javax.swing.JFrame{
 						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 							.addGroup(groupLayout.createSequentialGroup()
 								.addGap(33)
-								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 									.addComponent(panel_1, 0, 0, Short.MAX_VALUE)
 									.addComponent(panel, GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
 									.addGroup(groupLayout.createSequentialGroup()
-										.addComponent(btnIncluir, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+										.addComponent(btnIncluir, GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
 										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(btnModificar, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)))
+										.addComponent(btnModificar, GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+										.addGap(218)))
 								.addGap(18)
 								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-									.addComponent(scrollPane_3, GroupLayout.PREFERRED_SIZE, 412, GroupLayout.PREFERRED_SIZE)
-									.addComponent(btnVolver, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)))
+									.addComponent(scrollPane_3, GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
+									.addGroup(groupLayout.createSequentialGroup()
+										.addGap(337)
+										.addComponent(btnVolver, GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE))))
 							.addGroup(groupLayout.createSequentialGroup()
 								.addGap(225)
-								.addComponent(lblHistorialMedico, GroupLayout.PREFERRED_SIZE, 392, GroupLayout.PREFERRED_SIZE)))
-						.addContainerGap(33, Short.MAX_VALUE))
+								.addComponent(lblHistorialMedico, GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+								.addGap(220)))
+						.addGap(33))
 			);
 			groupLayout.setVerticalGroup(
 				groupLayout.createParallelGroup(Alignment.LEADING)
 					.addGroup(groupLayout.createSequentialGroup()
 						.addContainerGap()
-						.addComponent(lblHistorialMedico)
+						.addComponent(lblHistorialMedico, GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
 						.addGap(18)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 							.addGroup(groupLayout.createSequentialGroup()
-								.addComponent(panel, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panel, GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
 								.addGap(24)
-								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 390, GroupLayout.PREFERRED_SIZE))
+								.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE))
 							.addComponent(scrollPane_3, 0, 0, Short.MAX_VALUE))
 						.addGap(18)
 						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-							.addComponent(btnIncluir, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-							.addComponent(btnModificar, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-							.addComponent(btnVolver, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
-						.addContainerGap(120, Short.MAX_VALUE))
+							.addComponent(btnIncluir, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+							.addComponent(btnModificar, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+							.addComponent(btnVolver, GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE))
+						.addGap(18))
 			);
 			
 			JPanel panel_2 = new JPanel();
@@ -521,6 +535,11 @@ public class VentanaHistorial extends javax.swing.JFrame{
 			
 			JScrollPane scrollPane_17 = new JScrollPane();
 			
+			JLabel lblEnfInfancia = new JLabel("En la Infancia :");
+			lblHematologicos.setHorizontalAlignment(SwingConstants.CENTER);
+			
+			JScrollPane scrollPane_18 = new JScrollPane();
+			
 			GroupLayout gl_panel_5 = new GroupLayout(panel_5);
 			gl_panel_5.setHorizontalGroup(
 				gl_panel_5.createParallelGroup(Alignment.LEADING)
@@ -553,6 +572,8 @@ public class VentanaHistorial extends javax.swing.JFrame{
 							.addComponent(scrollPane_15, GroupLayout.PREFERRED_SIZE, 312, Short.MAX_VALUE)
 							.addComponent(lblEpidemiologicos)
 							.addComponent(scrollPane_16, GroupLayout.PREFERRED_SIZE, 312, Short.MAX_VALUE)
+							.addComponent(lblEnfInfancia)
+							.addComponent(scrollPane_18, GroupLayout.PREFERRED_SIZE, 312, Short.MAX_VALUE)
 							.addComponent(lblOtrosEnf)
 							.addComponent(scrollPane_17, GroupLayout.PREFERRED_SIZE, 312, Short.MAX_VALUE))
 						.addContainerGap())
@@ -613,6 +634,10 @@ public class VentanaHistorial extends javax.swing.JFrame{
 						.addPreferredGap(ComponentPlacement.RELATED)
 						.addComponent(scrollPane_16, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
 						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addComponent(lblEnfInfancia)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(scrollPane_18, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.UNRELATED)
 						.addComponent(lblOtrosEnf)
 						.addPreferredGap(ComponentPlacement.RELATED)
 						.addComponent(scrollPane_17, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
@@ -658,6 +683,9 @@ public class VentanaHistorial extends javax.swing.JFrame{
 			textArea_Epidemiologicos = new JTextArea();
 			scrollPane_16.setViewportView(textArea_Epidemiologicos);
 			
+			textArea_EnfInf = new JTextArea();
+			scrollPane_18.setViewportView(textArea_EnfInf);
+			
 			textArea_OtrosEnf = new JTextArea();
 			scrollPane_17.setViewportView(textArea_OtrosEnf);
 			
@@ -677,15 +705,19 @@ public class VentanaHistorial extends javax.swing.JFrame{
 			JScrollPane scrollPane_2 = new JScrollPane();
 			GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 			gl_panel_1.setHorizontalGroup(
-				gl_panel_1.createParallelGroup(Alignment.LEADING)
-					.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
+				gl_panel_1.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_panel_1.createSequentialGroup()
 						.addContainerGap()
 						.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
 							.addComponent(scrollPane_2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
 							.addComponent(scrollPane_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
-							.addComponent(scrollPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
-							.addComponent(lblEnfermedad, Alignment.LEADING)
-							.addComponent(lblAntEnfAct, Alignment.LEADING)
+							.addComponent(scrollPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
+							.addGroup(Alignment.LEADING, gl_panel_1.createSequentialGroup()
+								.addComponent(lblEnfermedad, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addGap(246))
+							.addGroup(Alignment.LEADING, gl_panel_1.createSequentialGroup()
+								.addComponent(lblAntEnfAct, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addGap(190))
 							.addComponent(lblAntFami, Alignment.LEADING))
 						.addContainerGap())
 			);
@@ -693,9 +725,9 @@ public class VentanaHistorial extends javax.swing.JFrame{
 				gl_panel_1.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_panel_1.createSequentialGroup()
 						.addContainerGap()
-						.addComponent(lblEnfermedad)
+						.addComponent(lblEnfermedad, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
 						.addGap(18)
 						.addComponent(lblAntEnfAct)
 						.addPreferredGap(ComponentPlacement.RELATED)
@@ -724,7 +756,79 @@ public class VentanaHistorial extends javax.swing.JFrame{
 	}
 	
 	private void blanquearCampos() {
-		
+		this.textField_Peso.setText(null);
+		this.textField_Numero.setText(null);
+		this.textField_Cedula.setText(null);
+		this.textField_Altura.setText(null);
+		this.textField_OtroFis.setText(null);
+		this.comboBox_Alcohol.setSelectedIndex(0);
+		this.comboBox_Alimentacion.setSelectedIndex(0);
+		this.comboBox_Catarsis.setSelectedIndex(0);
+		this.comboBox_Diuresis.setSelectedIndex(0);
+		this.comboBox_Drogas.setSelectedIndex(0);
+		this.comboBox_Infuciones.setSelectedIndex(0);
+		this.comboBox_Sexo.setSelectedIndex(0);
+		this.comboBox_Sexualidad.setSelectedIndex(0);
+		this.comboBox_Tabaco.setSelectedIndex(0);
+		this.textArea_AntFami.setText(null);
+		this.textArea_Alergicos.setText(null);
+		this.textArea_AnteEnfAct.setText(null);
+		this.textArea_Cardiacas.setText(null);
+		this.textArea_Endocrinologicos.setText(null);
+		this.textArea_EnfAct.setText(null);
+		this.textArea_Epidemiologicos.setText(null);
+		this.textArea_Gastrointestinales.setText(null);
+		this.textArea_Ginecologicos.setText(null);
+		this.textArea_Hematologicos.setText(null);
+		this.textArea_Infectologicos.setText(null);
+		this.textArea_Neofrourologicos.setText(null);
+		this.textArea_Neurologicos.setText(null);
+		this.textArea_OtrosEnf.setText(null);
+		this.textArea_Quirurgicos.setText(null);
+		this.textArea_Respiratorias.setText(null);
+		this.textArea_Traumatologicos.setText(null);
+		this.textArea_EnfInf.setText(null);
+	}
+	
+	public void llenarCampos(String peso, String numero, String cedula, String altura,
+			String otrofis, String alcohol, String alimentacion, String catarsis, 
+			String diuresis, String drogas, String infuciones, String sexualidad, 
+			String tabaco, String anteFa, String alergicos, String anteEnf, 
+			String cardiacas, String endocri, String enfAct, String epidemio, 
+			String gastroin, String ginecolo, String hemato, String infectolo,
+			String neufrolo, String neurolo, String otrosEnf, String quirurgi,
+			String respira, String trauma, String infan) {
+		this.textField_Peso.setText(peso);
+		this.textField_Numero.setText(numero);
+		this.textField_Cedula.setText(cedula);
+		this.textField_Altura.setText(altura);
+		this.textField_OtroFis.setText(otrofis);
+		this.comboBox_Alcohol.setSelectedItem(alcohol);
+		this.comboBox_Alimentacion.setSelectedItem(alimentacion);
+		this.comboBox_Catarsis.setSelectedItem(catarsis);
+		this.comboBox_Diuresis.setSelectedItem(diuresis);
+		this.comboBox_Drogas.setSelectedItem(drogas);
+		this.comboBox_Infuciones.setSelectedItem(infuciones);
+		this.comboBox_Sexualidad.setSelectedItem(sexualidad);
+		this.comboBox_Tabaco.setSelectedItem(tabaco);
+		this.textArea_AntFami.setText(anteFa);
+		this.textArea_Alergicos.setText(alergicos);
+		this.textArea_AnteEnfAct.setText(anteEnf);
+		this.textArea_Cardiacas.setText(cardiacas);
+		this.textArea_Endocrinologicos.setText(endocri);
+		this.textArea_EnfAct.setText(enfAct);
+		this.textArea_Epidemiologicos.setText(epidemio);
+		this.textArea_Gastrointestinales.setText(gastroin);
+		this.textArea_Ginecologicos.setText(ginecolo);
+		this.textArea_Hematologicos.setText(hemato);
+		this.textArea_Infectologicos.setText(infectolo);
+		this.textArea_Neofrourologicos.setText(neufrolo);
+		this.textArea_Neurologicos.setText(neurolo);
+		this.textArea_OtrosEnf.setText(otrosEnf);
+		this.textArea_Quirurgicos.setText(quirurgi);
+		this.textArea_Respiratorias.setText(respira);
+		this.textArea_Traumatologicos.setText(trauma);
+		this.textArea_EnfInf.setText(infan);
 	}
 	
 	public void salir() {
@@ -732,253 +836,194 @@ public class VentanaHistorial extends javax.swing.JFrame{
 		dispose();
 	}
 
-	public JTextFieldValidator getTextField_Peso() {
-		return textField_Peso;
+	public String getPeso() {
+		return textField_Peso.getText();
 	}
 
-	public void setTextField_Peso(String peso) {
-		this.textField_Peso.setText(peso);
+	public String getNumero() {
+		return textField_Numero.getText();
 	}
 
-	public JTextFieldValidator getTextField_Numero() {
-		return textField_Numero;
+
+	public String getCedula() {
+		return textField_Cedula.getText();
 	}
 
-	public void setTextField_Numero(JTextFieldValidator textField_Numero) {
-		this.textField_Numero = textField_Numero;
+
+	public String getAltura() {
+		return textField_Altura.getText();
 	}
 
-	public JTextFieldValidator getTextField_Cedula() {
-		return textField_Cedula;
+	public String getOtroFis() {
+		return textField_OtroFis.getText();
 	}
 
-	public void setTextField_Cedula(JTextFieldValidator textField_Cedula) {
-		this.textField_Cedula = textField_Cedula;
-	}
-
-	public JTextFieldValidator getTextField_Altura() {
-		return textField_Altura;
-	}
-
-	public void setTextField_Altura(JTextFieldValidator textField_Altura) {
-		this.textField_Altura = textField_Altura;
-	}
-
-	public JTextFieldValidator getTextField_OtroFis() {
-		return textField_OtroFis;
-	}
-
-	public void setTextField_OtroFis(JTextFieldValidator textField_OtroFis) {
-		this.textField_OtroFis = textField_OtroFis;
-	}
-
-	public JComboBox getComboBox_Sexo() {
-		return comboBox_Sexo;
-	}
-
-	public void setComboBox_Sexo(JComboBox comboBox_Sexo) {
-		this.comboBox_Sexo = comboBox_Sexo;
-	}
-
-	public JComboBox getComboBox_Tabaco() {
-		return comboBox_Tabaco;
-	}
-
-	public void setComboBox_Tabaco(JComboBox comboBox_Tabaco) {
-		this.comboBox_Tabaco = comboBox_Tabaco;
-	}
-
-	public JComboBox getComboBox_Alcohol() {
-		return comboBox_Alcohol;
-	}
-
-	public void setComboBox_Alcohol(JComboBox comboBox_Alcohol) {
-		this.comboBox_Alcohol = comboBox_Alcohol;
-	}
-
-	public JComboBox getComboBox_Drogas() {
-		return comboBox_Drogas;
-	}
-
-	public void setComboBox_Drogas(JComboBox comboBox_Drogas) {
-		this.comboBox_Drogas = comboBox_Drogas;
-	}
-
-	public JComboBox getComboBox_Infuciones() {
-		return comboBox_Infuciones;
-	}
-
-	public void setComboBox_Infuciones(JComboBox comboBox_Infuciones) {
-		this.comboBox_Infuciones = comboBox_Infuciones;
-	}
-
-	public JComboBox getComboBox_Sexualidad() {
-		return comboBox_Sexualidad;
-	}
-
-	public void setComboBox_Sexualidad(JComboBox comboBox_Sexualidad) {
-		this.comboBox_Sexualidad = comboBox_Sexualidad;
-	}
-
-	public JComboBox getComboBox_Diuresis() {
-		return comboBox_Diuresis;
-	}
-
-	public void setComboBox_Diuresis(JComboBox comboBox_Diuresis) {
-		this.comboBox_Diuresis = comboBox_Diuresis;
-	}
-
-	public JComboBox getComboBox_Catarsis() {
-		return comboBox_Catarsis;
-	}
-
-	public void setComboBox_Catarsis(JComboBox comboBox_Catarsis) {
-		this.comboBox_Catarsis = comboBox_Catarsis;
-	}
-
-	public JComboBox getComboBox_Alimentacion() {
-		return comboBox_Alimentacion;
-	}
-
-	public void setComboBox_Alimentacion(JComboBox comboBox_Alimentacion) {
-		this.comboBox_Alimentacion = comboBox_Alimentacion;
-	}
-
-	public JTextArea getTextArea_AntFami() {
-		return textArea_AntFami;
-	}
-
-	public void setTextArea_AntFami(JTextArea textArea_AntFami) {
-		this.textArea_AntFami = textArea_AntFami;
-	}
-
-	public JTextArea getTextArea_AnteEnfAct() {
-		return textArea_AnteEnfAct;
-	}
-
-	public void setTextArea_AnteEnfAct(JTextArea textArea_AnteEnfAct) {
-		this.textArea_AnteEnfAct = textArea_AnteEnfAct;
-	}
-
-	public JTextArea getTextArea_EnfAct() {
-		return textArea_EnfAct;
-	}
-
-	public void setTextArea_EnfAct(JTextArea textArea_EnfAct) {
-		this.textArea_EnfAct = textArea_EnfAct;
-	}
-
-	public JTextArea getTextArea_Neurologicos() {
-		return textArea_Neurologicos;
-	}
-
-	public void setTextArea_Neurologicos(JTextArea textArea_Neurologicos) {
-		this.textArea_Neurologicos = textArea_Neurologicos;
-	}
-
-	public JTextArea getTextArea_Neofrourologicos() {
-		return textArea_Neofrourologicos;
-	}
-
-	public void setTextArea_Neofrourologicos(JTextArea textArea_Neofrourologicos) {
-		this.textArea_Neofrourologicos = textArea_Neofrourologicos;
-	}
-
-	public JTextArea getTextArea_Gastrointestinales() {
-		return textArea_Gastrointestinales;
-	}
-
-	public void setTextArea_Gastrointestinales(JTextArea textArea_Gastrointestinales) {
-		this.textArea_Gastrointestinales = textArea_Gastrointestinales;
-	}
-
-	public JTextArea getTextArea_Respiratorias() {
-		return textArea_Respiratorias;
-	}
-
-	public void setTextArea_Respiratorias(JTextArea textArea_Respiratorias) {
-		this.textArea_Respiratorias = textArea_Respiratorias;
-	}
-
-	public JTextArea getTextArea_Cardiacas() {
-		return textArea_Cardiacas;
-	}
-
-	public void setTextArea_Cardiacas(JTextArea textArea_Cardiacas) {
-		this.textArea_Cardiacas = textArea_Cardiacas;
-	}
-
-	public JTextArea getTextArea_Hematologicos() {
-		return textArea_Hematologicos;
-	}
-
-	public void setTextArea_Hematologicos(JTextArea textArea_Hematologicos) {
-		this.textArea_Hematologicos = textArea_Hematologicos;
-	}
-
-	public JTextArea getTextArea_Ginecologicos() {
-		return textArea_Ginecologicos;
-	}
-
-	public void setTextArea_Ginecologicos(JTextArea textArea_Ginecologicos) {
-		this.textArea_Ginecologicos = textArea_Ginecologicos;
-	}
-
-	public JTextArea getTextArea_Infectologicos() {
-		return textArea_Infectologicos;
-	}
-
-	public void setTextArea_Infectologicos(JTextArea textArea_Infectologicos) {
-		this.textArea_Infectologicos = textArea_Infectologicos;
-	}
-
-	public JTextArea getTextArea_Endocrinologicos() {
-		return textArea_Endocrinologicos;
-	}
-
-	public void setTextArea_Endocrinologicos(JTextArea textArea_Endocrinologicos) {
-		this.textArea_Endocrinologicos = textArea_Endocrinologicos;
-	}
-
-	public JTextArea getTextArea_Quirurgicos() {
-		return textArea_Quirurgicos;
-	}
-
-	public void setTextArea_Quirurgicos(JTextArea textArea_Quirurgicos) {
-		this.textArea_Quirurgicos = textArea_Quirurgicos;
-	}
-
-	public JTextArea getTextArea_Traumatologicos() {
-		return textArea_Traumatologicos;
-	}
-
-	public void setTextArea_Traumatologicos(JTextArea textArea_Traumatologicos) {
-		this.textArea_Traumatologicos = textArea_Traumatologicos;
-	}
-
-	public JTextArea getTextArea_Alergicos() {
-		return textArea_Alergicos;
-	}
-
-	public void setTextArea_Alergicos(JTextArea textArea_Alergicos) {
-		this.textArea_Alergicos = textArea_Alergicos;
-	}
-
-	public JTextArea getTextArea_Epidemiologicos() {
-		return textArea_Epidemiologicos;
-	}
-
-	public void setTextArea_Epidemiologicos(JTextArea textArea_Epidemiologicos) {
-		this.textArea_Epidemiologicos = textArea_Epidemiologicos;
-	}
-
-	public JTextArea getTextArea_OtrosEnf() {
-		return textArea_OtrosEnf;
-	}
-
-	public void setTextArea_OtrosEnf(JTextArea textArea_OtrosEnf) {
-		this.textArea_OtrosEnf = textArea_OtrosEnf;
+	public char getSexo() {
+		switch (comboBox_Sexo.getSelectedIndex()) {
+		case 0: 
+			return 'F';
+		case 1: 
+			return 'M';
+		case 3: 
+			return 'O';
+		}
+		return 'F';
 	}
 	
+	public void setSexo(char sexo) {
+		switch (sexo) {
+		case 'F': 
+			comboBox_Sexo.setSelectedIndex(0);
+			break;
+		case 'M': 
+			comboBox_Sexo.setSelectedIndex(1);
+			break;
+		case 'O': 
+			comboBox_Sexo.setSelectedIndex(2);
+			break;
+		}
+	}
+
+	public String getTabaco() {
+		return (String) comboBox_Tabaco.getSelectedItem();
+	}
+
+
+	public String getAlcohol() {
+		return (String) comboBox_Alcohol.getSelectedItem();
+	}
+
+
+	public String getDrogas() {
+		return (String) comboBox_Drogas.getSelectedItem();
+	}
+
+
+	public String getInfuciones() {
+		return (String) comboBox_Infuciones.getSelectedItem();
+	}
+
+
+	public String getSexualidad() {
+		return (String) comboBox_Sexualidad.getSelectedItem();
+	}
+
+	public String getDiuresis() {
+		return (String) comboBox_Diuresis.getSelectedItem();
+	}
+
+
+	public String getCatarsis() {
+		return (String) comboBox_Catarsis.getSelectedItem();
+	}
+
+
+	public String getAlimentacion() {
+		return (String) comboBox_Alimentacion.getSelectedItem();
+	}
+
+
+	public String getAntFami() {
+		return textArea_AntFami.getText();
+	}
+
+
+	public String getAnteEnfAct() {
+		return textArea_AnteEnfAct.getText();
+	}
+
+
+	public String getEnfAct() {
+		return textArea_EnfAct.getText();
+	}
+
+
+	public String getNeurologicos() {
+		return textArea_Neurologicos.getText();
+	}
+
+	public String getNeofrourologicos() {
+		return textArea_Neofrourologicos.getText();
+	}
+
+
+	public String getGastrointestinales() {
+		return textArea_Gastrointestinales.getText();
+	}
+
+
+	public String getRespiratorias() {
+		return textArea_Respiratorias.getText();
+	}
+
+
+	public String getCardiacas() {
+		return textArea_Cardiacas.getText();
+	}
+
+
+	public String getHematologicos() {
+		return textArea_Hematologicos.getText();
+	}
+
+
+	public String getGinecologicos() {
+		return textArea_Ginecologicos.getText();
+	}
+
+
+	public String getInfectologicos() {
+		return textArea_Infectologicos.getText();
+	}
+
+
+	public String getEndocrinologicos() {
+		return textArea_Endocrinologicos.getText();
+	}
+
+
+	public String getQuirurgicos() {
+		return textArea_Quirurgicos.getText();
+	}
+
+
+	public String getTraumatologicos() {
+		return textArea_Traumatologicos.getText();
+	}
+
+
+	public String getAlergicos() {
+		return textArea_Alergicos.getText();
+	}
+
+
+	public String getEpidemiologicos() {
+		return textArea_Epidemiologicos.getText();
+	}
+	
+	public String getEnfeIncancia() {
+		return textArea_EnfInf.getText();
+	}
+
+	public String getOtrosEnf() {
+		return textArea_OtrosEnf.getText();
+	}
+
+	public void addListener(ActionListener actionListener) {
+		btnIncluir.addActionListener(actionListener);
+		btnModificar.addActionListener(actionListener);
+		btnVolver.addActionListener(actionListener);
+	}
+	
+	public void interfazIncluir() {
+		btnModificar.setEnabled(false);
+		btnModificar.setVisible(false);
+	}
+	
+	public void interfazConsulta() {
+		btnIncluir.setEnabled(false);
+		btnIncluir.setVisible(false);
+		textField_Numero.setEditable(false);
+	}
 	
 }
