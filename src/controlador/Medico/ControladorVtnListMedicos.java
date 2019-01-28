@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 import controlador.Medico.ControladorVtnConModRegEliMedico;
@@ -45,7 +46,11 @@ public class ControladorVtnListMedicos implements ActionListener {
 		}
 		else if (actionCommand.equals("Salir")) {
 			salir();
-		} else if (actionCommand.isEmpty()) {
+		}  
+		else if (actionCommand.equals("Filtrar")) {
+			filtrarListado();
+		} 
+		else if (actionCommand.isEmpty()) {
 			cargarDatosMedico();
 		}
 	}
@@ -56,7 +61,7 @@ public class ControladorVtnListMedicos implements ActionListener {
 			List<Medico> medicos = medicoBD.consultarMedicos();
 			this.vtnListMed.setResultados(new VentanaMedicoModeloTabla(medicos,especialidades));
 		} catch (SQLException e) {
-			vtnListMed.mostrarMensaje(e.getMessage());
+			vtnListMed.mostrarMensaje(e.getClass().getName()+": "+e.getMessage());
 		}
 	}
 	
@@ -77,7 +82,7 @@ public class ControladorVtnListMedicos implements ActionListener {
 				}
 			}
 		} catch (Exception e) {
-			vtnListMed.mostrarMensaje(e.getMessage());
+			vtnListMed.mostrarMensaje(e.getClass().getName()+": "+e.getMessage());
 			vtnListMed.mostrarMensaje("No se pudo buscar el médico, verifique que los datos sean correctos");
 		}
 	}
@@ -95,16 +100,28 @@ public class ControladorVtnListMedicos implements ActionListener {
 				ControladorVtnConModRegEliMedico c = new ControladorVtnConModRegEliMedico(medico,2);
 			}
 		} catch (Exception e) {
-			vtnListMed.mostrarMensaje(e.getMessage());
+			vtnListMed.mostrarMensaje(e.getClass().getName()+": "+e.getMessage());
 		}
 	}
 	
 	private void registrarMedicos() {
-		medico = null;
+		medico = new Medico();
 		try {
-			ControladorVtnConModRegEliMedico c = new ControladorVtnConModRegEliMedico(medico,1);
+			ControladorVtnConModRegEliMedico c = new ControladorVtnConModRegEliMedico(1);
 		} catch (Exception e) {
-			vtnListMed.mostrarMensaje(e.getMessage());
+			vtnListMed.mostrarMensaje(e.getClass().getName()+": "+e.getMessage());
+		}
+	}
+	
+	private void filtrarListado() {
+		List<Medico> medicos = new ArrayList<>();
+		try{
+			MedicoBD medicoBD = new MedicoBD();
+			String filtro = "cod_especialidad='"+vtnListMed.getEspecialidad()+"' AND estatus='a'";
+			medicos = medicoBD.consultarFiltrarMedicos(filtro);
+			this.vtnListMed.setResultados(new VentanaMedicoModeloTabla(medicos,especialidades));
+		} catch (SQLException e) {
+	         vtnListMed.mostrarMensaje(e.getClass().getName()+": "+e.getMessage());
 		}
 	}
 	

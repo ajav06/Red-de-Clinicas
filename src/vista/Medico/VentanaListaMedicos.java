@@ -35,6 +35,10 @@ import javax.swing.ImageIcon;
 
 public class VentanaListaMedicos extends javax.swing.JFrame{
 
+	public JComboBox getComboBox_Especialidad() {
+		return comboBox_Especialidad;
+	}
+
 	private JTextField txtCedula_Nombre;
 	private JTable table_Medicos;
 	private JButton btnConsultar;
@@ -42,6 +46,7 @@ public class VentanaListaMedicos extends javax.swing.JFrame{
 	private JButton btnBuscar;
 	private JButton btnSalir;
 	private JButton btnRefrescar;
+	private JButton btnFiltrar;
 	private JComboBox comboBox_Especialidad;
 
 		public VentanaListaMedicos(DefaultComboBoxModel especialidades) {
@@ -136,22 +141,26 @@ public class VentanaListaMedicos extends javax.swing.JFrame{
 		
 		JLabel lblFiltrarPorEspecialidad = new JLabel("Filtrar por Especialidad:");
 		
-		JComboBox comboBox_Especialidad = new JComboBox();
+		comboBox_Especialidad = new JComboBox();
+		
+		btnFiltrar = new JButton("Filtrar");
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(26)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_panel.createSequentialGroup()
 							.addComponent(txtCedula_Nombre, GroupLayout.PREFERRED_SIZE, 310, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(btnBuscar, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE))
-						.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+						.addGroup(gl_panel.createSequentialGroup()
 							.addComponent(lblFiltrarPorEspecialidad)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(comboBox_Especialidad, GroupLayout.PREFERRED_SIZE, 318, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(25, Short.MAX_VALUE))
+							.addComponent(comboBox_Especialidad, GroupLayout.PREFERRED_SIZE, 235, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnFiltrar)))
+					.addContainerGap(95, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -163,7 +172,8 @@ public class VentanaListaMedicos extends javax.swing.JFrame{
 					.addGap(18)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblFiltrarPorEspecialidad)
-						.addComponent(comboBox_Especialidad, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
+						.addComponent(comboBox_Especialidad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnFiltrar))
 					.addContainerGap(23, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
@@ -189,7 +199,7 @@ public class VentanaListaMedicos extends javax.swing.JFrame{
 		btnConsultar.addActionListener(actionListener);
 		btnSalir.addActionListener(actionListener);
 		btnRefrescar.addActionListener(actionListener);
-		comboBox_Especialidad.addActionListener(actionListener);
+		btnFiltrar.addActionListener(actionListener);
 	}
 	
 	public void setResultados(AbstractTableModel abstractTableModel) {
@@ -202,6 +212,11 @@ public class VentanaListaMedicos extends javax.swing.JFrame{
 
 	public String getCedula() {
 		return txtCedula_Nombre.getText();
+	}
+	
+	public String getEspecialidad() {
+		String e = String.valueOf(comboBox_Especialidad.getSelectedIndex());
+		return e;
 	}
 	
 	public void salir() {
