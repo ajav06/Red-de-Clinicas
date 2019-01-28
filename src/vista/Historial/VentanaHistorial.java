@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.SwingConstants;
@@ -36,6 +38,7 @@ public class VentanaHistorial extends javax.swing.JFrame{
 	private JComboBox comboBox_Diuresis;
 	private JComboBox comboBox_Catarsis;
 	private JComboBox comboBox_Alimentacion;
+	private JComboBox comboBox_Suenno;
 	private JTextArea textArea_AntFami;
 	private JTextArea textArea_AnteEnfAct;
 	private JTextArea textArea_EnfAct;
@@ -94,8 +97,6 @@ public class VentanaHistorial extends javax.swing.JFrame{
 			textField_Numero.setColumns(10);
 			
 			textField_Cedula = new JTextFieldValidator(8,JTextFieldValidator.SOLO_NUMEROS);
-			textField_Cedula.setEditable(false);
-			textField_Cedula.setEnabled(false);
 			textField_Cedula.setColumns(10);
 			
 			JLabel lblAltura = new JLabel("Altura :");
@@ -142,18 +143,14 @@ public class VentanaHistorial extends javax.swing.JFrame{
 			gl_panel.setVerticalGroup(
 				gl_panel.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_panel.createSequentialGroup()
-						.addGap(2)
+						.addGap(11)
 						.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-							.addGroup(gl_panel.createSequentialGroup()
-								.addGap(9)
-								.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-									.addComponent(lblNumero, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(textField_Numero, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-							.addGroup(gl_panel.createSequentialGroup()
-								.addGap(9)
-								.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-									.addComponent(lblSexo, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(comboBox_Sexo))))
+							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblNumero, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(textField_Numero, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblSexo, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(comboBox_Sexo)))
 						.addGap(18)
 						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 							.addGroup(gl_panel.createSequentialGroup()
@@ -363,9 +360,9 @@ public class VentanaHistorial extends javax.swing.JFrame{
 			JLabel label_5 = new JLabel("Sue\u00F1o :");
 			label_5.setHorizontalAlignment(SwingConstants.CENTER);
 			
-			JComboBox comboBox_Sueño = new JComboBox();
-			comboBox_Sueño.setModel(new DefaultComboBoxModel(new String[] {"Alto", "Normal", "Poco"}));
-			comboBox_Sueño.setMaximumRowCount(4);
+			comboBox_Suenno = new JComboBox();
+			comboBox_Suenno.setModel(new DefaultComboBoxModel(new String[] {"Alto", "Normal", "Poco"}));
+			comboBox_Suenno.setMaximumRowCount(4);
 			GroupLayout gl_panel_4 = new GroupLayout(panel_4);
 			gl_panel_4.setHorizontalGroup(
 				gl_panel_4.createParallelGroup(Alignment.LEADING)
@@ -373,15 +370,17 @@ public class VentanaHistorial extends javax.swing.JFrame{
 						.addContainerGap()
 						.addGroup(gl_panel_4.createParallelGroup(Alignment.TRAILING)
 							.addGroup(gl_panel_4.createSequentialGroup()
-								.addComponent(lblAlimentacion)
+								.addComponent(lblAlimentacion, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addGap(11)
 								.addComponent(comboBox_Alimentacion, 0, 84, Short.MAX_VALUE)
 								.addGap(24)
 								.addComponent(label_4, GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
 							.addGroup(gl_panel_4.createSequentialGroup()
 								.addGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
-									.addComponent(lblDiuresis)
-									.addComponent(lblCatarsis, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE))
+									.addGroup(gl_panel_4.createSequentialGroup()
+										.addComponent(lblDiuresis, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addGap(6))
+									.addComponent(lblCatarsis, GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
 								.addGap(12)
 								.addGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
 									.addComponent(comboBox_Catarsis, 0, 83, Short.MAX_VALUE)
@@ -405,7 +404,7 @@ public class VentanaHistorial extends javax.swing.JFrame{
 										.addGap(2)))
 								.addGap(18))
 							.addGroup(gl_panel_4.createSequentialGroup()
-								.addComponent(comboBox_Sueño, 0, 86, Short.MAX_VALUE)
+								.addComponent(comboBox_Suenno, 0, 86, Short.MAX_VALUE)
 								.addGap(20))))
 			);
 			gl_panel_4.setVerticalGroup(
@@ -413,8 +412,8 @@ public class VentanaHistorial extends javax.swing.JFrame{
 					.addGroup(gl_panel_4.createSequentialGroup()
 						.addContainerGap()
 						.addGroup(gl_panel_4.createParallelGroup(Alignment.BASELINE)
-							.addComponent(textField_OtroFis, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addComponent(comboBox_Alimentacion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(textField_OtroFis, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(comboBox_Alimentacion)
 							.addGroup(gl_panel_4.createSequentialGroup()
 								.addGap(3)
 								.addComponent(label_4, GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE))
@@ -424,17 +423,17 @@ public class VentanaHistorial extends javax.swing.JFrame{
 							.addComponent(lblSexualidad, GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
 							.addGroup(gl_panel_4.createSequentialGroup()
 								.addGap(3)
-								.addComponent(comboBox_Sexualidad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addComponent(comboBox_Sexualidad))
 							.addGroup(gl_panel_4.createSequentialGroup()
 								.addGap(3)
 								.addGroup(gl_panel_4.createParallelGroup(Alignment.BASELINE)
 									.addComponent(lblDiuresis, GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-									.addComponent(comboBox_Diuresis, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+									.addComponent(comboBox_Diuresis))))
 						.addPreferredGap(ComponentPlacement.UNRELATED)
 						.addGroup(gl_panel_4.createParallelGroup(Alignment.BASELINE)
-							.addComponent(comboBox_Sueño, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(comboBox_Suenno)
 							.addComponent(label_5, GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-							.addComponent(comboBox_Catarsis, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(comboBox_Catarsis)
 							.addComponent(lblCatarsis, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 						.addGap(11))
 			);
@@ -708,30 +707,30 @@ public class VentanaHistorial extends javax.swing.JFrame{
 				gl_panel_1.createParallelGroup(Alignment.TRAILING)
 					.addGroup(gl_panel_1.createSequentialGroup()
 						.addContainerGap()
-						.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
-							.addComponent(scrollPane_2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
-							.addComponent(scrollPane_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
-							.addComponent(scrollPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
-							.addGroup(Alignment.LEADING, gl_panel_1.createSequentialGroup()
+						.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+							.addComponent(scrollPane_2, GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
+							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
+							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
+							.addGroup(gl_panel_1.createSequentialGroup()
 								.addComponent(lblEnfermedad, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addGap(246))
-							.addGroup(Alignment.LEADING, gl_panel_1.createSequentialGroup()
+							.addGroup(gl_panel_1.createSequentialGroup()
 								.addComponent(lblAntEnfAct, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addGap(190))
-							.addComponent(lblAntFami, Alignment.LEADING))
+							.addComponent(lblAntFami))
 						.addContainerGap())
 			);
 			gl_panel_1.setVerticalGroup(
 				gl_panel_1.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_panel_1.createSequentialGroup()
 						.addContainerGap()
-						.addComponent(lblEnfermedad, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(lblEnfermedad, GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE)
 						.addPreferredGap(ComponentPlacement.RELATED)
 						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
 						.addGap(18)
 						.addComponent(lblAntEnfAct)
 						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+						.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
 						.addPreferredGap(ComponentPlacement.UNRELATED)
 						.addComponent(lblAntFami)
 						.addGap(8)
@@ -755,7 +754,7 @@ public class VentanaHistorial extends javax.swing.JFrame{
 		}
 	}
 	
-	private void blanquearCampos() {
+	public void blanquearCampos() {
 		this.textField_Peso.setText(null);
 		this.textField_Numero.setText(null);
 		this.textField_Cedula.setText(null);
@@ -770,6 +769,7 @@ public class VentanaHistorial extends javax.swing.JFrame{
 		this.comboBox_Sexo.setSelectedIndex(0);
 		this.comboBox_Sexualidad.setSelectedIndex(0);
 		this.comboBox_Tabaco.setSelectedIndex(0);
+		this.comboBox_Suenno.setSelectedIndex(0);
 		this.textArea_AntFami.setText(null);
 		this.textArea_Alergicos.setText(null);
 		this.textArea_AnteEnfAct.setText(null);
@@ -790,9 +790,25 @@ public class VentanaHistorial extends javax.swing.JFrame{
 		this.textArea_EnfInf.setText(null);
 	}
 	
+	public boolean validarCamposLLenos() {
+		boolean lleno=false;
+		if(this.textField_Cedula.getText()==null && this.textField_Numero.getText()==null
+			&& this.textField_Peso.getText()==null && this.textField_Altura.getText()==null) {
+			lleno=true;
+		}
+		else {
+			lleno=false;
+		}
+		return lleno;
+	}
+	
+	public void mostrarMensaje(String mensaje) {
+		JOptionPane.showMessageDialog(this, mensaje);
+	}
+	
 	public void llenarCampos(String peso, String numero, String cedula, String altura,
 			String otrofis, String alcohol, String alimentacion, String catarsis, 
-			String diuresis, String drogas, String infuciones, String sexualidad, 
+			String diuresis, String drogas, String infuciones, String sexualidad, String suenno,
 			String tabaco, String anteFa, String alergicos, String anteEnf, 
 			String cardiacas, String endocri, String enfAct, String epidemio, 
 			String gastroin, String ginecolo, String hemato, String infectolo,
@@ -810,6 +826,7 @@ public class VentanaHistorial extends javax.swing.JFrame{
 		this.comboBox_Drogas.setSelectedItem(drogas);
 		this.comboBox_Infuciones.setSelectedItem(infuciones);
 		this.comboBox_Sexualidad.setSelectedItem(sexualidad);
+		this.comboBox_Suenno.setSelectedItem(suenno);
 		this.comboBox_Tabaco.setSelectedItem(tabaco);
 		this.textArea_AntFami.setText(anteFa);
 		this.textArea_Alergicos.setText(alergicos);
@@ -885,41 +902,45 @@ public class VentanaHistorial extends javax.swing.JFrame{
 	}
 
 	public String getTabaco() {
-		return (String) comboBox_Tabaco.getSelectedItem();
+		return comboBox_Tabaco.getSelectedItem().toString();
 	}
 
 
 	public String getAlcohol() {
-		return (String) comboBox_Alcohol.getSelectedItem();
+		return comboBox_Alcohol.getSelectedItem().toString();
 	}
 
 
 	public String getDrogas() {
-		return (String) comboBox_Drogas.getSelectedItem();
+		return comboBox_Drogas.getSelectedItem().toString();
 	}
 
 
 	public String getInfuciones() {
-		return (String) comboBox_Infuciones.getSelectedItem();
+		return comboBox_Infuciones.getSelectedItem().toString();
 	}
 
 
 	public String getSexualidad() {
-		return (String) comboBox_Sexualidad.getSelectedItem();
+		return comboBox_Sexualidad.getSelectedItem().toString();
+	}
+	
+	public String getSuenno() {
+		return comboBox_Suenno.getSelectedItem().toString();
 	}
 
 	public String getDiuresis() {
-		return (String) comboBox_Diuresis.getSelectedItem();
+		return comboBox_Diuresis.getSelectedItem().toString();
 	}
 
 
 	public String getCatarsis() {
-		return (String) comboBox_Catarsis.getSelectedItem();
+		return comboBox_Catarsis.getSelectedItem().toString();
 	}
 
 
 	public String getAlimentacion() {
-		return (String) comboBox_Alimentacion.getSelectedItem();
+		return comboBox_Alimentacion.getSelectedItem().toString();
 	}
 
 
@@ -1013,6 +1034,7 @@ public class VentanaHistorial extends javax.swing.JFrame{
 		btnIncluir.addActionListener(actionListener);
 		btnModificar.addActionListener(actionListener);
 		btnVolver.addActionListener(actionListener);
+		
 	}
 	
 	public void interfazIncluir() {
@@ -1025,5 +1047,10 @@ public class VentanaHistorial extends javax.swing.JFrame{
 		btnIncluir.setVisible(false);
 		textField_Numero.setEditable(false);
 	}
+	
+	public void setCedula(String ced) {
+		this.textField_Cedula.setText(ced);
+	}
+	
 	
 }

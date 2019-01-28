@@ -4,44 +4,81 @@ import java.util.Date;
 import modelo.Persona;
 
 public class Paciente extends Persona{
-	String antePersonales, anteFamiliares;
-	int nroSeguro,nroHistorial;
+	char edo_civil;
+	String estado, email, celular,casa, direccion;
+	boolean asegurado;
 	
-	public Paciente(String cedula, String nombre, String apellido, String antePersonales, String anteFamiliares, int nroSeguro, int nroHistorial, Date fechaNacimiento) {
+	public Paciente(String cedula, String nombre, String apellido, Date fechaNacimiento,
+			char edo_civil, String estado, String email, String celular, String casa, String direccion, boolean asegurado) {
 		super();
 		this.cedula=cedula;
 		this.nombre=nombre;
 		this.apellido=apellido;
-		this.antePersonales=antePersonales;
-		this.anteFamiliares=anteFamiliares;
-		this.nroSeguro=nroSeguro;
-		this.nroHistorial=nroHistorial;
 		this.fechaNacimiento=fechaNacimiento;
+		this.edo_civil = edo_civil;
+		this.estado = estado;
+		this.email = email;
+		this.celular = celular;
+		this.celular = celular;
+		this.direccion = direccion;
+		this.asegurado = asegurado;
 	}
 	
-	public String getAntePersonales() {
-		return antePersonales;
+	public char getEdo_civil() {
+		return edo_civil;
 	}
-	public void setAntePersonales(String antePersonales) {
-		this.antePersonales = antePersonales;
+
+	public void setEdo_civil(char edo_civil) {
+		this.edo_civil = edo_civil;
 	}
-	public String getAnteFamiliares() {
-		return anteFamiliares;
+
+	public String getEstado() {
+		return estado;
 	}
-	public void setAnteFamiliares(String anteFamiliares) {
-		this.anteFamiliares = anteFamiliares;
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
-	public int getNroSeguro() {
-		return nroSeguro;
+
+	public String getEmail() {
+		return email;
 	}
-	public void setNroSeguro(int nroSeguro) {
-		this.nroSeguro = nroSeguro;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public int getNroHistorial() {
-		return nroHistorial;
+
+	public String getCelular() {
+		return celular;
 	}
-	public void setNroHistorial(int nroHistorial) {
-		this.nroHistorial = nroHistorial;
+
+	public void setCelular(String celular) {
+		this.celular = celular;
 	}
+
+	public String getCasa() {
+		return casa;
+	}
+
+	public void setCasa(String casa) {
+		this.casa = casa;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public boolean isAsegurado() {
+		return asegurado;
+	}
+
+	public void setAsegurado(boolean asegurado) {
+		this.asegurado = asegurado;
+	}
+	
 	
 }

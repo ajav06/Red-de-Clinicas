@@ -27,7 +27,7 @@ public class ControladorVtnListPacientes implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String actionCommand = e.getActionCommand();
-		if (actionCommand.equals("...")) {
+		if (actionCommand.equals("Buscar")) {
 			buscarPaciente();
 		}		
 		else if (actionCommand.equals("Actualizar")) {
@@ -37,7 +37,11 @@ public class ControladorVtnListPacientes implements ActionListener{
 			eliminarPaciente();
 		}
 		else if (actionCommand.equals("Incluir")) {
-			new ControladorVtnAgrePaciente();
+			buscarPaciente();
+			new ControladorVtnAgrePaciente(1, paciente);		
+		}
+		else if (actionCommand.equals("Volver")) {
+			vtnListPac.salir();
 		}
 	}
 	
@@ -74,7 +78,7 @@ public class ControladorVtnListPacientes implements ActionListener{
 	    	{
 	    		PacienteBD pacienteBD = new PacienteBD();	    
 	    		paciente = pacienteBD.buscarPaciente(vtnListPac.getCedula());
-	    		new ControladorVtnActuPaciente(paciente);
+	    		new ControladorVtnAgrePaciente(2, paciente);
 	    	}
 		}catch(Exception e)
 		{
@@ -93,7 +97,7 @@ public class ControladorVtnListPacientes implements ActionListener{
 	    	{
 	    		PacienteBD pacienteBD = new PacienteBD();	    
 	    		paciente = pacienteBD.buscarPaciente(vtnListPac.getCedula());
-	    		new ControladorVtnElimPaciente(paciente);
+	    		new ControladorVtnAgrePaciente(3, paciente);
 	    	}
 		}catch(Exception e)
 		{

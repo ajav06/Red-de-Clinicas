@@ -16,9 +16,9 @@ public class ControladorVtnElimPaciente implements ActionListener{
 		this.vtnElimPac.setLocationRelativeTo(null);
 		this.vtnElimPac.setVisible(true);
 		this.vtnElimPac.addListener(this);
-		this.vtnElimPac.llenarCampos(paciente.getCedula(), paciente.getNombre(), paciente.getApellido(), 
-				paciente.getFechaNacimiento(), paciente.getNroHistorial(), paciente.getNroSeguro(), 
-				paciente.getAntePersonales(), paciente.getAnteFamiliares());
+//		this.vtnElimPac.llenarCampos(paciente.getCedula(), paciente.getNombre(), paciente.getApellido(), 
+//				paciente.getFechaNacimiento(), paciente.getNroHistorial(), paciente.getNroSeguro(), 
+//				paciente.getAntePersonales(), paciente.getAnteFamiliares());
 	}
 	
 	@Override

@@ -15,9 +15,9 @@ public class ControladorVtnActuPaciente implements ActionListener{
 		this.vtnActuPac.setLocationRelativeTo(null);
 		this.vtnActuPac.setVisible(true);
 		this.vtnActuPac.addListener(this);
-		this.vtnActuPac.llenarCampos(paciente.getCedula(), paciente.getNombre(), paciente.getApellido(), 
-				paciente.getFechaNacimiento(), paciente.getNroHistorial(), paciente.getNroSeguro(), 
-				paciente.getAntePersonales(), paciente.getAnteFamiliares());
+//		this.vtnActuPac.llenarCampos(paciente.getCedula(), paciente.getNombre(), paciente.getApellido(), 
+//				paciente.getFechaNacimiento(), paciente.getNroHistorial(), paciente.getNroSeguro(), 
+//				paciente.getAntePersonales(), paciente.getAnteFamiliares());
 	}
 	
 	@Override
@@ -42,10 +42,10 @@ public class ControladorVtnActuPaciente implements ActionListener{
 	    	else
 	    	{
 	    		PacienteBD pacienteBD = new PacienteBD();
-		    	Paciente paciente = new Paciente(vtnActuPac.getCedula(),vtnActuPac.getNombre(),
-		    			vtnActuPac.getApellido(),vtnActuPac.getAntPer(),vtnActuPac.getAntFam(),
-		    			vtnActuPac.getNroSgro(),vtnActuPac.getNroHist(),vtnActuPac.getFechaNac());		    
-		    	pacienteBD.actualizarPaciente(paciente);
+//		    	Paciente paciente = new Paciente(vtnActuPac.getCedula(),vtnActuPac.getNombre(),
+//		    			vtnActuPac.getApellido(),vtnActuPac.getAntPer(),vtnActuPac.getAntFam(),
+//		    			vtnActuPac.getNroSgro(),vtnActuPac.getNroHist(),vtnActuPac.getFechaNac());		    
+//		    	pacienteBD.actualizarPaciente(paciente);
 		    	vtnActuPac.mostrarMensaje("El Paciente fue incluido con exito");
 		    	vtnActuPac.blanquearCampos();
 	    	}

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import controlador.Clinica.ControladorVtnAgreClinica;
 import controlador.Clinica.ControladorVtnLista;
 import controlador.Especialidad.ControladorVtnEspecialidades;
+import controlador.Historial.ControladorVtnHistorial;
 import controlador.Medico.ControladorVtnConModRegEliMedico;
 import controlador.Medico.ControladorVtnListMedicos;
 import controlador.Paciente.ControladorVtnListPacientes;
@@ -35,8 +36,13 @@ public class ControladorVtnPrincipal implements ActionListener{
 				e1.printStackTrace();
 			}
 		}		
-		else if (actionCommand.equals("Especialidades")) {
-			new ControladorVtnEspecialidades();
+		else if (actionCommand.equals("Seguro")) {
+			try {
+				new ControladorVtnSeguro();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		else if (actionCommand.equals("Medicos")) {
 			try {
@@ -48,7 +54,7 @@ public class ControladorVtnPrincipal implements ActionListener{
 		}
 		else if (actionCommand.equals("Pacientes")) {
 			try {
-				new ControladorVtnSeguro();
+				new ControladorVtnListPacientes();
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

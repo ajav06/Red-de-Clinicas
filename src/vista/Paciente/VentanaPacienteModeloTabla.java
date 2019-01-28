@@ -8,7 +8,7 @@ import javax.swing.table.AbstractTableModel;
 import modelo.Paciente.Paciente;
 
 public class VentanaPacienteModeloTabla extends AbstractTableModel{
-	private static String[] titulos = {"Cedula", "Nombres", "Apellidos", "Fecha de Nacimineto", "Nro de Historial Medico", "Nro de Seguro Medico"};
+	private static String[] titulos = {"Cedula", "Nombres", "Apellidos", "Fecha de Nacimineto", "Edo. Civil", "Tlf. Casa","Tlf. Celular","Email","Estado","Direccion"};
 	private List<Paciente> pacientes = new ArrayList<Paciente>();
 	
 	public VentanaPacienteModeloTabla(List<Paciente> pacientes) {
@@ -35,8 +35,12 @@ public class VentanaPacienteModeloTabla extends AbstractTableModel{
 			case 1: return paciente.getNombre();
 			case 2: return paciente.getApellido();
 			case 3: return paciente.getFechaNacimiento();
-			case 4: return paciente.getNroHistorial();
-			case 5: return paciente.getNroSeguro();
+			case 4: return paciente.getEdo_civil();
+			case 5: return paciente.getCasa();
+			case 6: return paciente.getCelular();
+			case 7: return paciente.getEmail();
+			case 8: return paciente.getEstado();
+			case 9: return paciente.getDireccion();
 			}
 		return null;
 	}

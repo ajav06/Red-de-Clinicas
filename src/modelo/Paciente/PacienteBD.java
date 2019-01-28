@@ -18,9 +18,9 @@ public class PacienteBD extends ConexionBD{
 	}
 	
 	public void registrarPaciente(Paciente paciente) {
-		this.crearRegistro("paciente", "cedula,nombres,apellidos,fechaNacimiento,antePersonales,anteFamiliares,nroSeguro,nroHistorial", "'"+paciente.getCedula()
-				+"','"+paciente.getNombre()+"','"+paciente.getApellido()+"','"+formatter.format(paciente.getFechaNacimiento())+"','"+paciente.getAntePersonales()+"','"+paciente.getAnteFamiliares()+"',"
-				+Integer.toString(paciente.getNroSeguro())+","+Integer.toString(paciente.getNroHistorial()));
+		this.crearRegistro("paciente", "cedula,nombres,apellidos,fecha_nacimiento,edo_civil,estado,direccion,tlf_casa,tlf_movil,email,asegurado", "'"+paciente.getCedula()
+				+"','"+paciente.getNombre()+"','"+paciente.getApellido()+"','"+formatter.format(paciente.getFechaNacimiento())+"','"+paciente.getEdo_civil()+"','"+paciente.getEstado()+"','"
+				+paciente.getDireccion()+"','"+paciente.getCasa()+"','"+paciente.getCelular()+"','"+paciente.getEmail()+"',"+Boolean.toString(paciente.isAsegurado()));
 	}
 	
 	public List<Paciente> consultarPacientes() throws SQLException {
@@ -31,12 +31,15 @@ public class PacienteBD extends ConexionBD{
 				String cedula = resultSet.getString("cedula");
 				String nombre = resultSet.getString("nombres");
 				String apellido = resultSet.getString("apellidos");
-				String antePersonales = resultSet.getString("antepersonales");
-				String anteFamiliares = resultSet.getString("antefamiliares");
-				int nroSeguro = resultSet.getInt("nroseguro");
-				int nroHistorial = resultSet.getInt("nrohistorial");
-				Date fechaNacimiento = resultSet.getDate("fechanacimiento");
-				Paciente paciente = new Paciente(cedula,nombre, apellido,antePersonales,anteFamiliares,nroSeguro,nroHistorial,fechaNacimiento);
+				Date fechaNacimiento = resultSet.getDate("fecha_nacimiento");
+				char edoc = resultSet.getString("edo_civil").charAt(0);
+				String edo = resultSet.getString("estado");
+				String dir = resultSet.getString("direccion");
+				String tlfcasa = resultSet.getString("tlf_casa");
+				String tlfcelu = resultSet.getString("tlf_movil");
+				String email = resultSet.getString("email");
+				boolean asegurado = resultSet.getBoolean("asegurado");
+				Paciente paciente = new Paciente(cedula, nombre, apellido, fechaNacimiento, edoc, edo, email, tlfcelu, tlfcasa, dir, asegurado);
 				pacientes.add(paciente);
 			}
 		} catch (SQLException e) {
@@ -47,10 +50,10 @@ public class PacienteBD extends ConexionBD{
 	}
 	
 	public void actualizarPaciente(Paciente paciente) {
-		this.actuRegistro("paciente", "nombres='"+paciente.getNombre()+"',apellidos='"+paciente.getApellido()+"',fechaNacimiento='"+
-				formatter.format(paciente.getFechaNacimiento())+"',antePersonales='"+paciente.getAntePersonales()+"',anteFamiliares='"+
-				paciente.getAnteFamiliares()+"',nroSeguro="+Integer.toString(paciente.getNroSeguro())+",nroHistorial="+
-				Integer.toString(paciente.getNroHistorial()),"cedula", "'"+paciente.getCedula()+"'");
+		this.actuRegistro("paciente", "nombres='"+paciente.getNombre()+"',apellidos='"+paciente.getApellido()+"',fecha_nacimiento='"+
+				formatter.format(paciente.getFechaNacimiento())+"',edo_civil='"+paciente.getEdo_civil()+"',estado='"+paciente.getEstado()+"',direccion='"+paciente.getDireccion()
+						+"',email='"+paciente.getEmail()+"',tlf_casa='"+paciente.getCasa()+"',tlf_movil='"+
+						paciente.getCelular()+"', asegurado="+Boolean.toString(paciente.isAsegurado()),"cedula","'"+paciente.getCedula()+"'");
 	}
 	
 	public Paciente buscarPaciente(String ced) throws SQLException {
@@ -62,12 +65,15 @@ public class PacienteBD extends ConexionBD{
 				String cedula = resultSet.getString("cedula");
 				String nombre = resultSet.getString("nombres");
 				String apellido = resultSet.getString("apellidos");
-				String antePersonales = resultSet.getString("antepersonales");
-				String anteFamiliares = resultSet.getString("antefamiliares");
-				int nroSeguro = resultSet.getInt("nroseguro");
-				int nroHistorial = resultSet.getInt("nrohistorial");
-				Date fechaNacimiento = resultSet.getDate("fechanacimiento");
-				paciente = new Paciente(cedula,nombre, apellido,antePersonales,anteFamiliares,nroSeguro,nroHistorial,fechaNacimiento);
+				Date fechaNacimiento = resultSet.getDate("fecha_nacimiento");
+				char edoc = resultSet.getString("edo_civil").charAt(0);
+				String edo = resultSet.getString("estado");
+				String dir = resultSet.getString("direccion");
+				String tlfcasa = resultSet.getString("tlf_casa");
+				String tlfcelu = resultSet.getString("tlf_movil");
+				String email = resultSet.getString("email");
+				boolean asegurado = resultSet.getBoolean("asegurado");
+				paciente = new Paciente(cedula, nombre, apellido, fechaNacimiento, edoc, edo, email, tlfcelu, tlfcasa, dir, asegurado);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -88,12 +94,15 @@ public class PacienteBD extends ConexionBD{
 				String cedula = resultSet.getString("cedula");
 				String nombre = resultSet.getString("nombres");
 				String apellido = resultSet.getString("apellidos");
-				String antePersonales = resultSet.getString("antepersonales");
-				String anteFamiliares = resultSet.getString("antefamiliares");
-				int nroSeguro = resultSet.getInt("nroseguro");
-				int nroHistorial = resultSet.getInt("nrohistorial");
 				Date fechaNacimiento = resultSet.getDate("fechanacimiento");
-				Paciente paciente = new Paciente(cedula,nombre, apellido,antePersonales,anteFamiliares,nroSeguro,nroHistorial,fechaNacimiento);
+				char edoc = resultSet.getString("edo_civil").charAt(0);
+				String edo = resultSet.getString("estado");
+				String dir = resultSet.getString("direccion");
+				String tlfcasa = resultSet.getString("tlf_casa");
+				String tlfcelu = resultSet.getString("tlf_movil");
+				String email = resultSet.getString("email");
+				boolean asegurado = resultSet.getBoolean("asegurado");
+				Paciente paciente = new Paciente(cedula, nombre, apellido, fechaNacimiento, edoc, edo, email, tlfcelu, tlfcasa, dir, asegurado);
 				pacientes.add(paciente);
 			}
 		} catch (SQLException e) {

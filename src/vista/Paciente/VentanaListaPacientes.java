@@ -28,12 +28,13 @@ public class VentanaListaPacientes extends javax.swing.JFrame{
 	private JButton btnEliminar;
 	private JButton btnBuscar;
 	private JTable tblPacientes;
+	private JButton btnVover;
 	
 	public VentanaListaPacientes() {
 		super();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		initGUI();
-		setSize(540, 591);
+		setSize(540, 609);
 	}
 	
 	private void initGUI() {
@@ -49,6 +50,8 @@ public class VentanaListaPacientes extends javax.swing.JFrame{
 			
 			JPanel panel_1 = new JPanel();
 			panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+			
+			btnVover = new JButton("Volver");
 			GroupLayout groupLayout = new GroupLayout(getContentPane());
 			groupLayout.setHorizontalGroup(
 				groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -57,22 +60,29 @@ public class VentanaListaPacientes extends javax.swing.JFrame{
 						.addComponent(lblListaPacientes, GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
 						.addGap(114))
 					.addGroup(groupLayout.createSequentialGroup()
-						.addGap(31)
 						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-							.addComponent(panel_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
-							.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE))
+							.addGroup(groupLayout.createSequentialGroup()
+								.addContainerGap()
+								.addComponent(btnVover, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE))
+							.addGroup(groupLayout.createSequentialGroup()
+								.addGap(31)
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+									.addComponent(panel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
+									.addComponent(panel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE))))
 						.addGap(30))
 			);
 			groupLayout.setVerticalGroup(
 				groupLayout.createParallelGroup(Alignment.LEADING)
 					.addGroup(groupLayout.createSequentialGroup()
 						.addContainerGap()
-						.addComponent(lblListaPacientes, GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+						.addComponent(lblListaPacientes, GroupLayout.PREFERRED_SIZE, 35, Short.MAX_VALUE)
 						.addGap(18)
-						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-						.addGap(40)
-						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
-						.addGap(36))
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 96, Short.MAX_VALUE)
+						.addGap(18)
+						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 334, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(btnVover, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+						.addGap(10))
 			);
 			
 			JLabel label = new JLabel("Cedula : ");
@@ -90,7 +100,7 @@ public class VentanaListaPacientes extends javax.swing.JFrame{
 			btnEliminar = new JButton("Eliminar");
 			btnEliminar.setBackground(new Color(204, 51, 51));
 			
-			btnBuscar = new JButton(". . .");
+			btnBuscar = new JButton("Buscar");
 			btnBuscar.setBackground(Color.DARK_GRAY);
 			GroupLayout gl_panel = new GroupLayout(panel);
 			gl_panel.setHorizontalGroup(
@@ -108,23 +118,25 @@ public class VentanaListaPacientes extends javax.swing.JFrame{
 							.addComponent(btnIncliur, GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
 						.addGap(49)
 						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-							.addComponent(btnEliminar, GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-							.addComponent(btnActualizar, GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
+							.addComponent(btnActualizar, GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+							.addComponent(btnEliminar, GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
 						.addGap(24))
 			);
 			gl_panel.setVerticalGroup(
 				gl_panel.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_panel.createSequentialGroup()
-						.addGap(17)
 						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 							.addGroup(gl_panel.createSequentialGroup()
-								.addGap(3)
+								.addGap(20)
 								.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 									.addComponent(textField_Ced, GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
 									.addComponent(btnBuscar, GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-									.addComponent(label, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-							.addComponent(btnActualizar, GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE))
-						.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(label, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+								.addGap(17))
+							.addGroup(gl_panel.createSequentialGroup()
+								.addGap(17)
+								.addComponent(btnActualizar, GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+								.addGap(18)))
 						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 							.addComponent(btnEliminar, GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
 							.addComponent(btnIncliur, GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
@@ -164,6 +176,7 @@ public class VentanaListaPacientes extends javax.swing.JFrame{
 		btnEliminar.addActionListener(actionListener);
 		btnIncliur.addActionListener(actionListener);
 		btnBuscar.addActionListener(actionListener);
+		btnVover.addActionListener(actionListener);
 	}
 	
 	public void setResultados(AbstractTableModel abstractTableModel) {
@@ -180,5 +193,10 @@ public class VentanaListaPacientes extends javax.swing.JFrame{
 	
 	public void mostrarMensaje(String mensaje) {
 		JOptionPane.showMessageDialog(this, mensaje);
+	}
+	
+	public void salir() {
+		setVisible(false);
+		dispose();
 	}
 }
