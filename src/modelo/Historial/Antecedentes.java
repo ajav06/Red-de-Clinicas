@@ -9,7 +9,7 @@ public class Antecedentes {
 	private String alimentacion;
 	private String diuresis;
 	private String catarsis;
-	private String sueño;
+	private String sueno;
 	private String sexualidad;
 	private String otros_fis;
 	private String cardiacas;
@@ -29,7 +29,7 @@ public class Antecedentes {
 	private String enf_infancia;
 	
 	public Antecedentes(int nroHistorial, String alcohol, String drogas, String infusiones, String tabaco,
-			String alimentacion, String diuresis, String catarsis, String sueño, String sexualidad, String otros_fis,
+			String alimentacion, String diuresis, String catarsis, String sueno, String sexualidad, String otros_fis,
 			String cardiacas, String respiratorias, String gastrointestinales, String neufrourologicos, String neurologicos,
 			String hematologicos, String ginecologos, String infectologicos, String endocrinologicos, String quirurgicos,
 			String traumatoloficos, String alergicos, String epidemiologicos, String otras_enf, String enf_infancia) {
@@ -42,7 +42,7 @@ public class Antecedentes {
 		this.alimentacion = alimentacion;
 		this.diuresis = diuresis;
 		this.catarsis = catarsis;
-		this.sueño = sueño;
+		this.sueno = sueno;
 		this.sexualidad = sexualidad;
 		this.otros_fis = otros_fis;
 		this.cardiacas = cardiacas;
@@ -110,11 +110,11 @@ public class Antecedentes {
 	public void setCatarsis(String catarsis) {
 		this.catarsis = catarsis;
 	}
-	public String getSueño() {
-		return sueño;
+	public String getSueno() {
+		return sueno;
 	}
-	public void setSueño(String sueño) {
-		this.sueño = sueño;
+	public void setSueno(String sueno) {
+		this.sueno = sueno;
 	}
 	public String getSexualidad() {
 		return sexualidad;

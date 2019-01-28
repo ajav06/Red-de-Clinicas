@@ -26,7 +26,7 @@ public class ControladorVtnHistorial implements ActionListener{
 		this.vtnHistorial.setCedula(cedula);
 		this.vtnHistorial.llenarCampos(Float.toString(historial.getPeso()), Integer.toString(historial.getNumero()), cedula, Float.toString(historial.getAltura()), antecedente.getOtros_fis(), 
 				antecedente.getAlcohol(), antecedente.getAlimentacion(), antecedente.getCatarsis(), antecedente.getDiuresis(), antecedente.getDrogas(), antecedente.getInfusiones(), 
-				antecedente.getSexualidad(), antecedente.getSueño(), antecedente.getTabaco(), historial.getAnteFamiliar(), antecedente.getAlergicos(), historial.getAnteEnfAct(), 
+				antecedente.getSexualidad(), antecedente.getSueno(), antecedente.getTabaco(), historial.getAnteFamiliar(), antecedente.getAlergicos(), historial.getAnteEnfAct(), 
 				antecedente.getCardiacas(), antecedente.getEndocrinologicos(), historial.getEnfActual(), antecedente.getEpidemiologicos(), antecedente.getGastrointestinales(), 
 				antecedente.getGinecologos(), antecedente.getHematologicos(), antecedente.getInfectologicos(), antecedente.getNeufrourologicos(),antecedente.getNeufrourologicos(), 
 				antecedente.getOtras_enf(), antecedente.getQuirurgicos(), antecedente.getRespiratorias(), antecedente.getTraumatoloficos(), antecedente.getEnf_infancia());

@@ -19,7 +19,7 @@ public class AntecedentesDB extends ConexionBD{
 				"hematologicos, ginecologos, infectologicos, endocrinologicos, quirurgicos, " + 
 				"traumatologicos, alergicos, epidemiologicos, otras_enf, enf_infancia", Integer.toString(ant.getNroHistorial()) +",'"+
 				ant.getAlcohol()+"','"+ant.getDrogas()+"','"+ant.getInfusiones()+"','"+ant.getTabaco()+
-				"','"+ant.getAlimentacion()+"','"+ant.getDiuresis()+"','"+ant.getCatarsis()+"','"+ant.getSueño()+
+				"','"+ant.getAlimentacion()+"','"+ant.getDiuresis()+"','"+ant.getCatarsis()+"','"+ant.getSueno()+
 				"','"+ant.getSexualidad()+"','"+ant.getOtros_fis()+"','"+ant.getCardiacas()+"','"+
 				ant.getRespiratorias()+"','"+ant.getGastrointestinales()+"','"+ant.getNeufrourologicos()+"','"+
 				ant.getNeurologicos()+"','"+ant.getHematologicos()+"','"+ant.getGinecologos()+"','"+ant.getInfectologicos()+
@@ -30,7 +30,7 @@ public class AntecedentesDB extends ConexionBD{
 	public void actualizarAntecedentes(Antecedentes ant) {
 		this.actuRegistro("antecedentespersonales", "alcohol='"+ant.getAlcohol()+", drogas='"+ant.getDrogas()+"', "
 				+ "infusiones='"+ant.getInfusiones()+"', tabaco='"+ant.getTabaco()+"', alimentacion='"+ant.getAlimentacion()+"', "
-				+ "diuresis='"+ant.getDiuresis()+"', catarsis='"+ant.getCatarsis()+"', suenno='"+ant.getSueño()+
+				+ "diuresis='"+ant.getDiuresis()+"', catarsis='"+ant.getCatarsis()+"', suenno='"+ant.getSueno()+
 				"', sexualidad='"+ant.getSexualidad()+"', otros_fis='"+ant.getOtros_fis()+"', cardiacas='"+ant.getCardiacas()+"'," + 
 				"respiratorias='"+ant.getRespiratorias()+"', gastrointestinales='"+ant.getGastrointestinales()+"', neufrourologicos='"
 				+ant.getNeufrourologicos()+"', neurologicos='"+ant.getNeurologicos()+"', hematologicos='"+ant.getHematologicos()+"'"
@@ -53,7 +53,7 @@ public class AntecedentesDB extends ConexionBD{
 			String alimentacion = resultSet.getString("alimentacion");
 			String diuresis = resultSet.getString("diuresis");
 			String catarsis = resultSet.getString("catarsis");
-			String sueño = resultSet.getString("suenno");
+			String Sueno = resultSet.getString("suenno");
 			String sexualidad = resultSet.getString("sexualidad");
 			String otros_fis = resultSet.getString("otros_fis");
 			String cardiacas = resultSet.getString("cardiacas");
@@ -72,7 +72,7 @@ public class AntecedentesDB extends ConexionBD{
 			String otras_enf = resultSet.getString("otras_enf");
 			String enf_infancia = resultSet.getString("enf_infancia");
 			antecedente = new Antecedentes(nroHistorial, alcohol, drogas, infusiones, tabaco, alimentacion, diuresis, 
-					catarsis, sueño, sexualidad, otros_fis, cardiacas, respiratorias, gastrointestinales, neufrourologicos, 
+					catarsis, Sueno, sexualidad, otros_fis, cardiacas, respiratorias, gastrointestinales, neufrourologicos, 
 					neurologicos, hematologicos, ginecologos, infectologicos, endocrinologicos, quirurgicos, traumatoloficos, 
 					alergicos, epidemiologicos, otras_enf, enf_infancia);
 					
