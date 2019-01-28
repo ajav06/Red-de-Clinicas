@@ -67,14 +67,31 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 	    	else
 	    	{
 	    		MedicoBD medicoBD = new MedicoBD();
-		    	Medico medico = new Medico(vtnMedico.getCedula(),vtnMedico.getEspecialidad(),
-		    			vtnMedico.getNombre(),vtnMedico.getApellido(),vtnMedico.getFechaN(),
-		    			vtnMedico.getEdoC(),vtnMedico.getEstado(),vtnMedico.getDireccion(),
-		    			vtnMedico.getTlfCasa(),vtnMedico.getTlfCelular(),vtnMedico.getEmail());
+	    		if (!medicoBD.buscarMedico(vtnMedico.getCedula()).equals(null)) {
+	    			Object[] options = {"Sí","No"};
+	    			int n = JOptionPane.showOptionDialog(vtnMedico,
+	    				    "El médico ya existe en la base de datos pero fue eliminado.\n¿Desea reinsertar a la BD?",
+	    				    "Médico ya existe",
+	    				    JOptionPane.YES_NO_OPTION,
+	    				    JOptionPane.QUESTION_MESSAGE,
+	    				    null,
+	    				    null,
+	    				    null);
+	    			if (n==JOptionPane.YES_OPTION) {
+	    				medicoBD.actuRegistro("medico", "estatus='a'", "cedula", vtnMedico.getCedula());
+	    				vtnMedico.mostrarMensaje("Médico registrado con éxito.");
+	    				vtnMedico.blanquearCampos();
+	    			}
+	    		} else {
+			    	Medico medico = new Medico(vtnMedico.getCedula(),vtnMedico.getEspecialidad(),
+			    			vtnMedico.getNombre(),vtnMedico.getApellido(),vtnMedico.getFechaN(),
+			    			vtnMedico.getEdoC(),vtnMedico.getEstado(),vtnMedico.getDireccion(),
+			    			vtnMedico.getTlfCasa(),vtnMedico.getTlfCelular(),vtnMedico.getEmail());
 		    	medicoBD.registrarMedico(medico);
 		    	this.horarioNuevo();
 		    	vtnMedico.mostrarMensaje("El Médico fue incluido con exito");
 		    	vtnMedico.blanquearCampos();
+	    		}
 	    	}
 		}catch(Exception e)
 		{
