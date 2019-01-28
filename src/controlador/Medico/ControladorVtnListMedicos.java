@@ -100,6 +100,7 @@ public class ControladorVtnListMedicos implements ActionListener {
 	}
 	
 	private void registrarMedicos() {
+		medico = null;
 		try {
 			ControladorVtnConModRegEliMedico c = new ControladorVtnConModRegEliMedico(medico,1);
 		} catch (Exception e) {

@@ -3,6 +3,7 @@ package controlador.Medico;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -134,24 +135,29 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 	}
 	
 	private void horarioNuevo() throws SQLException {
+		horario = new ArrayList<Trabajo>();
+		Trabajo t;
 		try{
 			String[][] h = new String[2][10];
 			h = vtnMedico.getHorario();
-			for (int i=0;i<11;i++) {
-				horario.get(i).setTurno(h[1][i]);
-				horario.get(i).setCod_clinica(h[0][i]);
+			for (int i=0;i<10;i++) {
+				String turno = h[1][i];
+				String cod_cl = h[0][i];
+				String cod = null;
+				t = new Trabajo(cod,cod_cl,turno);
+				horario.add(t);
 			}
 			MedicoBD medicoBD = new MedicoBD();
 			medicoBD.registrarHorarioNvo(vtnMedico.getCedula(), horario);
 		} catch (Exception e) {
-			vtnMedico.mostrarMensaje(e.getMessage());
+			vtnMedico.mostrarMensaje(e.getClass().getName()+": "+e.getMessage());
 		}
 	}
 	
 	private void actuHorario() throws SQLException {
 		String[][] h = new String[2][10];
 		h = vtnMedico.getHorario();
-		for (int i=0;i<11;i++) {
+		for (int i=0;i<10;i++) {
 			horario.get(i).setTurno(h[1][i]);
 			horario.get(i).setCod_clinica(h[0][i]);
 		}

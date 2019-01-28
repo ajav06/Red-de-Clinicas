@@ -607,7 +607,6 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 		for (int i=0;i<turno.length;i++) {
 			int t=Integer.parseInt(turno[i]);
 			int c=Integer.parseInt(cod_clinica[i]);
-			mostrarMensaje("turno "+String.valueOf(t)+" clinica "+String.valueOf(c));
 			switch (t) {
 			case -1:
 				break;
@@ -659,48 +658,27 @@ public class VentanaConModRegMedico extends javax.swing.JFrame{
 		String[][] horario = new String[2][10];
 		String[] clinicas = new String[10];
 		String[] turnos = new String[10];
-		int apuntador = 0;
 		
-		clinicas[apuntador] = String.valueOf(comboBox_LunesMat.getSelectedIndex());
-		turnos[apuntador] = "1";
-		mostrarMensaje("turno "+ turnos[apuntador] + " clinica " + clinicas[apuntador]);
-		apuntador++;
-		clinicas[apuntador] = String.valueOf(comboBox_LunesVesp.getSelectedIndex());
-		turnos[apuntador] = "2";
-		mostrarMensaje("turno "+turnos[apuntador] + " clinica " + clinicas[apuntador]);
-		apuntador++;
-		clinicas[apuntador] = String.valueOf(comboBox_MartesMat.getSelectedIndex());
-		turnos[apuntador] = "3";
-		mostrarMensaje("turno "+turnos[apuntador] + " clinica " + clinicas[apuntador]);
-		apuntador++;
-		clinicas[apuntador] = String.valueOf(comboBox_MartesVesp.getSelectedIndex());
-		turnos[apuntador] = "4";
-		mostrarMensaje("turno "+turnos[apuntador] + " clinica " + clinicas[apuntador]);
-		apuntador++;
-		clinicas[apuntador] = String.valueOf(comboBox_MiercolesMat.getSelectedIndex());
-		turnos[apuntador] = "5";
-		mostrarMensaje("turno "+turnos[apuntador] + " clinica " + clinicas[apuntador]);
-		apuntador++;
-		clinicas[apuntador] = String.valueOf(comboBox_MiercolesVesp.getSelectedIndex());
-		turnos[apuntador] = "6";
-		mostrarMensaje("turno "+turnos[apuntador] + " clinica " + clinicas[apuntador]);
-		apuntador++;
-		clinicas[apuntador] = String.valueOf(comboBox_JuevesMat.getSelectedIndex());
-		turnos[apuntador] = "7";
-		mostrarMensaje("turno "+turnos[apuntador] + " clinica " + clinicas[apuntador]);
-		apuntador++;
-		clinicas[apuntador] = String.valueOf(comboBox_JuevesVesp.getSelectedIndex());
-		turnos[apuntador] = "8";
-		mostrarMensaje("turno "+turnos[apuntador] + " clinica " + clinicas[apuntador]);
-		apuntador++;
-		clinicas[apuntador] = String.valueOf(comboBox_ViernesMat.getSelectedIndex());
-		turnos[apuntador] = "9";
-		mostrarMensaje("turno "+turnos[apuntador] + " clinica " + clinicas[apuntador]);
-		apuntador++;
-		clinicas[apuntador] = String.valueOf(comboBox_ViernesVesp.getSelectedIndex());
-		turnos[apuntador] = "10";
-		mostrarMensaje("turno "+turnos[apuntador] + " clinica " + clinicas[apuntador]);
-		apuntador++;
+		clinicas[0] = String.valueOf(comboBox_LunesMat.getSelectedIndex());
+		turnos[0] = "1";
+		clinicas[1] = String.valueOf(comboBox_LunesVesp.getSelectedIndex());
+		turnos[1] = "2";
+		clinicas[2] = String.valueOf(comboBox_MartesMat.getSelectedIndex());
+		turnos[2] = "3";
+		clinicas[3] = String.valueOf(comboBox_MartesVesp.getSelectedIndex());
+		turnos[3] = "4";
+		clinicas[4] = String.valueOf(comboBox_MiercolesMat.getSelectedIndex());
+		turnos[4] = "5";
+		clinicas[5] = String.valueOf(comboBox_MiercolesVesp.getSelectedIndex());
+		turnos[5] = "6";
+		clinicas[6] = String.valueOf(comboBox_JuevesMat.getSelectedIndex());
+		turnos[6] = "7";
+		clinicas[7] = String.valueOf(comboBox_JuevesVesp.getSelectedIndex());
+		turnos[7] = "8";
+		clinicas[8] = String.valueOf(comboBox_ViernesMat.getSelectedIndex());
+		turnos[8] = "9";
+		clinicas[9] = String.valueOf(comboBox_ViernesVesp.getSelectedIndex());
+		turnos[9] = "10";
 
 		horario[0] = clinicas;
 		horario[1] = turnos;

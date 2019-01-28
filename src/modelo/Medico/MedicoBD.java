@@ -153,12 +153,11 @@ public class MedicoBD extends ConexionBD{
 	         c.setAutoCommit(false);
 			
 	         stmt = c.createStatement();
-	         String sql = "SELECT * FROM trabajomedico";
+	         String sql = "SELECT codigo FROM trabajomedico ORDER BY codigo DESC LIMIT 1";
 	         rs = stmt.executeQuery(sql);
-	         if (rs.wasNull()) {
+	         if (!rs.next()) {
 	        	 ult=0;
 	         } else {
-		 		 rs.last();
 		 		 ult = Integer.parseInt(rs.getString("codigo"));
 		 		 ult++;
 	         }
@@ -190,6 +189,7 @@ public class MedicoBD extends ConexionBD{
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 		}
 	}
 }
