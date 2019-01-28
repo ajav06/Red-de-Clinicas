@@ -10,6 +10,7 @@ import controlador.Especialidad.ControladorVtnEspecialidades;
 import controlador.Medico.ControladorVtnConModRegEliMedico;
 import controlador.Medico.ControladorVtnListMedicos;
 import controlador.Paciente.ControladorVtnListPacientes;
+import controlador.Seguro.ControladorVtnSeguro;
 import vista.VentanaPrincipal;
 
 public class ControladorVtnPrincipal implements ActionListener{
@@ -47,7 +48,7 @@ public class ControladorVtnPrincipal implements ActionListener{
 		}
 		else if (actionCommand.equals("Pacientes")) {
 			try {
-				new ControladorVtnListPacientes();
+				new ControladorVtnSeguro();
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

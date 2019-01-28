@@ -21,7 +21,7 @@ public class SeguroDB extends ConexionBD {
 	
 	public List<Seguro> consultarSeguros() throws SQLException{
 		List<Seguro> seguros = new ArrayList<Seguro>();
-		resultSet = this.consultarTabla("seguro", "WHERE estatus='a'");
+		resultSet = this.consultarTabla("seguro"," WHERE estatus='a' ");
 		while(resultSet.next()) {
 			int codigo = resultSet.getInt("codigo");
 			String nombre = resultSet.getString("nombre");

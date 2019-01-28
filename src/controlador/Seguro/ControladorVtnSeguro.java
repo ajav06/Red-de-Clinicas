@@ -42,7 +42,7 @@ public class ControladorVtnSeguro implements ActionListener{
 			incluirSeguro();
 		}
 		else if (actionCommand.equals("Volver")) {
-			new ControladorVtnPrincipal();
+			vtnseguro.salir();
 		}
 	}
 
