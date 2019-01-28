@@ -21,11 +21,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.BoxLayout;
+import javax.swing.AbstractListModel;
+import javax.swing.table.DefaultTableModel;
 
 public class VentanaListaClinica extends javax.swing.JFrame {
 
 		private JTextField textFieldCodigo;
-		private JButton btnIncliur;
+		private JButton btnIncluir;
 		private JButton btnActualizar;
 		private JButton btnEliminar;
 		private JButton btnBuscar;
@@ -90,24 +92,35 @@ public class VentanaListaClinica extends javax.swing.JFrame {
 			JScrollPane scrollPane = new JScrollPane();
 			panelLista.add(scrollPane);
 			
-			JList list = new JList();
-			scrollPane.setViewportView(list);
+			tblClinicas = new JTable();
+			tblClinicas.setModel(new DefaultTableModel(
+				new Object[][] {
+				},
+				new String[] {
+					"Nombre", "Estado", "Direccion", "Telefono", "Correo"
+				}
+			));
+			scrollPane.setViewportView(tblClinicas);
 			
 			textFieldCodigo = new JTextField();
 			textFieldCodigo.setColumns(10);
 			
-			JButton btnIncluir = new JButton("Incluir");
+			btnIncluir = new JButton("Incluir");
+			btnIncluir.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+				}
+			});
 	
 			
-			JButton btnActualizar = new JButton("Actualizar");
+			btnActualizar = new JButton("Actualizar");
 			btnActualizar.setBackground(new Color(0, 102, 51));
 			
-			JButton btnEliminar = new JButton("Eliminar");
+			btnEliminar = new JButton("Eliminar");
 			btnEliminar.setBackground(new Color(204, 51, 51));
 			
 			JLabel lblCodigo = new JLabel("Codigo :");
 			
-			JButton btnBuscar = new JButton("New button");
+			btnBuscar = new JButton("New button");
 			btnBuscar.setBackground(Color.DARK_GRAY);
 			
 			btnBuscar.addActionListener(new ActionListener() {
@@ -154,7 +167,7 @@ public class VentanaListaClinica extends javax.swing.JFrame {
 		public void addListener(ActionListener actionListener) {
 			btnActualizar.addActionListener(actionListener);
 			btnEliminar.addActionListener(actionListener);
-			btnIncliur.addActionListener(actionListener);
+			btnIncluir.addActionListener(actionListener);
 			btnBuscar.addActionListener(actionListener);
 			
 			

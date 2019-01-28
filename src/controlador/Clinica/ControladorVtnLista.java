@@ -38,7 +38,11 @@ public class ControladorVtnLista implements ActionListener
 			new ControladorVtnActuClinica(clinica);
 		}
 		else if (actionCommand.equals("Incluir")) {
-			new ControladorVtnAgreClinica();
+			try{
+				new ControladorVtnAgreClinica();
+			} catch (Exception x) {
+				x.printStackTrace();
+			}
 		}
 	}
 	

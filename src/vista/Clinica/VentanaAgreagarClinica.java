@@ -37,32 +37,15 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public VentanaAgreagarClinica() {
+	public VentanaAgreagarClinica(String codigo) {
 		super();
-		//setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		initialize();
 		blanquearCampos();
-	}
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaAgreagarClinica window = new VentanaAgreagarClinica();
-					window.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		textFieldCodigo.setText(codigo);
+		textFieldCodigo.setEnabled(false);
 	}
 
-	/**
-	 * Create the application.
-	 */
-	
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		setBounds(100, 100, 498, 459);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -235,9 +218,8 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 		);
 		getContentPane().setLayout(groupLayout);
 	}
-	public void blanquearCampos() {
-		
-		textFieldCodigo.setText(null);
+	public void blanquearCampos() 
+	{		
 		textFieldNomre.setText(null);
 		textFieldEstado.setText(null);
 		textFieldDireccion.setText(null);

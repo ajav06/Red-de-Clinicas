@@ -1,6 +1,8 @@
 package controlador.Clinica;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
 import modelo.Clinica.Clinica;
 import modelo.Clinica.ClinicaBD;
 import vista.Clinica.VentanaAgreagarClinica;
@@ -10,9 +12,16 @@ public class ControladorVtnAgreClinica implements ActionListener
 {
 	private VentanaAgreagarClinica vtnAgreCli;
 	
-	public ControladorVtnAgreClinica() {
+	public ControladorVtnAgreClinica() throws NumberFormatException, SQLException {
 		super();
-		this.vtnAgreCli = new VentanaAgreagarClinica();
+		ClinicaBD cli = new ClinicaBD();
+		String c = "-1";
+		try{
+			c = String.valueOf(cli.generarNuevoCodigoClinica());
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		this.vtnAgreCli = new VentanaAgreagarClinica(c);
 		this.vtnAgreCli.setLocationRelativeTo(null);
 		this.vtnAgreCli.setVisible(true);
 		this.vtnAgreCli.addListener(this);

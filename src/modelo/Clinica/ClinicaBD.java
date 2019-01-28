@@ -1,10 +1,12 @@
 package modelo.Clinica;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 import modelo.ConexionBD;
 
@@ -25,7 +27,7 @@ public class ClinicaBD extends ConexionBD
 	
 	public List<Clinica> consultarClinicas() throws SQLException {
 		List<Clinica> Clinicas = new ArrayList<Clinica>();
-		resultSet = this.consultarTabla("clinica", " WHERE estatus='a' ");
+		resultSet = this.consultarTabla("clinica", " WHERE estatus='a' AND codigo != '0' ");
 		try {
 			while (resultSet.next()) {
 				String codigo = resultSet.getString("codigo");
@@ -33,12 +35,13 @@ public class ClinicaBD extends ConexionBD
 				String estado = resultSet.getString("estado");
 				String direccion = resultSet.getString("direccion");
 				String telefono = resultSet.getString("telefono");
-				String correo = resultSet.getString("e-mail");
+				String correo = resultSet.getString("email");
 				Clinica Clinica = new Clinica(codigo,nombre,estado,direccion,telefono,correo);
 				Clinicas.add(Clinica);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+	        JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 		}
 		this.cerrarComando();
 		return Clinicas;
@@ -46,7 +49,7 @@ public class ClinicaBD extends ConexionBD
 	
 	public void actualizarClinica(Clinica clinica) {
 		this.actuRegistro("clinica", "nombre='"+clinica.getNombre()+"',estado='"+clinica.getEstado()+"',direccion='"+
-				clinica.getDireccion()+"',telefono='"+clinica.getTelefono()+"',e-mail="+clinica.getCorreo(),"codigo", "'"+clinica.getCodigo()+"'");
+				clinica.getDireccion()+"',telefono='"+clinica.getTelefono()+"',email="+clinica.getCorreo(),"codigo", "'"+clinica.getCodigo()+"'");
 	}
 	
 	public Clinica buscarClinica(String cod) throws SQLException 
@@ -93,6 +96,30 @@ public class ClinicaBD extends ConexionBD
 		}
 		this.cerrarComando();
 		return clinicas;
+	}
+	
+	public int generarNuevoCodigoClinica() throws NumberFormatException, SQLException {
+		ResultSet rs=null;
+		int ult = -1;
+		try {
+			 Class.forName(getDriver());
+		     c = DriverManager.getConnection(getUrl()+getNombBD(),getUsuario(), getContrasenna());
+	         c.setAutoCommit(false);
+			
+	         stmt = c.createStatement();
+	         String sql = "SELECT CAST (codigo as integer) FROM clinica ORDER BY codigo DESC LIMIT 1";
+	         rs = stmt.executeQuery(sql);
+	         if (!rs.next()) {
+	        	 ult=0;
+	         } else {
+		 		 ult = Integer.parseInt(rs.getString("codigo"));
+		 		 ult++;
+	         }
+		  } catch (Exception e) {
+	         e.printStackTrace();
+	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	      }
+		return ult;
 	}
 
 	public DefaultComboBoxModel nombresClinicas() throws SQLException{

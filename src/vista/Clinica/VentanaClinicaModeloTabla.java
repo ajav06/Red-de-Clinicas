@@ -8,7 +8,7 @@ import javax.swing.table.AbstractTableModel;
 import modelo.Clinica.Clinica;;
 
 public class VentanaClinicaModeloTabla extends AbstractTableModel{
-	private static String[] titulos = {"Codigo", "Nombre", "Estado", "Direccion", "Telefono", "Correo"};
+	private static String[] titulos = {"Nombre", "Estado", "Direccion", "Telefono", "Correo"};
 private List<Clinica> clinicas = new ArrayList<Clinica>();
 
 public VentanaClinicaModeloTabla(List<Clinica> clinicas) {
@@ -31,12 +31,11 @@ public int getRowCount() {
 public Object getValueAt(int rowIndex, int columnIndex) {
 	Clinica clinica = clinicas.get(rowIndex);
 	switch (columnIndex) {
-		case 0: return clinica.getCodigo();
-		case 1: return clinica.getNombre();
-		case 2: return clinica.getEstado();
-		case 3: return clinica.getDireccion();
-		case 4: return clinica.getTelefono();
-		case 5: return clinica.getCorreo();
+		case 0: return clinica.getNombre();
+		case 1: return clinica.getEstado();
+		case 2: return clinica.getDireccion();
+		case 3: return clinica.getTelefono();
+		case 4: return clinica.getCorreo();
 		}
 	return null;
 }
