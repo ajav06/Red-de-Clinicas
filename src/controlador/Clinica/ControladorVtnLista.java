@@ -21,8 +21,8 @@ public class ControladorVtnLista implements ActionListener
 		this.vtnListCli = new VentanaListaClinica();
 		this.vtnListCli.setLocationRelativeTo(null);
 		this.vtnListCli.setVisible(true);
-		this.vtnListCli.addListener(this);
 		cargarDatosClinicas();
+		this.vtnListCli.addListener(this);
 	}
 	
 	@Override

@@ -19,10 +19,10 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
+import javax.swing.BoxLayout;
 
 public class VentanaListaClinica extends javax.swing.JFrame {
-
-
 
 		private JTextField textFieldCodigo;
 		private JButton btnIncliur;
@@ -85,24 +85,13 @@ public class VentanaListaClinica extends javax.swing.JFrame {
 						.addComponent(panelLista, GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
 						.addContainerGap())
 			);
+			panelLista.setLayout(new BoxLayout(panelLista, BoxLayout.X_AXIS));
 			
-			JList listClinicas = new JList();
-			GroupLayout gl_panelLista = new GroupLayout(panelLista);
-			gl_panelLista.setHorizontalGroup(
-				gl_panelLista.createParallelGroup(Alignment.LEADING)
-					.addGroup(gl_panelLista.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(listClinicas, GroupLayout.PREFERRED_SIZE, 443, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-			);
-			gl_panelLista.setVerticalGroup(
-				gl_panelLista.createParallelGroup(Alignment.LEADING)
-					.addGroup(gl_panelLista.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(listClinicas, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-			);
-			panelLista.setLayout(gl_panelLista);
+			JScrollPane scrollPane = new JScrollPane();
+			panelLista.add(scrollPane);
+			
+			JList list = new JList();
+			scrollPane.setViewportView(list);
 			
 			textFieldCodigo = new JTextField();
 			textFieldCodigo.setColumns(10);
@@ -173,19 +162,18 @@ public class VentanaListaClinica extends javax.swing.JFrame {
 		public void setResultados(AbstractTableModel abstractTableModel) {
 			tblClinicas.setModel(abstractTableModel);
 		}
-			public String getCodigo()
-			{
-				return textFieldCodigo.getText();
-			}
-
-			public void setTextFieldCodigo(String codigo) {
-				this.textFieldCodigo.setText(codigo);
-			}
 		
-			
-			public void mostrarMensaje(String mensaje) {
-				JOptionPane.showMessageDialog(this, mensaje);
-			}
+		public String getCodigo()
+		{
+			return textFieldCodigo.getText();
+		}
 
-
+		public void setTextFieldCodigo(String codigo) {
+			this.textFieldCodigo.setText(codigo);
+		}
+	
+		
+		public void mostrarMensaje(String mensaje) {
+			JOptionPane.showMessageDialog(this, mensaje);
+		}
 	}
