@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import modelo.Clinica.ClinicaBD;
 import modelo.Especialidad.EspecialidadBD;
 import modelo.Medico.Medico;
@@ -29,10 +31,10 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 		this.vtnMedico.setVisible(true);
 		this.vtnMedico.addListener(this);
 		this.vtnMedico.llenarCampos(medico.getCedula(),medico.getCod_especialidad(),medico.getNombre(),medico.getApellido(),medico.getFechaNacimiento(),medico.getEdo_civil(),medico.getEstado(),medico.getDireccion(),medico.getTlf_casa(),medico.getNroTelefonico(),medico.getEmail());
-
 		
 		if (accion==1) {
 			this.vtnMedico.interfazRegistro();
+			this.vtnMedico.blanquearCampos();
 		} else if (accion==2) {
 			this.vtnMedico.interfazConsulta();
 			this.poblarHorario();
@@ -69,13 +71,13 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 		    			vtnMedico.getEdoC(),vtnMedico.getEstado(),vtnMedico.getDireccion(),
 		    			vtnMedico.getTlfCasa(),vtnMedico.getTlfCelular(),vtnMedico.getEmail());
 		    	medicoBD.registrarMedico(medico);
+		    	this.horarioNuevo();
 		    	vtnMedico.mostrarMensaje("El Médico fue incluido con exito");
 		    	vtnMedico.blanquearCampos();
 	    	}
 		}catch(Exception e)
 		{
-			vtnMedico.mostrarMensaje(e.toString());
-			vtnMedico.mostrarMensaje("No se pudo registrar el médico, verifique que los datos sean correctos");
+			vtnMedico.mostrarMensaje(e.getClass().getName()+": "+e.getMessage());
 		}
 	}
 	
@@ -92,12 +94,13 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 		    			vtnMedico.getEdoC(),vtnMedico.getEstado(),vtnMedico.getDireccion(),
 		    			vtnMedico.getTlfCasa(),vtnMedico.getTlfCelular(),vtnMedico.getEmail());
 		    	medicoBD.actualizarMedico(medico);
+		    	this.actuHorario();
 		    	vtnMedico.mostrarMensaje("El Médico fue actualizado con exito");
 		    	vtnMedico.blanquearCampos();
 	    	}
 		}catch(Exception e)
 		{
-			vtnMedico.mostrarMensaje("No se pudo actualizar el médico, verifique que los datos sean correctos");
+			vtnMedico.mostrarMensaje(e.getMessage());
 		}
 	}
 	
@@ -130,7 +133,22 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 		vtnMedico.setHorario(clinicas, turno);
 	}
 	
-	private void guardarHorario() {
+	private void horarioNuevo() throws SQLException {
+		try{
+			String[][] h = new String[2][10];
+			h = vtnMedico.getHorario();
+			for (int i=0;i<11;i++) {
+				horario.get(i).setTurno(h[1][i]);
+				horario.get(i).setCod_clinica(h[0][i]);
+			}
+			MedicoBD medicoBD = new MedicoBD();
+			medicoBD.registrarHorarioNvo(vtnMedico.getCedula(), horario);
+		} catch (Exception e) {
+			vtnMedico.mostrarMensaje(e.getMessage());
+		}
+	}
+	
+	private void actuHorario() throws SQLException {
 		String[][] h = new String[2][10];
 		h = vtnMedico.getHorario();
 		for (int i=0;i<11;i++) {
@@ -138,7 +156,7 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 			horario.get(i).setCod_clinica(h[0][i]);
 		}
 		MedicoBD medicoBD = new MedicoBD();
-		medicoBD.
+		medicoBD.actualizarHorario(vtnMedico.getCedula(), horario);
 	}
 	
 	private void salir() {

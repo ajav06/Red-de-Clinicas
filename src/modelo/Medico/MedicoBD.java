@@ -1,5 +1,6 @@
 package modelo.Medico;
 
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -143,7 +144,52 @@ public class MedicoBD extends ConexionBD{
 		return horario;
 	}
 	
-	public void guardarHorario(List<Trabajo> horario) {
-		
+	public int generarNuevoCodigoHorario() throws NumberFormatException, SQLException {
+		ResultSet rs=null;
+		int ult = -1;
+		try {
+			 Class.forName(getDriver());
+		     c = DriverManager.getConnection(getUrl()+getNombBD(),getUsuario(), getContrasenna());
+	         c.setAutoCommit(false);
+			
+	         stmt = c.createStatement();
+	         String sql = "SELECT * FROM trabajomedico";
+	         rs = stmt.executeQuery(sql);
+	         if (rs.wasNull()) {
+	        	 ult=0;
+	         } else {
+		 		 rs.last();
+		 		 ult = Integer.parseInt(rs.getString("codigo"));
+		 		 ult++;
+	         }
+		  } catch (Exception e) {
+	         e.printStackTrace();
+	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	      }
+		return ult;
+	}
+	
+	public void registrarHorarioNvo(String cedula, List<Trabajo> horario) {
+		try {
+			for (int i=0;i<10;i++) {
+				int codnvo = generarNuevoCodigoHorario();
+				this.crearRegistro("trabajomedico", "codigo,cod_clinica,ced_medico,turno,max_intervenciones,max_consultas",
+						"'"+codnvo+"','"+horario.get(i).getCod_clinica()+"','"+cedula+"','"+horario.get(i).getTurno()+
+						"',2,8");			
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+		}
+	}
+	
+	public void actualizarHorario(String cedula, List<Trabajo> horario) throws SQLException {
+		try{
+			for (int i=0;i<10;i++) {
+				this.actuRegistro("trabajomedico", "cod_clinica='"+horario.get(i).getCod_clinica(), "'codigo'", horario.get(i).getCodigo());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
