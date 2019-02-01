@@ -32,21 +32,6 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 	private JTextField textFieldCorreo;
 	private JButton btnCancelar;
 	private JButton btnActualizar;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaActualizarClinica window = new VentanaActualizarClinica();
-					window.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
@@ -72,9 +57,9 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 		lblActualizarClinica.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 25));
 		lblActualizarClinica.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JButton btnActualizar = new JButton("Actualizar");
+		btnActualizar = new JButton("Actualizar");
 		
-		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar = new JButton("Cancelar");
 		
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -211,6 +196,7 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 		textFieldCorreo.setText(cor);
 		
 	}
+	
 	public void addListener(ActionListener actionListener) {
 		btnActualizar.addActionListener(actionListener);
 		btnCancelar.addActionListener(actionListener);		

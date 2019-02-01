@@ -56,16 +56,17 @@ public class ClinicaBD extends ConexionBD
 	{
 		Clinica clinica = null;
 		resultSet = this.buscarRegistro("clinica", "codigo", "'"+cod+"'");
-		
+
 		try {
 			while (resultSet.next()) {
 				String codigo = resultSet.getString("codigo");
-				String nombre = resultSet.getString("nombres");
+				String nombre = resultSet.getString("nombre");
 				String estado = resultSet.getString("estado");
 				String direccion = resultSet.getString("direccion");
 				String telefono = resultSet.getString("telefono");
 				String correo = resultSet.getString("email");
-				clinica = new Clinica(codigo,nombre, estado,direccion,telefono,correo);
+				
+				clinica = new Clinica(codigo,nombre, estado,direccion,telefono,correo);	
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

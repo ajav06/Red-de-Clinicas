@@ -4,6 +4,9 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JOptionPane;
+
 import vista.Clinica.VentanaClinicaModeloTabla;
 import controlador.Clinica.ControladorVtnActuClinica;
 import controlador.Clinica.ControladorVtnAgreClinica;
@@ -83,7 +86,7 @@ public class ControladorVtnLista implements ActionListener
 	    	}
 		}catch(Exception e)
 		{
-			vtnListCli.mostrarMensaje("No se pudo buscar la Clinica, verifique que los datos sean correctos");
+			vtnListCli.mostrarMensaje(e.getClass() + e.getMessage());
 		}
 	}
 	
