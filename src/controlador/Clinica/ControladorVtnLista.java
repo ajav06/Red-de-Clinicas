@@ -32,10 +32,10 @@ public class ControladorVtnLista implements ActionListener
 			buscarClinica();
 		}		
 		else if (actionCommand.equals("Actualizar")) {
-			buscarClinica();
+			actualizarClinica();
 		}
 		else if (actionCommand.equals("Eliminar")) {
-			new ControladorVtnActuClinica(clinica);
+			eliminarClinica();
 		}
 		else if (actionCommand.equals("Incluir")) {
 			try{
@@ -51,30 +51,30 @@ public class ControladorVtnLista implements ActionListener
 		{
 	    	if(vtnListCli.getCodigo().equals(""))
 	    		
-	    	   //Deben estar todos los campos llenos para poder actualizar la clinica
-	    		vtnListCli.mostrarMensaje("Debe llenar todos los datos para poder buscar al paciente");
+	    	   //Deben estar todos los campos llenos para poder actualizar la Clinica
+	    		vtnListCli.mostrarMensaje("Debe llenar todos los datos para poder buscar la Clinica");
 	    	else
 	    	{
 	    		ClinicaBD clinicaBD = new ClinicaBD();
 	    		List<Clinica> clinicas = new ArrayList<Clinica>();
 	    		clinica = clinicaBD.buscarClinica(vtnListCli.getCodigo());
 	    		clinicas.add(clinica);
-	    		//this.vtnListCli.setResultados(new VentanaPacienteModeloTabla(pacientes));
-	    		vtnListCli.mostrarMensaje("El Paciente fue buscado con exito");
+	    		this.vtnListCli.setResultados(new VentanaClinicaModeloTabla(clinicas));
+	    		vtnListCli.mostrarMensaje("La Clinica fue buscado con exito");
 	    	}
 		}catch(Exception e)
 		{
-			vtnListCli.mostrarMensaje("No se pudo buscar el Paciente, verifique que los datos sean correctos");
+			vtnListCli.mostrarMensaje("No se pudo buscar la Clinica, verifique que los datos sean correctos");
 		}
 	}
 	
-	public void actualizarPaciente() {
+	public void actualizarClinica() {
 		try
 		{
 	    	if(vtnListCli.getCodigo().equals(""))
 	    		
-	    	   //Deben estar todos los campos llenos para poder actualizar al paciente
-	    		vtnListCli.mostrarMensaje("Debe llenar todos los datos para poder buscar al paciente");
+	    	   //Deben estar todos los campos llenos para poder actualizar la Clinica
+	    		vtnListCli.mostrarMensaje("Debe llenar todos los datos para poder buscar la Clinica");
 	    	else
 	    	{
 	    		ClinicaBD clinicaBD = new ClinicaBD();	    
@@ -83,17 +83,17 @@ public class ControladorVtnLista implements ActionListener
 	    	}
 		}catch(Exception e)
 		{
-			vtnListCli.mostrarMensaje("No se pudo bucar el Paciente, verifique que los datos sean correctos");
+			vtnListCli.mostrarMensaje("No se pudo buscar la Clinica, verifique que los datos sean correctos");
 		}
 	}
 	
-	public void eliminarPaciente() {
+	public void eliminarClinica() {
 		try
 		{
 	    	if(vtnListCli.getCodigo().equals(""))
 	    		
-	    	   //Deben estar todos los campos llenos para poder actualizar al paciente
-	    		vtnListCli.mostrarMensaje("Debe llenar todos los datos para poder buscar al paciente");
+	    	   //Deben estar todos los campos llenos para poder actualizar la Clinica
+	    		vtnListCli.mostrarMensaje("Debe llenar todos los datos para poder buscar la Clinica");
 	    	else
 	    	{
 	    		ClinicaBD clinicaBD = new ClinicaBD();	   
@@ -102,7 +102,7 @@ public class ControladorVtnLista implements ActionListener
 	    	}
 		}catch(Exception e)
 		{
-			vtnListCli.mostrarMensaje("No se pudo bucar el Paciente, verifique que los datos sean correctos");
+			vtnListCli.mostrarMensaje("No se pudo buscar la Clinica, verifique que los datos sean correctos");
 		}
 	}
 	

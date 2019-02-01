@@ -11,6 +11,9 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
+
+import bean.JTextFieldValidator;
+
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
@@ -24,8 +27,7 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 	private JTextField textFieldCodigo;
 	private JTextField textFieldNombre;
 	private JTextField textFieldEstado;
-	private JTextField textFieldCiudad;
-	private JTextField textFieldUbicacion;
+	private JTextField textFieldDireccion;
 	private JTextField textFieldTelefono;
 	private JTextField textFieldCorreo;
 	private JButton btnCancelar;
@@ -78,20 +80,19 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(105)
-							.addComponent(lblActualizarClinica))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(30)
-							.addComponent(panelDatosClin, GroupLayout.PREFERRED_SIZE, 373, GroupLayout.PREFERRED_SIZE)))
+					.addGap(105)
+					.addComponent(lblActualizarClinica)
 					.addContainerGap(31, Short.MAX_VALUE))
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(80)
+					.addGap(30)
+					.addComponent(panelDatosClin, GroupLayout.PREFERRED_SIZE, 373, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(31, Short.MAX_VALUE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(85)
 					.addComponent(btnActualizar)
-					.addPreferredGap(ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
 					.addComponent(btnCancelar)
-					.addGap(79))
+					.addGap(85))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -99,15 +100,16 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 					.addGap(27)
 					.addComponent(lblActualizarClinica)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(panelDatosClin, GroupLayout.PREFERRED_SIZE, 312, GroupLayout.PREFERRED_SIZE)
-					.addGap(33)
+					.addComponent(panelDatosClin, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnActualizar)
 						.addComponent(btnCancelar))
-					.addContainerGap(40, Short.MAX_VALUE))
+					.addContainerGap(70, Short.MAX_VALUE))
 		);
 		
 		textFieldCodigo = new JTextField();
+		textFieldCodigo.setEditable(false);
 		textFieldCodigo.setColumns(10);
 		
 		JLabel lblCodigo = new JLabel("Codigo :");
@@ -118,13 +120,10 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 		textFieldEstado = new JTextField();
 		textFieldEstado.setColumns(10);
 		
-		textFieldCiudad = new JTextField();
-		textFieldCiudad.setColumns(10);
+		textFieldDireccion = new JTextField();
+		textFieldDireccion.setColumns(10);
 		
-		textFieldUbicacion = new JTextField();
-		textFieldUbicacion.setColumns(10);
-		
-		textFieldTelefono = new JTextField();
+		textFieldTelefono = new JTextFieldValidator(8, JTextFieldValidator.SOLO_NUMEROS);
 		textFieldTelefono.setColumns(10);
 		
 		textFieldCorreo = new JTextField();
@@ -134,9 +133,7 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 		
 		JLabel lblEstado = new JLabel("Estado :");
 		
-		JLabel lblCiudad = new JLabel("Ciudad :");
-		
-		JLabel lblUbicacion = new JLabel("Ubicacion :");
+		JLabel lblDireccion = new JLabel("Direccion :");
 		
 		JLabel lblTelefono = new JLabel("Telefono :");
 		
@@ -150,20 +147,19 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 						.addComponent(lblCodigo)
 						.addComponent(lblNombre)
 						.addComponent(lblEstado)
-						.addComponent(lblCiudad)
-						.addComponent(lblUbicacion)
+						.addComponent(lblDireccion)
 						.addComponent(lblTelefono)
 						.addComponent(lblCorreo))
-					.addGap(23)
-					.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(textFieldCorreo, Alignment.LEADING)
-						.addComponent(textFieldTelefono, Alignment.LEADING)
-						.addComponent(textFieldUbicacion, Alignment.LEADING)
-						.addComponent(textFieldCiudad, Alignment.LEADING)
-						.addComponent(textFieldEstado, Alignment.LEADING)
-						.addComponent(textFieldNombre, Alignment.LEADING)
-						.addComponent(textFieldCodigo, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
-					.addContainerGap(24, Short.MAX_VALUE))
+					.addGap(26)
+					.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.LEADING)
+						.addComponent(textFieldCorreo)
+						.addComponent(textFieldTelefono)
+						.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.TRAILING, false)
+							.addComponent(textFieldDireccion, Alignment.LEADING)
+							.addComponent(textFieldEstado, Alignment.LEADING)
+							.addComponent(textFieldNombre, Alignment.LEADING)
+							.addComponent(textFieldCodigo, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)))
+					.addGap(24))
 		);
 		gl_panelDatosClin.setVerticalGroup(
 			gl_panelDatosClin.createParallelGroup(Alignment.LEADING)
@@ -182,21 +178,17 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 						.addComponent(lblEstado))
 					.addGap(18)
 					.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textFieldCiudad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblCiudad))
+						.addComponent(textFieldDireccion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblDireccion))
 					.addGap(18)
 					.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textFieldUbicacion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblUbicacion))
+						.addComponent(lblTelefono)
+						.addComponent(textFieldTelefono, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textFieldTelefono, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblTelefono))
-					.addGap(18)
-					.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textFieldCorreo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblCorreo))
-					.addContainerGap(57, Short.MAX_VALUE))
+						.addComponent(lblCorreo)
+						.addComponent(textFieldCorreo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(64, Short.MAX_VALUE))
 		);
 		panelDatosClin.setLayout(gl_panelDatosClin);
 		getContentPane().setLayout(groupLayout);
@@ -205,18 +197,16 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 		textFieldCodigo.setText(null);
 		textFieldNombre.setText(null);
 		textFieldEstado.setText(null);
-		textFieldCiudad.setText(null);
-		textFieldUbicacion.setText(null);
+		textFieldDireccion.setText(null);
 		textFieldTelefono.setText(null);
 		textFieldCorreo.setText(null);
 	
 	}
-	public void llenarCampos(String cod,String nom,String est, String ciu, String ubi, String tel, String cor) {
+	public void llenarCampos(String cod,String nom,String est, String dir, String tel, String cor) {
 		textFieldCodigo.setText(cod);
 		textFieldNombre.setText(nom);
-		textFieldCiudad.setText(est);
-		textFieldEstado.setText(ciu);
-		textFieldUbicacion.setText(ubi);
+		textFieldDireccion.setText(est);
+		textFieldEstado.setText(dir);
 		textFieldTelefono.setText(tel);
 		textFieldCorreo.setText(cor);
 		
@@ -238,13 +228,11 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 		textFieldEstado.setText(est);
 	}
 	
-	public void setCiudad(String ciu){
-		textFieldCiudad.setText(ciu);	
+	public void setDireccion(String ciu){
+		textFieldDireccion.setText(ciu);	
 	}
 	
-	public void setUbicacion(String ubi) {
-		textFieldUbicacion.setText(ubi);
-	}
+
 	
 	public void setTelefono(String tel) {
 		textFieldTelefono.setText(tel);
@@ -266,13 +254,11 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 		return textFieldEstado.getText();
 	}
 	
-	public String getCiudad() {
-		return textFieldCiudad.getText();
+	public String getDireccion() {
+		return textFieldDireccion.getText();
 	}
 	
-	public String getUbicacion() {
-		return textFieldUbicacion.getText();
-	}
+
 	
 	public String getTelefono() {
 		return textFieldTelefono.getText();

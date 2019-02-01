@@ -129,7 +129,7 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 		textFieldDireccion = new JTextField();
 		textFieldDireccion.setColumns(10);
 		
-		textFieldTelefono = new JTextField();
+		textFieldTelefono = new  JTextFieldValidator(11, JTextFieldValidator.SOLO_NUMEROS);
 		textFieldTelefono.setColumns(10);
 		
 		textFieldCorreo = new JTextField();

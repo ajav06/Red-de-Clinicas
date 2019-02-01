@@ -16,9 +16,9 @@ public class ControladorElimClinica implements ActionListener
 		this.vtnElimCli.setLocationRelativeTo(null);
 		this.vtnElimCli.setVisible(true);
 		this.vtnElimCli.addListener(this);
-//		this.vtnElimCli.llenarCampos(clinica.getCodigo(), clinica.getNombre(), clinica.getEstado(), 
-//				clinica.getCiudad(), clinica.getUbicacion(), clinica.getTelefono(), 
-//				clinica.getCorreo());
+		this.vtnElimCli.llenarCampos(clinica.getCodigo(), clinica.getNombre(), clinica.getEstado(), 
+				clinica.getDireccion(), clinica.getTelefono(), 
+				clinica.getCorreo());
 	}
 	public void actionPerformed(ActionEvent e) {
 		String actionCommand = e.getActionCommand();
@@ -34,11 +34,11 @@ public class ControladorElimClinica implements ActionListener
 			{
 		  		ClinicaBD clinicaBD = new ClinicaBD();	    
 		    	clinicaBD.eliminarClinica(vtnElimCli.getCodigo());
-		    	vtnElimCli.mostrarMensaje("El Paciente fue eliminado con exito");
+		    	vtnElimCli.mostrarMensaje("La Clinica fue eliminado con exito");
 		    	vtnElimCli.blanquearCampos();
 			}catch(Exception e)
 			{
-				vtnElimCli.mostrarMensaje("No se pudo eliminar el Paciente, verifique que los datos sean correctos");
+				vtnElimCli.mostrarMensaje("No se pudo eliminar la Clinica, verifique que los datos sean correctos");
 				vtnElimCli.blanquearCampos();
 			}
 		}
