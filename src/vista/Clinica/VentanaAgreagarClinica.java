@@ -49,7 +49,7 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 
 	private void initialize() {
 		setBounds(100, 100, 420, 471);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JPanel panel_2 = new JPanel();
 		

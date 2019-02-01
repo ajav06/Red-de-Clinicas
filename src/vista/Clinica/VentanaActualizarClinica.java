@@ -47,7 +47,7 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 	 */
 	private void initialize() {
 		setBounds(100, 100, 450, 452);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		
 		JPanel panelDatosClin = new JPanel();

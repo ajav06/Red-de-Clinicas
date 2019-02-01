@@ -37,30 +37,12 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 		//setSize(450, 426);
 	}
 	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaEliminarClinica window = new VentanaEliminarClinica();
-					window.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	
-
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
 		setBounds(100, 100, 450, 424);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		
 		

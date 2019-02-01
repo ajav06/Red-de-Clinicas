@@ -25,102 +25,104 @@ import javax.swing.AbstractListModel;
 import javax.swing.table.DefaultTableModel;
 
 public class VentanaListaClinica extends javax.swing.JFrame {
-
-		private JTextField textFieldCodigo;
-		private JButton btnIncluir;
-		private JButton btnActualizar;
-		private JButton btnEliminar;
-		private JButton btnBuscar;
-		private JTable tblClinicas;
-
-		/**
-		 * Create the application.
-		 */
-		public VentanaListaClinica() {
-			super();
-			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			setSize(540, 591);
-			initialize();
-		}
-
-		/**
-		 * Initialize the contents of the frame.
-		 */
-		private void initialize() {
-			//setBounds(100, 100, 546, 424);
-			//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			
-			JPanel panelBuscar = new JPanel();
-			panelBuscar.setBorder(new LineBorder(new Color(0, 0, 0)));
-			
-			JLabel lblListaClinicas = new JLabel("Lista de Clinicas");
-			lblListaClinicas.setForeground(Color.BLUE);
-			lblListaClinicas.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 25));
-			lblListaClinicas.setHorizontalAlignment(SwingConstants.CENTER);
-			
-			JPanel panelLista = new JPanel();
-			panelLista.setBorder(new LineBorder(new Color(0, 0, 0)));
-			
-			GroupLayout groupLayout = new GroupLayout(getContentPane());
-			groupLayout.setHorizontalGroup(
-				groupLayout.createParallelGroup(Alignment.LEADING)
-					.addGroup(groupLayout.createSequentialGroup()
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-							.addGroup(groupLayout.createSequentialGroup()
-								.addGap(154)
-								.addComponent(lblListaClinicas))
-							.addGroup(groupLayout.createSequentialGroup()
-								.addGap(32)
-								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-									.addComponent(panelLista, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(panelBuscar, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 462, GroupLayout.PREFERRED_SIZE))))
-						.addContainerGap(36, Short.MAX_VALUE))
-			);
-			groupLayout.setVerticalGroup(
-				groupLayout.createParallelGroup(Alignment.LEADING)
-					.addGroup(groupLayout.createSequentialGroup()
-						.addGap(36)
-						.addComponent(lblListaClinicas)
-						.addGap(18)
-						.addComponent(panelBuscar, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
-						.addGap(32)
-						.addComponent(panelLista, GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-						.addContainerGap())
-			);
-			panelLista.setLayout(new BoxLayout(panelLista, BoxLayout.X_AXIS));
-			
-			JScrollPane scrollPane = new JScrollPane();
-			panelLista.add(scrollPane);
-			
-			tblClinicas = new JTable();
-			tblClinicas.setModel(new DefaultTableModel(
-				new Object[][] {
-				},
-				new String[] {
-					"Nombre", "Estado", "Direccion", "Telefono", "Correo"
-				}
-			));
-			scrollPane.setViewportView(tblClinicas);
-			
-			textFieldCodigo = new JTextField();
-			textFieldCodigo.setColumns(10);
-			
-			btnIncluir = new JButton("Incluir");
-			btnIncluir.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-				}
-			});
 	
-			
-			btnActualizar = new JButton("Actualizar");
-			btnActualizar.setBackground(new Color(0, 102, 51));
-			
-			btnEliminar = new JButton("Eliminar");
-			btnEliminar.setBackground(new Color(204, 51, 51));
-			
-			JLabel lblCodigo = new JLabel("Codigo :");
-			
-			btnBuscar = new JButton("New button");
+	private JTextField textFieldCodigo;
+	private JButton btnIncluir;
+	private JButton btnActualizar;
+	private JButton btnEliminar;
+	private JButton btnBuscar;
+	private JTable tblClinicas;
+
+			/**
+	 * Create the application.
+	 */
+	public VentanaListaClinica() {
+		super();
+		setTitle("Listado de Clínicas");
+		initialize();
+		setSize(540,591);
+	}
+	
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		setTitle("Listado de Clínicas");
+		setAutoRequestFocus(false);
+		setBounds(100, 100, 540, 591);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+		JPanel panelBuscar = new JPanel();
+		panelBuscar.setBorder(new LineBorder(new Color(0, 0, 0)));
+		
+		JLabel lblListaClinicas = new JLabel("Lista de Clinicas");
+		lblListaClinicas.setForeground(Color.BLUE);
+		lblListaClinicas.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 25));
+		lblListaClinicas.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JPanel panelLista = new JPanel();
+		panelLista.setBorder(new LineBorder(new Color(0, 0, 0)));
+		
+		GroupLayout groupLayout = new GroupLayout(getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(154)
+							.addComponent(lblListaClinicas))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(32)
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addComponent(panelLista, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(panelBuscar, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 462, GroupLayout.PREFERRED_SIZE))))
+					.addContainerGap(36, Short.MAX_VALUE))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(36)
+					.addComponent(lblListaClinicas)
+					.addGap(18)
+					.addComponent(panelBuscar, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+					.addGap(32)
+					.addComponent(panelLista, GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		panelLista.setLayout(new BoxLayout(panelLista, BoxLayout.X_AXIS));
+		
+		JScrollPane scrollPane = new JScrollPane();
+		panelLista.add(scrollPane);
+		
+		tblClinicas = new JTable();
+		tblClinicas.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Nombre", "Estado", "Direccion", "Telefono", "Correo"
+			}
+		));
+		scrollPane.setViewportView(tblClinicas);
+		
+		textFieldCodigo = new JTextField();
+		textFieldCodigo.setColumns(10);
+		
+		btnIncluir = new JButton("Incluir");
+		btnIncluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+	
+		
+		btnActualizar = new JButton("Actualizar");
+		btnActualizar.setBackground(new Color(0, 102, 51));
+		
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setBackground(new Color(204, 51, 51));
+		
+		JLabel lblCodigo = new JLabel("Codigo :");
+		
+		btnBuscar = new JButton("New button");
 			btnBuscar.setBackground(Color.DARK_GRAY);
 			
 			btnBuscar.addActionListener(new ActionListener() {
@@ -180,13 +182,17 @@ public class VentanaListaClinica extends javax.swing.JFrame {
 		{
 			return textFieldCodigo.getText();
 		}
-
+	
 		public void setTextFieldCodigo(String codigo) {
 			this.textFieldCodigo.setText(codigo);
 		}
 	
+		public void salir() {
+			this.setVisible(false);
+			this.dispose();
+		}
 		
 		public void mostrarMensaje(String mensaje) {
 			JOptionPane.showMessageDialog(this, mensaje);
 		}
-	}
+}
