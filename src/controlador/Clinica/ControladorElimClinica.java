@@ -32,7 +32,7 @@ public class ControladorElimClinica implements ActionListener
 		{
 		  	try
 			{
-		  		ClinicaBD clinicaBD = new ClinicaBD();	    
+		  		ClinicaBD clinicaBD = new ClinicaBD();
 		    	clinicaBD.eliminarClinica(vtnElimCli.getCodigo());
 		    	vtnElimCli.mostrarMensaje("La Clinica fue eliminado con exito");
 		    	vtnElimCli.blanquearCampos();

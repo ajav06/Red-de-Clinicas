@@ -34,7 +34,7 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 		super();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		initialize();
-		setSize(540, 591);
+		//setSize(450, 426);
 	}
 	
 	public static void main(String[] args) {
@@ -59,7 +59,7 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		setBounds(100, 100, 450, 452);
+		setBounds(100, 100, 450, 424);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
@@ -72,11 +72,11 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Datos de la Clinica", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		
-		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		btnEliminar.setBackground(Color.GREEN);
 		
-		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		btnCancelar.setBackground(Color.RED);
 		btnCancelar.setForeground(Color.BLACK);
@@ -85,27 +85,27 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(134, Short.MAX_VALUE)
-					.addComponent(lblEliminarClinica)
-					.addGap(112))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(30)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 376, GroupLayout.PREFERRED_SIZE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(109)
+							.addComponent(lblEliminarClinica))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(30)
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 376, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(94)
+							.addComponent(btnEliminar)
+							.addGap(81)
+							.addComponent(btnCancelar)))
 					.addContainerGap(28, Short.MAX_VALUE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(96)
-					.addComponent(btnEliminar)
-					.addGap(79)
-					.addComponent(btnCancelar)
-					.addContainerGap(101, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
+					.addGap(23)
 					.addComponent(lblEliminarClinica)
-					.addGap(18)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 264, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnEliminar)
@@ -160,20 +160,15 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 						.addComponent(lblDireccion)
 						.addComponent(lblCorreo)
 						.addComponent(lblTelefono))
-					.addPreferredGap(ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addComponent(textFieldTelefono)
-								.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
-									.addComponent(textFieldDireccion)
-									.addComponent(textFieldEstado)
-									.addComponent(textFieldNombre)
-									.addComponent(textFieldCodigo, GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)))
-							.addGap(25))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(textFieldCorreo)
-							.addContainerGap())))
+					.addPreferredGap(ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(textFieldTelefono, 242, 242, Short.MAX_VALUE)
+						.addComponent(textFieldDireccion)
+						.addComponent(textFieldEstado)
+						.addComponent(textFieldNombre)
+						.addComponent(textFieldCodigo, GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+						.addComponent(textFieldCorreo))
+					.addGap(25))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -202,7 +197,7 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblCorreo)
 						.addComponent(textFieldCorreo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(64, Short.MAX_VALUE))
+					.addContainerGap(58, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
 		getContentPane().setLayout(groupLayout);

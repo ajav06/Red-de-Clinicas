@@ -49,7 +49,7 @@ public class ClinicaBD extends ConexionBD
 	
 	public void actualizarClinica(Clinica clinica) {
 		this.actuRegistro("clinica", "nombre='"+clinica.getNombre()+"',estado='"+clinica.getEstado()+"',direccion='"+
-				clinica.getDireccion()+"',telefono='"+clinica.getTelefono()+"',email="+clinica.getCorreo()+"'","codigo", "'"+clinica.getCodigo()+"'");
+				clinica.getDireccion()+"',telefono='"+clinica.getTelefono()+"',email='"+clinica.getCorreo()+"'","codigo", "'"+clinica.getCodigo()+"'");
 	}
 	
 	public Clinica buscarClinica(String cod) throws SQLException 

@@ -37,6 +37,7 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 	 * Create the application.
 	 */
 	public VentanaActualizarClinica() {
+		setTitle("Actualizar Clinica");
 		initialize();
 		
 	}
@@ -45,7 +46,7 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		setBounds(100, 100, 450, 495);
+		setBounds(100, 100, 450, 452);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
@@ -58,8 +59,14 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 		lblActualizarClinica.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		btnActualizar = new JButton("Actualizar");
+		btnActualizar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		btnActualizar.setBackground(Color.GREEN);
+		btnActualizar.setForeground(Color.BLACK);
 		
 		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		btnCancelar.setBackground(Color.RED);
+		btnCancelar.setForeground(Color.BLACK);
 		
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -190,8 +197,8 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 	public void llenarCampos(String cod,String nom,String est, String dir, String tel, String cor) {
 		textFieldCodigo.setText(cod);
 		textFieldNombre.setText(nom);
-		textFieldDireccion.setText(est);
-		textFieldEstado.setText(dir);
+		textFieldEstado.setText(est);
+		textFieldDireccion.setText(dir);
 		textFieldTelefono.setText(tel);
 		textFieldCorreo.setText(cor);
 		
