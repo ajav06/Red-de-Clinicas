@@ -179,14 +179,10 @@ public class MedicoBD extends ConexionBD{
 	         c.setAutoCommit(false);
 			
 	         stmt = c.createStatement();
-	         String sql = "SELECT CAST (codigo as integer) FROM trabajomedico ORDER BY codigo DESC LIMIT 1";
+	         String sql = "SELECT COUNT (codigo) FROM trabajomedico";
 	         rs = stmt.executeQuery(sql);
-	         if (!rs.next()) {
-	        	 ult=0;
-	         } else {
-		 		 ult = Integer.parseInt(rs.getString("codigo"));
-		 		 ult++;
-	         }
+	         rs.next();
+	         ult = rs.getInt("count");
 		  } catch (Exception e) {
 	         e.printStackTrace();
 	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());

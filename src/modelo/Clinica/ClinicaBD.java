@@ -27,7 +27,7 @@ public class ClinicaBD extends ConexionBD
 	
 	public List<Clinica> consultarClinicas() throws SQLException {
 		List<Clinica> Clinicas = new ArrayList<Clinica>();
-		resultSet = this.consultarTabla("clinica", " WHERE estatus='a' AND codigo != '0' ");
+		resultSet = this.consultarTabla("clinica", " WHERE estatus='a' AND codigo != '0' ORDER BY codigo ASC");
 		try {
 			while (resultSet.next()) {
 				String codigo = resultSet.getString("codigo");
@@ -108,14 +108,10 @@ public class ClinicaBD extends ConexionBD
 	         c.setAutoCommit(false);
 			
 	         stmt = c.createStatement();
-	         String sql = "SELECT CAST (codigo as integer) FROM clinica ORDER BY codigo DESC LIMIT 1";
+	         String sql = "SELECT COUNT(codigo) FROM clinica";
 	         rs = stmt.executeQuery(sql);
-	         if (!rs.next()) {
-	        	 ult=0;
-	         } else {
-		 		 ult = Integer.parseInt(rs.getString("codigo"));
-		 		 ult++;
-	         }
+	         rs.next();
+        	 ult = rs.getInt("count");
 		  } catch (Exception e) {
 	         e.printStackTrace();
 	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());

@@ -122,7 +122,7 @@ public class VentanaListaClinica extends javax.swing.JFrame {
 		
 		JLabel lblCodigo = new JLabel("Codigo :");
 		
-		btnBuscar = new JButton("New button");
+		btnBuscar = new JButton("...");
 			btnBuscar.setBackground(Color.DARK_GRAY);
 			
 			btnBuscar.addActionListener(new ActionListener() {
