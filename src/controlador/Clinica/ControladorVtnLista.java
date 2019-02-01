@@ -52,7 +52,7 @@ public class ControladorVtnLista implements ActionListener
 	    	if(vtnListCli.getCodigo().equals(""))
 	    		
 	    	   //Deben estar todos los campos llenos para poder actualizar la Clinica
-	    		vtnListCli.mostrarMensaje("Debe llenar todos los datos para poder buscar la Clinica");
+	    		vtnListCli.mostrarMensaje("Debe Llenar todos los datos para poder buscar la Clinica");
 	    	else
 	    	{
 	    		ClinicaBD clinicaBD = new ClinicaBD();
