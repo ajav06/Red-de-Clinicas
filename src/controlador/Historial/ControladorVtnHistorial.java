@@ -4,15 +4,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import modelo.Historial.Antecedentes;
-import modelo.Historial.AntecedentesDB;
+import modelo.Historial.AntecedentesBD;
 import modelo.Historial.HistorialMedico;
-import modelo.Historial.HistorialMedicoDB;
+import modelo.Historial.HistorialMedicoBD;
 import vista.Historial.VentanaHistorial;
 
 public class ControladorVtnHistorial implements ActionListener{
 	private VentanaHistorial vtnHistorial;
-	private HistorialMedicoDB historialDB;
-	private AntecedentesDB antecedentesDB;
+	private HistorialMedicoBD historialDB;
+	private AntecedentesBD antecedentesDB;
 	private String cedula;
 	
 	public ControladorVtnHistorial(String cedula, HistorialMedico historial, Antecedentes antecedente) {
@@ -51,12 +51,12 @@ public class ControladorVtnHistorial implements ActionListener{
 			if(vtnHistorial.validarCamposLLenos())
 				vtnHistorial.mostrarMensaje("Debe llenar todos los campos para Incluir");
 			else {
-				historialDB = new HistorialMedicoDB();
+				historialDB = new HistorialMedicoBD();
 				HistorialMedico historial = new HistorialMedico(cedula, Integer.parseInt(vtnHistorial.getNumero()), Float.parseFloat(vtnHistorial.getPeso()), 
 						Float.parseFloat(vtnHistorial.getAltura()), vtnHistorial.getSexo(), vtnHistorial.getEnfAct(), vtnHistorial.getAnteEnfAct(), vtnHistorial.getAntFami());
 				historialDB.incluirHistorial(historial);
 				
-				antecedentesDB = new AntecedentesDB();
+				antecedentesDB = new AntecedentesBD();
 				Antecedentes antecedente = new Antecedentes(Integer.parseInt(vtnHistorial.getNumero()), vtnHistorial.getAlcohol(), vtnHistorial.getDrogas(), vtnHistorial.getInfuciones(), 
 						vtnHistorial.getTabaco(), vtnHistorial.getAlimentacion(), vtnHistorial.getDiuresis(), vtnHistorial.getCatarsis(), vtnHistorial.getSuenno(), vtnHistorial.getSexualidad(), 
 						vtnHistorial.getOtroFis(), vtnHistorial.getCardiacas(), vtnHistorial.getRespiratorias(), vtnHistorial.getGastrointestinales(), vtnHistorial.getNeofrourologicos(), 
@@ -79,12 +79,12 @@ public class ControladorVtnHistorial implements ActionListener{
 			if(!vtnHistorial.validarCamposLLenos())
 				vtnHistorial.mostrarMensaje("Debe llenar todos los campos para Incluir");
 			else {
-				historialDB = new HistorialMedicoDB();
+				historialDB = new HistorialMedicoBD();
 				HistorialMedico historial = new HistorialMedico(cedula, Integer.parseInt(vtnHistorial.getNumero()), Float.parseFloat(vtnHistorial.getPeso()), 
 						Float.parseFloat(vtnHistorial.getAltura()), vtnHistorial.getSexo(), vtnHistorial.getEnfAct(), vtnHistorial.getAnteEnfAct(), vtnHistorial.getAntFami());
 				historialDB.modificarHistorial(historial);
 				
-				antecedentesDB = new AntecedentesDB();
+				antecedentesDB = new AntecedentesBD();
 				Antecedentes antecedente = new Antecedentes(Integer.parseInt(vtnHistorial.getNumero()), vtnHistorial.getAlcohol(), vtnHistorial.getDrogas(), vtnHistorial.getInfuciones(), 
 						vtnHistorial.getTabaco(), vtnHistorial.getAlimentacion(), vtnHistorial.getDiuresis(), vtnHistorial.getCatarsis(), vtnHistorial.getSuenno(), vtnHistorial.getSexualidad(), 
 						vtnHistorial.getOtroFis(), vtnHistorial.getCardiacas(), vtnHistorial.getRespiratorias(), vtnHistorial.getGastrointestinales(), vtnHistorial.getNeofrourologicos(), 

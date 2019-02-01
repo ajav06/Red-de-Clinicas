@@ -6,9 +6,9 @@ import java.sql.SQLException;
 import modelo.ConexionBD;
 import modelo.Seguro.Seguro;
 
-public class AntecedentesDB extends ConexionBD{
+public class AntecedentesBD extends ConexionBD{
 	
-	public AntecedentesDB() {
+	public AntecedentesBD() {
 		super();
 	}
 	

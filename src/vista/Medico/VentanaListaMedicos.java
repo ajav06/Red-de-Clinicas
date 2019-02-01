@@ -63,7 +63,7 @@ public class VentanaListaMedicos extends javax.swing.JFrame{
 		setTitle("Listado de Médicos");
 		setAutoRequestFocus(false);
 		setBounds(100, 100, 585, 579);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		

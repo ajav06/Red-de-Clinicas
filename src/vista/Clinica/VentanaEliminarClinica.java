@@ -23,8 +23,7 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 	private JTextField textFieldCodigo;
 	private JTextField textFieldNombre;
 	private JTextField textFieldEstado;
-	private JTextField textFieldCiudad;
-	private JTextField textFieldUbicacion;
+	private JTextField textFieldDireccion;
 	private JTextField textFieldTelefono;
 	private JTextField textFieldCorreo;
 	private JButton btnCancelar;
@@ -35,33 +34,15 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 		super();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		initialize();
-		setSize(540, 591);
+		//setSize(450, 426);
 	}
 	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaEliminarClinica window = new VentanaEliminarClinica();
-					window.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	
-
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		setBounds(100, 100, 450, 452);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 424);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		
 		
@@ -73,11 +54,11 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Datos de la Clinica", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		
-		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		btnEliminar.setBackground(Color.GREEN);
 		
-		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		btnCancelar.setBackground(Color.RED);
 		btnCancelar.setForeground(Color.BLACK);
@@ -86,27 +67,27 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(134, Short.MAX_VALUE)
-					.addComponent(lblEliminarClinica)
-					.addGap(112))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(30)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 376, GroupLayout.PREFERRED_SIZE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(109)
+							.addComponent(lblEliminarClinica))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(30)
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 376, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(94)
+							.addComponent(btnEliminar)
+							.addGap(81)
+							.addComponent(btnCancelar)))
 					.addContainerGap(28, Short.MAX_VALUE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(96)
-					.addComponent(btnEliminar)
-					.addGap(79)
-					.addComponent(btnCancelar)
-					.addContainerGap(101, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
+					.addGap(23)
 					.addComponent(lblEliminarClinica)
-					.addGap(18)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 264, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnEliminar)
@@ -132,17 +113,11 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 		textFieldEstado.setEditable(false);
 		textFieldEstado.setColumns(10);
 		
-		JLabel lblCiudad = new JLabel("Ciudad :");
+		JLabel lblDireccion = new JLabel("Direccion :");
 		
-		textFieldCiudad = new JTextField();
-		textFieldCiudad.setEditable(false);
-		textFieldCiudad.setColumns(10);
-		
-		textFieldUbicacion = new JTextField();
-		textFieldUbicacion.setEditable(false);
-		textFieldUbicacion.setColumns(10);
-		
-		JLabel lblUbicacion = new JLabel("Ubicacion :");
+		textFieldDireccion = new JTextField();
+		textFieldDireccion.setEditable(false);
+		textFieldDireccion.setColumns(10);
 		
 		textFieldTelefono = new JTextField();
 		textFieldTelefono.setEditable(false);
@@ -164,19 +139,17 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 						.addComponent(lblCodigo)
 						.addComponent(lblNombre)
 						.addComponent(lblEstado)
-						.addComponent(lblCiudad)
-						.addComponent(lblUbicacion)
-						.addComponent(lblTelefono)
-						.addComponent(lblCorreo))
-					.addPreferredGap(ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+						.addComponent(lblDireccion)
+						.addComponent(lblCorreo)
+						.addComponent(lblTelefono))
+					.addPreferredGap(ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(textFieldCorreo)
-						.addComponent(textFieldTelefono)
-						.addComponent(textFieldUbicacion)
-						.addComponent(textFieldCiudad)
+						.addComponent(textFieldTelefono, 242, 242, Short.MAX_VALUE)
+						.addComponent(textFieldDireccion)
 						.addComponent(textFieldEstado)
 						.addComponent(textFieldNombre)
-						.addComponent(textFieldCodigo, GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE))
+						.addComponent(textFieldCodigo, GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+						.addComponent(textFieldCorreo))
 					.addGap(25))
 		);
 		gl_panel.setVerticalGroup(
@@ -196,16 +169,12 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 						.addComponent(textFieldEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblCiudad)
-						.addComponent(textFieldCiudad, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblDireccion)
+						.addComponent(textFieldDireccion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textFieldUbicacion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblUbicacion))
-					.addGap(18)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textFieldTelefono, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblTelefono))
+						.addComponent(lblTelefono)
+						.addComponent(textFieldTelefono, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblCorreo)
@@ -219,18 +188,16 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 		textFieldCodigo.setText(null);
 		textFieldNombre.setText(null);
 		textFieldEstado.setText(null);
-		textFieldCiudad.setText(null);
-		textFieldUbicacion.setText(null);
+		textFieldDireccion.setText(null);
 		textFieldTelefono.setText(null);
 		textFieldCorreo.setText(null);
 	
 	}
-	public void llenarCampos(String cod,String nom,String est, String ciu, String ubi, String tel, String cor) {
+	public void llenarCampos(String cod,String nom,String est, String dir, String tel, String cor) {
 		textFieldCodigo.setText(cod);
 		textFieldNombre.setText(nom);
-		textFieldCiudad.setText(est);
-		textFieldEstado.setText(ciu);
-		textFieldUbicacion.setText(ubi);
+		textFieldDireccion.setText(est);
+		textFieldEstado.setText(dir);
 		textFieldTelefono.setText(tel);
 		textFieldCorreo.setText(cor);
 		
@@ -251,12 +218,8 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 		textFieldEstado.setText(est);
 	}
 	
-	public void setCiudad(String ciu){
-		textFieldCiudad.setText(ciu);	
-	}
-	
-	public void setUbicacion(String ubi) {
-		textFieldUbicacion.setText(ubi);
+	public void setDireccion(String ciu){
+		textFieldDireccion.setText(ciu);	
 	}
 	
 	public void setTelefono(String tel) {
@@ -279,12 +242,8 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 		return textFieldEstado.getText();
 	}
 	
-	public String getCiudad() {
-		return textFieldCiudad.getText();
-	}
-	
-	public String getUbicacion() {
-		return textFieldUbicacion.getText();
+	public String getDireccion() {
+		return textFieldDireccion.getText();
 	}
 	
 	public String getTelefono() {

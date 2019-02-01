@@ -120,6 +120,7 @@ public class Conexion extends javax.swing.JFrame{
 			
 	         stmt = c.createStatement();
 	         String sql = "SELECT * FROM "+nombTabla+" WHERE "+ id +"="+valorId+ "AND estatus='a';";
+
 	         rs = stmt.executeQuery(sql);
 	         
 		  } catch (Exception e) {

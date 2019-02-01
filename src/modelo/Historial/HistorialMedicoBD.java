@@ -5,9 +5,9 @@ import java.sql.SQLException;
 
 import modelo.ConexionBD;
 
-public class HistorialMedicoDB extends ConexionBD{
+public class HistorialMedicoBD extends ConexionBD{
 	
-	public HistorialMedicoDB() {
+	public HistorialMedicoBD() {
 		super();
 	}
 	

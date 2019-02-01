@@ -27,7 +27,7 @@ public class ClinicaBD extends ConexionBD
 	
 	public List<Clinica> consultarClinicas() throws SQLException {
 		List<Clinica> Clinicas = new ArrayList<Clinica>();
-		resultSet = this.consultarTabla("clinica", " WHERE estatus='a' AND codigo != '0' ");
+		resultSet = this.consultarTabla("clinica", " WHERE estatus='a' AND codigo != '0' ORDER BY codigo ASC");
 		try {
 			while (resultSet.next()) {
 				String codigo = resultSet.getString("codigo");
@@ -49,23 +49,24 @@ public class ClinicaBD extends ConexionBD
 	
 	public void actualizarClinica(Clinica clinica) {
 		this.actuRegistro("clinica", "nombre='"+clinica.getNombre()+"',estado='"+clinica.getEstado()+"',direccion='"+
-				clinica.getDireccion()+"',telefono='"+clinica.getTelefono()+"',email="+clinica.getCorreo(),"codigo", "'"+clinica.getCodigo()+"'");
+				clinica.getDireccion()+"',telefono='"+clinica.getTelefono()+"',email='"+clinica.getCorreo()+"'","codigo", "'"+clinica.getCodigo()+"'");
 	}
 	
 	public Clinica buscarClinica(String cod) throws SQLException 
 	{
 		Clinica clinica = null;
 		resultSet = this.buscarRegistro("clinica", "codigo", "'"+cod+"'");
-		
+
 		try {
 			while (resultSet.next()) {
 				String codigo = resultSet.getString("codigo");
-				String nombre = resultSet.getString("nombres");
+				String nombre = resultSet.getString("nombre");
 				String estado = resultSet.getString("estado");
 				String direccion = resultSet.getString("direccion");
 				String telefono = resultSet.getString("telefono");
 				String correo = resultSet.getString("email");
-				clinica = new Clinica(codigo,nombre, estado,direccion,telefono,correo);
+				
+				clinica = new Clinica(codigo,nombre, estado,direccion,telefono,correo);	
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -107,14 +108,10 @@ public class ClinicaBD extends ConexionBD
 	         c.setAutoCommit(false);
 			
 	         stmt = c.createStatement();
-	         String sql = "SELECT CAST (codigo as integer) FROM clinica ORDER BY codigo DESC LIMIT 1";
+	         String sql = "SELECT COUNT(codigo) FROM clinica";
 	         rs = stmt.executeQuery(sql);
-	         if (!rs.next()) {
-	        	 ult=0;
-	         } else {
-		 		 ult = Integer.parseInt(rs.getString("codigo"));
-		 		 ult++;
-	         }
+	         rs.next();
+        	 ult = rs.getInt("count");
 		  } catch (Exception e) {
 	         e.printStackTrace();
 	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());

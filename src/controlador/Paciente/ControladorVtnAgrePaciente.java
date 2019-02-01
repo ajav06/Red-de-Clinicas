@@ -4,9 +4,9 @@ import java.awt.event.ActionListener;
 
 import controlador.Historial.ControladorVtnHistorial;
 import modelo.Historial.Antecedentes;
-import modelo.Historial.AntecedentesDB;
+import modelo.Historial.AntecedentesBD;
 import modelo.Historial.HistorialMedico;
-import modelo.Historial.HistorialMedicoDB;
+import modelo.Historial.HistorialMedicoBD;
 import modelo.Paciente.Paciente;
 import modelo.Paciente.PacienteBD;
 import vista.Paciente.VentanaAgregarPaciente;
@@ -143,7 +143,7 @@ public class ControladorVtnAgrePaciente implements ActionListener{
 	    		vtnAgrePac.mostrarMensaje("Debe llenar todos los datos para poder registrar al paciente");
 	    	else
 	    	{
-	    		HistorialMedicoDB historialDB = new HistorialMedicoDB();
+	    		HistorialMedicoBD historialDB = new HistorialMedicoBD();
 	    		historial1 = historialDB.buscarHistorial(Integer.toString(vtnAgrePac.getNroHist()));
 	    	}
 		}catch(Exception e)
@@ -163,7 +163,7 @@ public class ControladorVtnAgrePaciente implements ActionListener{
 	    		vtnAgrePac.mostrarMensaje("Debe llenar todos los datos para poder registrar al paciente");
 	    	else
 	    	{
-	    		AntecedentesDB antecedenteDB = new AntecedentesDB();
+	    		AntecedentesBD antecedenteDB = new AntecedentesBD();
 	    		antecedentes = antecedenteDB.buscarAntecedentes(Integer.toString(historial.getNumero()));
 	    	}
 		}catch(Exception e)
