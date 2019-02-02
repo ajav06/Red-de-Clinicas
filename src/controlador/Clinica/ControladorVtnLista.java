@@ -63,8 +63,7 @@ public class ControladorVtnLista implements ActionListener
 	    	{
 	    		ClinicaBD clinicaBD = new ClinicaBD();
 	    		List<Clinica> clinicas = new ArrayList<Clinica>();
-	    		clinica = clinicaBD.buscarClinicanom(vtnListCli.getNombre());
-	    		clinicas.add(clinica);
+	    		clinicas = clinicaBD.consultarFiltrarClinicas("lower(nombre) like lower('%"+vtnListCli.getNombre()+"%') and estatus='a' order by codigo asc");
 	    		this.vtnListCli.setResultados(new VentanaClinicaModeloTabla(clinicas));
 	    		vtnListCli.mostrarMensaje("La Clinica fue buscado con exito");
 	    	}
@@ -72,7 +71,7 @@ public class ControladorVtnLista implements ActionListener
 		}
 		catch(Exception e)
 		{
-			vtnListCli.mostrarMensaje("No se pudo buscar la Clinica, verifique que los datos sean correctos");
+			vtnListCli.mostrarMensaje(e.getClass()+e.getMessage());
 		}
 	}
 	

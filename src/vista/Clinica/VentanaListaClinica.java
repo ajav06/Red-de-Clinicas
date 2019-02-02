@@ -134,18 +134,18 @@ public class VentanaListaClinica extends javax.swing.JFrame {
 				gl_panelBuscar.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_panelBuscar.createSequentialGroup()
 						.addContainerGap()
-						.addGroup(gl_panelBuscar.createParallelGroup(Alignment.LEADING, false)
+						.addGroup(gl_panelBuscar.createParallelGroup(Alignment.LEADING)
 							.addGroup(gl_panelBuscar.createSequentialGroup()
 								.addComponent(lblNombre)
 								.addGap(16)
-								.addComponent(textFieldNombre, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textFieldNombre, GroupLayout.PREFERRED_SIZE, 139, GroupLayout.PREFERRED_SIZE)
 								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(btnBuscar, 0, 0, Short.MAX_VALUE))
+								.addComponent(btnBuscar, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
 							.addComponent(btnIncluir, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE))
 						.addGap(18)
 						.addGroup(gl_panelBuscar.createParallelGroup(Alignment.LEADING)
-							.addComponent(btnEliminar, GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-							.addComponent(btnActualizar, GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
+							.addComponent(btnEliminar, GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+							.addComponent(btnActualizar, GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))
 						.addContainerGap())
 			);
 			gl_panelBuscar.setVerticalGroup(
@@ -155,11 +155,11 @@ public class VentanaListaClinica extends javax.swing.JFrame {
 						.addGroup(gl_panelBuscar.createParallelGroup(Alignment.BASELINE)
 							.addComponent(textFieldNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addComponent(lblNombre)
-							.addComponent(btnBuscar)
-							.addComponent(btnActualizar))
+							.addComponent(btnActualizar)
+							.addComponent(btnBuscar))
 						.addGap(15)
 						.addGroup(gl_panelBuscar.createParallelGroup(Alignment.BASELINE)
-							.addComponent(btnIncluir, GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+							.addComponent(btnIncluir, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(btnEliminar))
 						.addContainerGap())
 			);
@@ -174,9 +174,11 @@ public class VentanaListaClinica extends javax.swing.JFrame {
 			
 			
 		}
+		
 		public void setResultados(AbstractTableModel abstractTableModel) {
 			tblClinicas.setModel(abstractTableModel);
 		}
+		
 		public JTable getTblClinicas() {
 			return tblClinicas;
 		}
