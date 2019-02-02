@@ -81,7 +81,7 @@ public class ControladorVtnLista implements ActionListener
 		JTable tabla = vtnListCli.getTblClinica();
 		int fila = tabla.getSelectedRow();
 		if (fila == -1) {
-			vtnListCli.mostrarMensaje("Seleccione un médico del listado para consultarlo.");
+			vtnListCli.mostrarMensaje("Seleccione una Clinica del listado para consultarlo.");
 		} else {
 			String codigo = String.valueOf(tabla.getModel().getValueAt(fila, 0));
 			ClinicaBD clinicaBD = new ClinicaBD();	    
@@ -99,7 +99,7 @@ public class ControladorVtnLista implements ActionListener
 			JTable tabla = vtnListCli.getTblClinica();
 			int fila = tabla.getSelectedRow();
 			if (fila == -1) {
-				vtnListCli.mostrarMensaje("Seleccione un médico del listado para consultarlo.");
+				vtnListCli.mostrarMensaje("Seleccione una Clinica del listado para consultarlo.");
 			} else {
 				String codigo = String.valueOf(tabla.getModel().getValueAt(fila, 0));
 				ClinicaBD clinicaBD = new ClinicaBD();	    
