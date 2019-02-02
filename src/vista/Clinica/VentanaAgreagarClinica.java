@@ -34,6 +34,7 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 	private JTextField textFieldCorreo;
 	private JButton btnCancelar;
 	private JButton btnRegistrar;
+	private JButton btnLimpiar;
 	/**
 	 * Launch the application.
 	 */
@@ -76,23 +77,32 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 		btnCancelar.setBackground(Color.RED);
 		btnCancelar.setForeground(Color.BLACK);
 		
+		btnLimpiar = new JButton("Limpiar");
+		btnLimpiar.setForeground(Color.BLACK);
+		btnLimpiar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		btnLimpiar.setBackground(Color.BLUE);
+		
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2.createSequentialGroup()
+			gl_panel_2.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_panel_2.createSequentialGroup()
 					.addGap(69)
 					.addComponent(btnRegistrar)
-					.addGap(88)
-					.addComponent(btnCancelar)
-					.addContainerGap(110, Short.MAX_VALUE))
+					.addGap(79)
+					.addComponent(btnLimpiar, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(86, Short.MAX_VALUE))
 				.addGroup(gl_panel_2.createSequentialGroup()
 					.addGap(19)
 					.addComponent(panDC, GroupLayout.PREFERRED_SIZE, 365, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(49, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_panel_2.createSequentialGroup()
-					.addContainerGap(99, Short.MAX_VALUE)
+					.addContainerGap(20, Short.MAX_VALUE))
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addContainerGap(70, Short.MAX_VALUE)
 					.addComponent(lblEnunciado, GroupLayout.PREFERRED_SIZE, 264, GroupLayout.PREFERRED_SIZE)
 					.addGap(70))
+				.addGroup(Alignment.LEADING, gl_panel_2.createSequentialGroup()
+					.addGap(155)
+					.addComponent(btnCancelar)
+					.addContainerGap(168, Short.MAX_VALUE))
 		);
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
@@ -104,8 +114,10 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 					.addGap(18)
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnRegistrar)
-						.addComponent(btnCancelar))
-					.addGap(23))
+						.addComponent(btnLimpiar))
+					.addGap(11)
+					.addComponent(btnCancelar)
+					.addContainerGap())
 		);
 		
 		JLabel lblNombre = new JLabel("Nombre :");
@@ -216,7 +228,8 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 	
 	public void addListener(ActionListener actionListener) {
 		btnRegistrar.addActionListener(actionListener);
-		btnCancelar.addActionListener(actionListener);		
+		btnCancelar.addActionListener(actionListener);	
+		btnLimpiar.addActionListener(actionListener);
 	}
 	
 	public String getCodigo() {

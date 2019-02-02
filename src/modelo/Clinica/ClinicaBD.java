@@ -74,6 +74,28 @@ public class ClinicaBD extends ConexionBD
 		this.cerrarComando();
 		return clinica;
 	}
+	public Clinica buscarClinicanom(String nom) throws SQLException 
+	{
+		Clinica clinica = null;
+		resultSet = this.buscarRegistro("clinica", "nombre", "'"+nom+"'");
+
+		try {
+			while (resultSet.next()) {
+				String codigo = resultSet.getString("codigo");
+				String nombre = resultSet.getString("nombre");
+				String estado = resultSet.getString("estado");
+				String direccion = resultSet.getString("direccion");
+				String telefono = resultSet.getString("telefono");
+				String correo = resultSet.getString("email");
+				
+				clinica = new Clinica(codigo,nombre, estado,direccion,telefono,correo);	
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		this.cerrarComando();
+		return clinica;
+	}
 	public void eliminarClinica(String cod) {
 		this.elimLogica("clinica", "codigo",  "'"+cod+"'");
 	}

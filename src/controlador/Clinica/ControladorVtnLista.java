@@ -6,19 +6,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 import vista.Clinica.VentanaClinicaModeloTabla;
 import controlador.Clinica.ControladorVtnActuClinica;
 import controlador.Clinica.ControladorVtnAgreClinica;
-
+import controlador.Medico.ControladorVtnConModRegEliMedico;
 import vista.Clinica.VentanaListaClinica;
+import vista.Medico.VentanaMedicoModeloTabla;
 import modelo.Clinica.Clinica;
 import modelo.Clinica.ClinicaBD;
+import modelo.Medico.MedicoBD;
 public class ControladorVtnLista implements ActionListener
 {
 	private VentanaListaClinica vtnListCli;
 	Clinica clinica;
-	
 	public ControladorVtnLista() throws SQLException {
 		super();
 		this.vtnListCli = new VentanaListaClinica();
@@ -49,63 +51,64 @@ public class ControladorVtnLista implements ActionListener
 		}
 	}
 	
-	public void buscarClinica() {
+	public void buscarClinica() 
+	{
 		try
 		{
-	    	if(vtnListCli.getCodigo().equals(""))
+	    	if(vtnListCli.getNombre().equals(""))
 	    		
 	    	   //Deben estar todos los campos llenos para poder actualizar la Clinica
 	    		vtnListCli.mostrarMensaje("Debe Llenar todos los datos para poder buscar la Clinica");
-	    	else
+	    	else 
 	    	{
 	    		ClinicaBD clinicaBD = new ClinicaBD();
 	    		List<Clinica> clinicas = new ArrayList<Clinica>();
-	    		clinica = clinicaBD.buscarClinica(vtnListCli.getCodigo());
+	    		clinica = clinicaBD.buscarClinicanom(vtnListCli.getNombre());
 	    		clinicas.add(clinica);
 	    		this.vtnListCli.setResultados(new VentanaClinicaModeloTabla(clinicas));
 	    		vtnListCli.mostrarMensaje("La Clinica fue buscado con exito");
 	    	}
-		}catch(Exception e)
+	    	
+		}
+		catch(Exception e)
 		{
 			vtnListCli.mostrarMensaje("No se pudo buscar la Clinica, verifique que los datos sean correctos");
 		}
 	}
 	
 	public void actualizarClinica() {
-		try
-		{
-	    	if(vtnListCli.getCodigo().equals(""))
-	    		
-	    	   //Deben estar todos los campos llenos para poder actualizar la Clinica
-	    		vtnListCli.mostrarMensaje("Debe llenar todos los datos para poder buscar la Clinica");
-	    	else
-	    	{
-	    		ClinicaBD clinicaBD = new ClinicaBD();	    
-	    		clinica = clinicaBD.buscarClinica(vtnListCli.getCodigo());
-	    		new ControladorVtnActuClinica(clinica);
-	    	}
-		}catch(Exception e)
-		{
-			vtnListCli.mostrarMensaje(e.getClass() + e.getMessage());
+		try {
+		JTable tabla = vtnListCli.getTblClinica();
+		int fila = tabla.getSelectedRow();
+		if (fila == -1) {
+			vtnListCli.mostrarMensaje("Seleccione un médico del listado para consultarlo.");
+		} else {
+			String codigo = String.valueOf(tabla.getModel().getValueAt(fila, 0));
+			ClinicaBD clinicaBD = new ClinicaBD();	    
+    		clinica = clinicaBD.buscarClinica(codigo);
+    		new ControladorVtnActuClinica(clinica);
+			
 		}
+	} catch (Exception e) {
+		vtnListCli.mostrarMensaje(e.getClass().getName()+": "+e.getMessage());
+	}
 	}
 	
 	public void eliminarClinica() {
-		try
-		{
-	    	if(vtnListCli.getCodigo().equals(""))
-	    		
-	    	   //Deben estar todos los campos llenos para poder actualizar la Clinica
-	    		vtnListCli.mostrarMensaje("Debe llenar todos los datos para poder buscar la Clinica");
-	    	else
-	    	{
-	    		ClinicaBD clinicaBD = new ClinicaBD();	   
-	    		clinica = clinicaBD.buscarClinica(vtnListCli.getCodigo());
+		try {
+			JTable tabla = vtnListCli.getTblClinica();
+			int fila = tabla.getSelectedRow();
+			if (fila == -1) {
+				vtnListCli.mostrarMensaje("Seleccione un médico del listado para consultarlo.");
+			} else {
+				String codigo = String.valueOf(tabla.getModel().getValueAt(fila, 0));
+				ClinicaBD clinicaBD = new ClinicaBD();	    
+	    		clinica = clinicaBD.buscarClinica(codigo);
 	    		new ControladorElimClinica(clinica);
-	    	}
-		}catch(Exception e)
-		{
-			vtnListCli.mostrarMensaje("No se pudo buscar la Clinica, verifique que los datos sean correctos");
+				
+			}
+		} catch (Exception e) {
+			vtnListCli.mostrarMensaje(e.getClass().getName()+": "+e.getMessage());
 		}
 	}
 	

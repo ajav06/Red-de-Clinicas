@@ -26,7 +26,7 @@ public class ControladorElimClinica implements ActionListener
 			eliminarClinica();
 		}		
 		else if (actionCommand.equals("Cancelar")) {
-			vtnElimCli.blanquearCampos();
+			vtnElimCli.salir();
 		}}
 		private void eliminarClinica()
 		{

@@ -28,8 +28,12 @@ public class ControladorVtnActuClinica implements ActionListener
 		if (actionCommand.equals("Actualizar")) {
 			actualizarClinica();
 		}		
-		else if (actionCommand.equals("Cancelar")) {
+		else if (actionCommand.equals("Limpiar")) {
 			vtnActuCli.blanquearCampos();
+		}
+		else if(actionCommand.equals("Cancelar"))
+		{
+			vtnActuCli.salir();
 		}
 	}
 	

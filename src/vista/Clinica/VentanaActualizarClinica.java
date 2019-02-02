@@ -32,6 +32,7 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 	private JTextField textFieldCorreo;
 	private JButton btnCancelar;
 	private JButton btnActualizar;
+	private JButton btnLimpiar;
 
 	/**
 	 * Create the application.
@@ -46,7 +47,7 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		setBounds(100, 100, 450, 452);
+		setBounds(100, 100, 450, 504);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		
@@ -68,23 +69,32 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 		btnCancelar.setBackground(Color.RED);
 		btnCancelar.setForeground(Color.BLACK);
 		
+		btnLimpiar = new JButton("Limpiar");
+		btnLimpiar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		btnLimpiar.setBackground(Color.BLUE);
+		btnLimpiar.setForeground(Color.BLACK);
+		
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(105)
-					.addComponent(lblActualizarClinica)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(105)
+							.addComponent(lblActualizarClinica))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(30)
+							.addComponent(panelDatosClin, GroupLayout.PREFERRED_SIZE, 373, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(85)
+							.addComponent(btnActualizar)
+							.addGap(77)
+							.addComponent(btnLimpiar, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(31, Short.MAX_VALUE))
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(30)
-					.addComponent(panelDatosClin, GroupLayout.PREFERRED_SIZE, 373, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(31, Short.MAX_VALUE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(85)
-					.addComponent(btnActualizar)
-					.addPreferredGap(ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+					.addGap(168)
 					.addComponent(btnCancelar)
-					.addGap(85))
+					.addContainerGap(185, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -96,8 +106,10 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnActualizar)
-						.addComponent(btnCancelar))
-					.addContainerGap(70, Short.MAX_VALUE))
+						.addComponent(btnLimpiar))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(btnCancelar)
+					.addContainerGap(45, Short.MAX_VALUE))
 		);
 		
 		textFieldCodigo = new JTextField();
@@ -186,7 +198,6 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 		getContentPane().setLayout(groupLayout);
 	}
 	public void blanquearCampos() {
-		textFieldCodigo.setText(null);
 		textFieldNombre.setText(null);
 		textFieldEstado.setText(null);
 		textFieldDireccion.setText(null);
@@ -206,7 +217,8 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 	
 	public void addListener(ActionListener actionListener) {
 		btnActualizar.addActionListener(actionListener);
-		btnCancelar.addActionListener(actionListener);		
+		btnCancelar.addActionListener(actionListener);
+		btnLimpiar.addActionListener(actionListener);
 	}
 	
 	public void setCodigo(String cod) {
@@ -263,5 +275,9 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 	
 	public void mostrarMensaje(String mensaje) {
 		JOptionPane.showMessageDialog(this, mensaje);
+	}
+	public void salir() {
+		this.setVisible(false);
+		this.dispose();
 	}
 }

@@ -26,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class VentanaListaClinica extends javax.swing.JFrame {
 	
-	private JTextField textFieldCodigo;
+	private JTextField textFieldNombre;
 	private JButton btnIncluir;
 	private JButton btnActualizar;
 	private JButton btnEliminar;
@@ -104,8 +104,8 @@ public class VentanaListaClinica extends javax.swing.JFrame {
 		));
 		scrollPane.setViewportView(tblClinicas);
 		
-		textFieldCodigo = new JTextField();
-		textFieldCodigo.setColumns(10);
+		textFieldNombre = new JTextField();
+		textFieldNombre.setColumns(10);
 		
 		btnIncluir = new JButton("Incluir");
 		btnIncluir.addActionListener(new ActionListener() {
@@ -120,7 +120,7 @@ public class VentanaListaClinica extends javax.swing.JFrame {
 		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setBackground(new Color(204, 51, 51));
 		
-		JLabel lblCodigo = new JLabel("Codigo :");
+		JLabel lblNombre = new JLabel("Nombre :");
 		
 		btnBuscar = new JButton("...");
 			btnBuscar.setBackground(Color.DARK_GRAY);
@@ -136,9 +136,9 @@ public class VentanaListaClinica extends javax.swing.JFrame {
 						.addContainerGap()
 						.addGroup(gl_panelBuscar.createParallelGroup(Alignment.LEADING, false)
 							.addGroup(gl_panelBuscar.createSequentialGroup()
-								.addComponent(lblCodigo)
+								.addComponent(lblNombre)
 								.addGap(16)
-								.addComponent(textFieldCodigo, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textFieldNombre, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)
 								.addPreferredGap(ComponentPlacement.UNRELATED)
 								.addComponent(btnBuscar, 0, 0, Short.MAX_VALUE))
 							.addComponent(btnIncluir, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE))
@@ -153,8 +153,8 @@ public class VentanaListaClinica extends javax.swing.JFrame {
 					.addGroup(gl_panelBuscar.createSequentialGroup()
 						.addContainerGap()
 						.addGroup(gl_panelBuscar.createParallelGroup(Alignment.BASELINE)
-							.addComponent(textFieldCodigo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addComponent(lblCodigo)
+							.addComponent(textFieldNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblNombre)
 							.addComponent(btnBuscar)
 							.addComponent(btnActualizar))
 						.addGap(15)
@@ -177,16 +177,23 @@ public class VentanaListaClinica extends javax.swing.JFrame {
 		public void setResultados(AbstractTableModel abstractTableModel) {
 			tblClinicas.setModel(abstractTableModel);
 		}
+		public JTable getTblClinicas() {
+			return tblClinicas;
+		}
+
 		
-		public String getCodigo()
+		public String getNombre()
 		{
-			return textFieldCodigo.getText();
+			return textFieldNombre.getText();
 		}
 	
-		public void setTextFieldCodigo(String codigo) {
-			this.textFieldCodigo.setText(codigo);
+		public void setTextFieldNombre(String nombre) {
+			this.textFieldNombre.setText(nombre);
 		}
-	
+		public JTable getTblClinica() {
+			return tblClinicas;
+		}
+
 		public void salir() {
 			this.setVisible(false);
 			this.dispose();

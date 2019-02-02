@@ -256,6 +256,9 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 	public void mostrarMensaje(String mensaje) {
 		JOptionPane.showMessageDialog(this, mensaje);
 	}
-	
+	public void salir() {
+		this.setVisible(false);
+		this.dispose();
+	}
 	
 }
