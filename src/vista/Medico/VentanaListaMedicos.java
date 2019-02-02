@@ -215,7 +215,7 @@ public class VentanaListaMedicos extends javax.swing.JFrame{
 	}
 	
 	public String getEspecialidad() {
-		String e = String.valueOf(comboBox_Especialidad.getSelectedIndex());
+		String e = String.valueOf(comboBox_Especialidad.getSelectedIndex()-1);
 		return e;
 	}
 	
@@ -226,5 +226,9 @@ public class VentanaListaMedicos extends javax.swing.JFrame{
 	
 	public void mostrarMensaje(String mensaje) {
 		JOptionPane.showMessageDialog(this, mensaje);
+	}
+	
+	public void limpiarCedula() {
+		txtCedula_Nombre.setText("");
 	}
 }

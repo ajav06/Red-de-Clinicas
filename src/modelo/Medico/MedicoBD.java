@@ -95,32 +95,6 @@ public class MedicoBD extends ConexionBD{
 		return medico;
 	}
 	
-	public Medico buscarMedicoEliminado(String ced) throws SQLException {
-		Medico medico = null;
-		resultSet = this.buscarRegistroSinEstatus("Medico", "cedula", "'"+ced+"' AND estatus='e'");
-		
-		try {
-			while (resultSet.next()) {
-				String cedula = resultSet.getString("cedula");
-				String codespec = resultSet.getString("cod_especialidad");
-				String nombre = resultSet.getString("nombres");
-				String apellido = resultSet.getString("apellidos");
-				Date fechan = resultSet.getDate("fecha_nacimiento");
-				char edoc = resultSet.getString("edo_civil").charAt(0);
-				String edo = resultSet.getString("estado");
-				String dir = resultSet.getString("direccion");
-				String tlfcasa = resultSet.getString("tlf_casa");
-				String tlfcelu = resultSet.getString("tlf_movil");
-				String email = resultSet.getString("email");
-				medico = new Medico(cedula, codespec, nombre, apellido, fechan, edoc, edo, dir, tlfcasa, tlfcelu, email);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		this.cerrarComando();
-		return medico;
-	}
-	
 	public void eliminarMedico(String ced) {
 		this.elimLogica("medico", "cedula",  "'"+ced+"'");
 	}
@@ -212,6 +186,35 @@ public class MedicoBD extends ConexionBD{
 		} catch (Exception e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+		}
+	}
+	
+	public int verificarMedico(String cedula, boolean eliminado) {
+		ResultSet rs=null;
+		String sql;
+		
+		if (eliminado) //verifica si existe un médico ELIMINADO con la cédula en cuestión
+			sql = "SELECT COUNT(cedula) FROM medico WHERE estatus='e' AND cedula='"+cedula+"'";
+		else //verifica si existe un médico ACTIVO con la cédula en cuestión
+			sql = "SELECT COUNT(cedula) FROM medico WHERE estatus='a' AND cedula='"+cedula+"'";
+
+		int n = -1;
+		try {
+			 rs = ejecutarQuery(sql);
+	         rs.next();
+	         n = rs.getInt("count");
+		  } catch (Exception e) {
+	         e.printStackTrace();
+	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	      }
+		return n;
+	}
+	
+	public void reingresarMedico(String cedula) {
+		try {
+			this.actuRegistro("medico", "estatus='a'", "cedula","'"+cedula+"'");
+		}catch (Exception e) {
+	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 		}
 	}
 }
