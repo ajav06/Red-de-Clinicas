@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import modelo.Clinica.Clinica;
 import modelo.Clinica.ClinicaBD;
 import vista.Clinica.VentanaAgreagarClinica;
-import vista.Paciente.VentanaAgregarPaciente;
+import vista.Paciente.VentanaPaciente;
 
 public class ControladorVtnAgreClinica implements ActionListener
 {

@@ -21,12 +21,11 @@ public class ControladorVtnHistorial implements ActionListener{
 		this.vtnHistorial.setLocationRelativeTo(null);
 		this.vtnHistorial.setVisible(true);
 		this.vtnHistorial.addListener(this);
-		
-		this.cedula=cedula;
+	
 		this.vtnHistorial.setCedula(cedula);
 		if(action==1) {
 			this.vtnHistorial.interfazIncluir();
-			this.vtnHistorial.setNroHistorial(cedula.substring(2, cedula.length()));
+			this.vtnHistorial.setNroHistorial(cedula);
 		}
 		else if(action==2) {
 			this.vtnHistorial.interfazConsulta();
@@ -56,7 +55,7 @@ public class ControladorVtnHistorial implements ActionListener{
 
 	private void incluirHistorial() {
 		try {
-			if(vtnHistorial.getNumero()=="")
+			if(vtnHistorial.validarCamposLLenos())
 				vtnHistorial.mostrarMensaje("Debe llenar todos los campos para Incluir");
 			else {
 				historialDB = new HistorialMedicoBD();

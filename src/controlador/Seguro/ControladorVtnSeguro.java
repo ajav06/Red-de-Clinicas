@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.List;
 
-import controlador.ControladorVtnPrincipal;
 import modelo.Seguro.Seguro;
 import modelo.Seguro.SeguroDB;
 import vista.Seguro.VentanaSeguro;
@@ -13,16 +12,24 @@ import vista.Seguro.VentanaSeguroModeloTabla;
 
 public class ControladorVtnSeguro implements ActionListener{
 	private VentanaSeguro vtnseguro;
-	Seguro seguro;
+	private Seguro seguro;
 	private SeguroDB seguroDB;
 	private List<Seguro> seguros;
 	
 	public ControladorVtnSeguro() throws SQLException {
 		super();
+		
+		String c = "-1";
+		try{
+			c = String.valueOf(seguroDB.generarNuevoCodigoSeguro());
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
 		this.vtnseguro = new VentanaSeguro();
 		this.vtnseguro.setLocationRelativeTo(null);
 		this.vtnseguro.setVisible(true);
 		this.vtnseguro.addListener(this);
+		this.vtnseguro.setCodigo(c);
 		cargarDatosSeguros();
 	}
 	
@@ -52,7 +59,7 @@ public class ControladorVtnSeguro implements ActionListener{
 				vtnseguro.mostrarMensaje("Debe llenar todos los campos para Incluir");
 			else {
 				seguroDB = new SeguroDB();
-				Seguro seguro = new Seguro(Integer.parseInt(vtnseguro.getCodigo()), vtnseguro.getNombre(), vtnseguro.getDescripcion());
+				seguro = new Seguro(Integer.parseInt(vtnseguro.getCodigo()), vtnseguro.getNombre(), vtnseguro.getDescripcion());
 				seguroDB.incluirSeguro(seguro);
 				cargarDatosSeguros();
 			}
@@ -120,4 +127,5 @@ public class ControladorVtnSeguro implements ActionListener{
 		List<Seguro> seguros = seguroDB.consultarSeguros();
 		this.vtnseguro.setResultados(new VentanaSeguroModeloTabla(seguros));
 	}
+
 }

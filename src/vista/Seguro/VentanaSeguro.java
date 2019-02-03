@@ -222,6 +222,10 @@ public class VentanaSeguro extends javax.swing.JFrame{
 		
 	}
 	
+	public void setCodigo(String cod) {
+		textField_Codigo.setText(cod);
+	}
+	
 	public String getCodigo() {
 		return this.textField_Codigo.getText();
 	}

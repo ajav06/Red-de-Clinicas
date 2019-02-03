@@ -7,14 +7,21 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.JTable;
+
+import controlador.Medico.ControladorVtnConModRegEliMedico;
+import vista.Medico.VentanaMedicoModeloTabla;
 import vista.Paciente.VentanaListaPacientes;
 import vista.Paciente.VentanaPacienteModeloTabla;
+import modelo.Medico.Medico;
+import modelo.Medico.MedicoBD;
 import modelo.Paciente.Paciente;
 import modelo.Paciente.PacienteBD;
 
 public class ControladorVtnListPacientes implements ActionListener{
 	private VentanaListaPacientes vtnListPac;
 	PacienteBD pacienteBD;
+	Paciente paciente;
 	Date hola = null;
 	
 	public ControladorVtnListPacientes() throws SQLException {
@@ -40,70 +47,100 @@ public class ControladorVtnListPacientes implements ActionListener{
 		}
 		else if (actionCommand.equals("Incluir")) {
 			Paciente paciente = new Paciente(vtnListPac.getCedula(), "", "", hola, 'S', "", "", "", "", "", false);
-			new ControladorVtnAgrePaciente(1, paciente);		
+			try {
+				new ControladorVtnPaciente(1, paciente);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}		
 		}
 		else if (actionCommand.equals("Volver")) {
 			vtnListPac.salir();
 		}
+		else if (actionCommand.equals("Refrescar")) {
+			try {
+				cargarDatosPacientes();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
 	}
 	
 	public void buscarPaciente() {
-		try
-		{
-	    	if(vtnListPac.getCedula().equals(""))
-	    		
-	    	   //Deben estar todos los campos llenos para poder actualizar al paciente
-	    		vtnListPac.mostrarMensaje("Debe llenar todos los datos para poder buscar al paciente");
-	    	else
-	    	{
-	    		pacienteBD = new PacienteBD();
-	    		List<Paciente> pacientes = new ArrayList<Paciente>();
-	    		Paciente paciente = pacienteBD.buscarPaciente(vtnListPac.getCedula());
-	    		pacientes.add(paciente);
-	    		this.vtnListPac.setResultados(new VentanaPacienteModeloTabla(pacientes));
-		    	vtnListPac.mostrarMensaje("El Paciente fue buscado con exito");
-	    	}
-		}catch(Exception e)
-		{
-			vtnListPac.mostrarMensaje("No se pudo buscar el Paciente, verifique que los datos sean correctos");
+		try {
+			if ("".equals(vtnListPac.getCedula())) {
+				vtnListPac.mostrarMensaje("Introduzca un número de cédula o nombre para realizar la búsqueda.");
+			} else {
+				boolean n;
+				try {
+					Integer.parseInt(vtnListPac.getCedula());
+					n=true;
+				} catch (NumberFormatException e) {
+					n=false;
+				}
+				if (!n){ //si estoy buscando por nombre
+					pacienteBD = new PacienteBD();
+		    		List<Paciente> pacientes = new ArrayList<Paciente>();
+					String sql = null;
+
+					sql = "lower(nombres) like lower('%"+vtnListPac.getCedula()+"%') or lower(apellidos) like lower('%"+vtnListPac.getCedula()+"%')";						
+					
+					
+					pacientes = pacienteBD.consultarFiltrarPacientes(sql);
+					this.vtnListPac.setResultados(new VentanaPacienteModeloTabla(pacientes));
+					this.vtnListPac.vaciarCedula();
+				} else { //si estoy buscando por cedula
+					pacienteBD = new PacienteBD();
+					List<Paciente> pacientes = new ArrayList<Paciente>();
+					paciente = pacienteBD.buscarPaciente(vtnListPac.getCedula());
+					if (paciente==null) {
+						this.vtnListPac.mostrarMensaje("Paciente no encontrado.");
+						cargarDatosPacientes();
+					} else {
+						pacientes.add(paciente);
+			    		this.vtnListPac.setResultados(new VentanaPacienteModeloTabla(pacientes));
+						this.vtnListPac.vaciarCedula();;
+					}
+				}
+			}
+		} catch (Exception e) {
+			vtnListPac.mostrarMensaje(e.getClass().getName()+": "+e.getMessage());
+			vtnListPac.mostrarMensaje("No se pudo buscar el médico, verifique que los datos sean correctos");
 		}
 	}
 	
 	public void actualizarPaciente() {
-		try
-		{
-	    	if(vtnListPac.getCedula().equals(""))
-	    		
-	    	   //Deben estar todos los campos llenos para poder actualizar al paciente
-	    		vtnListPac.mostrarMensaje("Debe llenar todos los datos para poder buscar al paciente");
-	    	else
-	    	{
-	    		PacienteBD pacienteBD = new PacienteBD();	    
-	    		Paciente paciente = pacienteBD.buscarPaciente(vtnListPac.getCedula());
-	    		new ControladorVtnAgrePaciente(2, paciente);
-	    	}
-		}catch(Exception e)
-		{
-			vtnListPac.mostrarMensaje("No se pudo bucar el Paciente, verifique que los datos sean correctos");
+		try {
+			JTable tabla = vtnListPac.getTblPacientes();
+			int fila = tabla.getSelectedRow();
+			if (fila == -1) {
+				vtnListPac.mostrarMensaje("Seleccione un paciente del listado para actualizarlo.");
+			} else {
+				String cedula = String.valueOf(tabla.getModel().getValueAt(fila, 0));
+				pacienteBD = new PacienteBD();
+				paciente = pacienteBD.buscarPaciente(cedula);
+				new ControladorVtnPaciente(2, paciente);
+			}
+		} catch (Exception e) {
+			vtnListPac.mostrarMensaje(e.getClass().getName()+": "+e.getMessage());
 		}
 	}
 	
 	public void eliminarPaciente() {
-		try
-		{
-	    	if(vtnListPac.getCedula().equals(""))
-	    		
-	    	   //Deben estar todos los campos llenos para poder actualizar al paciente
-	    		vtnListPac.mostrarMensaje("Debe llenar todos los datos para poder buscar al paciente");
-	    	else
-	    	{
-	    		PacienteBD pacienteBD = new PacienteBD();	    
-	    		Paciente paciente = pacienteBD.buscarPaciente(vtnListPac.getCedula());
-	    		new ControladorVtnAgrePaciente(3, paciente);
-	    	}
-		}catch(Exception e)
-		{
-			vtnListPac.mostrarMensaje("No se pudo bucar el Paciente, verifique que los datos sean correctos");
+		try {
+			JTable tabla = vtnListPac.getTblPacientes();
+			int fila = tabla.getSelectedRow();
+			if (fila == -1) {
+				vtnListPac.mostrarMensaje("Seleccione un paciente del listado para eliminarlo.");
+			} else {
+				String cedula = String.valueOf(tabla.getModel().getValueAt(fila, 0));
+				pacienteBD = new PacienteBD();
+				paciente = pacienteBD.buscarPaciente(cedula);
+				new ControladorVtnPaciente(3, paciente);
+			}
+		} catch (Exception e) {
+			vtnListPac.mostrarMensaje(e.getClass().getName()+": "+e.getMessage());
 		}
 	}
 	

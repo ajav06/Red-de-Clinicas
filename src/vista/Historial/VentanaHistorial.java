@@ -89,7 +89,7 @@ public class VentanaHistorial extends javax.swing.JFrame{
 			
 			JLabel lblPeso = new JLabel("Peso :");
 			
-			textField_Peso = new JTextFieldValidator(5,JTextFieldValidator.SOLO_NUMEROS);
+			textField_Peso = new JTextFieldValidator(4,JTextFieldValidator.LETRAS_Y_NUMEROS);
 			textField_Peso.setColumns(10);
 			
 			textField_Numero = new JTextFieldValidator(6,JTextFieldValidator.SOLO_NUMEROS);
@@ -101,13 +101,13 @@ public class VentanaHistorial extends javax.swing.JFrame{
 			
 			JLabel lblAltura = new JLabel("Altura :");
 			
-			textField_Altura = new JTextFieldValidator(5,JTextFieldValidator.SOLO_NUMEROS);
+			textField_Altura = new JTextFieldValidator(5,JTextFieldValidator.LETRAS_Y_NUMEROS);
 			textField_Altura.setColumns(10);
 			
 			JLabel lblSexo = new JLabel("Sexo :");
 			
 			comboBox_Sexo = new JComboBox();
-			comboBox_Sexo.setModel(new DefaultComboBoxModel(new String[] {"Femenico", "Masculino", "Otro"}));
+			comboBox_Sexo.setModel(new DefaultComboBoxModel(new String[] {"Femenino", "Masculino", "Otro"}));
 			comboBox_Sexo.setMaximumRowCount(3);
 			comboBox_Sexo.setToolTipText("");
 			GroupLayout gl_panel = new GroupLayout(panel);
@@ -257,7 +257,7 @@ public class VentanaHistorial extends javax.swing.JFrame{
 			
 			JLabel label_2 = new JLabel("Infuciones :");
 			
-			JLabel label_3 = new JLabel("Dogras :");
+			JLabel lblDrogas = new JLabel("Drogas :");
 			
 			comboBox_Drogas = new JComboBox();
 			comboBox_Drogas.setModel(new DefaultComboBoxModel(new String[] {"Si", "No", "Nunca", "Ocasionalmente"}));
@@ -287,7 +287,7 @@ public class VentanaHistorial extends javax.swing.JFrame{
 						.addGroup(gl_panel_3.createParallelGroup(Alignment.TRAILING)
 							.addGroup(gl_panel_3.createSequentialGroup()
 								.addGap(17)
-								.addComponent(label_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+								.addComponent(lblDrogas, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 							.addComponent(label_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 						.addPreferredGap(ComponentPlacement.UNRELATED)
 						.addGroup(gl_panel_3.createParallelGroup(Alignment.TRAILING)
@@ -307,7 +307,7 @@ public class VentanaHistorial extends javax.swing.JFrame{
 							.addComponent(comboBox_Alcohol)
 							.addGroup(gl_panel_3.createSequentialGroup()
 								.addGap(6)
-								.addComponent(label_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+								.addComponent(lblDrogas, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 						.addGap(18)
 						.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
 							.addGroup(gl_panel_3.createSequentialGroup()
@@ -856,7 +856,7 @@ public class VentanaHistorial extends javax.swing.JFrame{
 	}
 	
 	public void setNroHistorial(String nro) {
-		textField_Numero.setText(nro);
+		textField_Numero.setText(nro.substring(2, nro.length()));
 	}
 	
 	public String getPeso() {

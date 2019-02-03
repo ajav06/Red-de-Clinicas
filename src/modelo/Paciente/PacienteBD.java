@@ -94,7 +94,7 @@ public class PacienteBD extends ConexionBD{
 				String cedula = resultSet.getString("cedula");
 				String nombre = resultSet.getString("nombres");
 				String apellido = resultSet.getString("apellidos");
-				Date fechaNacimiento = resultSet.getDate("fechanacimiento");
+				Date fechaNacimiento = resultSet.getDate("fecha_nacimiento");
 				char edoc = resultSet.getString("edo_civil").charAt(0);
 				String edo = resultSet.getString("estado");
 				String dir = resultSet.getString("direccion");
