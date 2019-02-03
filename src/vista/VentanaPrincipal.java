@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import javax.swing.border.LineBorder;
@@ -23,6 +24,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 		getContentPane().setBackground(new Color(64, 224, 208));
 		initGUI();
 		setSize(329, 335);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	private void initGUI() {

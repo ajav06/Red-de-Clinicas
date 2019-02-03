@@ -15,7 +15,7 @@ public class ControladorVtnHistorial implements ActionListener{
 	private AntecedentesBD antecedentesDB;
 	private String cedula;
 	
-	public ControladorVtnHistorial(String cedula, HistorialMedico historial, Antecedentes antecedente) {
+	public ControladorVtnHistorial(String cedula, HistorialMedico historial, Antecedentes antecedente, int action) {
 		super();
 		this.vtnHistorial = new VentanaHistorial();
 		this.vtnHistorial.setLocationRelativeTo(null);
@@ -24,13 +24,21 @@ public class ControladorVtnHistorial implements ActionListener{
 		
 		this.cedula=cedula;
 		this.vtnHistorial.setCedula(cedula);
-		this.vtnHistorial.llenarCampos(Float.toString(historial.getPeso()), Integer.toString(historial.getNumero()), cedula, Float.toString(historial.getAltura()), antecedente.getOtros_fis(), 
-				antecedente.getAlcohol(), antecedente.getAlimentacion(), antecedente.getCatarsis(), antecedente.getDiuresis(), antecedente.getDrogas(), antecedente.getInfusiones(), 
-				antecedente.getSexualidad(), antecedente.getSueno(), antecedente.getTabaco(), historial.getAnteFamiliar(), antecedente.getAlergicos(), historial.getAnteEnfAct(), 
-				antecedente.getCardiacas(), antecedente.getEndocrinologicos(), historial.getEnfActual(), antecedente.getEpidemiologicos(), antecedente.getGastrointestinales(), 
-				antecedente.getGinecologos(), antecedente.getHematologicos(), antecedente.getInfectologicos(), antecedente.getNeufrourologicos(),antecedente.getNeufrourologicos(), 
-				antecedente.getOtras_enf(), antecedente.getQuirurgicos(), antecedente.getRespiratorias(), antecedente.getTraumatoloficos(), antecedente.getEnf_infancia());
-		this.vtnHistorial.setSexo(historial.getSexo());
+		if(action==1) {
+			this.vtnHistorial.interfazIncluir();
+			this.vtnHistorial.setNroHistorial(cedula.substring(2, cedula.length()));
+		}
+		else if(action==2) {
+			this.vtnHistorial.interfazConsulta();
+			this.vtnHistorial.llenarCampos(Float.toString(historial.getPeso()), Integer.toString(historial.getNumero()), cedula, Float.toString(historial.getAltura()), antecedente.getOtros_fis(), 
+					antecedente.getAlcohol(), antecedente.getAlimentacion(), antecedente.getCatarsis(), antecedente.getDiuresis(), antecedente.getDrogas(), antecedente.getInfusiones(), 
+					antecedente.getSexualidad(), antecedente.getSueno(), antecedente.getTabaco(), historial.getAnteFamiliar(), antecedente.getAlergicos(), historial.getAnteEnfAct(), 
+					antecedente.getCardiacas(), antecedente.getEndocrinologicos(), historial.getEnfActual(), antecedente.getEpidemiologicos(), antecedente.getGastrointestinales(), 
+					antecedente.getGinecologos(), antecedente.getHematologicos(), antecedente.getInfectologicos(), antecedente.getNeufrourologicos(),antecedente.getNeufrourologicos(), 
+					antecedente.getOtras_enf(), antecedente.getQuirurgicos(), antecedente.getRespiratorias(), antecedente.getTraumatoloficos(), antecedente.getEnf_infancia());
+			this.vtnHistorial.setSexo(historial.getSexo());
+		}
+
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -48,11 +56,11 @@ public class ControladorVtnHistorial implements ActionListener{
 
 	private void incluirHistorial() {
 		try {
-			if(vtnHistorial.validarCamposLLenos())
+			if(vtnHistorial.getNumero()=="")
 				vtnHistorial.mostrarMensaje("Debe llenar todos los campos para Incluir");
 			else {
 				historialDB = new HistorialMedicoBD();
-				HistorialMedico historial = new HistorialMedico(cedula, Integer.parseInt(vtnHistorial.getNumero()), Float.parseFloat(vtnHistorial.getPeso()), 
+				HistorialMedico historial = new HistorialMedico(vtnHistorial.getCedula(), Integer.parseInt(vtnHistorial.getNumero()), Float.parseFloat(vtnHistorial.getPeso()), 
 						Float.parseFloat(vtnHistorial.getAltura()), vtnHistorial.getSexo(), vtnHistorial.getEnfAct(), vtnHistorial.getAnteEnfAct(), vtnHistorial.getAntFami());
 				historialDB.incluirHistorial(historial);
 				
@@ -70,13 +78,14 @@ public class ControladorVtnHistorial implements ActionListener{
 		}catch(Exception e)
 		{
 			vtnHistorial.mostrarMensaje("No se pudo bucar el Seguro, verifique que los datos sean correctos");
+			vtnHistorial.mostrarMensaje(e.getClass()+e.getMessage());
 		}
 		
 	}
 
 	private void modificarHistorial() {
 		try {
-			if(!vtnHistorial.validarCamposLLenos())
+			if(vtnHistorial.validarCamposLLenos())
 				vtnHistorial.mostrarMensaje("Debe llenar todos los campos para Incluir");
 			else {
 				historialDB = new HistorialMedicoBD();

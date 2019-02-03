@@ -22,6 +22,22 @@ public class VentanaEspecialidadesMedicos extends javax.swing.JFrame{
 	private JButton btnSalir;
 
 	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					VentanaEspecialidadesMedicos window = new VentanaEspecialidadesMedicos();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
 	 * Create the application.
 	 */
 	public VentanaEspecialidadesMedicos() {
@@ -34,7 +50,7 @@ public class VentanaEspecialidadesMedicos extends javax.swing.JFrame{
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 500, 256);
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblCdigo = new JLabel("Código:");
 		

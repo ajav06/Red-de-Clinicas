@@ -66,7 +66,7 @@ public class VentanaHistorial extends javax.swing.JFrame{
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		initGUI();
 		blanquearCampos();
-		setSize(886, 698);
+		setSize(933, 698);
 	}
 	
 	public void initGUI() {
@@ -202,12 +202,14 @@ public class VentanaHistorial extends javax.swing.JFrame{
 										.addPreferredGap(ComponentPlacement.RELATED)
 										.addComponent(btnModificar, GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
 										.addGap(218)))
-								.addGap(18)
 								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-									.addComponent(scrollPane_3, GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
 									.addGroup(groupLayout.createSequentialGroup()
-										.addGap(337)
-										.addComponent(btnVolver, GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE))))
+										.addGap(355)
+										.addComponent(btnVolver, GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE))
+									.addGroup(groupLayout.createSequentialGroup()
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(scrollPane_3, GroupLayout.PREFERRED_SIZE, 438, GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED))))
 							.addGroup(groupLayout.createSequentialGroup()
 								.addGap(225)
 								.addComponent(lblHistorialMedico, GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
@@ -443,25 +445,25 @@ public class VentanaHistorial extends javax.swing.JFrame{
 			panel_5.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Enfermedades", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 			gl_panel_2.setHorizontalGroup(
-				gl_panel_2.createParallelGroup(Alignment.LEADING)
-					.addGroup(Alignment.TRAILING, gl_panel_2.createSequentialGroup()
+				gl_panel_2.createParallelGroup(Alignment.TRAILING)
+					.addGroup(Alignment.LEADING, gl_panel_2.createSequentialGroup()
 						.addContainerGap()
-						.addGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING)
-							.addComponent(panel_5, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
-							.addComponent(panel_4, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
-							.addComponent(panel_3, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+							.addComponent(panel_3, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+							.addComponent(panel_4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(panel_5, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE))
 						.addContainerGap())
 			);
 			gl_panel_2.setVerticalGroup(
 				gl_panel_2.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_panel_2.createSequentialGroup()
 						.addContainerGap()
-						.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-						.addGap(18)
-						.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE)
+						.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
 						.addPreferredGap(ComponentPlacement.UNRELATED)
-						.addComponent(panel_5, GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
-						.addContainerGap())
+						.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addComponent(panel_5, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addGap(4))
 			);
 			
 			JLabel lblCardiacas = new JLabel("Cardiacas :");
@@ -852,7 +854,11 @@ public class VentanaHistorial extends javax.swing.JFrame{
 		setVisible(false);
 		dispose();
 	}
-
+	
+	public void setNroHistorial(String nro) {
+		textField_Numero.setText(nro);
+	}
+	
 	public String getPeso() {
 		return textField_Peso.getText();
 	}
@@ -881,7 +887,7 @@ public class VentanaHistorial extends javax.swing.JFrame{
 			return 'F';
 		case 1: 
 			return 'M';
-		case 3: 
+		case 2: 
 			return 'O';
 		}
 		return 'F';
@@ -1040,12 +1046,15 @@ public class VentanaHistorial extends javax.swing.JFrame{
 	public void interfazIncluir() {
 		btnModificar.setEnabled(false);
 		btnModificar.setVisible(false);
+		textField_Numero.setEditable(false);
+		textField_Cedula.setEditable(false);
 	}
 	
 	public void interfazConsulta() {
 		btnIncluir.setEnabled(false);
 		btnIncluir.setVisible(false);
 		textField_Numero.setEditable(false);
+		textField_Cedula.setEditable(false);
 	}
 	
 	public void setCedula(String ced) {

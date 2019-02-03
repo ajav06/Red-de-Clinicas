@@ -28,7 +28,7 @@ public class AntecedentesBD extends ConexionBD{
 	}
 	
 	public void actualizarAntecedentes(Antecedentes ant) {
-		this.actuRegistro("antecedentespersonales", "alcohol='"+ant.getAlcohol()+", drogas='"+ant.getDrogas()+"', "
+		this.actuRegistro("antecedentespersonales", "alcohol='"+ant.getAlcohol()+"', drogas='"+ant.getDrogas()+"', "
 				+ "infusiones='"+ant.getInfusiones()+"', tabaco='"+ant.getTabaco()+"', alimentacion='"+ant.getAlimentacion()+"', "
 				+ "diuresis='"+ant.getDiuresis()+"', catarsis='"+ant.getCatarsis()+"', suenno='"+ant.getSueno()+
 				"', sexualidad='"+ant.getSexualidad()+"', otros_fis='"+ant.getOtros_fis()+"', cardiacas='"+ant.getCardiacas()+"'," + 

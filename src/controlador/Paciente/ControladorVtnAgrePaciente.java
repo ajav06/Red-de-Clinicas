@@ -24,25 +24,22 @@ public class ControladorVtnAgrePaciente implements ActionListener{
 		this.vtnAgrePac.addListener(this);
 		
 		if(action==1) {
-			vtnAgrePac.interfazRegistro();
-			vtnAgrePac.setCedula(paciente.getCedula());
+			this.vtnAgrePac.interfazRegistro();
+			this.vtnAgrePac.setCedula(paciente.getCedula());
 		}
 		else if(action==2){
-			vtnAgrePac.interfazModificar();
-			historial = buscarHistorial();
-			antecedentes = buscarAntecedentes();
-			vtnAgrePac.llenarCampos(Integer.toString(historial.getNumero()), paciente.getCedula(), paciente.getNombre(), paciente.getApellido(), 
-					paciente.getCasa(), paciente.getEmail(), paciente.getCelular(), paciente.getDireccion(), paciente.getEstado(), paciente.getFechaNacimiento());
-			vtnAgrePac.setEdoC(paciente.getEdo_civil());
-			vtnAgrePac.setSeguro(paciente.isAsegurado());
+			this.vtnAgrePac.interfazModificar();
+			this.vtnAgrePac.llenarCampos( paciente.getCedula(),paciente.getCedula(),paciente.getCedula(), paciente.getNombre(), paciente.getApellido()
+					, paciente.getCasa(), paciente.getEmail(), paciente.getCedula(), paciente.getDireccion(), paciente.getEstado(), paciente.getFechaNacimiento());
+			this.vtnAgrePac.setEdoC(paciente.getEdo_civil());
+			
 		}
 		else if(action==3){
-			vtnAgrePac.interfazEliminar();
-			historial = buscarHistorial();
-			vtnAgrePac.llenarCampos(Integer.toString(historial.getNumero()), paciente.getCedula(), paciente.getNombre(), paciente.getApellido(), 
-					paciente.getCasa(), paciente.getEmail(), paciente.getCelular(), paciente.getDireccion(), paciente.getEstado(), paciente.getFechaNacimiento());
-			vtnAgrePac.setEdoC(paciente.getEdo_civil());
-			vtnAgrePac.setSeguro(paciente.isAsegurado());
+			this.vtnAgrePac.interfazEliminar();
+			this.vtnAgrePac.llenarCampos( paciente.getCedula(),paciente.getCedula(),paciente.getCedula(), paciente.getNombre(), paciente.getApellido()
+					, paciente.getCasa(), paciente.getEmail(), paciente.getCedula(), paciente.getDireccion(), paciente.getEstado(), paciente.getFechaNacimiento());
+			this.vtnAgrePac.setEdoC(paciente.getEdo_civil());
+
 		}
 			
 	}
@@ -63,9 +60,11 @@ public class ControladorVtnAgrePaciente implements ActionListener{
 			vtnAgrePac.salir();
 		}
 		else if (actionCommand.equals("Buscar")) {
-			historial = buscarHistorial();
-			antecedentes = buscarAntecedentes();
-			new ControladorVtnHistorial(vtnAgrePac.getCedula(), historial, antecedentes);
+			historial=buscarHistorial(Integer.toString(vtnAgrePac.getNroHist()));
+			new ControladorVtnHistorial(vtnAgrePac.getCedula(), historial, buscarAntecedentes(Integer.toString(historial.getNumero())),2);
+		}
+		else if (actionCommand.equals("Nuevo")) {
+			new ControladorVtnHistorial(vtnAgrePac.getCedula(), historial, antecedentes,1);
 		}
 	}
 	
@@ -104,7 +103,7 @@ public class ControladorVtnAgrePaciente implements ActionListener{
 	    	}
 		}catch(Exception e)
 		{
-			vtnAgrePac.mostrarMensaje("No se pudo registrar el Paciente, verifique que los datos sean correctos");
+			vtnAgrePac.mostrarMensaje("No se pudo Modificar el Paciente, verifique que los datos sean correctos");
 		}
 		
 	}
@@ -133,7 +132,7 @@ public class ControladorVtnAgrePaciente implements ActionListener{
 		}
 	}
 	
-	private HistorialMedico buscarHistorial() {
+	private HistorialMedico buscarHistorialCed(String ced) {
 		HistorialMedico historial1 = null;
 		try
 		{
@@ -144,16 +143,36 @@ public class ControladorVtnAgrePaciente implements ActionListener{
 	    	else
 	    	{
 	    		HistorialMedicoBD historialDB = new HistorialMedicoBD();
-	    		historial1 = historialDB.buscarHistorial(Integer.toString(vtnAgrePac.getNroHist()));
+	    		historial1 = historialDB.buscarHistorialCed(ced);
 	    	}
 		}catch(Exception e)
 		{
-			vtnAgrePac.mostrarMensaje("No se pudo registrar el Paciente, verifique que los datos sean correctos");
+			vtnAgrePac.mostrarMensaje(e.getClass()+e.getMessage());
 		}
 		return historial1;
 	}
 	
-	private Antecedentes buscarAntecedentes() {
+	private HistorialMedico buscarHistorial(String num) {
+		HistorialMedico historial1 = null;
+		try
+		{
+	    	if(vtnAgrePac.getNroHist()==0 )
+	    		
+	    	   //Deben estar todos los campos llenos para poder registrar al paciente
+	    		vtnAgrePac.mostrarMensaje("Debe llenar todos los datos para poder registrar al paciente");
+	    	else
+	    	{
+	    		HistorialMedicoBD historialDB = new HistorialMedicoBD();
+	    		historial1 = historialDB.buscarHistorial(num);
+	    	}
+		}catch(Exception e)
+		{
+			vtnAgrePac.mostrarMensaje(e.getClass()+e.getMessage());
+		}
+		return historial1;
+	}
+	
+	private Antecedentes buscarAntecedentes(String num) {
 		Antecedentes antecedentes = null;
 		try
 		{
@@ -164,7 +183,7 @@ public class ControladorVtnAgrePaciente implements ActionListener{
 	    	else
 	    	{
 	    		AntecedentesBD antecedenteDB = new AntecedentesBD();
-	    		antecedentes = antecedenteDB.buscarAntecedentes(Integer.toString(historial.getNumero()));
+	    		antecedentes = antecedenteDB.buscarAntecedentes(num);
 	    	}
 		}catch(Exception e)
 		{
