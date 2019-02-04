@@ -25,7 +25,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 		super();
 		getContentPane().setBackground(new Color(64, 224, 208));
 		initGUI();
-		setSize(329, 377);
+		setSize(296, 377);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
@@ -42,15 +42,15 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 			panel.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Gestionar", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			GroupLayout groupLayout = new GroupLayout(getContentPane());
 			groupLayout.setHorizontalGroup(
-				groupLayout.createParallelGroup(Alignment.LEADING)
-					.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-						.addGap(102)
-						.addComponent(lblInicio_1, GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-						.addGap(87))
-					.addGroup(groupLayout.createSequentialGroup()
+				groupLayout.createParallelGroup(Alignment.TRAILING)
+					.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 						.addGap(37)
-						.addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addGap(25))
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 208, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(68, Short.MAX_VALUE))
+					.addGroup(groupLayout.createSequentialGroup()
+						.addGap(103)
+						.addComponent(lblInicio_1, GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+						.addGap(86))
 			);
 			groupLayout.setVerticalGroup(
 				groupLayout.createParallelGroup(Alignment.LEADING)
@@ -58,7 +58,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 						.addComponent(lblInicio_1, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
 						.addPreferredGap(ComponentPlacement.RELATED)
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 246, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(58, Short.MAX_VALUE))
+						.addContainerGap(23, Short.MAX_VALUE))
 			);
 			
 			btnClinicas = new JButton("Clinica");
@@ -79,7 +79,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 			gl_panel.setHorizontalGroup(
 				gl_panel.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_panel.createSequentialGroup()
-						.addGap(62)
+						.addGap(32)
 						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 							.addGroup(gl_panel.createSequentialGroup()
 								.addComponent(btnSeguros, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)
@@ -90,8 +90,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 									.addContainerGap())
 								.addGroup(gl_panel.createSequentialGroup()
 									.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
-										.addComponent(btnEspecialidades, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 										.addComponent(btnClinicas, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(btnEspecialidades, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 										.addComponent(btnMedicos, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
 									.addContainerGap()))))
 			);
