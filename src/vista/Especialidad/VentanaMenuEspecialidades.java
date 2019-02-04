@@ -1,4 +1,4 @@
-package vista.Clinica;
+package vista.Especialidad;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
@@ -13,12 +13,12 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import javax.swing.border.LineBorder;
 import java.awt.event.ActionEvent;
-
-public class VentanaMenuClinicas extends javax.swing.JFrame{
-	private JButton btnGClinicas;
+public class VentanaMenuEspecialidades extends javax.swing.JFrame
+{
+	private JButton btnGEspecialidades;
 	private JButton btnReactivar;
 	
-	public VentanaMenuClinicas() {
+	public VentanaMenuEspecialidades() {
 		super();
 		getContentPane().setBackground(new Color(64, 224, 208));
 		initGUI();
@@ -28,45 +28,46 @@ public class VentanaMenuClinicas extends javax.swing.JFrame{
 	
 	private void initGUI() {
 		try {
-			setTitle("Menu de Clinicas");
-			JLabel lblInicio_1 = new JLabel("Menu de Clinicas");
-			lblInicio_1.setHorizontalAlignment(SwingConstants.CENTER);
-			lblInicio_1.setForeground(Color.BLUE);
-			lblInicio_1.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 25));
+			setTitle("Menu Especialidades");
+			JLabel lblEspe = new JLabel("Menu de Especialidades");
+			lblEspe.setHorizontalAlignment(SwingConstants.CENTER);
+			lblEspe.setForeground(Color.BLUE);
+			lblEspe.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 25));
 			
 			JPanel panel = new JPanel();
 			panel.setBackground(new Color(0, 139, 139));
 			panel.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Gestionar", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			GroupLayout groupLayout = new GroupLayout(getContentPane());
 			groupLayout.setHorizontalGroup(
-				groupLayout.createParallelGroup(Alignment.LEADING)
+				groupLayout.createParallelGroup(Alignment.TRAILING)
 					.addGroup(groupLayout.createSequentialGroup()
-						.addGap(37)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(34, Short.MAX_VALUE))
-					.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-						.addGap(26)
-						.addComponent(lblInicio_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addGap(21))
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addGroup(groupLayout.createSequentialGroup()
+								.addGap(37)
+								.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+								.addGap(20)
+								.addComponent(lblEspe, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+						.addContainerGap())
 			);
 			groupLayout.setVerticalGroup(
-				groupLayout.createParallelGroup(Alignment.LEADING)
-					.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+				groupLayout.createParallelGroup(Alignment.TRAILING)
+					.addGroup(groupLayout.createSequentialGroup()
 						.addContainerGap()
-						.addComponent(lblInicio_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(lblEspe, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addGap(18)
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 147, GroupLayout.PREFERRED_SIZE)
 						.addGap(23))
 			);
 			
-			btnGClinicas = new JButton("Gestionar Clinicas");
-			btnGClinicas.addActionListener(new ActionListener() {
+			btnGEspecialidades = new JButton("Gestionar Especialidades");
+			btnGEspecialidades.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 				}
 			});
-			btnGClinicas.setBackground(new Color(70, 130, 180));
+			btnGEspecialidades.setBackground(new Color(70, 130, 180));
 			
-			btnReactivar = new JButton("Reactivar Clinicas");
+			btnReactivar = new JButton("Reactivar Especialidades");
 			btnReactivar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 				}
@@ -79,14 +80,14 @@ public class VentanaMenuClinicas extends javax.swing.JFrame{
 						.addGap(19)
 						.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
 							.addComponent(btnReactivar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
-							.addComponent(btnGClinicas, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
+							.addComponent(btnGEspecialidades, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
 						.addGap(24))
 			);
 			gl_panel.setVerticalGroup(
 				gl_panel.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_panel.createSequentialGroup()
 						.addGap(26)
-						.addComponent(btnGClinicas, GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+						.addComponent(btnGEspecialidades, GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
 						.addGap(29)
 						.addComponent(btnReactivar, GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
 						.addGap(43))
@@ -99,7 +100,7 @@ public class VentanaMenuClinicas extends javax.swing.JFrame{
 	}
 
 	public void addListener(ActionListener actionListener) {
-		btnGClinicas.addActionListener(actionListener);
+		btnGEspecialidades.addActionListener(actionListener);
 		btnReactivar.addActionListener(actionListener);
 		
 	}

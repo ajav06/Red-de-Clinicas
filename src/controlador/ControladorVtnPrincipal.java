@@ -7,12 +7,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 import controlador.Especialidad.ControladorVtnListaEspecialidades;
-import controlador.Especialidad.ControladorVtnAgreEspecialidad;
-import controlador.Clinica.ControladorVtnAgreClinica;
-import controlador.Clinica.ControladorVtnLista;
-import controlador.Especialidad.ControladorVtnEspecialidades;
-import controlador.Historial.ControladorVtnHistorial;
-import controlador.Medico.ControladorVtnConModRegEliMedico;
+import controlador.Especialidad.ControladorMenuEspecialidades;
 import controlador.Medico.ControladorVtnListMedicos;
 import controlador.Paciente.ControladorVtnListPacientes;
 import controlador.Seguro.ControladorVtnSeguro;
@@ -55,12 +50,8 @@ public class ControladorVtnPrincipal implements ActionListener{
 			}
 		}
 		else if (actionCommand.equals("Especialidades")) {
-			try {
-				new ControladorVtnListaEspecialidades();
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+				new ControladorMenuEspecialidades();
+			
 		}
 		else if (actionCommand.equals("Seguros")) {
 			try {
