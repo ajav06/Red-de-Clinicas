@@ -73,6 +73,7 @@ public class ControladorVtnSeguro implements ActionListener{
 				cargarDatosSeguros();
  				vtnseguro.blanquearCampos();
 				vtnseguro.setCodigo(String.valueOf(seguroDB.generarNuevoCodigoSeguro()));
+				vtnseguro.mostrarMensaje("Seguro registrado con éxito.");
 			}
 			
 		}catch(Exception e)
@@ -121,6 +122,7 @@ public class ControladorVtnSeguro implements ActionListener{
 					vtnseguro.setCodigo(String.valueOf(seguroDB.generarNuevoCodigoSeguro()));
 					modi=false;
 					vtnseguro.modificar(false);
+					vtnseguro.mostrarMensaje("Seguro modificado con éxito.");
 			}
 		}catch(Exception e)
 		{

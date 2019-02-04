@@ -87,6 +87,8 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 	    			int n = JOptionPane.showOptionDialog(null,"El médico ya existe pero fue eliminado.\n¿Desea reingresar?","Médico ya existe",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,opciones[1]);
 	    			if (n==JOptionPane.YES_OPTION) {
 	    				medicoBD.reingresarMedico(vtnMedico.getCedula());
+	    				vtnMedico.mostrarMensaje("Médico reingresado exitosamente.");
+	    				vtnMedico.salir();
 	    			}
 	    		} else if (medicoBD.verificarMedico(vtnMedico.getCedula(), false)==1) {
 	    			vtnMedico.mostrarMensaje("El médico ya está registrado en el sistema.");

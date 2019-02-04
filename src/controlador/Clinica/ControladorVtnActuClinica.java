@@ -50,7 +50,7 @@ public class ControladorVtnActuClinica implements ActionListener
 		    	vtnActuCli.getEstado(),vtnActuCli.getDireccion(),
 		    	vtnActuCli.getTelefono(),vtnActuCli.getCorreo());	
 		    	clinicaBD.actualizarClinica(clinica);
-		       vtnActuCli.mostrarMensaje("La Clinica fue incluido con exito");
+		       vtnActuCli.mostrarMensaje("La Clinica fue actualizada con exito");
 		    	vtnActuCli.blanquearCampos();
 		    	vtnActuCli.salir();
 	    	}
