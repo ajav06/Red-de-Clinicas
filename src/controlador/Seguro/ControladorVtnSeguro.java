@@ -69,6 +69,7 @@ public class ControladorVtnSeguro implements ActionListener{
 				seguro = new Seguro(Integer.parseInt(vtnseguro.getCodigo()), vtnseguro.getNombre(), vtnseguro.getDescripcion());
 				seguroDB.incluirSeguro(seguro);
 				cargarDatosSeguros();
+				vtnseguro.blanquearCampos();
 				vtnseguro.setCodigo(String.valueOf(seguroDB.generarNuevoCodigoSeguro()));
 			}
 			
@@ -87,6 +88,9 @@ public class ControladorVtnSeguro implements ActionListener{
 				seguroDB = new SeguroDB();
 				seguroDB.eliminarSeguro(vtnseguro.getCodigo());
 				cargarDatosSeguros();
+				vtnseguro.blanquearCampos();
+				vtnseguro.setCodigo(String.valueOf(seguroDB.generarNuevoCodigoSeguro()));
+				
 			}
 			
 		}catch(Exception e)
@@ -104,6 +108,8 @@ public class ControladorVtnSeguro implements ActionListener{
 				Seguro seguro = new Seguro(Integer.parseInt(vtnseguro.getCodigo()), vtnseguro.getNombre(), vtnseguro.getDescripcion());
 				seguroDB.modificarSeguro(seguro);
 				cargarDatosSeguros();
+				vtnseguro.blanquearCampos();
+				vtnseguro.setCodigo(String.valueOf(seguroDB.generarNuevoCodigoSeguro()));
 			}
 			
 		}catch(Exception e)
