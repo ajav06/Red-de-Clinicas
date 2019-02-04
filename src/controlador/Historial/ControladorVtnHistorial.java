@@ -72,6 +72,7 @@ public class ControladorVtnHistorial implements ActionListener{
 				antecedentesDB.incluirAntecedentes(antecedente);
 				
 				vtnHistorial.mostrarMensaje("Historial Incluido con Exito");
+				vtnHistorial.desactivarBotones();
 			}
 			
 		}catch(Exception e)
@@ -101,6 +102,7 @@ public class ControladorVtnHistorial implements ActionListener{
 				antecedentesDB.actualizarAntecedentes(antecedente);
 				
 				vtnHistorial.mostrarMensaje("Historial Incluido con Exito");
+				vtnHistorial.desactivarBotones();
 			}
 			
 		}catch(Exception e)

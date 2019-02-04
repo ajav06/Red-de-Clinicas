@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import modelo.ConexionBD;
 import modelo.Paciente.Paciente;
 
@@ -110,6 +112,35 @@ public class PacienteBD extends ConexionBD{
 		}
 		this.cerrarComando();
 		return pacientes;
+	}
+	
+	public int verificarPaciente(String cedula, boolean eliminado) {
+		ResultSet rs=null;
+		String sql;
+		
+		if (eliminado) //verifica si existe un médico ELIMINADO con la cédula en cuestión
+			sql = "SELECT COUNT(cedula) FROM paciente WHERE estatus='e' AND cedula='"+cedula+"'";
+		else //verifica si existe un médico ACTIVO con la cédula en cuestión
+			sql = "SELECT COUNT(cedula) FROM paciente WHERE estatus='a' AND cedula='"+cedula+"'";
+
+		int n = -1;
+		try {
+			 rs = ejecutarQuery(sql);
+	         rs.next();
+	         n = rs.getInt("count");
+		  } catch (Exception e) {
+	         e.printStackTrace();
+	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	      }
+		return n;
+	}
+	
+	public void reingresarPaciente(String cedula) {
+		try {
+			this.actuRegistro("paciente", "estatus='a'", "cedula","'"+cedula+"'");
+		}catch (Exception e) {
+	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+		}
 	}
 
 }

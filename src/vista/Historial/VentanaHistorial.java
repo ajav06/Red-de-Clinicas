@@ -794,8 +794,8 @@ public class VentanaHistorial extends javax.swing.JFrame{
 	
 	public boolean validarCamposLLenos() {
 		boolean lleno=false;
-		if(this.textField_Cedula.getText()==null && this.textField_Numero.getText()==null
-			&& this.textField_Peso.getText()==null && this.textField_Altura.getText()==null) {
+		if(this.textField_Cedula.getText()==null || this.textField_Numero.getText()==null
+				|| this.textField_Peso.getText()==null || this.textField_Altura.getText()==null) {
 			lleno=true;
 		}
 		else {
@@ -1059,6 +1059,13 @@ public class VentanaHistorial extends javax.swing.JFrame{
 	
 	public void setCedula(String ced) {
 		this.textField_Cedula.setText(ced);
+	}
+	
+	public void desactivarBotones() {
+		btnIncluir.setEnabled(false);
+		btnIncluir.setVisible(false);
+		btnModificar.setEnabled(false);
+		btnModificar.setVisible(false);
 	}
 	
 	

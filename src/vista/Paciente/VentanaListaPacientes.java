@@ -8,6 +8,8 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.util.Date;
 import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -92,10 +94,15 @@ public class VentanaListaPacientes extends javax.swing.JFrame{
 								.addContainerGap())))
 			);
 			
-			JLabel label = new JLabel("Cedula : ");
-			label.setHorizontalAlignment(SwingConstants.CENTER);
-			
 			textField_Ced = new JTextFieldValidator(50, JTextFieldValidator.CUALQUIER_CARACTER);
+			textField_Ced.setHorizontalAlignment(SwingConstants.CENTER);
+			textField_Ced.addFocusListener(new FocusAdapter() {
+				@Override
+				public void focusGained(FocusEvent arg0) {
+					textField_Ced.setText("");
+				}
+			});
+			textField_Ced.setText("Introduzca cédula de identidad o nombre");
 			textField_Ced.setColumns(10);
 			
 			btnIncliur = new JButton("Incluir");
@@ -114,39 +121,31 @@ public class VentanaListaPacientes extends javax.swing.JFrame{
 				gl_panel.createParallelGroup(Alignment.TRAILING)
 					.addGroup(gl_panel.createSequentialGroup()
 						.addGap(18)
-						.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-							.addGroup(gl_panel.createSequentialGroup()
-								.addComponent(label, GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(textField_Ced, GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(btnBuscar, GroupLayout.PREFERRED_SIZE, 21, Short.MAX_VALUE)
-								.addGap(2))
-							.addComponent(btnIncliur, GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
-						.addGap(49)
 						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-							.addComponent(btnActualizar, GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-							.addComponent(btnEliminar, GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
-						.addGap(24))
+							.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+								.addComponent(textField_Ced, GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+								.addGap(18)
+								.addComponent(btnBuscar, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE))
+							.addGroup(gl_panel.createSequentialGroup()
+								.addComponent(btnIncliur, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
+								.addGap(22)
+								.addComponent(btnEliminar, GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+								.addGap(18)
+								.addComponent(btnActualizar, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)))
+						.addContainerGap())
 			);
 			gl_panel.setVerticalGroup(
 				gl_panel.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_panel.createSequentialGroup()
-						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-							.addGroup(gl_panel.createSequentialGroup()
-								.addGap(20)
-								.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-									.addComponent(textField_Ced, GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
-									.addComponent(btnBuscar, GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-									.addComponent(label, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-								.addGap(17))
-							.addGroup(gl_panel.createSequentialGroup()
-								.addGap(17)
-								.addComponent(btnActualizar, GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-								.addGap(18)))
+						.addGap(20)
 						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-							.addComponent(btnEliminar, GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-							.addComponent(btnIncliur, GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
+							.addComponent(textField_Ced, GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+							.addComponent(btnBuscar, GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
+						.addGap(17)
+						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+							.addComponent(btnIncliur, GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+							.addComponent(btnEliminar, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnActualizar, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
 						.addGap(12))
 			);
 			panel.setLayout(gl_panel);

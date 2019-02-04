@@ -71,6 +71,7 @@ public class VentanaPaciente extends javax.swing.JFrame{
 			JLabel lblNroHist = new JLabel("Nro. Historial :");
 			
 			textField_NroHist = new JTextFieldValidator(6,JTextFieldValidator.SOLO_NUMEROS);
+			textField_NroHist.setEditable(false);
 			textField_NroHist.setColumns(10);
 			
 			JLabel lblNroSeguro = new JLabel("Nro. Seguro :");
@@ -613,4 +614,22 @@ public class VentanaPaciente extends javax.swing.JFrame{
 		textField_NroHist.setEditable(false);
 		btnHistorial.setVisible(false);
 	}
+	
+	public boolean validarCamposLlenos() {
+		if(textField_Ced.getText().equals(null) || textField_NroHist.getText().equals(null) || textField_NroSeguro.getText().equals(null) ||
+				textField_Nomb.getText().equals(null) || textField_Apelli.getText().equals(null) || textField_Casa.getText().equals(null) || 
+				textField_Email.getText().equals(null) || textField_Celular.getText().equals(null) || textArea_Direccion.getText().equals(null) || 
+				fechaNac.getDate().equals(null))
+			return true;
+		else
+			return false;
+	}
+	
+	public boolean validarCedula() {
+		if(textField_Ced.getText().length()<7)
+			return true;
+		else
+			return false;
+	}
+	
 }
