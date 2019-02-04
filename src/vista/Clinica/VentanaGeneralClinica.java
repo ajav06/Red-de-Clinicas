@@ -62,8 +62,14 @@ public class VentanaGeneralClinica  extends javax.swing.JFrame  {
 		scrollPane.setViewportView(tblClinicas);
 		
 		btnActivar = new JButton("Activar");
+		btnActivar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		btnActivar.setBackground(Color.GREEN);
+		btnActivar.setForeground(Color.BLACK);
 		
 		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		btnCancelar.setBackground(Color.RED);
+		btnCancelar.setForeground(Color.BLACK);
 		
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
