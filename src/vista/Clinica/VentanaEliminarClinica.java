@@ -17,17 +17,19 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class VentanaEliminarClinica extends javax.swing.JFrame {
 
 	private JTextField textFieldCodigo;
 	private JTextField textFieldNombre;
-	private JTextField textFieldEstado;
 	private JTextField textFieldDireccion;
 	private JTextField textFieldTelefono;
 	private JTextField textFieldCorreo;
 	private JButton btnCancelar;
 	private JButton btnEliminar;
+	private JComboBox comboBox_Estado;
 
 	
 	public VentanaEliminarClinica() {
@@ -109,10 +111,6 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 		
 		JLabel lblEstado = new JLabel("Estado :");
 		
-		textFieldEstado = new JTextField();
-		textFieldEstado.setEditable(false);
-		textFieldEstado.setColumns(10);
-		
 		JLabel lblDireccion = new JLabel("Direccion :");
 		
 		textFieldDireccion = new JTextField();
@@ -130,6 +128,10 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 		textFieldCorreo = new JTextField();
 		textFieldCorreo.setEditable(false);
 		textFieldCorreo.setColumns(10);
+		
+		comboBox_Estado = new JComboBox();
+		comboBox_Estado.setModel(new DefaultComboBoxModel(new String[] {"Amazonas", "Anzoátegui", "Apure", "Aragua", "Barinas", "Bolívar", "Carabobo", "Cojedes", "Delta Amacuro", "Distrito Capital", "Falcón", "Guárico", "Lara", "Mérida", "Miranda", "Monagas", "Nueva Esparta", "Portuguesa", "Sucre", "Táchira", "Trujillo", "Vargas", "Yaracuy", "Zulia"}));
+		comboBox_Estado.setEnabled(false);
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -142,11 +144,11 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 						.addComponent(lblDireccion)
 						.addComponent(lblCorreo)
 						.addComponent(lblTelefono))
-					.addPreferredGap(ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(comboBox_Estado, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(textFieldTelefono, 242, 242, Short.MAX_VALUE)
 						.addComponent(textFieldDireccion)
-						.addComponent(textFieldEstado)
 						.addComponent(textFieldNombre)
 						.addComponent(textFieldCodigo, GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
 						.addComponent(textFieldCorreo))
@@ -166,7 +168,7 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 					.addGap(18)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblEstado)
-						.addComponent(textFieldEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(comboBox_Estado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblDireccion)
@@ -179,7 +181,7 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblCorreo)
 						.addComponent(textFieldCorreo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(58, Short.MAX_VALUE))
+					.addContainerGap(26, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
 		getContentPane().setLayout(groupLayout);
@@ -187,7 +189,7 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 	public void blanquearCampos() {
 		textFieldCodigo.setText(null);
 		textFieldNombre.setText(null);
-		textFieldEstado.setText(null);
+		comboBox_Estado.setSelectedIndex(0);;;
 		textFieldDireccion.setText(null);
 		textFieldTelefono.setText(null);
 		textFieldCorreo.setText(null);
@@ -197,7 +199,7 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 		textFieldCodigo.setText(cod);
 		textFieldNombre.setText(nom);
 		textFieldDireccion.setText(est);
-		textFieldEstado.setText(dir);
+		comboBox_Estado.setSelectedItem(est);
 		textFieldTelefono.setText(tel);
 		textFieldCorreo.setText(cor);
 		
@@ -215,7 +217,7 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 	}
 	
 	public void setEstado(String est) {
-		textFieldEstado.setText(est);
+		comboBox_Estado.setSelectedItem(est);
 	}
 	
 	public void setDireccion(String ciu){
@@ -239,7 +241,7 @@ public class VentanaEliminarClinica extends javax.swing.JFrame {
 	}
 	
 	public String  getEstado() {
-		return textFieldEstado.getText();
+		return String.valueOf(comboBox_Estado.getSelectedItem());
 	}
 	
 	public String getDireccion() {

@@ -22,19 +22,21 @@ import javax.swing.JFrame;
 import java.awt.EventQueue;
 import javax.swing.JTextField;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 
 public class VentanaAgreagarClinica extends javax.swing.JFrame {
 
 	private JTextField textFieldNomre;
 	private JTextField textFieldCodigo;
-	private JTextField textFieldEstado;
 	private JTextField textFieldDireccion;
 	private JTextField textFieldTelefono;
 	private JTextField textFieldCorreo;
 	private JButton btnCancelar;
 	private JButton btnRegistrar;
 	private JButton btnLimpiar;
+	private JComboBox comboBox_Estado;
 	/**
 	 * Launch the application.
 	 */
@@ -138,9 +140,6 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 		textFieldCodigo = new JTextField();
 		textFieldCodigo.setColumns(10);
 		
-		textFieldEstado = new JTextField();
-		textFieldEstado.setColumns(10);
-		
 		textFieldDireccion = new JTextField();
 		textFieldDireccion.setColumns(10);
 		
@@ -149,6 +148,9 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 		
 		textFieldCorreo = new JTextField();
 		textFieldCorreo.setColumns(10);
+		
+		comboBox_Estado = new JComboBox();
+		comboBox_Estado.setModel(new DefaultComboBoxModel(new String[] {"Amazonas", "Anzoátegui", "Apure", "Aragua", "Barinas", "Bolívar", "Carabobo", "Cojedes", "Delta Amacuro", "Distrito Capital", "Falcón", "Guárico", "Lara", "Mérida", "Miranda", "Monagas", "Nueva Esparta", "Portuguesa", "Sucre", "Táchira", "Trujillo", "Vargas", "Yaracuy", "Zulia"}));
 		
 		
 		
@@ -166,13 +168,12 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 						.addComponent(lblCorreo))
 					.addGap(18)
 					.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(comboBox_Estado, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(textFieldCorreo)
 						.addComponent(textFieldTelefono, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(textFieldDireccion)
-						.addComponent(textFieldEstado)
 						.addComponent(textFieldNomre)
-						.addComponent(textFieldCodigo, GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE))
-					.addGap(35))
+						.addComponent(textFieldCodigo, GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)))
 		);
 		gl_panDC.setVerticalGroup(
 			gl_panDC.createParallelGroup(Alignment.LEADING)
@@ -188,7 +189,7 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 					.addGap(18)
 					.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblEstado)
-						.addComponent(textFieldEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(comboBox_Estado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblDireccion)
@@ -219,11 +220,10 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 	public void blanquearCampos() 
 	{		
 		textFieldNomre.setText(null);
-		textFieldEstado.setText(null);
 		textFieldDireccion.setText(null);
 		textFieldCorreo.setText(null);
 		textFieldTelefono.setText(null);
-	
+		comboBox_Estado.setSelectedIndex(0);
 	}
 	
 	public void addListener(ActionListener actionListener) {
@@ -241,14 +241,12 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 	}
 	
 	public String  getEstado() {
-		return textFieldEstado.getText();
+		return String.valueOf(comboBox_Estado.getSelectedItem());
 	}
 	
 	public String getDireccion() {
 		return textFieldDireccion.getText();
 	}
-	
-	
 	
 	public String getTelefono() {
 		return textFieldTelefono.getText();

@@ -34,6 +34,8 @@ public class ControladorVtnAgreClinica implements ActionListener
 			registrarClinica();
 		}		
 		else if (actionCommand.equals("Cancelar")) {
+			vtnAgreCli.salir();
+		}else if (actionCommand.equals("Limpiar")) {
 			vtnAgreCli.blanquearCampos();
 		}
 	}
