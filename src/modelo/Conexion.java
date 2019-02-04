@@ -62,7 +62,7 @@ public class Conexion extends javax.swing.JFrame{
 	         
 			 stmt = c.createStatement();
 	         String sql = "INSERT INTO " + nombTabla + " ("+ nombCampos + ") " + "VALUES" + " (" + valorCampos + ");";
-
+	         
 	         stmt.executeUpdate(sql);
 
 	         cerrarComando();
