@@ -27,7 +27,7 @@ public class ControladorVentanaGeneralClinica implements ActionListener
 		this.vtnGCli.setLocationRelativeTo(null);
 		this.vtnGCli.setVisible(true);
 		cargarDatosClinicas();
-		//this.vtnGCli.addListener(this);
+		this.vtnGCli.addListener(this);
 	}
 	
 	@Override
@@ -53,9 +53,9 @@ public class ControladorVentanaGeneralClinica implements ActionListener
 		} else {
 			String codigo = String.valueOf(tabla.getModel().getValueAt(fila, 0));
 			ClinicaBD clinicaBD = new ClinicaBD();	    
-    		clinica = clinicaBD.buscarReactivarClinica(codigo);
+    		clinicaBD.actuRegistro("clinica", "estatus='a'", "codigo", "'"+codigo+"'");
     		vtnGCli.mostrarMensaje("Clinica Reactivada exitosamente");
-			
+			cargarDatosClinicas();
 		}
 	} catch (Exception e) {
 		vtnGCli.mostrarMensaje("No se puede activar la clinica");
@@ -65,7 +65,7 @@ public class ControladorVentanaGeneralClinica implements ActionListener
 	
 	public void cargarDatosClinicas() throws SQLException {
 		ClinicaBD clinicaBD = new ClinicaBD();
-		List<Clinica> clinicas = clinicaBD.consultarClinicasEliminadas();
+		List<Clinica> clinicas = clinicaBD.consultarFiltrarClinicas("estatus='e' AND codigo != '0' ORDER BY codigo ASC");
 	this.vtnGCli.setResultados(new VentanaClinicaModeloTabla(clinicas));
 	}
 

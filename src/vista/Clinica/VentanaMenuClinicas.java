@@ -23,7 +23,7 @@ public class VentanaMenuClinicas extends javax.swing.JFrame{
 		getContentPane().setBackground(new Color(64, 224, 208));
 		initGUI();
 		setSize(329, 268);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 	
 	private void initGUI() {
