@@ -178,7 +178,6 @@ public class Conexion extends javax.swing.JFrame{
 			
 	         stmt = c.createStatement();
 	         String sql = "SELECT * FROM "+nombTabla+adicional+";";
-	         JOptionPane.showMessageDialog(this, sql);
 	         rs = stmt.executeQuery(sql);
 	         
 		  } catch (Exception e) {

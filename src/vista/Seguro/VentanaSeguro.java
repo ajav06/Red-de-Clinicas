@@ -34,6 +34,7 @@ public class VentanaSeguro extends javax.swing.JFrame{
 	private JButton btnModificar;
 	private JButton btnEliminar;
 	private JButton btnVolver;
+	private JButton btnBuscar;
 	
 	public VentanaSeguro() {
 		super();
@@ -145,7 +146,7 @@ public class VentanaSeguro extends javax.swing.JFrame{
 			textField_Descripcion = new JTextFieldValidator(50,JTextFieldValidator.LETRAS_Y_ESPACIOS);
 			textField_Descripcion.setColumns(10);
 			
-			JButton btnBuscar = new JButton("Buscar");
+			btnBuscar = new JButton("Buscar");
 			GroupLayout gl_panel = new GroupLayout(panel);
 			gl_panel.setHorizontalGroup(
 				gl_panel.createParallelGroup(Alignment.LEADING)
@@ -219,7 +220,7 @@ public class VentanaSeguro extends javax.swing.JFrame{
 		btnIncluir.addActionListener(actionListener);
 		btnModificar.addActionListener(actionListener);
 		btnVolver.addActionListener(actionListener);
-		
+		btnBuscar.addActionListener(actionListener);
 	}
 	
 	public void setCodigo(String cod) {
