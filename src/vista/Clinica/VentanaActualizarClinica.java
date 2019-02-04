@@ -21,18 +21,20 @@ import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class VentanaActualizarClinica extends javax.swing.JFrame{
 
 	private JTextField textFieldCodigo;
 	private JTextField textFieldNombre;
-	private JTextField textFieldEstado;
 	private JTextField textFieldDireccion;
 	private JTextField textFieldTelefono;
 	private JTextField textFieldCorreo;
 	private JButton btnCancelar;
 	private JButton btnActualizar;
 	private JButton btnLimpiar;
+	private JComboBox comboBox_Estado;
 
 	/**
 	 * Create the application.
@@ -121,9 +123,6 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 		textFieldNombre = new JTextField();
 		textFieldNombre.setColumns(10);
 		
-		textFieldEstado = new JTextField();
-		textFieldEstado.setColumns(10);
-		
 		textFieldDireccion = new JTextField();
 		textFieldDireccion.setColumns(10);
 		
@@ -142,6 +141,9 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 		JLabel lblTelefono = new JLabel("Telefono :");
 		
 		JLabel lblCorreo = new JLabel("Correo :");
+		
+		comboBox_Estado = new JComboBox();
+		comboBox_Estado.setModel(new DefaultComboBoxModel(new String[] {"Amazonas", "Anzoátegui", "Apure", "Aragua", "Barinas", "Bolívar", "Carabobo", "Cojedes", "Delta Amacuro", "Distrito Capital", "Falcón", "Guárico", "Lara", "Mérida", "Miranda", "Monagas", "Nueva Esparta", "Portuguesa", "Sucre", "Táchira", "Trujillo", "Vargas", "Yaracuy", "Zulia"}));
 		GroupLayout gl_panelDatosClin = new GroupLayout(panelDatosClin);
 		gl_panelDatosClin.setHorizontalGroup(
 			gl_panelDatosClin.createParallelGroup(Alignment.LEADING)
@@ -155,15 +157,13 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 						.addComponent(lblTelefono)
 						.addComponent(lblCorreo))
 					.addGap(26)
-					.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.LEADING)
-						.addComponent(textFieldCorreo)
-						.addComponent(textFieldTelefono)
-						.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.TRAILING, false)
-							.addComponent(textFieldDireccion, Alignment.LEADING)
-							.addComponent(textFieldEstado, Alignment.LEADING)
-							.addComponent(textFieldNombre, Alignment.LEADING)
-							.addComponent(textFieldCodigo, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)))
-					.addGap(24))
+					.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(textFieldCorreo, 228, 228, Short.MAX_VALUE)
+						.addComponent(textFieldTelefono, 228, 228, Short.MAX_VALUE)
+						.addComponent(textFieldDireccion)
+						.addComponent(textFieldNombre)
+						.addComponent(textFieldCodigo, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+						.addComponent(comboBox_Estado, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 		);
 		gl_panelDatosClin.setVerticalGroup(
 			gl_panelDatosClin.createParallelGroup(Alignment.LEADING)
@@ -178,8 +178,8 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 						.addComponent(lblNombre))
 					.addGap(18)
 					.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textFieldEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblEstado))
+						.addComponent(lblEstado)
+						.addComponent(comboBox_Estado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.BASELINE)
 						.addComponent(textFieldDireccion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -192,14 +192,14 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 					.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblCorreo)
 						.addComponent(textFieldCorreo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(64, Short.MAX_VALUE))
+					.addContainerGap(28, Short.MAX_VALUE))
 		);
 		panelDatosClin.setLayout(gl_panelDatosClin);
 		getContentPane().setLayout(groupLayout);
 	}
 	public void blanquearCampos() {
 		textFieldNombre.setText(null);
-		textFieldEstado.setText(null);
+		comboBox_Estado.setSelectedIndex(0);
 		textFieldDireccion.setText(null);
 		textFieldTelefono.setText(null);
 		textFieldCorreo.setText(null);
@@ -208,7 +208,7 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 	public void llenarCampos(String cod,String nom,String est, String dir, String tel, String cor) {
 		textFieldCodigo.setText(cod);
 		textFieldNombre.setText(nom);
-		textFieldEstado.setText(est);
+		comboBox_Estado.setSelectedItem(est);
 		textFieldDireccion.setText(dir);
 		textFieldTelefono.setText(tel);
 		textFieldCorreo.setText(cor);
@@ -230,7 +230,7 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 	}
 	
 	public void setEstado(String est) {
-		textFieldEstado.setText(est);
+		comboBox_Estado.setSelectedItem(est);
 	}
 	
 	public void setDireccion(String ciu){
@@ -256,7 +256,7 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 	}
 	
 	public String  getEstado() {
-		return textFieldEstado.getText();
+		return String.valueOf(comboBox_Estado.getSelectedItem());
 	}
 	
 	public String getDireccion() {

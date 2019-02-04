@@ -16,7 +16,6 @@ public class ControladorVtnActuClinica implements ActionListener
 		this.vtnActuCli.setLocationRelativeTo(null);
 		this.vtnActuCli.setVisible(true);
 		this.vtnActuCli.addListener(this);
-		this.vtnActuCli.mostrarMensaje("hasta aqui voy bien");
 	     this.vtnActuCli.llenarCampos(clinica.getCodigo(), clinica.getNombre(),
 	    clinica.getEstado(),clinica.getDireccion(), clinica.getTelefono(), 
 		 clinica.getCorreo());;
@@ -53,6 +52,7 @@ public class ControladorVtnActuClinica implements ActionListener
 		    	clinicaBD.actualizarClinica(clinica);
 		       vtnActuCli.mostrarMensaje("La Clinica fue incluido con exito");
 		    	vtnActuCli.blanquearCampos();
+		    	vtnActuCli.salir();
 	    	}
 		}catch(Exception e)
 		{

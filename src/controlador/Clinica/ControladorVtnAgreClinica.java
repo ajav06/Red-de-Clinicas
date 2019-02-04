@@ -34,6 +34,8 @@ public class ControladorVtnAgreClinica implements ActionListener
 			registrarClinica();
 		}		
 		else if (actionCommand.equals("Cancelar")) {
+			vtnAgreCli.salir();
+		}else if (actionCommand.equals("Limpiar")) {
 			vtnAgreCli.blanquearCampos();
 		}
 	}
@@ -53,6 +55,7 @@ public class ControladorVtnAgreClinica implements ActionListener
 		        clinicaBD .registrarClinica(clinica);
 		    	vtnAgreCli.mostrarMensaje("La Clinica fue incluida con exito");
 		    	vtnAgreCli.blanquearCampos();
+		    	vtnAgreCli.salir();
 	    	}
 		}catch(Exception e)
 		{
