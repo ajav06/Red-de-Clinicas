@@ -22,7 +22,7 @@ public class EspecialidadBD extends ConexionBD {
 
 	public void registarEspecialidad(Especialidad especialidad) {
 		
-		this.crearRegistro("especialidad", "codigo,nombre,descripcion,estatus","'"+especialidad.getCodigo()+"','"+especialidad.getNombre()+"','"+especialidad.getDescripcion()+"'" );
+		this.crearRegistro("especialidad", "codigo,nombre,descripcion","'"+especialidad.getCodigo()+"','"+especialidad.getNombre()+"','"+especialidad.getDescripcion()+"'" );
 
 		
 	}
