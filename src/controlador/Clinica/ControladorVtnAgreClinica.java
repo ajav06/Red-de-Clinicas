@@ -53,6 +53,7 @@ public class ControladorVtnAgreClinica implements ActionListener
 		        clinicaBD .registrarClinica(clinica);
 		    	vtnAgreCli.mostrarMensaje("La Clinica fue incluida con exito");
 		    	vtnAgreCli.blanquearCampos();
+		    	vtnAgreCli.salir();
 	    	}
 		}catch(Exception e)
 		{

@@ -53,6 +53,7 @@ public class ControladorVtnActuClinica implements ActionListener
 		    	clinicaBD.actualizarClinica(clinica);
 		       vtnActuCli.mostrarMensaje("La Clinica fue incluido con exito");
 		    	vtnActuCli.blanquearCampos();
+		    	vtnActuCli.salir();
 	    	}
 		}catch(Exception e)
 		{

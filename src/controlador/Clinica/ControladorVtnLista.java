@@ -48,6 +48,13 @@ public class ControladorVtnLista implements ActionListener
 			} catch (Exception x) {
 				x.printStackTrace();
 			}
+		} else if (actionCommand.equals("")) {
+			try {
+				cargarDatosClinicas();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 	

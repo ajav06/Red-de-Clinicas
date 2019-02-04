@@ -36,10 +36,10 @@ public class ControladorElimClinica implements ActionListener
 		    	clinicaBD.eliminarClinica(vtnElimCli.getCodigo());
 		    	vtnElimCli.mostrarMensaje("La Clinica fue eliminado con exito");
 		    	vtnElimCli.blanquearCampos();
+		    	vtnElimCli.salir();
 			}catch(Exception e)
 			{
 				vtnElimCli.mostrarMensaje("No se pudo eliminar la Clinica, verifique que los datos sean correctos");
-				vtnElimCli.blanquearCampos();
 			}
 		}
 	}

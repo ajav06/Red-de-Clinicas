@@ -262,5 +262,9 @@ public class VentanaAgreagarClinica extends javax.swing.JFrame {
 		JOptionPane.showMessageDialog(this, mensaje);
 	}
 	
+	public void salir() {
+		this.setVisible(false);
+		this.dispose();
+	}
 	
 }
