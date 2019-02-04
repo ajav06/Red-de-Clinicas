@@ -21,18 +21,18 @@ import javax.swing.border.LineBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
 
 public class VentanaAgregarEspecialidad extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField_Cod;
 	private JTextField textField_Nom;
-	private JTextArea textArea_Des;
 	private JButton btnIncluir;
 	private JButton btnModificar;
 	private JButton btnEliminar;
 	private JButton btnVolver;
-	
+	private JTextArea textArea_Des;
 	
 	
 	
@@ -136,7 +136,7 @@ public class VentanaAgregarEspecialidad extends JFrame {
 					
 					JLabel lblDescripcion = new JLabel("Descripcion:");
 					
-					textArea_Des = new JTextArea();
+					JScrollPane scrollPane = new JScrollPane();
 					GroupLayout gl_panel = new GroupLayout(panel);
 					gl_panel.setHorizontalGroup(
 						gl_panel.createParallelGroup(Alignment.LEADING)
@@ -151,8 +151,8 @@ public class VentanaAgregarEspecialidad extends JFrame {
 								.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 									.addComponent(textField_Nom, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
 									.addComponent(textField_Cod, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-									.addComponent(textArea_Des, GroupLayout.PREFERRED_SIZE, 294, GroupLayout.PREFERRED_SIZE))
-								.addContainerGap(32, Short.MAX_VALUE))
+									.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE))
+								.addContainerGap())
 					);
 					gl_panel.setVerticalGroup(
 						gl_panel.createParallelGroup(Alignment.LEADING)
@@ -166,11 +166,15 @@ public class VentanaAgregarEspecialidad extends JFrame {
 									.addComponent(lblNombre)
 									.addComponent(textField_Nom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 								.addGap(39)
-								.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-									.addComponent(textArea_Des, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
-									.addComponent(lblDescripcion))
-								.addContainerGap(30, Short.MAX_VALUE))
+								.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+									.addComponent(lblDescripcion)
+									.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
+								.addContainerGap())
 					);
+					
+					textArea_Des = new JTextArea();
+					textArea_Des.setText((String) null);
+					scrollPane.setViewportView(textArea_Des);
 					panel.setLayout(gl_panel);
 					contentPane.setLayout(gl_contentPane);
 				} catch (Exception e) {
@@ -218,7 +222,6 @@ public class VentanaAgregarEspecialidad extends JFrame {
 
 	 textField_Cod.setText(null);
 	 textField_Nom.setText(null);
-	 textArea_Des.setText(null);
 	 
  }
  public void addListener(ActionListener actionListener) {
@@ -283,19 +286,6 @@ public class VentanaAgregarEspecialidad extends JFrame {
 				textField_Nom.getText().equals("") || 
 				textArea_Des.getText().equals("") );
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-//end frame
 	}
 	
 	

@@ -18,6 +18,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
+import javax.swing.JScrollPane;
 
 public class VentanaEliminarEspecialidad extends JFrame {
 
@@ -112,7 +113,7 @@ public VentanaEliminarEspecialidad() {
 				
 				JLabel lblDescripcion = new JLabel("Descripcion:");
 				
-				textArea_Des = new JTextArea();
+				JScrollPane scrollPane = new JScrollPane();
 				GroupLayout gl_panel = new GroupLayout(panel);
 				gl_panel.setHorizontalGroup(
 					gl_panel.createParallelGroup(Alignment.LEADING)
@@ -127,8 +128,8 @@ public VentanaEliminarEspecialidad() {
 							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 								.addComponent(textField_Nom, GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE)
 								.addComponent(textField_Cod, GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textArea_Des, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE))
-							.addContainerGap(53, Short.MAX_VALUE))
+								.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE))
+							.addContainerGap())
 				);
 				gl_panel.setVerticalGroup(
 					gl_panel.createParallelGroup(Alignment.LEADING)
@@ -141,12 +142,18 @@ public VentanaEliminarEspecialidad() {
 							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblNombre)
 								.addComponent(textField_Nom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
-							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblDescripcion)
-								.addComponent(textArea_Des, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE))
-							.addContainerGap(73, Short.MAX_VALUE))
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel.createSequentialGroup()
+									.addGap(18)
+									.addComponent(lblDescripcion))
+								.addGroup(gl_panel.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)))
+							.addContainerGap())
 				);
+				
+				textArea_Des = new JTextArea();
+				scrollPane.setViewportView(textArea_Des);
 				panel.setLayout(gl_panel);
 				contentPane.setLayout(gl_contentPane);
 					

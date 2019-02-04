@@ -30,7 +30,7 @@ public class EspecialidadBD extends ConexionBD {
 	public List<Especialidad> consultarEspecialidades() throws SQLException {
 		
 		List<Especialidad> especialidades = new ArrayList<Especialidad>();
-		resultSet = this.consultarTabla("especialidad", " WHERE estatus='a'  ");
+		resultSet = this.consultarTabla("especialidad", " WHERE estatus='a' ORDER BY codigo ASC ");
 		
 		try {
 			while(resultSet.next()) {
