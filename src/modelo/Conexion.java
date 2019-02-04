@@ -33,7 +33,7 @@ public class Conexion extends javax.swing.JFrame{
 	         e.printStackTrace();
 	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 	      }
-	      JOptionPane.showMessageDialog(this, "Conexi�n Exitosa con la Base de Datos");
+//	      JOptionPane.showMessageDialog(this, "Conexi�n Exitosa con la Base de Datos");
 	}
 	
 	public void crearTabla(String nombTabla, String campos) {
@@ -51,7 +51,7 @@ public class Conexion extends javax.swing.JFrame{
 		      e.printStackTrace();
 		      JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 		  }
-		  JOptionPane.showMessageDialog(this, "Tabla Creada con �xito");
+//		  JOptionPane.showMessageDialog(this, "Tabla Creada con �xito");
 	}
 	
 	public void crearRegistro(String nombTabla, String nombCampos, String valorCampos) {
@@ -70,7 +70,7 @@ public class Conexion extends javax.swing.JFrame{
 	         e.printStackTrace();
 	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 	      }
-	      JOptionPane.showMessageDialog(this, "Registro Creado de Manera Exitosa");
+//	      JOptionPane.showMessageDialog(this, "Registro Creado de Manera Exitosa");
 	}
 	
 	public void actuRegistro(String nombTabla, String nombYvalorCampos, String id, String valorId) {
@@ -89,7 +89,7 @@ public class Conexion extends javax.swing.JFrame{
 	         e.printStackTrace();
 	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 	      }
-	      JOptionPane.showMessageDialog(this, "Registro Actualizado de Manera Exitosa");
+//	      JOptionPane.showMessageDialog(this, "Registro Actualizado de Manera Exitosa");
 	}
 	
 	public void elimLogica(String nombTabla, String id, String valorId) {
@@ -108,7 +108,7 @@ public class Conexion extends javax.swing.JFrame{
 	         e.printStackTrace();
 	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 	      }
-	      JOptionPane.showMessageDialog(this, "Registro Eliminado de Manera Exitosa");
+//	      JOptionPane.showMessageDialog(this, "Registro Eliminado de Manera Exitosa");
 	}
 	
 	public ResultSet buscarRegistro(String nombTabla, String id, String valorId) {
@@ -127,7 +127,7 @@ public class Conexion extends javax.swing.JFrame{
 	         e.printStackTrace();
 	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 	      }
-	      JOptionPane.showMessageDialog(this, "Registro Buscado de Manera Exitosa");
+//	      JOptionPane.showMessageDialog(this, "Registro Buscado de Manera Exitosa");
 		return rs;		
 	}
 	
@@ -146,7 +146,7 @@ public class Conexion extends javax.swing.JFrame{
 	         e.printStackTrace();
 	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 	      }
-	      JOptionPane.showMessageDialog(this, "Registro Buscado de Manera Exitosa");
+//	      JOptionPane.showMessageDialog(this, "Registro Buscado de Manera Exitosa");
 		return rs;		
 	}
 	
@@ -165,7 +165,7 @@ public class Conexion extends javax.swing.JFrame{
 	         e.printStackTrace();
 	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 	      }
-	      JOptionPane.showMessageDialog(this, "Registro Buscado de Manera Exitosa");
+//	      JOptionPane.showMessageDialog(this, "Registro Buscado de Manera Exitosa");
 		return rs;		
 	}
 	
@@ -184,7 +184,7 @@ public class Conexion extends javax.swing.JFrame{
 	         e.printStackTrace();
 	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 	      }
-	      JOptionPane.showMessageDialog(this, "Operaci�n Realizada de Manera Exitosa");
+//	      JOptionPane.showMessageDialog(this, "Operaci�n Realizada de Manera Exitosa");
 	      return rs;
 	}
 
@@ -200,7 +200,7 @@ public class Conexion extends javax.swing.JFrame{
 	    	e.printStackTrace();
 	        JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 	    }
-	    JOptionPane.showMessageDialog(this, "Operaci�n Realizada de Manera Exitosa");
+//	    JOptionPane.showMessageDialog(this, "Operaci�n Realizada de Manera Exitosa");
 	    return rs;
 	}
 	
