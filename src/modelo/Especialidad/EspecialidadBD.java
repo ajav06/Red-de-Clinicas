@@ -1,4 +1,5 @@
 package modelo.Especialidad;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -96,7 +97,7 @@ public class EspecialidadBD extends ConexionBD {
 	
 	public List<Especialidad> consultarFiltrarEspecialidades(String filtro) throws SQLException{
 		List<Especialidad> especialidades = new ArrayList<Especialidad>();
-		resultSet = this.consultarTabla("especialidades", " WHERE "+filtro);
+		resultSet = this.consultarTabla("especialidad", " WHERE "+filtro);
 	
 		try {
 			while (resultSet.next()) {
@@ -132,7 +133,25 @@ public class EspecialidadBD extends ConexionBD {
 		return nombres;
 	}
 	
-	
+	public int generarNuevoCodigoEspecialidad() throws NumberFormatException, SQLException {
+		ResultSet rs=null;
+		int ult = -1;
+		try {
+			 Class.forName(getDriver());
+		     c = DriverManager.getConnection(getUrl()+getNombBD(),getUsuario(), getContrasenna());
+	         c.setAutoCommit(false);
+			
+	         stmt = c.createStatement();
+	         String sql = "SELECT COUNT (codigo) FROM especialidad";
+	         rs = stmt.executeQuery(sql);
+	         rs.next();
+	         ult = rs.getInt("count");
+		  } catch (Exception e) {
+	         e.printStackTrace();
+	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	      }
+		return ult;
+	}
 	
 	
 	

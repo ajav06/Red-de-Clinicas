@@ -253,6 +253,7 @@ public class VentanaAgregarEspecialidad extends JFrame {
 	
 	
 	public void interfazRegistro() {
+		textField_Cod.setEnabled(false);
 		btnEliminar.setEnabled(false);;
 		btnModificar.setEnabled(false);
 		btnEliminar.setVisible(false);

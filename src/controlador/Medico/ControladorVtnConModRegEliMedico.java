@@ -99,6 +99,7 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 			    	this.horarioNuevo();
 			    	vtnMedico.mostrarMensaje("El Médico fue incluido con exito");
 			    	vtnMedico.blanquearCampos();
+			    	vtnMedico.salir();
 	    		}
 	    	}
 		} catch(Exception e)
@@ -123,6 +124,7 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 		    	this.actuHorario();
 		    	vtnMedico.mostrarMensaje("El Médico fue actualizado con exito");
 		    	vtnMedico.blanquearCampos();
+		    	vtnMedico.salir();
 	    	}
 		}catch(Exception e)
 		{
@@ -137,6 +139,7 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 	  		medicoBD.eliminarMedico(vtnMedico.getCedula());
 	  		vtnMedico.mostrarMensaje("El Médico fue eliminado con exito");
 	  		vtnMedico.blanquearCampos();
+	  		vtnMedico.salir();
 		}catch(Exception e)
 		{
 			vtnMedico.mostrarMensaje("No se pudo eliminar el médico, verifique que los datos sean correctos");
