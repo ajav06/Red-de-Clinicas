@@ -88,15 +88,12 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 								.addGroup(gl_panel.createSequentialGroup()
 									.addComponent(btnPaciente, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)
 									.addContainerGap())
-								.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-									.addGroup(gl_panel.createSequentialGroup()
-										.addComponent(btnMedicos, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)
-										.addContainerGap())
-									.addGroup(gl_panel.createSequentialGroup()
-										.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-											.addComponent(btnEspecialidades, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-											.addComponent(btnClinicas, GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
-										.addGap(55))))))
+								.addGroup(gl_panel.createSequentialGroup()
+									.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
+										.addComponent(btnEspecialidades, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(btnClinicas, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(btnMedicos, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+									.addContainerGap()))))
 			);
 			gl_panel.setVerticalGroup(
 				gl_panel.createParallelGroup(Alignment.LEADING)
@@ -111,7 +108,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 						.addComponent(btnPaciente)
 						.addGap(18)
 						.addComponent(btnSeguros)
-						.addContainerGap(48, Short.MAX_VALUE))
+						.addContainerGap(27, Short.MAX_VALUE))
 			);
 			panel.setLayout(gl_panel);
 			getContentPane().setLayout(groupLayout);
