@@ -46,7 +46,27 @@ public class ClinicaBD extends ConexionBD
 		this.cerrarComando();
 		return Clinicas;
 	}
-	
+	public List<Clinica> consultarClinicasEliminadas() throws SQLException {
+		List<Clinica> Clinicas = new ArrayList<Clinica>();
+		resultSet = this.consultarTabla("clinica", " WHERE estatus='e' AND codigo != '0' ORDER BY codigo ASC");
+		try {
+			while (resultSet.next()) {
+				String codigo = resultSet.getString("codigo");
+				String nombre = resultSet.getString("nombre");
+				String estado = resultSet.getString("estado");
+				String direccion = resultSet.getString("direccion");
+				String telefono = resultSet.getString("telefono");
+				String correo = resultSet.getString("email");
+				Clinica Clinica = new Clinica(codigo,nombre,estado,direccion,telefono,correo);
+				Clinicas.add(Clinica);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+	        JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+		}
+		this.cerrarComando();
+		return Clinicas;
+	}
 	public void actualizarClinica(Clinica clinica) {
 		this.actuRegistro("clinica", "nombre='"+clinica.getNombre()+"',estado='"+clinica.getEstado()+"',direccion='"+
 				clinica.getDireccion()+"',telefono='"+clinica.getTelefono()+"',email='"+clinica.getCorreo()+"'","codigo", "'"+clinica.getCodigo()+"'");
@@ -132,6 +152,32 @@ public class ClinicaBD extends ConexionBD
 		}
 		this.cerrarComando();
 		return nombres;
+	}
+	public Clinica buscarReactivarClinica(String cod) throws SQLException 
+	{
+		Clinica clinica = null;
+		resultSet = this.buscarRegistro("clinica", "codigo", "'"+cod+"'");
+
+		try {
+			while (resultSet.next()) {
+				String codigo = resultSet.getString("codigo");
+				String nombre = resultSet.getString("nombre");
+				String estado = resultSet.getString("estado");
+				String direccion = resultSet.getString("direccion");
+				String telefono = resultSet.getString("telefono");
+				String correo = resultSet.getString("email");
+				clinica = new Clinica(codigo,nombre, estado,direccion,telefono,correo);	
+			     c = DriverManager.getConnection(getUrl()+getNombBD(),getUsuario(), getContrasenna());
+		         c.setAutoCommit(false);
+		         stmt = c.createStatement();
+		         String sql = "UPDATE clinica SET estatus = 'a' WHERE codigo="+cod+";";
+		         stmt.executeUpdate(sql);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		this.cerrarComando();
+		return clinica;
 	}
 }
 

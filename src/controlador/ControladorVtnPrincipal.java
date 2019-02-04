@@ -14,6 +14,7 @@ import controlador.Medico.ControladorVtnConModRegEliMedico;
 import controlador.Medico.ControladorVtnListMedicos;
 import controlador.Paciente.ControladorVtnListPacientes;
 import controlador.Seguro.ControladorVtnSeguro;
+import controlador.Clinica.ControladorVentanaMenuClinica;
 import vista.VentanaPrincipal;
 
 public class ControladorVtnPrincipal implements ActionListener{
@@ -31,12 +32,9 @@ public class ControladorVtnPrincipal implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		String actionCommand = e.getActionCommand();
 		if (actionCommand.equals("Clinica")) {
-			try {
-				new ControladorVtnLista();
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+		
+			new ControladorVentanaMenuClinica();
+			
 		}		
 		else if (actionCommand.equals("Seguro")) {
 			try {
