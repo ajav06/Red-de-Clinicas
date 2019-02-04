@@ -57,7 +57,7 @@ public class EspecialidadBD extends ConexionBD {
 	
 	public void actualizarEspecialidad(Especialidad especialidad) {
 		
-		this.actuRegistro("especialidad", "codigo='"+especialidad.getCodigo()+"',nombre='"+especialidad.getNombre()+"',descripcion"+especialidad.getDescripcion(),"codigo","'"+especialidad.getCodigo()+"'");
+		this.actuRegistro("especialidad", "codigo='"+especialidad.getCodigo()+"',nombre='"+especialidad.getNombre()+"',descripcion='"+especialidad.getDescripcion()+"'","codigo","'"+especialidad.getCodigo()+"'");
 		
 	
 	}
