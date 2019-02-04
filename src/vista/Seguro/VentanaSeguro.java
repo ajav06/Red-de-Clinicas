@@ -204,6 +204,14 @@ public class VentanaSeguro extends javax.swing.JFrame{
 		}
 	}
 
+	public JTable getTblSeguros() {
+		return tblSeguros;
+	}
+
+	public void setTblSeguros(JTable tblSeguros) {
+		this.tblSeguros = tblSeguros;
+	}
+
 	public void blanquearCampos() {
 		this.textField_Codigo.setText(null);
 		this.textField_Descripcion.setText(null);
@@ -250,5 +258,12 @@ public class VentanaSeguro extends javax.swing.JFrame{
 	public void salir() {
 		setVisible(false);
 		dispose();
+	}
+	
+	public void modificar(boolean si) {
+		if (si)
+			textField_Codigo.setEnabled(false);
+		else
+			textField_Codigo.setEnabled(true);
 	}
 }

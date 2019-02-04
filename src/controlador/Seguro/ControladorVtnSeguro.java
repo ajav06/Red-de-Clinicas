@@ -18,6 +18,7 @@ public class ControladorVtnSeguro implements ActionListener{
 	private Seguro seguro;
 	private SeguroDB seguroDB;
 	private List<Seguro> seguros;
+	private boolean modi;
 	
 	public ControladorVtnSeguro() throws SQLException {
 		super();
@@ -37,6 +38,7 @@ public class ControladorVtnSeguro implements ActionListener{
 		this.vtnseguro.setVisible(true);
 		this.vtnseguro.addListener(this);
 		this.vtnseguro.setCodigo(c);
+		modi = false;
 		cargarDatosSeguros();
 	}
 	
@@ -69,7 +71,7 @@ public class ControladorVtnSeguro implements ActionListener{
 				seguro = new Seguro(Integer.parseInt(vtnseguro.getCodigo()), vtnseguro.getNombre(), vtnseguro.getDescripcion());
 				seguroDB.incluirSeguro(seguro);
 				cargarDatosSeguros();
-				vtnseguro.blanquearCampos();
+ 				vtnseguro.blanquearCampos();
 				vtnseguro.setCodigo(String.valueOf(seguroDB.generarNuevoCodigoSeguro()));
 			}
 			
@@ -82,15 +84,15 @@ public class ControladorVtnSeguro implements ActionListener{
 
 	private void eliminarSeguro() {
 		try {
-			if(vtnseguro.getCodigo()==null)
-				vtnseguro.mostrarMensaje("Debe llenar el campo 'Codigo' para Eliminar");
-			else {
+			if (vtnseguro.getTblSeguros().getSelectedColumn()==-1) {
+				vtnseguro.mostrarMensaje("Debe seleccionar un seguro del listado para eliminarlo.");
+			} else {
 				seguroDB = new SeguroDB();
-				seguroDB.eliminarSeguro(vtnseguro.getCodigo());
+				seguroDB.eliminarSeguro(String.valueOf(vtnseguro.getTblSeguros().getModel().getValueAt(vtnseguro.getTblSeguros().getSelectedRow(), 0)));
+				vtnseguro.mostrarMensaje("Seguro eliminado con éxito.");
 				cargarDatosSeguros();
-				vtnseguro.blanquearCampos();
+ 				vtnseguro.blanquearCampos();
 				vtnseguro.setCodigo(String.valueOf(seguroDB.generarNuevoCodigoSeguro()));
-				
 			}
 			
 		}catch(Exception e)
@@ -101,17 +103,25 @@ public class ControladorVtnSeguro implements ActionListener{
 
 	private void modificarSeguro() {
 		try {
-			if(vtnseguro.getCodigo()==null && vtnseguro.getNombre()==null && vtnseguro.getDescripcion()==null)
-				vtnseguro.mostrarMensaje("Debe llenar todos los campos para Modificar");
-			else {
-				seguroDB = new SeguroDB();
-				Seguro seguro = new Seguro(Integer.parseInt(vtnseguro.getCodigo()), vtnseguro.getNombre(), vtnseguro.getDescripcion());
-				seguroDB.modificarSeguro(seguro);
-				cargarDatosSeguros();
-				vtnseguro.blanquearCampos();
-				vtnseguro.setCodigo(String.valueOf(seguroDB.generarNuevoCodigoSeguro()));
+			if (!modi) {
+				if (vtnseguro.getTblSeguros().getSelectedColumn()==-1) {
+					vtnseguro.mostrarMensaje("Debe seleccionar un seguro del listado para modificarlo.");
+				} else {
+					seguro = seguroDB.buscarSeguro(String.valueOf(vtnseguro.getTblSeguros().getModel().getValueAt(vtnseguro.getTblSeguros().getSelectedRow(), 0)));
+					vtnseguro.setCodigo(String.valueOf(seguro.getCodigo()));
+					vtnseguro.llenarDatos(seguro.getNombre(), seguro.getDescripcion());
+					modi=true;
+					vtnseguro.modificar(true);
+				}
+			} else {
+					seguro = new Seguro(Integer.parseInt(vtnseguro.getCodigo()), vtnseguro.getNombre(), vtnseguro.getDescripcion());
+					seguroDB.modificarSeguro(seguro);
+					cargarDatosSeguros();
+					vtnseguro.blanquearCampos();
+					vtnseguro.setCodigo(String.valueOf(seguroDB.generarNuevoCodigoSeguro()));
+					modi=false;
+					vtnseguro.modificar(false);
 			}
-			
 		}catch(Exception e)
 		{
 			vtnseguro.mostrarMensaje("No se pudo bucar el Seguro, verifique que los datos sean correctos");
