@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
+import controlador.Especialidad.ControladorVtnListaEspecialidades;
+import controlador.Especialidad.ControladorVtnAgreEspecialidad;
 import controlador.Clinica.ControladorVtnAgreClinica;
 import controlador.Clinica.ControladorVtnLista;
 import controlador.Especialidad.ControladorVtnEspecialidades;
@@ -60,6 +62,23 @@ public class ControladorVtnPrincipal implements ActionListener{
 				e1.printStackTrace();
 			}
 		}
+		else if (actionCommand.equals("Especialidades")) {
+			try {
+				new ControladorVtnListaEspecialidades();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }

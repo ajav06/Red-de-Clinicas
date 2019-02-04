@@ -41,13 +41,13 @@ public VentanaEliminarEspecialidad() {
 	private void initGUI() {
 		
 				try {setTitle("Eliminar Especialidad");
-				setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				setBounds(100, 100, 540, 400);
 				contentPane = new JPanel();
 				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 				setContentPane(contentPane);
 				
-				JLabel lblActualizarE = new JLabel("Actualizar Especialidad");
+				JLabel lblActualizarE = new JLabel("Eliminar  Especialidad");
 				lblActualizarE.setForeground(Color.BLUE);
 				lblActualizarE.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 25));
 				

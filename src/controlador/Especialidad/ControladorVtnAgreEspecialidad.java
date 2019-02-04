@@ -20,7 +20,7 @@ public class ControladorVtnAgreEspecialidad implements ActionListener {
  public  ControladorVtnAgreEspecialidad(int action,Especialidad especialidad) {
 	 super();
 	 this.vtnAgreEsp = new VentanaAgregarEspecialidad();
-	 this.vtnAgreEsp.setLocation(null);
+	 this.vtnAgreEsp.setLocationRelativeTo(null);
 	 this.vtnAgreEsp.setVisible(true);
 	 this.vtnAgreEsp.addListener(this);
 	 

@@ -30,9 +30,11 @@ public class VentanaListaEspecialidad extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField_codigonombre;
 	private JTable tableEspecialidad;
-	private JButton btnModificar;
 	private JButton btnSalir;
 	private JButton btnBuscar;
+	private JButton btnActualizar;
+	private JButton btnEliminar;
+	private JButton btnIncluir;
 	
 	
 	
@@ -46,7 +48,7 @@ public VentanaListaEspecialidad() {
 	private void initGUI() {
 		
 				try {setTitle("Lista Especialidad");
-				setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				setBounds(100, 100, 540, 533);
 				contentPane = new JPanel();
 				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -57,15 +59,9 @@ public VentanaListaEspecialidad() {
 				lblListadoEspecialidad.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 25));
 				
 				JPanel panel = new JPanel();
-				panel.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Buscar Especialidad", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 				
 				JScrollPane scrollPane = new JScrollPane();
-				
-				 btnModificar = new JButton("Modificar");
-				btnModificar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-					}
-				});
 				
 				btnSalir = new JButton("Salir");
 				btnSalir.addActionListener(new ActionListener() {
@@ -76,19 +72,16 @@ public VentanaListaEspecialidad() {
 				gl_contentPane.setHorizontalGroup(
 					gl_contentPane.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(50)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(scrollPane, 0, 0, Short.MAX_VALUE)
-								.addComponent(panel, GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(btnModificar, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(btnSalir, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)))
-							.addContainerGap(38, Short.MAX_VALUE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addContainerGap(145, Short.MAX_VALUE)
+							.addContainerGap(174, Short.MAX_VALUE)
 							.addComponent(lblListadoEspecialidad)
 							.addGap(123))
+						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+							.addGap(50)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addComponent(scrollPane, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+								.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
+								.addComponent(btnSalir, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE))
+							.addContainerGap(38, Short.MAX_VALUE))
 				);
 				gl_contentPane.setVerticalGroup(
 					gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -98,12 +91,10 @@ public VentanaListaEspecialidad() {
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
-							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 253, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnModificar, GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-								.addComponent(btnSalir, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE))
-							.addContainerGap())
+							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 306, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnSalir, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap(18, Short.MAX_VALUE))
 				);
 				
 				tableEspecialidad = new JTable();
@@ -129,24 +120,53 @@ public VentanaListaEspecialidad() {
 				textField_codigonombre.setColumns(10);
 				
 				btnBuscar = new JButton("Buscar");
+				
+				JLabel lblNewLabel = new JLabel("Codigo:");
+				
+				btnIncluir = new JButton("Incluir");
+				
+				btnActualizar = new JButton("Actualizar");
+				btnActualizar.setBackground(Color.GREEN);
+				btnActualizar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+					}
+				});
+				
+				btnEliminar = new JButton("Eliminar");
+				btnEliminar.setBackground(Color.RED);
 				GroupLayout gl_panel = new GroupLayout(panel);
 				gl_panel.setHorizontalGroup(
 					gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(27)
-							.addComponent(textField_codigonombre, GroupLayout.PREFERRED_SIZE, 256, GroupLayout.PREFERRED_SIZE)
-							.addGap(27)
-							.addComponent(btnBuscar)
-							.addContainerGap(65, Short.MAX_VALUE))
+							.addGap(19)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(btnIncluir, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addGroup(gl_panel.createSequentialGroup()
+									.addComponent(lblNewLabel)
+									.addGap(18)
+									.addComponent(textField_codigonombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(btnBuscar, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)))
+							.addPreferredGap(ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addComponent(btnActualizar, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnEliminar, GroupLayout.PREFERRED_SIZE, 176, GroupLayout.PREFERRED_SIZE))
+							.addGap(18))
 				);
 				gl_panel.setVerticalGroup(
 					gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(22)
+							.addContainerGap()
 							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 								.addComponent(textField_codigonombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnBuscar))
-							.addContainerGap(36, Short.MAX_VALUE))
+								.addComponent(lblNewLabel)
+								.addComponent(btnBuscar)
+								.addComponent(btnActualizar))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnIncluir)
+								.addComponent(btnEliminar))
+							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 				);
 				panel.setLayout(gl_panel);
 				contentPane.setLayout(gl_contentPane);
@@ -161,9 +181,11 @@ public VentanaListaEspecialidad() {
 	
 	
 	public void addListener(ActionListener actionListener) {
-		 btnModificar.addActionListener(actionListener);
+		 btnIncluir.addActionListener(actionListener);
+		 btnActualizar.addActionListener(actionListener);
 		 btnSalir.addActionListener(actionListener);
-		 btnBuscar.addActionListener(actionListener);		
+		 btnBuscar.addActionListener(actionListener);	
+		 btnEliminar.addActionListener(actionListener);
 			
 	}
 	
@@ -207,12 +229,4 @@ public VentanaListaEspecialidad() {
 			setVisible(false);
 			dispose();
 		}
-	
-	
-	
-	
-	
-	
-	//fin listaespecialidad
-	
 }
