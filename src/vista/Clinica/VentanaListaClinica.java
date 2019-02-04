@@ -110,7 +110,7 @@ public class VentanaListaClinica extends javax.swing.JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"Nombre", "Estado", "Direccion", "Telefono", "Correo"
+				"Codigo","Nombre", "Estado", "Direccion", "Telefono", "Correo"
 			}
 		));
 		scrollPane.setViewportView(tblClinicas);

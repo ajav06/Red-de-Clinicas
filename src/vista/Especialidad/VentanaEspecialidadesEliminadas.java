@@ -56,7 +56,7 @@ public class VentanaEspecialidadesEliminadas extends javax.swing.JFrame
 			new Object[][] {
 			},
 			new String[] {
-				"Nombre", "Estado", "Direccion", "Telefono", "Correo"
+				"Codigo", "Nombre", "Descripcion"
 			}
 		));
 		scrollPane.setViewportView(tblEspecialidades);
