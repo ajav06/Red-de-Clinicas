@@ -3,7 +3,10 @@ package controlador.Seguro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JOptionPane;
 
 import modelo.Seguro.Seguro;
 import modelo.Seguro.SeguroDB;
@@ -18,13 +21,17 @@ public class ControladorVtnSeguro implements ActionListener{
 	
 	public ControladorVtnSeguro() throws SQLException {
 		super();
-		
+
 		String c = "-1";
+	
+		seguroDB = new SeguroDB();
+
 		try{
 			c = String.valueOf(seguroDB.generarNuevoCodigoSeguro());
 		} catch (SQLException e){
 			e.printStackTrace();
 		}
+		
 		this.vtnseguro = new VentanaSeguro();
 		this.vtnseguro.setLocationRelativeTo(null);
 		this.vtnseguro.setVisible(true);
@@ -62,6 +69,7 @@ public class ControladorVtnSeguro implements ActionListener{
 				seguro = new Seguro(Integer.parseInt(vtnseguro.getCodigo()), vtnseguro.getNombre(), vtnseguro.getDescripcion());
 				seguroDB.incluirSeguro(seguro);
 				cargarDatosSeguros();
+				vtnseguro.setCodigo(String.valueOf(seguroDB.generarNuevoCodigoSeguro()));
 			}
 			
 		}catch(Exception e)
@@ -109,22 +117,23 @@ public class ControladorVtnSeguro implements ActionListener{
 			if(vtnseguro.getCodigo()==null)
 				vtnseguro.mostrarMensaje("Debe llenar el campo 'Codigo' para Buscar");
 			else {
+				seguros = new ArrayList();
 				seguroDB = new SeguroDB();
-				seguros = null;
 				Seguro seguro = seguroDB.buscarSeguro(vtnseguro.getCodigo());
 				seguros.add(seguro);
+				vtnseguro.mostrarMensaje(seguro.getNombre());
 				this.vtnseguro.setResultados(new VentanaSeguroModeloTabla(seguros));
 			}
 			
 		}catch(Exception e)
 		{
-			vtnseguro.mostrarMensaje("No se pudo bucar el Seguro, verifique que los datos sean correctos");
+			vtnseguro.mostrarMensaje(e.getClass() + e.getMessage());
 		}
 	}
 
 	private void cargarDatosSeguros() throws SQLException {
 		seguroDB = new SeguroDB();
-		List<Seguro> seguros = seguroDB.consultarSeguros();
+		seguros = seguroDB.consultarSeguros();
 		this.vtnseguro.setResultados(new VentanaSeguroModeloTabla(seguros));
 	}
 

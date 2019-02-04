@@ -57,6 +57,7 @@ public class ControladorVtnListMedicos implements ActionListener {
 			filtrarListado();
 		} 
 		else if (actionCommand.isEmpty()) {
+			vtnListMed.getComboBox_Especialidad().setSelectedIndex(0);
 			cargarDatosMedico();
 		}
 	}

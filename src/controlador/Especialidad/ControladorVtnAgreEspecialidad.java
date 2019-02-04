@@ -70,6 +70,7 @@ public class ControladorVtnAgreEspecialidad implements ActionListener {
 	    	especialidadBD.eliminarEspecialidad(vtnAgreEsp.getCodigo());
 	    	vtnAgreEsp.mostrarMensaje("la especialidad fue eliminada con exito");
 	    	vtnAgreEsp.blanquearCampos();
+	    	vtnAgreEsp.salir();
 		}catch(Exception e)
 		{
 			vtnAgreEsp.mostrarMensaje("No se pudo eliminar la especialidad, verifique que los datos sean correctos");
@@ -92,6 +93,7 @@ public class ControladorVtnAgreEspecialidad implements ActionListener {
 		    	especialidadBD.actualizarEspecialidad(especialidad);
 		    	vtnAgreEsp.mostrarMensaje("La especialidad fue modificada con exito");
 		    	vtnAgreEsp.blanquearCampos();
+		    	vtnAgreEsp.salir();
 	    	}
 		}catch(Exception e)
 		{
@@ -114,6 +116,7 @@ public class ControladorVtnAgreEspecialidad implements ActionListener {
 		    	especialidadBD.registarEspecialidad(especialidad);
 		    	vtnAgreEsp.mostrarMensaje("La especialidad fue incluida con exito");
 		    	vtnAgreEsp.blanquearCampos();
+		    	vtnAgreEsp.salir();
 	    	}
 		} catch(Exception e)
 		{

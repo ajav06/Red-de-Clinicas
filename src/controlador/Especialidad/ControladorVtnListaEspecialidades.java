@@ -38,10 +38,27 @@ public class ControladorVtnListaEspecialidades implements ActionListener{
 		}
 		else if (actionCommand.equals("Incluir")) {
 			// buscarEspecialidad();
+			EspecialidadBD especialidadBD = new EspecialidadBD();
+			try {
+				especialidad = new Especialidad(String.valueOf(especialidadBD.generarNuevoCodigoEspecialidad()), "", "");
+			} catch (NumberFormatException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			new ControladorVtnAgreEspecialidad( 1, especialidad);		
 		}
 		else if (actionCommand.equals("Salir")) {  // Volver
 			vtnListEsp.salir();
+		} else if (actionCommand.equals("")) {
+			try {
+				cargarDatosEspecialidades();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 	
@@ -56,8 +73,7 @@ public class ControladorVtnListaEspecialidades implements ActionListener{
 	    	{
 	    		EspecialidadBD especialidadBD = new EspecialidadBD();
 	    		List<Especialidad> especialidades = new ArrayList<Especialidad>();
-	    		especialidad = especialidadBD.buscarEspecialidad(vtnListEsp.getcodigonombre());
-	    		especialidades.add(especialidad);
+	    		especialidades = especialidadBD.consultarFiltrarEspecialidades("lower(nombre) like lower('%"+vtnListEsp.getcodigonombre()+"%') and estatus = 'a' order by codigo asc");
 	    		this.vtnListEsp.setResultados(new VentanaEspecialidadModeloTabla(especialidades));
 		    	vtnListEsp.mostrarMensaje("La especialidad fue buscada con exito");
 	    	}
@@ -70,16 +86,13 @@ public class ControladorVtnListaEspecialidades implements ActionListener{
 	public void actualizarEspecialidad() {
 		try
 		{
-	    	if(vtnListEsp.getcodigonombre().equals(""))
-	    		
-	    	   //Deben estar todos los campos llenos para poder actualizar la especialidad
-	    		vtnListEsp.mostrarMensaje("Debe llenar todos los datos para poder buscar la especialidad");
-	    	else
-	    	{
+			if (vtnListEsp.gettableEspecialidad().getSelectedColumn()==-1) {
+				vtnListEsp.mostrarMensaje("Debe seleccionar una especialidad para modificarla.");
+			} else {
 	    		EspecialidadBD especialidadBD = new EspecialidadBD();	    
-	    		especialidad = especialidadBD.buscarEspecialidad(vtnListEsp.getcodigonombre());
+	    		especialidad = especialidadBD.buscarEspecialidad(String.valueOf(vtnListEsp.gettableEspecialidad().getModel().getValueAt(vtnListEsp.gettableEspecialidad().getSelectedRow(), 0)));
 	    		new ControladorVtnAgreEspecialidad(2, especialidad);
-	    	}
+			}
 		}catch(Exception e)
 		{
 			vtnListEsp.mostrarMensaje("No se pudo bucar la Especialidad, verifique que los datos sean correctos");
@@ -89,14 +102,11 @@ public class ControladorVtnListaEspecialidades implements ActionListener{
 	public void eliminarEspecialidad() {
 		try
 		{
-	    	if(vtnListEsp.getcodigonombre().equals(""))
-	    		
-	    	   //Deben estar todos los campos llenos para poder actualizar la especialidad
-	    		vtnListEsp.mostrarMensaje("Debe llenar todos los datos para poder buscar la especialidad");
-	    	else
-	    	{
+			if (vtnListEsp.gettableEspecialidad().getSelectedColumn()==-1) {
+				vtnListEsp.mostrarMensaje("Debe seleccionar una especialidad para modificarla.");
+			} else {
 	    		EspecialidadBD especialidadBD = new EspecialidadBD();	    
-	    		especialidad = especialidadBD.buscarEspecialidad(vtnListEsp.getcodigonombre());
+	    		especialidad = especialidadBD.buscarEspecialidad(String.valueOf(vtnListEsp.gettableEspecialidad().getModel().getValueAt(vtnListEsp.gettableEspecialidad().getSelectedRow(), 0)));
 	    		new ControladorVtnAgreEspecialidad(3, especialidad);
 	    	}
 		}catch(Exception e)

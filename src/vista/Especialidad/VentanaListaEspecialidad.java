@@ -24,6 +24,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class VentanaListaEspecialidad extends JFrame {
 
@@ -35,6 +36,7 @@ public class VentanaListaEspecialidad extends JFrame {
 	private JButton btnActualizar;
 	private JButton btnEliminar;
 	private JButton btnIncluir;
+	private JButton btnCargar;
 	
 	
 	
@@ -68,20 +70,28 @@ public VentanaListaEspecialidad() {
 					public void actionPerformed(ActionEvent e) {
 					}
 				});
+				
+				btnCargar = new JButton("");
+				btnCargar.setIcon(new ImageIcon(VentanaListaEspecialidad.class.getResource("/javax/swing/plaf/metal/icons/ocean/iconify.gif")));
 				GroupLayout gl_contentPane = new GroupLayout(contentPane);
 				gl_contentPane.setHorizontalGroup(
-					gl_contentPane.createParallelGroup(Alignment.TRAILING)
+					gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addContainerGap(174, Short.MAX_VALUE)
+							.addContainerGap(150, Short.MAX_VALUE)
 							.addComponent(lblListadoEspecialidad)
 							.addGap(123))
-						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-							.addGap(50)
+						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-								.addComponent(scrollPane, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-								.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
-								.addComponent(btnSalir, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE))
-							.addContainerGap(38, Short.MAX_VALUE))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addContainerGap()
+									.addComponent(btnCargar, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+								.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+									.addGap(50)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+										.addComponent(scrollPane, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+										.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
+										.addComponent(btnSalir, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE))))
+							.addContainerGap(36, Short.MAX_VALUE))
 				);
 				gl_contentPane.setVerticalGroup(
 					gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -90,11 +100,13 @@ public VentanaListaEspecialidad() {
 							.addComponent(lblListadoEspecialidad)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 306, GroupLayout.PREFERRED_SIZE)
+							.addGap(3)
+							.addComponent(btnCargar)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 290, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(btnSalir, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap(18, Short.MAX_VALUE))
+							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 				);
 				
 				tableEspecialidad = new JTable();
@@ -121,7 +133,7 @@ public VentanaListaEspecialidad() {
 				
 				btnBuscar = new JButton("Buscar");
 				
-				JLabel lblNewLabel = new JLabel("Codigo:");
+				JLabel lblNewLabel = new JLabel("Nombre:");
 				
 				btnIncluir = new JButton("Incluir");
 				
@@ -186,7 +198,7 @@ public VentanaListaEspecialidad() {
 		 btnSalir.addActionListener(actionListener);
 		 btnBuscar.addActionListener(actionListener);	
 		 btnEliminar.addActionListener(actionListener);
-			
+		btnCargar.addActionListener(actionListener);
 	}
 	
 	public void setResultados(AbstractTableModel abstractTableModel) {
