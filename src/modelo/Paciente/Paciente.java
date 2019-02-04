@@ -19,7 +19,7 @@ public class Paciente extends Persona{
 		this.estado = estado;
 		this.email = email;
 		this.celular = celular;
-		this.celular = celular;
+		this.casa = casa;
 		this.direccion = direccion;
 		this.asegurado = asegurado;
 	}
