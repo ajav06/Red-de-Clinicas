@@ -69,39 +69,39 @@ public class ControladorVtnListPacientes implements ActionListener{
 	
 	public void buscarPaciente() {
 		try {
-			if ("".equals(vtnListPac.getCedula())) {
-				vtnListPac.mostrarMensaje("Introduzca un número de cédula o nombre para realizar la búsqueda.");
-			} else {
-				boolean n;
-				try {
-					Integer.parseInt(vtnListPac.getCedula());
-					n=true;
-				} catch (NumberFormatException e) {
-					n=false;
-				}
-				if (!n){ //si estoy buscando por nombre
-					pacienteBD = new PacienteBD();
-		    		List<Paciente> pacientes = new ArrayList<Paciente>();
-					String sql = null;
-
-					sql = "lower(nombres) like lower('%"+vtnListPac.getCedula()+"%') or lower(apellidos) like lower('%"+vtnListPac.getCedula()+"%')";						
+			boolean n;
+			try {
+				Integer.parseInt(vtnListPac.getCedula());
+				n=true;
+			} catch (NumberFormatException e) {
+				n=false;
+			}
+			if (!n){ //si estoy buscando por nombre
+				pacienteBD = new PacienteBD();
+	    		List<Paciente> pacientes = new ArrayList<Paciente>();
+				String sql = null;
+				
+				if(vtnListPac.getAsegurado()==0)
+					sql = "lower(nombres) like lower('%"+vtnListPac.getCedula()+"%') or lower(apellidos) like lower('%"+vtnListPac.getCedula()+"%')";
+				else if(vtnListPac.getAsegurado()==1)
+					sql = "(lower(nombres) like lower('%"+vtnListPac.getCedula()+"%') or lower(apellidos) like lower('%"+vtnListPac.getCedula()+"%')) and asegurado=TRUE";
+				else
+					sql = "(lower(nombres) like lower('%"+vtnListPac.getCedula()+"%') or lower(apellidos) like lower('%"+vtnListPac.getCedula()+"%')) and asegurado=FALSE";
 					
-					
-					pacientes = pacienteBD.consultarFiltrarPacientes(sql);
-					this.vtnListPac.setResultados(new VentanaPacienteModeloTabla(pacientes));
-					this.vtnListPac.vaciarCedula();
-				} else { //si estoy buscando por cedula
-					pacienteBD = new PacienteBD();
-					List<Paciente> pacientes = new ArrayList<Paciente>();
-					paciente = pacienteBD.buscarPaciente(vtnListPac.getCedula());
-					if (paciente==null) {
-						this.vtnListPac.mostrarMensaje("Paciente no encontrado.");
-						cargarDatosPacientes();
-					} else {
-						pacientes.add(paciente);
-			    		this.vtnListPac.setResultados(new VentanaPacienteModeloTabla(pacientes));
-						this.vtnListPac.vaciarCedula();;
-					}
+				pacientes = pacienteBD.consultarFiltrarPacientes(sql);
+				this.vtnListPac.setResultados(new VentanaPacienteModeloTabla(pacientes));
+				this.vtnListPac.vaciarCedula();
+			} else { //si estoy buscando por cedula
+				pacienteBD = new PacienteBD();
+				List<Paciente> pacientes = new ArrayList<Paciente>();
+				paciente = pacienteBD.buscarPaciente(vtnListPac.getCedula());
+				if (paciente==null) {
+					this.vtnListPac.mostrarMensaje("Paciente no encontrado.");
+					cargarDatosPacientes();
+				} else {
+					pacientes.add(paciente);
+		    		this.vtnListPac.setResultados(new VentanaPacienteModeloTabla(pacientes));
+					this.vtnListPac.vaciarCedula();;
 				}
 			}
 		} catch (Exception e) {

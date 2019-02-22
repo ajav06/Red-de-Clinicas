@@ -22,6 +22,8 @@ import javax.swing.JFrame;
 import javax.swing.border.LineBorder;
 import bean.JTextFieldValidator;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class VentanaListaPacientes extends javax.swing.JFrame{
 	private JTextFieldValidator textField_Ced;
@@ -32,6 +34,7 @@ public class VentanaListaPacientes extends javax.swing.JFrame{
 	private JTable tblPacientes;
 	private JButton btnVover;
 	private JButton btnRefrescar;
+	private JComboBox comboBox_TipoPaciente;
 	
 	public VentanaListaPacientes() {
 		super();
@@ -116,22 +119,27 @@ public class VentanaListaPacientes extends javax.swing.JFrame{
 			
 			btnBuscar = new JButton("Buscar");
 			btnBuscar.setBackground(Color.DARK_GRAY);
+			
+			comboBox_TipoPaciente = new JComboBox();
+			comboBox_TipoPaciente.setModel(new DefaultComboBoxModel(new String[] {"Seleccione el Tipo", "Asegurado", "No Asegurado"}));
 			GroupLayout gl_panel = new GroupLayout(panel);
 			gl_panel.setHorizontalGroup(
 				gl_panel.createParallelGroup(Alignment.TRAILING)
 					.addGroup(gl_panel.createSequentialGroup()
 						.addGap(18)
-						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-							.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-								.addComponent(textField_Ced, GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
-								.addGap(18)
-								.addComponent(btnBuscar, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
 							.addGroup(gl_panel.createSequentialGroup()
-								.addComponent(btnIncliur, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
-								.addGap(22)
-								.addComponent(btnEliminar, GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+								.addComponent(textField_Ced, GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
 								.addGap(18)
-								.addComponent(btnActualizar, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(comboBox_TipoPaciente, 0, 132, Short.MAX_VALUE)
+								.addGap(18)
+								.addComponent(btnBuscar, GroupLayout.PREFERRED_SIZE, 38, Short.MAX_VALUE))
+							.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+								.addComponent(btnIncliur, GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+								.addGap(18)
+								.addComponent(btnActualizar, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+								.addGap(18)
+								.addComponent(btnEliminar, GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)))
 						.addContainerGap())
 			);
 			gl_panel.setVerticalGroup(
@@ -140,13 +148,15 @@ public class VentanaListaPacientes extends javax.swing.JFrame{
 						.addGap(20)
 						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 							.addComponent(textField_Ced, GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
-							.addComponent(btnBuscar, GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
+							.addComponent(btnBuscar, GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+							.addComponent(comboBox_TipoPaciente, GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
 						.addGap(17)
-						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-							.addComponent(btnIncliur, GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-							.addComponent(btnEliminar, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-							.addComponent(btnActualizar, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
-						.addGap(12))
+						.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+							.addComponent(btnEliminar, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnIncliur, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+								.addComponent(btnActualizar, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)))
+						.addGap(9))
 			);
 			panel.setLayout(gl_panel);
 			
@@ -188,6 +198,10 @@ public class VentanaListaPacientes extends javax.swing.JFrame{
 	
 	public void setResultados(AbstractTableModel abstractTableModel) {
 		this.tblPacientes.setModel(abstractTableModel);
+	}
+	
+	public int getAsegurado() {
+		return comboBox_TipoPaciente.getSelectedIndex();
 	}
 	
 	public String getCedula() {
