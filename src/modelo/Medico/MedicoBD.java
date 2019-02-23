@@ -217,4 +217,64 @@ public class MedicoBD extends ConexionBD{
 	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 		}
 	}
+
+	public List<ListadoCitas> consultarCitasMedico(String cedula, Date fecha_Ini, Date fecha_Fin, int tipo) throws SQLException{
+		ListadoCitas cita= null;
+		List<ListadoCitas> citasMedicas = new ArrayList<ListadoCitas>();
+		resultSet = this.ejecutarQuery("SELECT trabajomedico.codigo, clinica.nombre FROM trabajomedico JOIN clinica ON cod_clinica=clinica.codigo WHERE ced_medico='"+cedula+"';");
+		try {
+			while(resultSet.next()) {
+				ResultSet rS = this.consultarTabla("consulta", " WHERE cod_Trabajo="+resultSet.getString("codigo")+" AND fecha>='"
+													+formatter.format(fecha_Ini)+"' AND fecha<='"+formatter.format(fecha_Fin)+"' ");
+				if(tipo==1) {
+					while(rS.next()) {
+						String ced_Paciente=rS.getString("ced_paciente");
+						String tipo_Cita="Consulta";
+						int cod_Trabajo=rS.getInt("cod_trabajo");
+						String nomb_Clinica=resultSet.getString("nombre");
+						Date fecha=rS.getDate("fecha");
+						cita = new ListadoCitas(ced_Paciente, tipo_Cita, cod_Trabajo, nomb_Clinica, fecha);
+						citasMedicas.add(cita);
+					}
+				}
+				else if(tipo==2) {
+					while(rS.next()) {
+						String ced_Paciente=rS.getString("ced_paciente");
+						String tipo_Cita="Intervencion Quírurjica";
+						int cod_Trabajo=rS.getInt("cod_trabajo");
+						String nomb_Clinica=resultSet.getString("nombre");
+						Date fecha=rS.getDate("fecha");
+						cita = new ListadoCitas(ced_Paciente, tipo_Cita, cod_Trabajo, nomb_Clinica, fecha);
+						citasMedicas.add(cita);
+					}
+				}
+				else {
+					while(rS.next()) {
+						String ced_Paciente=rS.getString("ced_paciente");
+						String tipo_Cita="Consulta";
+						int cod_Trabajo=rS.getInt("cod_trabajo");
+						String nomb_Clinica=resultSet.getString("nombre");
+						Date fecha=rS.getDate("fecha");
+						cita = new ListadoCitas(ced_Paciente, tipo_Cita, cod_Trabajo, nomb_Clinica, fecha);
+						citasMedicas.add(cita);
+					}
+					rS = this.consultarTabla("intervencion", " WHERE cod_Trabajo="+resultSet.getString("codigo")+" AND fecha>='"+fecha_Ini+"' AND fecha<='"+fecha_Fin);
+					while(rS.next()) {
+						String ced_Paciente=rS.getString("ced_paciente");
+						String tipo_Cita="Intervencion Quírurjica";
+						int cod_Trabajo=rS.getInt("cod_trabajo");
+						String nomb_Clinica=resultSet.getString("nombre");
+						Date fecha=rS.getDate("fecha");
+						cita = new ListadoCitas(ced_Paciente, tipo_Cita, cod_Trabajo, nomb_Clinica, fecha);
+						citasMedicas.add(cita);
+					}
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		this.cerrarComando();
+		return citasMedicas;
+	}
 }

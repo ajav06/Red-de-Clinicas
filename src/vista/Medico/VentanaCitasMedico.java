@@ -8,6 +8,14 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.JPanel;
@@ -31,13 +39,22 @@ public class VentanaCitasMedico extends javax.swing.JFrame{
 	private JButton btnBuscar;
 	private JButton btnFiltrar;
 	private JComboBox comboBox_Filtro;
+	private ZoneId zonedId = ZoneId.of( "America/Caracas" );
+	private LocalDate today = LocalDate.now( zonedId );
+	private SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+	private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+	private JDateChooser dateChooser;
+	private JDateChooser dateChooser_1;
+	private JLabel lblNombre;
 	
-	public VentanaCitasMedico() {
+	public VentanaCitasMedico() throws ParseException {
 		super();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		initGUI();
 		blanquearCampos();
-		setSize(500,598);
+		dateChooser.setDate(formatter.parse(dtf.format(today)));
+		dateChooser_1.setDate(formatter.parse(dtf.format(today)));
+		setSize(500,648);
 	}
 
 	private void initGUI() {
@@ -51,46 +68,67 @@ public class VentanaCitasMedico extends javax.swing.JFrame{
 			panel.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Panel B\u00FAsqueda", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 			
 			JPanel panel_1 = new JPanel();
-			panel_1.setBorder(null);
+			panel_1.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Lista Citas Pacientes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			
-			btnRefrescar = new JButton("Refrescar");
+			btnRefrescar = new JButton("Vaciar");
 			
 			btnVolver = new JButton("Volver");
+			
+			lblNombre = new JLabel("");
+			lblNombre.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNombre.setForeground(new Color(0, 100, 0));
+			lblNombre.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 25));
 			GroupLayout groupLayout = new GroupLayout(getContentPane());
 			groupLayout.setHorizontalGroup(
 				groupLayout.createParallelGroup(Alignment.TRAILING)
 					.addGroup(groupLayout.createSequentialGroup()
+						.addContainerGap()
+						.addComponent(btnRefrescar, GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+						.addGap(288)
+						.addComponent(btnVolver, GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+						.addContainerGap())
+					.addGroup(groupLayout.createSequentialGroup()
+						.addContainerGap()
+						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
+						.addContainerGap())
+					.addGroup(groupLayout.createSequentialGroup()
+						.addContainerGap()
+						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
+						.addContainerGap())
+					.addGroup(groupLayout.createSequentialGroup()
 						.addGap(163)
 						.addComponent(lblCitasMdico, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addGap(170))
-					.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 						.addContainerGap()
-						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-							.addComponent(panel_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
-							.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
-								.addComponent(btnRefrescar, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED, 289, Short.MAX_VALUE)
-								.addComponent(btnVolver, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE))
-							.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE))
+						.addComponent(lblNombre, GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
 						.addContainerGap())
 			);
 			groupLayout.setVerticalGroup(
 				groupLayout.createParallelGroup(Alignment.LEADING)
 					.addGroup(groupLayout.createSequentialGroup()
 						.addContainerGap()
-						.addComponent(lblCitasMdico, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblCitasMdico, GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addComponent(lblNombre, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
 						.addGap(18)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE)
+						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
 						.addGap(18)
 						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
 						.addGap(18)
 						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-							.addComponent(btnRefrescar, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
-							.addComponent(btnVolver, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
-						.addContainerGap())
+							.addComponent(btnVolver, GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+							.addComponent(btnRefrescar, GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
+						.addGap(18))
 			);
 			
 			textField_Cedula = new JTextField();
+			textField_Cedula.addFocusListener(new FocusAdapter() {
+				@Override
+				public void focusGained(FocusEvent arg0) {
+					textField_Cedula.setText("");
+				}
+			});
 			textField_Cedula.setHorizontalAlignment(SwingConstants.CENTER);
 			textField_Cedula.setText("Introduzca c\u00C3\u00A9dula de identidad o nombre");
 			textField_Cedula.setColumns(10);
@@ -102,9 +140,9 @@ public class VentanaCitasMedico extends javax.swing.JFrame{
 			
 			btnFiltrar = new JButton("Filtrar");
 			
-			JDateChooser dateChooser = new JDateChooser();
+			dateChooser = new JDateChooser();
 			
-			JDateChooser dateChooser_1 = new JDateChooser();
+			dateChooser_1 = new JDateChooser();
 			GroupLayout gl_panel = new GroupLayout(panel);
 			gl_panel.setHorizontalGroup(
 				gl_panel.createParallelGroup(Alignment.LEADING)
@@ -112,17 +150,17 @@ public class VentanaCitasMedico extends javax.swing.JFrame{
 						.addContainerGap()
 						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 							.addGroup(gl_panel.createSequentialGroup()
-								.addComponent(dateChooser, GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-								.addComponent(dateChooser_1, GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE))
+								.addComponent(dateChooser, GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+								.addGap(56)
+								.addComponent(dateChooser_1, GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))
 							.addGroup(gl_panel.createSequentialGroup()
 								.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
 									.addComponent(comboBox_Filtro, Alignment.LEADING, 0, 239, Short.MAX_VALUE)
 									.addComponent(textField_Cedula, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE))
 								.addGap(18)
 								.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-									.addComponent(btnBuscar, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE)
-									.addComponent(btnFiltrar, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE))))
+									.addComponent(btnBuscar, GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+									.addComponent(btnFiltrar, GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))))
 						.addContainerGap())
 			);
 			gl_panel.setVerticalGroup(
@@ -130,17 +168,21 @@ public class VentanaCitasMedico extends javax.swing.JFrame{
 					.addGroup(gl_panel.createSequentialGroup()
 						.addGap(2)
 						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-							.addComponent(textField_Cedula, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addComponent(btnBuscar))
+							.addGroup(gl_panel.createSequentialGroup()
+								.addGap(3)
+								.addComponent(textField_Cedula))
+							.addComponent(btnBuscar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 						.addGap(18)
 						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-							.addComponent(comboBox_Filtro, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addComponent(btnFiltrar))
+							.addGroup(gl_panel.createSequentialGroup()
+								.addGap(3)
+								.addComponent(comboBox_Filtro))
+							.addComponent(btnFiltrar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 						.addGap(18)
 						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 							.addComponent(dateChooser, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addComponent(dateChooser_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addContainerGap(20, Short.MAX_VALUE))
+							.addComponent(dateChooser_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addGap(20))
 			);
 			panel.setLayout(gl_panel);
 			
@@ -167,7 +209,7 @@ public class VentanaCitasMedico extends javax.swing.JFrame{
 	
 	public void addListener(ActionListener actionListener) {
 		btnBuscar.addActionListener(actionListener);
-		btnBuscar.addActionListener(actionListener);
+		btnVolver.addActionListener(actionListener);
 		btnRefrescar.addActionListener(actionListener);
 		btnFiltrar.addActionListener(actionListener);
 	}
@@ -185,8 +227,35 @@ public class VentanaCitasMedico extends javax.swing.JFrame{
 		JOptionPane.showMessageDialog(this, mensaje);
 	}
 	
-	private void blanquearCampos() {
-		// TODO Auto-generated method stub
-		
+	public void blanquearCampos() throws ParseException {
+		textField_Cedula.setText(null);
+		dateChooser.setDate(formatter.parse(dtf.format(today)));
+		dateChooser_1.setDate(formatter.parse(dtf.format(today)));
+		comboBox_Filtro.setSelectedIndex(0);
+		textField_Cedula.setEditable(true);
+	}
+	
+	public String getTextField_Cedula() {
+		return textField_Cedula.getText();
+	}
+	
+	public int getFiltro() {
+		return comboBox_Filtro.getSelectedIndex();
+	}
+	
+	public Date getFechaIni() {
+		return dateChooser.getDate();
+	}
+	
+	public Date getFechaFin() {
+		return dateChooser_1.getDate();
+	}
+	
+	public void bloquearCed() {
+		textField_Cedula.setEditable(false);
+	}
+	
+	public void setLabelNombre(String nom) {
+		lblNombre.setText(nom);
 	}
 }

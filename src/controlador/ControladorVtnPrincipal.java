@@ -3,11 +3,13 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.text.ParseException;
 
 import javax.swing.JOptionPane;
 
 import controlador.Especialidad.ControladorVtnListaEspecialidades;
 import controlador.Especialidad.ControladorMenuEspecialidades;
+import controlador.Medico.ControladorVtnCitasMedico;
 import controlador.Medico.ControladorVtnListMedicos;
 import controlador.Paciente.ControladorVtnListPacientes;
 import controlador.Seguro.ControladorVtnSeguro;
@@ -59,6 +61,14 @@ public class ControladorVtnPrincipal implements ActionListener{
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				JOptionPane.showMessageDialog(null, e1.getClass() + e1.getMessage());
+			}
+		}
+		else if(actionCommand.equals("Citas Medico")) {
+			try {
+				new ControladorVtnCitasMedico();
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 		}
 	}
