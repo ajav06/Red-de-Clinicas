@@ -4,7 +4,7 @@ public class Clinica {
 	
 	private String codigo;
 	private String nombre;
-	private String  estado;
+	private String estado;
 	private String direccion;
 	private String telefono;
 	private String correo;

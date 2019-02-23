@@ -16,6 +16,7 @@ import vista.Especialidad.VentanaEspecialidadesEliminadas;
 import vista.Medico.VentanaMedicoModeloTabla;
 import modelo.Especialidad.Especialidad;
 import modelo.Especialidad.EspecialidadBD;
+import modelo.Medico.Medico;
 import modelo.Medico.MedicoBD;
 public class ControladorVtnEspecElim  implements ActionListener {
 private VentanaEspecialidadesEliminadas vtnEElim;
@@ -48,11 +49,17 @@ public void ActivarEspecilidades() {
 	JTable tabla = vtnEElim.getTblEspecialidades();
 	int fila = tabla.getSelectedRow();
 	if (fila == -1) {
-		vtnEElim.mostrarMensaje("Seleccione una Clinica del listado para consultarlo.");
+		vtnEElim.mostrarMensaje("Seleccione una especialidad del listado para consultarla.");
 	} else {
 		String codigo = String.valueOf(tabla.getModel().getValueAt(fila, 0));
 		EspecialidadBD especialidadBD = new EspecialidadBD();	    
 		especialidadBD.actuRegistro("especialidad", "estatus='a'", "codigo", "'"+codigo+"'");
+		MedicoBD medicoBD = new MedicoBD();
+		List<Medico> medicos = new ArrayList<Medico>();
+		medicos = medicoBD.consultarFiltrarMedicos("estatus='e' and cod_especialidad='"+codigo+"'");
+		for (int i=0;i<medicos.size();i++) {
+			medicoBD.reactivarMedico(medicos.get(i).getCedula());
+		}
 		vtnEElim.mostrarMensaje("Especialidad Reactivada exitosamente");
 		cargarDatosEspecialidades();
 	}
@@ -64,7 +71,7 @@ public void ActivarEspecilidades() {
 
 public void cargarDatosEspecialidades() throws SQLException {
 	EspecialidadBD especialidadBD = new EspecialidadBD();
-	List<Especialidad> especialidades = especialidadBD.consultarFiltrarEspecialidades("estatus='e' AND codigo != '0' ORDER BY codigo ASC");
+	List<Especialidad> especialidades = especialidadBD.consultarFiltrarEspecialidades("estatus='e' ORDER BY codigo ASC");
 this.vtnEElim.setResultados(new VentanaEspecialidadModeloTabla(especialidades));
 }
 

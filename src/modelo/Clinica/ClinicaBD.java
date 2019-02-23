@@ -132,6 +132,8 @@ public class ClinicaBD extends ConexionBD
 		this.cerrarComando();
 		return nombres;
 	}
+	
+	public DefaultComboBoxModel 
 
 }
 
