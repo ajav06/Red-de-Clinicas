@@ -58,7 +58,7 @@ public void ActivarEspecilidades() {
 		List<Medico> medicos = new ArrayList<Medico>();
 		medicos = medicoBD.consultarFiltrarMedicos("estatus='e' and cod_especialidad='"+codigo+"'");
 		for (int i=0;i<medicos.size();i++) {
-			medicoBD.reactivarMedico(medicos.get(i).getCedula());
+			medicoBD.reingresarMedico(medicos.get(i).getCedula());
 		}
 		vtnEElim.mostrarMensaje("Especialidad Reactivada exitosamente");
 		cargarDatosEspecialidades();

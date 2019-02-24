@@ -46,6 +46,7 @@ public class VentanaCitasMedico extends javax.swing.JFrame{
 	private JDateChooser dateChooser;
 	private JDateChooser dateChooser_1;
 	private JLabel lblNombre;
+	private JButton btnConsultarPaciente;
 	
 	public VentanaCitasMedico() throws ParseException {
 		super();
@@ -59,6 +60,7 @@ public class VentanaCitasMedico extends javax.swing.JFrame{
 
 	private void initGUI() {
 		try {
+			setTitle("Citas Médico");
 			JLabel lblCitasMdico = new JLabel("Citas M\u00E9dico");
 			lblCitasMdico.setHorizontalAlignment(SwingConstants.CENTER);
 			lblCitasMdico.setForeground(Color.BLUE);
@@ -78,13 +80,17 @@ public class VentanaCitasMedico extends javax.swing.JFrame{
 			lblNombre.setHorizontalAlignment(SwingConstants.CENTER);
 			lblNombre.setForeground(new Color(0, 100, 0));
 			lblNombre.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 25));
+			
+			btnConsultarPaciente = new JButton("Ver Inf. Paciente");
 			GroupLayout groupLayout = new GroupLayout(getContentPane());
 			groupLayout.setHorizontalGroup(
-				groupLayout.createParallelGroup(Alignment.TRAILING)
+				groupLayout.createParallelGroup(Alignment.LEADING)
 					.addGroup(groupLayout.createSequentialGroup()
 						.addContainerGap()
 						.addComponent(btnRefrescar, GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-						.addGap(288)
+						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addComponent(btnConsultarPaciente, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addGap(155)
 						.addComponent(btnVolver, GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
 						.addContainerGap())
 					.addGroup(groupLayout.createSequentialGroup()
@@ -99,7 +105,7 @@ public class VentanaCitasMedico extends javax.swing.JFrame{
 						.addGap(163)
 						.addComponent(lblCitasMdico, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addGap(170))
-					.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createSequentialGroup()
 						.addContainerGap()
 						.addComponent(lblNombre, GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
 						.addContainerGap())
@@ -115,22 +121,21 @@ public class VentanaCitasMedico extends javax.swing.JFrame{
 						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
 						.addGap(18)
 						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
-						.addGap(18)
-						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-							.addComponent(btnVolver, GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-							.addComponent(btnRefrescar, GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
-						.addGap(18))
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addGroup(groupLayout.createSequentialGroup()
+								.addGap(18)
+								.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+									.addComponent(btnVolver, GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+									.addComponent(btnRefrescar, GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
+								.addGap(18))
+							.addGroup(groupLayout.createSequentialGroup()
+								.addGap(18)
+								.addComponent(btnConsultarPaciente, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+								.addContainerGap())))
 			);
 			
 			textField_Cedula = new JTextField();
-			textField_Cedula.addFocusListener(new FocusAdapter() {
-				@Override
-				public void focusGained(FocusEvent arg0) {
-					textField_Cedula.setText("");
-				}
-			});
 			textField_Cedula.setHorizontalAlignment(SwingConstants.CENTER);
-			textField_Cedula.setText("Introduzca c\u00C3\u00A9dula de identidad o nombre");
 			textField_Cedula.setColumns(10);
 			
 			btnBuscar = new JButton("Buscar");
@@ -212,6 +217,7 @@ public class VentanaCitasMedico extends javax.swing.JFrame{
 		btnVolver.addActionListener(actionListener);
 		btnRefrescar.addActionListener(actionListener);
 		btnFiltrar.addActionListener(actionListener);
+		btnConsultarPaciente.addActionListener(actionListener);
 	}
 	
 	public void salir() {
@@ -257,5 +263,9 @@ public class VentanaCitasMedico extends javax.swing.JFrame{
 	
 	public void setLabelNombre(String nom) {
 		lblNombre.setText(nom);
+	}
+	
+	public JTable getTblCitas() {
+		return tblCitas;
 	}
 }

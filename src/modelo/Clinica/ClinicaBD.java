@@ -133,7 +133,7 @@ public class ClinicaBD extends ConexionBD
 		return nombres;
 	}
 	
-	public DefaultComboBoxModel 
+	//public DefaultComboBoxModel 
 
 }
 

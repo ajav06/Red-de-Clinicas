@@ -224,9 +224,10 @@ public class MedicoBD extends ConexionBD{
 		resultSet = this.ejecutarQuery("SELECT trabajomedico.codigo, clinica.nombre FROM trabajomedico JOIN clinica ON cod_clinica=clinica.codigo WHERE ced_medico='"+cedula+"';");
 		try {
 			while(resultSet.next()) {
-				ResultSet rS = this.consultarTabla("consulta", " WHERE cod_Trabajo="+resultSet.getString("codigo")+" AND fecha>='"
-													+formatter.format(fecha_Ini)+"' AND fecha<='"+formatter.format(fecha_Fin)+"' ");
+				ResultSet rS = null;
 				if(tipo==1) {
+					rS = this.consultarTabla("consulta", " WHERE cod_Trabajo='"+resultSet.getString("codigo")+"' AND fecha>='"
+							+formatter.format(fecha_Ini)+"' AND fecha<='"+formatter.format(fecha_Fin)+"' ");
 					while(rS.next()) {
 						String ced_Paciente=rS.getString("ced_paciente");
 						String tipo_Cita="Consulta";
@@ -238,6 +239,8 @@ public class MedicoBD extends ConexionBD{
 					}
 				}
 				else if(tipo==2) {
+					rS = this.consultarTabla("intervencion", " WHERE cod_Trabajo='"+resultSet.getString("codigo")+"' AND fecha>='"
+							+formatter.format(fecha_Ini)+"' AND fecha<='"+formatter.format(fecha_Fin)+"' ");
 					while(rS.next()) {
 						String ced_Paciente=rS.getString("ced_paciente");
 						String tipo_Cita="Intervencion Quírurjica";
@@ -249,6 +252,8 @@ public class MedicoBD extends ConexionBD{
 					}
 				}
 				else {
+					rS = this.consultarTabla("consulta", " WHERE cod_Trabajo='"+resultSet.getString("codigo")+"' AND fecha>='"
+							+formatter.format(fecha_Ini)+"' AND fecha<='"+formatter.format(fecha_Fin)+"' ");
 					while(rS.next()) {
 						String ced_Paciente=rS.getString("ced_paciente");
 						String tipo_Cita="Consulta";
@@ -258,7 +263,8 @@ public class MedicoBD extends ConexionBD{
 						cita = new ListadoCitas(ced_Paciente, tipo_Cita, cod_Trabajo, nomb_Clinica, fecha);
 						citasMedicas.add(cita);
 					}
-					rS = this.consultarTabla("intervencion", " WHERE cod_Trabajo="+resultSet.getString("codigo")+" AND fecha>='"+fecha_Ini+"' AND fecha<='"+fecha_Fin);
+					rS = this.consultarTabla("intervencion", " WHERE cod_Trabajo='"+resultSet.getString("codigo")+"' AND fecha>='"
+							+fecha_Ini+"' AND fecha<='"+fecha_Fin+"' ");
 					while(rS.next()) {
 						String ced_Paciente=rS.getString("ced_paciente");
 						String tipo_Cita="Intervencion Quírurjica";

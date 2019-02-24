@@ -57,6 +57,15 @@ public class ControladorVtnPaciente implements ActionListener{
 			this.vtnAgrePac.llenarSeguro(seguro.getNumero(), seguro.getCod_seguro());
 
 		}
+		else if(action==4){
+			this.vtnAgrePac.interfazConsultar();
+			this.vtnAgrePac.llenarCampos( paciente.getCedula(),paciente.getCedula(), paciente.getNombre(), paciente.getApellido()
+					, paciente.getCasa(), paciente.getEmail(), paciente.getCelular(), paciente.getDireccion(), paciente.getEstado(), paciente.getFechaNacimiento(),
+					paciente.getEdo_civil(), paciente.isAsegurado());
+			SeguroPaciente seguro = buscarSeguro(paciente.getCedula());
+			this.vtnAgrePac.llenarSeguro(seguro.getNumero(), seguro.getCod_seguro());
+
+		}
 			
 	}
 	
@@ -78,6 +87,10 @@ public class ControladorVtnPaciente implements ActionListener{
 		else if (actionCommand.equals("Buscar")) {
 			historial=buscarHistorial(Integer.toString(vtnAgrePac.getNroHist()));
 			new ControladorVtnHistorial(vtnAgrePac.getCedula(), historial, buscarAntecedentes(Integer.toString(historial.getNumero())),2);
+		}
+		else if (actionCommand.equals("Consultar")) {
+			historial=buscarHistorial(Integer.toString(vtnAgrePac.getNroHist()));
+			new ControladorVtnHistorial(vtnAgrePac.getCedula(), historial, buscarAntecedentes(Integer.toString(historial.getNumero())),3);
 		}
 		else if (actionCommand.equals("Nuevo")) {
 			if(registrar()) {

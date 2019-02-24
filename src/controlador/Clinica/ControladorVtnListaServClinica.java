@@ -30,17 +30,17 @@ public class ControladorVtnListaServClinica implements ActionListener
 		this.vtnLSVC.setLocationRelativeTo(null);
 		this.vtnLSVC.setVisible(true);
 		this.vtnLSVC.addListener(this);		
-		cargarServicios(c);
+		//cargarServicios(c);
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String actionCommand = e.getActionCommand();
 		if (actionCommand.equals("Incluir")) {
-			incluirOfertaServicio();
+			//incluirOfertaServicio();
 		}		
 		else if (actionCommand.equals("Modificar")) {
-			modificarOfertaServicio();
+			//modificarOfertaServicio();
 		} else if (actionCommand.equals("Limpiar")) {
 			vtnLSVC.limpiar();
 		} else if (actionCommand.equals("Salir")) {
