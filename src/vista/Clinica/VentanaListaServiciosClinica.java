@@ -235,7 +235,7 @@ public class VentanaListaServiciosClinica extends JFrame {
 		txtPrecioServicio.setText("");
 		cbDescServicio.setSelectedIndex(0);
 		tipoInterfaz = false;
-		cbDescServicio.setSelectedIndex(0);
+		cbTipo.setSelectedIndex(0);
 	}
 	
 	public char tipoFiltrado() {
@@ -277,5 +277,12 @@ public class VentanaListaServiciosClinica extends JFrame {
 	
 	public float obtenerPrecioSeleccionado() {
 		return Float.valueOf(String.valueOf(tblServicios.getModel().getValueAt(tblServicios.getSelectedRow(), 3)));
+	}
+	
+	public boolean seleccionado() {
+		if (tblServicios.getSelectedRow()==-1){
+			return false;
+		}
+		return true;
 	}
 }

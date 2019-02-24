@@ -34,43 +34,30 @@ public class ControladorVtnListaServClinica implements ActionListener
 		this.vtnLSVC = new VentanaListaServiciosClinica(nombclini);
 		this.vtnLSVC.setLocationRelativeTo(null);
 		this.vtnLSVC.setVisible(true);
-<<<<<<< HEAD
 		this.vtnLSVC.addListener(this);	
 		codigo_clinica = codclini;
 		cargarServicios(codigo_clinica);
 		this.vtnLSVC.cbDescServicio.setModel(cbd.nombresServicios());
-=======
-		this.vtnLSVC.addListener(this);		
-		//cargarServicios(c);
->>>>>>> branch 'master' of https://github.com/ajav06/Red-de-Clinicas.git
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String actionCommand = e.getActionCommand();
 		if (actionCommand.equals("Incluir")) {
-<<<<<<< HEAD
 			try {
 				incluirOfertaServicio();
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-=======
-			//incluirOfertaServicio();
->>>>>>> branch 'master' of https://github.com/ajav06/Red-de-Clinicas.git
 		}		
 		else if (actionCommand.equals("Modificar")) {
-<<<<<<< HEAD
 			try {
 				modificarOfertaServicio();
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-=======
-			//modificarOfertaServicio();
->>>>>>> branch 'master' of https://github.com/ajav06/Red-de-Clinicas.git
 		} else if (actionCommand.equals("Limpiar")) {
 			vtnLSVC.limpiar();
 		} else if (actionCommand.equals("Salir")) {
@@ -97,9 +84,13 @@ public class ControladorVtnListaServClinica implements ActionListener
 
 	private void modificarOfertaServicio() throws SQLException {
 		if (this.vtnLSVC.tipoInterfaz == false) {
-			this.vtnLSVC.interfazModificar();
-			this.vtnLSVC.setPrecio(this.vtnLSVC.obtenerPrecioSeleccionado());
-			codmodi = this.vtnLSVC.codSeleccionado();
+			if (this.vtnLSVC.seleccionado()) {
+				this.vtnLSVC.interfazModificar();
+				this.vtnLSVC.setPrecio(this.vtnLSVC.obtenerPrecioSeleccionado());
+				codmodi = this.vtnLSVC.codSeleccionado();
+			} else {
+				this.vtnLSVC.mostrarMensaje("Debe seleccionar un servicio del listado para modificarlo.");
+			}
 		} else {
 			if (this.vtnLSVC.camposLlenos()) {
 			cbd.modificarPrecioServicio(this.vtnLSVC.getPrecio(), codmodi);

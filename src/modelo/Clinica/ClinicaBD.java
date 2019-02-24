@@ -132,11 +132,6 @@ public class ClinicaBD extends ConexionBD
 		this.cerrarComando();
 		return nombres;
 	}
-<<<<<<< HEAD
-=======
-	
-	//public DefaultComboBoxModel 
->>>>>>> branch 'master' of https://github.com/ajav06/Red-de-Clinicas.git
 
 	public DefaultComboBoxModel nombresServicios() throws SQLException{
 		DefaultComboBoxModel nombres = new DefaultComboBoxModel();
@@ -230,7 +225,7 @@ public class ClinicaBD extends ConexionBD
 	         c.setAutoCommit(false);
 			
 	         stmt = c.createStatement();
-	         String sql = "SELECT MAX(codigo) FROM ofertaservicio";
+	         String sql = "SELECT MAX(codigo::integer) FROM ofertaservicio";
 	         rs = stmt.executeQuery(sql);
 	         rs.next();
         	 int u = rs.getInt("max");
@@ -260,7 +255,6 @@ public class ClinicaBD extends ConexionBD
 	         rs = stmt.executeQuery(sql);
 	         rs.next();
         	 int u = rs.getInt("count");
-	         JOptionPane.showMessageDialog(this, String.valueOf(u));
 
         	 switch(u) {
         	 case 0:
