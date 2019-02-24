@@ -37,6 +37,17 @@ public class ControladorVtnHistorial implements ActionListener{
 					antecedente.getOtras_enf(), antecedente.getQuirurgicos(), antecedente.getRespiratorias(), antecedente.getTraumatoloficos(), antecedente.getEnf_infancia());
 			this.vtnHistorial.setSexo(historial.getSexo());
 		}
+		else if(action==3) {
+			this.vtnHistorial.interfazConsulta();
+			this.vtnHistorial.desactivarBotones();
+			this.vtnHistorial.llenarCampos(Float.toString(historial.getPeso()), Integer.toString(historial.getNumero()), cedula, Float.toString(historial.getAltura()), antecedente.getOtros_fis(), 
+					antecedente.getAlcohol(), antecedente.getAlimentacion(), antecedente.getCatarsis(), antecedente.getDiuresis(), antecedente.getDrogas(), antecedente.getInfusiones(), 
+					antecedente.getSexualidad(), antecedente.getSueno(), antecedente.getTabaco(), historial.getAnteFamiliar(), antecedente.getAlergicos(), historial.getAnteEnfAct(), 
+					antecedente.getCardiacas(), antecedente.getEndocrinologicos(), historial.getEnfActual(), antecedente.getEpidemiologicos(), antecedente.getGastrointestinales(), 
+					antecedente.getGinecologos(), antecedente.getHematologicos(), antecedente.getInfectologicos(), antecedente.getNeufrourologicos(),antecedente.getNeufrourologicos(), 
+					antecedente.getOtras_enf(), antecedente.getQuirurgicos(), antecedente.getRespiratorias(), antecedente.getTraumatoloficos(), antecedente.getEnf_infancia());
+			this.vtnHistorial.setSexo(historial.getSexo());
+		}
 
 	}
 	

@@ -46,6 +46,7 @@ public class VentanaPaciente extends javax.swing.JFrame{
 	private JButton btnHistorial;
 	private JComboBox comboBox_Seguro;
 	private JComboBox comboBox_NombSeguros;
+	private JButton btnConsultar;
 	
 	public VentanaPaciente(DefaultComboBoxModel seguros) {
 		super();
@@ -60,7 +61,7 @@ public class VentanaPaciente extends javax.swing.JFrame{
 			getContentPane().setForeground(Color.BLUE);
 			setTitle("Registrar Paciente");
 			
-			JLabel lblRegistrarP = new JLabel("Registrar Paciente");
+			JLabel lblRegistrarP = new JLabel("Gestionar Paciente");
 			lblRegistrarP.setForeground(Color.BLUE);
 			lblRegistrarP.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 25));
 			lblRegistrarP.setHorizontalAlignment(SwingConstants.CENTER);
@@ -94,6 +95,8 @@ public class VentanaPaciente extends javax.swing.JFrame{
 			comboBox_NombSeguros.setModel(seguros);
 			
 			JLabel lblNewLabel_2 = new JLabel("Nombre del Seguro :");
+			
+			btnConsultar = new JButton("Consultar");
 			GroupLayout gl_panel_DPer = new GroupLayout(panel_DPer);
 			gl_panel_DPer.setHorizontalGroup(
 				gl_panel_DPer.createParallelGroup(Alignment.LEADING)
@@ -101,14 +104,14 @@ public class VentanaPaciente extends javax.swing.JFrame{
 						.addContainerGap()
 						.addGroup(gl_panel_DPer.createParallelGroup(Alignment.LEADING)
 							.addGroup(gl_panel_DPer.createSequentialGroup()
-								.addComponent(lblNroHist, GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+								.addComponent(lblNroHist, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addPreferredGap(ComponentPlacement.RELATED))
 							.addGroup(gl_panel_DPer.createSequentialGroup()
-								.addComponent(lblNroSeguro, GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+								.addComponent(lblNroSeguro, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addGap(8)))
 						.addGroup(gl_panel_DPer.createParallelGroup(Alignment.LEADING)
-							.addComponent(textField_NroSeguro, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(textField_NroHist, GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE))
+							.addComponent(textField_NroSeguro, GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+							.addComponent(textField_NroHist, GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
 						.addPreferredGap(ComponentPlacement.RELATED)
 						.addComponent(btnBuscarHist, GroupLayout.PREFERRED_SIZE, 29, Short.MAX_VALUE)
 						.addGap(9)
@@ -116,13 +119,16 @@ public class VentanaPaciente extends javax.swing.JFrame{
 						.addPreferredGap(ComponentPlacement.RELATED)
 						.addGroup(gl_panel_DPer.createParallelGroup(Alignment.TRAILING)
 							.addGroup(gl_panel_DPer.createSequentialGroup()
-								.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addGap(29)
-								.addComponent(comboBox_Seguro, 0, 63, Short.MAX_VALUE))
+								.addGap(2)
+								.addComponent(btnConsultar, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+								.addGap(15)
+								.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+								.addGap(18)
+								.addComponent(comboBox_Seguro, 0, 50, Short.MAX_VALUE))
 							.addGroup(gl_panel_DPer.createSequentialGroup()
-								.addComponent(lblNewLabel_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(lblNewLabel_2, GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
 								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(comboBox_NombSeguros, 0, 109, Short.MAX_VALUE)))
+								.addComponent(comboBox_NombSeguros, 0, 120, Short.MAX_VALUE)))
 						.addContainerGap())
 			);
 			gl_panel_DPer.setVerticalGroup(
@@ -132,19 +138,16 @@ public class VentanaPaciente extends javax.swing.JFrame{
 						.addGroup(gl_panel_DPer.createParallelGroup(Alignment.BASELINE)
 							.addComponent(textField_NroHist, GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
 							.addComponent(lblNroHist, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGroup(gl_panel_DPer.createSequentialGroup()
-								.addGap(9)
-								.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 							.addComponent(btnBuscarHist, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(btnHistorial, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGroup(gl_panel_DPer.createSequentialGroup()
-								.addGap(3)
-								.addComponent(comboBox_Seguro)))
+							.addComponent(comboBox_Seguro, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(btnConsultar))
 						.addPreferredGap(ComponentPlacement.UNRELATED)
 						.addGroup(gl_panel_DPer.createParallelGroup(Alignment.BASELINE)
 							.addComponent(lblNroSeguro, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(textField_NroSeguro, GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-							.addComponent(comboBox_NombSeguros)
+							.addComponent(comboBox_NombSeguros, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addGroup(gl_panel_DPer.createSequentialGroup()
 								.addGap(6)
 								.addComponent(lblNewLabel_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -372,7 +375,7 @@ public class VentanaPaciente extends javax.swing.JFrame{
 								.addPreferredGap(ComponentPlacement.RELATED)
 								.addComponent(btnEliminar, GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
 								.addGap(140)
-								.addComponent(btnVolver, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
+								.addComponent(btnVolver, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE))
 							.addComponent(panel_DPer, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
 							.addComponent(panel, 0, 0, Short.MAX_VALUE))
 						.addGap(24))
@@ -449,6 +452,7 @@ public class VentanaPaciente extends javax.swing.JFrame{
 		btnVolver.addActionListener(actionListener);
 		btnBuscarHist.addActionListener(actionListener);
 		btnHistorial.addActionListener(actionListener);
+		btnConsultar.addActionListener(actionListener);
 	}
 	
 	public void setCedula(String ced) {
@@ -586,33 +590,41 @@ public class VentanaPaciente extends javax.swing.JFrame{
 	}
 	
 	public void interfazRegistro() {
-		btnEliminar.setEnabled(false);;
-		btnModificar.setEnabled(false);
 		btnEliminar.setVisible(false);
 		btnModificar.setVisible(false);
 		btnBuscarHist.setVisible(false);
+		btnConsultar.setVisible(false);
 	}
 	
 	public void interfazModificar() {
-		btnIncluir.setEnabled(false);
 		btnIncluir.setVisible(false);
 		textField_Ced.setEditable(false);
 		fechaNac.setEnabled(false);
 		textField_NroHist.setEditable(false);
-		btnEliminar.setEnabled(false);
 		btnEliminar.setVisible(false);
 		btnHistorial.setVisible(false);
+		btnConsultar.setVisible(false);
 	}
 	
 	public void interfazEliminar() {
-		btnIncluir.setEnabled(false);
-		btnModificar.setEnabled(false);
 		btnModificar.setVisible(false);
 		btnIncluir.setVisible(false);
 		textField_Ced.setEditable(false);
 		fechaNac.setEnabled(false);
 		textField_NroHist.setEditable(false);
 		btnHistorial.setVisible(false);
+		btnBuscarHist.setVisible(false);
+	}
+	
+	public void interfazConsultar() {
+		btnModificar.setVisible(false);
+		btnEliminar.setVisible(false);
+		btnIncluir.setVisible(false);
+		textField_Ced.setEditable(false);
+		fechaNac.setEnabled(false);
+		textField_NroHist.setEditable(false);
+		btnHistorial.setVisible(false);
+		btnBuscarHist.setVisible(false);
 	}
 	
 	public boolean validarCamposLlenos() {
@@ -631,5 +643,4 @@ public class VentanaPaciente extends javax.swing.JFrame{
 		else
 			return false;
 	}
-	
 }

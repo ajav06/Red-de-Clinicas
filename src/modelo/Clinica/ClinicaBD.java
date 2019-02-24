@@ -132,6 +132,11 @@ public class ClinicaBD extends ConexionBD
 		this.cerrarComando();
 		return nombres;
 	}
+<<<<<<< HEAD
+=======
+	
+	//public DefaultComboBoxModel 
+>>>>>>> branch 'master' of https://github.com/ajav06/Red-de-Clinicas.git
 
 	public DefaultComboBoxModel nombresServicios() throws SQLException{
 		DefaultComboBoxModel nombres = new DefaultComboBoxModel();
