@@ -20,13 +20,18 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 	private JButton btnMedicos;
 	private JButton btnPaciente;
 	private JButton btnSeguros;
+
+	private JButton btnConsultas;
+
 	private JButton btnCitasMedico;
+
 	
 	public VentanaPrincipal() {
 		super();
 		getContentPane().setBackground(new Color(64, 224, 208));
 		initGUI();
-		setSize(296, 406);
+
+		setSize(296, 408);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
@@ -58,9 +63,11 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 					.addGroup(groupLayout.createSequentialGroup()
 						.addComponent(lblInicio_1, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
 						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
-						.addContainerGap())
-			);
+
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 281, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(62, Short.MAX_VALUE))
+
+						);
 			
 			btnClinicas = new JButton("Clinica");
 			btnClinicas.setBackground(new Color(70, 130, 180));
@@ -77,13 +84,26 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 			btnSeguros = new JButton("Seguros");
 			btnSeguros.setBackground(new Color(70, 130, 180));
 			
+		btnConsultas = new JButton("Consultas");
+			
+
 			btnCitasMedico = new JButton("Citas Medico");
 			btnCitasMedico.setBackground(new Color(70, 130, 180));
+
 			GroupLayout gl_panel = new GroupLayout(panel);
 			gl_panel.setHorizontalGroup(
 				gl_panel.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_panel.createSequentialGroup()
 						.addGap(32)
+
+						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+							.addComponent(btnSeguros, GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+							.addComponent(btnPaciente, GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+							.addComponent(btnClinicas, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(btnEspecialidades, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(btnMedicos, GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+							.addComponent(btnConsultas, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+
 						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 							.addComponent(btnCitasMedico, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)
 							.addComponent(btnSeguros, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)
@@ -108,9 +128,11 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 						.addGap(18)
 						.addComponent(btnSeguros)
 						.addGap(18)
+						.addComponent(btnConsultas)
+						//.addContainerGap(52, Short.MAX_VALUE))
 						.addComponent(btnCitasMedico)
-						.addContainerGap(13, Short.MAX_VALUE))
-			);
+						.addContainerGap(13, Short.MAX_VALUE)));
+
 			panel.setLayout(gl_panel);
 			getContentPane().setLayout(groupLayout);
 		} catch (Exception e){
@@ -124,6 +146,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 		btnMedicos.addActionListener(actionListener);
 		btnPaciente.addActionListener(actionListener);
 		btnSeguros.addActionListener(actionListener);
+		btnConsultas.addActionListener(actionListener);
 		btnCitasMedico.addActionListener(actionListener);
 	}
 }

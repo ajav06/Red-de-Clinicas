@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 import modelo.Medico.Trabajo;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 import modelo.ConexionBD;
@@ -218,6 +219,19 @@ public class MedicoBD extends ConexionBD{
 		}
 	}
 
+	public DefaultComboBoxModel nombresMedicos() throws SQLException{
+		DefaultComboBoxModel nombres = new DefaultComboBoxModel();
+		resultSet = this.ejecutarQuery("SELECT nombres, apellidos FROM medico WHERE estatus = 'a' ");
+		try {
+			while (resultSet.next())
+				nombres.addElement(resultSet.getString("nombres") +" "+ resultSet.getString("apellidos"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		this.cerrarComando();
+		return nombres;
+	}
+
 	public List<ListadoCitas> consultarCitasMedico(String cedula, Date fecha_Ini, Date fecha_Fin, int tipo) throws SQLException{
 		ListadoCitas cita= null;
 		List<ListadoCitas> citasMedicas = new ArrayList<ListadoCitas>();
@@ -243,7 +257,7 @@ public class MedicoBD extends ConexionBD{
 							+formatter.format(fecha_Ini)+"' AND fecha<='"+formatter.format(fecha_Fin)+"' ");
 					while(rS.next()) {
 						String ced_Paciente=rS.getString("ced_paciente");
-						String tipo_Cita="Intervencion Quírurjica";
+						String tipo_Cita="Intervencion Quirurgica";
 						int cod_Trabajo=rS.getInt("cod_trabajo");
 						String nomb_Clinica=resultSet.getString("nombre");
 						Date fecha=rS.getDate("fecha");
@@ -267,7 +281,7 @@ public class MedicoBD extends ConexionBD{
 							+fecha_Ini+"' AND fecha<='"+fecha_Fin+"' ");
 					while(rS.next()) {
 						String ced_Paciente=rS.getString("ced_paciente");
-						String tipo_Cita="Intervencion Quírurjica";
+						String tipo_Cita="Intervencion Quirurgica";
 						int cod_Trabajo=rS.getInt("cod_trabajo");
 						String nomb_Clinica=resultSet.getString("nombre");
 						Date fecha=rS.getDate("fecha");

@@ -11,6 +11,8 @@ import controlador.Especialidad.ControladorVtnListaEspecialidades;
 import controlador.Especialidad.ControladorMenuEspecialidades;
 import controlador.Medico.ControladorVtnCitasMedico;
 import controlador.Medico.ControladorVtnListMedicos;
+import controlador.Consulta.ControladorVtnListaConsulta;
+import controlador.Consulta.ControladorVtnRegistrarConsulta;
 import controlador.Paciente.ControladorVtnListPacientes;
 import controlador.Seguro.ControladorVtnSeguro;
 import controlador.Clinica.ControladorVentanaMenuClinica;
@@ -62,6 +64,15 @@ public class ControladorVtnPrincipal implements ActionListener{
 				// TODO Auto-generated catch block
 				JOptionPane.showMessageDialog(null, e1.getClass() + e1.getMessage());
 			}
+		}
+		else if (actionCommand.equals("Consultas")) {
+			try {
+				new ControladorVtnListaConsulta();
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		
 		}
 		else if(actionCommand.equals("Citas Medico")) {
 			try {
