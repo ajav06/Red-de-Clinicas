@@ -24,6 +24,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 	private JButton btnConsultas;
 
 	private JButton btnCitasMedico;
+	private JButton btnReportes;
+	private JButton btnSalir;
 
 	
 	public VentanaPrincipal() {
@@ -31,7 +33,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 		getContentPane().setBackground(new Color(64, 224, 208));
 		initGUI();
 
-		setSize(296, 455);
+		setSize(296, 549);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
@@ -63,8 +65,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 					.addGroup(groupLayout.createSequentialGroup()
 						.addComponent(lblInicio_1, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
 						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 333, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(113, Short.MAX_VALUE))
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 426, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(57, Short.MAX_VALUE))
 			);
 			
 			btnClinicas = new JButton("Clinica");
@@ -88,6 +90,13 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 
 			btnCitasMedico = new JButton("Citas Medico");
 			btnCitasMedico.setBackground(new Color(70, 130, 180));
+			
+			btnReportes = new JButton("Reportes");
+			btnReportes.setBackground(new Color(70, 130, 180));
+			
+			btnSalir = new JButton("Salir");
+			btnSalir.setForeground(Color.WHITE);
+			btnSalir.setBackground(Color.RED);
 
 			GroupLayout gl_panel = new GroupLayout(panel);
 			gl_panel.setHorizontalGroup(
@@ -95,6 +104,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 					.addGroup(gl_panel.createSequentialGroup()
 						.addGap(32)
 						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+							.addComponent(btnSalir, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnReportes, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)
 							.addComponent(btnCitasMedico, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)
 							.addGroup(gl_panel.createSequentialGroup()
 								.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
@@ -130,7 +141,11 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 						.addComponent(btnConsultas)
 						.addGap(18)
 						.addComponent(btnCitasMedico)
-						.addContainerGap(16, Short.MAX_VALUE))
+						.addGap(18)
+						.addComponent(btnReportes)
+						.addGap(18)
+						.addComponent(btnSalir)
+						.addContainerGap(23, Short.MAX_VALUE))
 			);
 
 			panel.setLayout(gl_panel);
