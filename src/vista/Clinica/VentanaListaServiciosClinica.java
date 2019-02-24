@@ -35,13 +35,15 @@ public class VentanaListaServiciosClinica extends JFrame {
 	private JButton btnSalir;
 	private JButton btnLimpiar;
 	private JButton btnBuscar;
-	private JComboBox cbDescServicio;
+	public JComboBox cbDescServicio;
+	private JComboBox cbTipo;
+	public boolean tipoInterfaz;
 
 
 	/**
 	 * Create the frame.
 	 */
-	public VentanaListaServiciosClinica() {
+	public VentanaListaServiciosClinica(String nombclini) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 560, 566);
 		contentPane = new JPanel();
@@ -103,7 +105,6 @@ public class VentanaListaServiciosClinica extends JFrame {
 		
 		btnIncluir = new JButton("Incluir");
 		btnModificar = new JButton("Modificar");
-		btnModificar.setEnabled(false);
 		btnSalir = new JButton("Salir");
 		btnLimpiar = new JButton("Limpiar");
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
@@ -160,8 +161,8 @@ public class VentanaListaServiciosClinica extends JFrame {
 		
 		JLabel lblTipo = new JLabel("Tipo:");
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Todos", "Intervención", "Consulta"}));
+		cbTipo = new JComboBox();
+		cbTipo.setModel(new DefaultComboBoxModel(new String[] {"Todos", "Intervención", "Consulta"}));
 		
 		btnBuscar = new JButton("Buscar");
 
@@ -172,7 +173,7 @@ public class VentanaListaServiciosClinica extends JFrame {
 					.addContainerGap()
 					.addComponent(lblTipo)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 307, GroupLayout.PREFERRED_SIZE)
+					.addComponent(cbTipo, GroupLayout.PREFERRED_SIZE, 307, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addComponent(btnBuscar, GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
 					.addContainerGap())
@@ -183,12 +184,14 @@ public class VentanaListaServiciosClinica extends JFrame {
 					.addContainerGap()
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblTipo)
-						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(cbTipo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnBuscar))
 					.addContainerGap(43, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
 		contentPane.setLayout(gl_contentPane);
+		tipoInterfaz = false;
+		lblNombre.setText(nombclini);
 	}
 	
 	public void setResultados(AbstractTableModel abstractTableModel) {
@@ -221,12 +224,58 @@ public class VentanaListaServiciosClinica extends JFrame {
 	public void interfazModificar() {
 		btnIncluir.setEnabled(false);
 		btnModificar.setEnabled(true);
+		cbDescServicio.setEnabled(false);
+		tipoInterfaz = true;
+		cbDescServicio.setSelectedItem(String.valueOf(tblServicios.getModel().getValueAt(tblServicios.getSelectedRow(), 2)));
 	}
 	
 	public void limpiar() {
 		btnIncluir.setEnabled(true);
-		btnModificar.setEnabled(false);
+		cbDescServicio.setEnabled(true);
 		txtPrecioServicio.setText("");
 		cbDescServicio.setSelectedIndex(0);
+		tipoInterfaz = false;
+		cbDescServicio.setSelectedIndex(0);
+	}
+	
+	public char tipoFiltrado() {
+		char t = 'x';
+		switch(cbTipo.getSelectedIndex()) {
+		case 1:
+			t = 'i';
+			break;
+		case 2:
+			t = 'c';
+			break;
+		}
+		return t;
+	}
+	
+	public boolean camposLlenos() {
+		if (txtPrecioServicio.getText()==null) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	public String codSeleccionado() {
+		return String.valueOf(tblServicios.getSelectedRow());
+	}
+	
+	public String codServicioSeleccionado() {
+		return String.valueOf(cbDescServicio.getSelectedIndex());
+	}
+	
+	public void setPrecio(float precio) {
+		this.txtPrecioServicio.setText(String.valueOf(precio));
+	}
+	
+	public float getPrecio() {
+		return Float.valueOf(this.txtPrecioServicio.getText());
+	}
+	
+	public float obtenerPrecioSeleccionado() {
+		return Float.valueOf(String.valueOf(tblServicios.getModel().getValueAt(tblServicios.getSelectedRow(), 3)));
 	}
 }

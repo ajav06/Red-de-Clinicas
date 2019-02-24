@@ -132,8 +132,145 @@ public class ClinicaBD extends ConexionBD
 		this.cerrarComando();
 		return nombres;
 	}
-	
-	public DefaultComboBoxModel 
 
+	public DefaultComboBoxModel nombresServicios() throws SQLException{
+		DefaultComboBoxModel nombres = new DefaultComboBoxModel();
+		resultSet = this.ejecutarQuery("select nombre from servicio order by codigo asc");
+		try {
+			while (resultSet.next())
+				nombres.addElement(resultSet.getString("nombre"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		this.cerrarComando();
+		return nombres;
+	}
+	
+	public List<OfertaServicio> consultarServiciosClinica(String codclini) throws SQLException{
+		List<OfertaServicio> os = new ArrayList<OfertaServicio>();
+		resultSet = this.ejecutarQuery("select codigo, (select nombre from servicio where servicio.codigo=ofertaservicio.cod_servicio) as nombre, (select tipo_servicio from servicio where servicio.codigo = ofertaservicio.cod_servicio) as tipo, precio from ofertaservicio where cod_clinica='"+codclini+"'");
+		try {
+			while (resultSet.next()) {
+				String codigo = resultSet.getString("codigo");
+				String tipo_s = null;
+				switch(resultSet.getString("tipo")) {
+				case "i":
+					tipo_s = "Intervención";
+					break;
+				
+				case "c":
+					tipo_s = "Consulta";
+					break;
+				}
+				
+				String nombre = resultSet.getString("nombre");
+				float precio = resultSet.getFloat("precio");
+				
+				OfertaServicio o = new OfertaServicio(codigo, tipo_s, nombre, precio);
+				os.add(o);
+			}
+		} catch (SQLException e) {
+	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+			e.printStackTrace();
+		} finally {
+			this.cerrarComando();
+		}
+		return os;
+	}
+	
+	public List<OfertaServicio> consultarServiciosClinicaFiltrado(String codclini, char tipo) throws SQLException{
+		List<OfertaServicio> os = new ArrayList<OfertaServicio>();
+		resultSet = this.ejecutarQuery("select codigo, (select nombre from servicio where servicio.codigo=ofertaservicio.cod_servicio and servicio.tipo_servicio = '"+tipo+"') as nombre, (select tipo_servicio from servicio where servicio.codigo = ofertaservicio.cod_servicio and servicio.tipo_servicio = '"+tipo+"') as tipo, precio from ofertaservicio where cod_clinica='"+codclini+"'");
+		try {
+			while (resultSet.next()) {
+				if (resultSet.getString("nombre")!=null) {
+					String codigo = resultSet.getString("codigo");
+					String tipo_s = null;
+					switch(resultSet.getString("tipo")) {
+					case "i":
+						tipo_s = "Intervención";
+						break;
+					
+					case "c":
+						tipo_s = "Consulta";
+						break;
+					}
+					
+					String nombre = resultSet.getString("nombre");
+					float precio = resultSet.getFloat("precio");
+					
+					OfertaServicio o = new OfertaServicio(codigo, tipo_s, nombre, precio);
+					os.add(o);
+				}
+			}
+		} catch (SQLException e) {
+	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+			e.printStackTrace();
+		} finally {
+			this.cerrarComando();
+		}
+		return os;
+	}
+	
+	public void modificarPrecioServicio(float precio, String cod) {
+		this.actuRegistro("ofertaservicio", "precio = '"+ String.valueOf(precio) + "'", "codigo", "'"+cod+"'");
+	}
+	
+	public String nuevoCodOfertaServicio() {
+		ResultSet rs=null;
+		String ult = null;
+		try {
+			 Class.forName(getDriver());
+		     c = DriverManager.getConnection(getUrl()+getNombBD(),getUsuario(), getContrasenna());
+	         c.setAutoCommit(false);
+			
+	         stmt = c.createStatement();
+	         String sql = "SELECT MAX(codigo) FROM ofertaservicio";
+	         rs = stmt.executeQuery(sql);
+	         rs.next();
+        	 int u = rs.getInt("max");
+        	 u++;
+        	 ult = String.valueOf(u);
+		  } catch (Exception e) {
+	         e.printStackTrace();
+	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	      }
+		return ult;
+	}
+	
+	public void registrarOfertaServ(String cod_serv, String cod_clini, float precio) {
+		this.crearRegistro("ofertaservicio", "codigo, cod_servicio, cod_clinica, precio", "'"+nuevoCodOfertaServicio()+"','"+cod_serv+"','"+cod_clini+"',"+String.valueOf(precio));
+	}
+	
+	public boolean verificarExistenciaOfertaServ(String cod_serv, String cod_clini) {
+		ResultSet rs=null;
+		boolean exis = false;
+		try {
+			 Class.forName(getDriver());
+		     c = DriverManager.getConnection(getUrl()+getNombBD(),getUsuario(), getContrasenna());
+	         c.setAutoCommit(false);
+			
+	         stmt = c.createStatement();
+	         String sql = "SELECT COUNT(codigo) FROM ofertaservicio WHERE cod_servicio = '"+cod_serv+"' and cod_clinica = '"+cod_clini+"'";
+	         rs = stmt.executeQuery(sql);
+	         rs.next();
+        	 int u = rs.getInt("count");
+	         JOptionPane.showMessageDialog(this, String.valueOf(u));
+
+        	 switch(u) {
+        	 case 0:
+        		 exis = false;
+        		 break;
+        	 case 1:
+        		 exis = true;
+        		 break;
+        	 }
+		  } catch (Exception e) {
+	         e.printStackTrace();
+	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	      }
+		return exis;
+	}
+	
 }
 

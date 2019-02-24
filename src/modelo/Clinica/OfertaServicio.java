@@ -2,14 +2,24 @@ package modelo.Clinica;
 
 public class OfertaServicio {
 
+	private String codigo;
 	private String tipo_servicio;
 	private String descripcion;
 	private float precio;
 	
-	public OfertaServicio(String tipo, String descripcion, float monto) {
+	public OfertaServicio(String codigo, String tipo, String descripcion, float monto) {
+		this.codigo = codigo;
 		this.tipo_servicio = tipo;
 		this.descripcion = descripcion;
 		this.precio = monto;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getTipo_servicio() {

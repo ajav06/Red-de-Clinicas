@@ -1,6 +1,8 @@
 package controlador.Clinica;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
 import modelo.Clinica.Clinica;
 import modelo.Clinica.ClinicaBD;
 import vista.Clinica.VentanaActualizarClinica;
@@ -33,6 +35,13 @@ public class ControladorVtnActuClinica implements ActionListener
 		else if(actionCommand.equals("Cancelar"))
 		{
 			vtnActuCli.salir();
+		} else if (actionCommand.equals("Consultar")) {
+			try {
+				ControladorVtnListaServClinica c = new ControladorVtnListaServClinica(vtnActuCli.getCodigo(), vtnActuCli.getNombre());
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 	
