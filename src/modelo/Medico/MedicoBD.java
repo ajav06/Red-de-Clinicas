@@ -66,7 +66,7 @@ public class MedicoBD extends ConexionBD{
 				medicos.add(medico);
 			}
 		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(this, e.getMessage());
+			JOptionPane.showMessageDialog(null, this, e.getMessage(), 0);
 			e.printStackTrace();
 		}
 		this.cerrarComando();
@@ -196,7 +196,7 @@ public class MedicoBD extends ConexionBD{
 	         ult = rs.getInt("count");
 		  } catch (Exception e) {
 	         e.printStackTrace();
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 	      }
 		return ult;
 	}
@@ -211,7 +211,7 @@ public class MedicoBD extends ConexionBD{
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+			JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 		}
 	}
 	
@@ -222,7 +222,7 @@ public class MedicoBD extends ConexionBD{
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+			JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 		}
 	}
 	
@@ -242,7 +242,7 @@ public class MedicoBD extends ConexionBD{
 	         n = rs.getInt("count");
 		  } catch (Exception e) {
 	         e.printStackTrace();
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 	      }
 		return n;
 	}
@@ -251,7 +251,7 @@ public class MedicoBD extends ConexionBD{
 		try {
 			this.actuRegistro("medico", "estatus='a'", "cedula","'"+cedula+"'");
 		}catch (Exception e) {
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 		}
 	}
 

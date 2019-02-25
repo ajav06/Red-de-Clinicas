@@ -118,7 +118,7 @@ public class SeguroDB extends ConexionBD {
         	 ult = resultSet.getInt("count");
 		  } catch (Exception e) {
 	         e.printStackTrace();
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 	      }
 		return ult;
 	}

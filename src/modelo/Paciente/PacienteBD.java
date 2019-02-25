@@ -130,7 +130,7 @@ public class PacienteBD extends ConexionBD{
 	         n = rs.getInt("count");
 		  } catch (Exception e) {
 	         e.printStackTrace();
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 	      }
 		return n;
 	}
@@ -139,7 +139,7 @@ public class PacienteBD extends ConexionBD{
 		try {
 			this.actuRegistro("paciente", "estatus='a'", "cedula","'"+cedula+"'");
 		}catch (Exception e) {
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 		}
 	}
 

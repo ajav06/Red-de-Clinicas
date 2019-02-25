@@ -1,7 +1,7 @@
 package modelo;
-import modelo.Conexion;
+import bean.ConexionUniversalBD;
 
-public class ConexionBD extends Conexion{
+public class ConexionBD extends ConexionUniversalBD{
 	
 	public ConexionBD() {
 		super();

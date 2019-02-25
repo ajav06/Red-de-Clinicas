@@ -53,7 +53,7 @@ public class ClinicaBD extends ConexionBD
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-	        JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	        JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 		}
 		this.cerrarComando();
 		return Clinicas;
@@ -117,7 +117,7 @@ public class ClinicaBD extends ConexionBD
 				clinicas.add(clinica);
 			}
 		} catch (SQLException e) {
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 			e.printStackTrace();
 		}
 		this.cerrarComando();
@@ -139,7 +139,7 @@ public class ClinicaBD extends ConexionBD
         	 ult = rs.getInt("count");
 		  } catch (Exception e) {
 	         e.printStackTrace();
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 	      }
 		return ult;
 	}
@@ -198,7 +198,7 @@ public class ClinicaBD extends ConexionBD
 				os.add(o);
 			}
 		} catch (SQLException e) {
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 			e.printStackTrace();
 		} finally {
 			this.cerrarComando();
@@ -236,7 +236,7 @@ public class ClinicaBD extends ConexionBD
 				}
 			}
 		} catch (SQLException e) {
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 			e.printStackTrace();
 		} finally {
 			this.cerrarComando();
@@ -265,7 +265,7 @@ public class ClinicaBD extends ConexionBD
         	 ult = String.valueOf(u);
 		  } catch (Exception e) {
 	         e.printStackTrace();
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 	      }
 		return ult;
 	}
@@ -298,7 +298,7 @@ public class ClinicaBD extends ConexionBD
         	 }
 		  } catch (Exception e) {
 	         e.printStackTrace();
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 	      }
 		return exis;
 	}
@@ -355,7 +355,7 @@ public class ClinicaBD extends ConexionBD
 				}
 			}
 		} catch (SQLException e) {
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 			e.printStackTrace();
 		} finally {
 			this.cerrarComando();
@@ -427,7 +427,7 @@ public class ClinicaBD extends ConexionBD
 				}
 			}
 		} catch (SQLException e) {
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 			e.printStackTrace();
 		} finally {
 			this.cerrarComando();

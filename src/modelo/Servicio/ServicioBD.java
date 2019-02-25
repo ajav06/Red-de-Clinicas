@@ -32,8 +32,8 @@ public class ServicioBD extends ConexionBD{
 			String nombre = resultSet.getString(2);
 			String descripcion = resultSet.getString(3);
 			char tipo = resultSet.getString(5).charAt(0);
-			Servicio servicio= new Servicio.Builder(cod_especialidad)
-					.cod_especialida(codigo)
+			Servicio servicio= new Servicio.Builder(codigo)
+					.cod_especialida(cod_especialidad)
 					.nombr(nombre)
 					.descripcio(descripcion)
 					.tip(tipo)
@@ -54,8 +54,8 @@ public class ServicioBD extends ConexionBD{
 			String nombre = resultSet.getString(2);
 			String descripcion = resultSet.getString(3);
 			char tipo = resultSet.getString(5).charAt(0);
-			Servicio servicio= new Servicio.Builder(cod_especialidad)
-					.cod_especialida(codigo)
+			Servicio servicio= new Servicio.Builder(codigo)
+					.cod_especialida(cod_especialidad)
 					.nombr(nombre)
 					.descripcio(descripcion)
 					.tip(tipo)
@@ -91,7 +91,7 @@ public class ServicioBD extends ConexionBD{
 	         n = rs.getInt("count");
 		  } catch (Exception e) {
 	         e.printStackTrace();
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 	      }
 		return n;
 	}
@@ -100,7 +100,7 @@ public class ServicioBD extends ConexionBD{
 		try {
 			this.actuRegistro("servicio", "estatus='a'", "codigo","'"+codigo+"'");
 		}catch (Exception e) {
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 		}
 	}
 	
@@ -118,7 +118,7 @@ public class ServicioBD extends ConexionBD{
         	 ult = resultSet.getInt("count");
 		  } catch (Exception e) {
 	         e.printStackTrace();
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 	      }
 		return ult;
 	}
@@ -133,8 +133,8 @@ public class ServicioBD extends ConexionBD{
 			String nombre = resultSet.getString(2);
 			String descripcion = resultSet.getString(3);
 			char tipo = resultSet.getString(5).charAt(0);
-			servicio= new Servicio.Builder(cod_especialidad)
-					.cod_especialida(codigo)
+			servicio= new Servicio.Builder(codigo)
+					.cod_especialida(cod_especialidad)
 					.nombr(nombre)
 					.descripcio(descripcion)
 					.tip(tipo)
@@ -154,8 +154,8 @@ public class ServicioBD extends ConexionBD{
 			String nombre = resultSet.getString(2);
 			String descripcion = resultSet.getString(3);
 			char tipo = resultSet.getString(5).charAt(0);
-			servicio= new Servicio.Builder(cod_especialidad)
-					.cod_especialida(codigo)
+			servicio= new Servicio.Builder(codigo)
+					.cod_especialida(cod_especialidad)
 					.nombr(nombre)
 					.descripcio(descripcion)
 					.tip(tipo)

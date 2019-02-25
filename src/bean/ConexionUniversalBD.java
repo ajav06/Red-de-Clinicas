@@ -1,10 +1,8 @@
-package modelo;
+package bean;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
-import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
-
-public class Conexion extends javax.swing.JFrame{
+public class ConexionUniversalBD implements java.io.Serializable{
 	protected Connection c = null;
 	protected Statement stmt = null;
 	private String driver;
@@ -13,7 +11,7 @@ public class Conexion extends javax.swing.JFrame{
 	private String usuario;
 	private String contrasenna;
 	
-	public Conexion() {
+	public ConexionUniversalBD() {
 		super();
 	}
 	
@@ -31,7 +29,7 @@ public class Conexion extends javax.swing.JFrame{
 		      c = DriverManager.getConnection(getUrl()+getNombBD(),getUsuario(), getContrasenna());
 	      } catch (Exception e) {
 	         e.printStackTrace();
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 	      }
 //	      JOptionPane.showMessageDialog(this, "Conexi�n Exitosa con la Base de Datos");
 	}
@@ -49,7 +47,7 @@ public class Conexion extends javax.swing.JFrame{
 	          c.close();
 	      } catch (Exception e) {
 		      e.printStackTrace();
-		      JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+		      JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 		  }
 //		  JOptionPane.showMessageDialog(this, "Tabla Creada con �xito");
 	}
@@ -68,7 +66,7 @@ public class Conexion extends javax.swing.JFrame{
 	         cerrarComando();
 		  } catch (Exception e) {
 	         e.printStackTrace();
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 	      }
 //	      JOptionPane.showMessageDialog(this, "Registro Creado de Manera Exitosa");
 	}
@@ -87,7 +85,7 @@ public class Conexion extends javax.swing.JFrame{
 	         cerrarComando();
 		  } catch (Exception e) {
 	         e.printStackTrace();
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 	      }
 //	      JOptionPane.showMessageDialog(this, "Registro Actualizado de Manera Exitosa");
 	}
@@ -106,7 +104,7 @@ public class Conexion extends javax.swing.JFrame{
 	         cerrarComando();
 		  } catch (Exception e) {
 	         e.printStackTrace();
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 	      }
 //	      JOptionPane.showMessageDialog(this, "Registro Eliminado de Manera Exitosa");
 	}
@@ -125,7 +123,7 @@ public class Conexion extends javax.swing.JFrame{
 	         
 		  } catch (Exception e) {
 	         e.printStackTrace();
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 	      }
 //	      JOptionPane.showMessageDialog(this, "Registro Buscado de Manera Exitosa");
 		return rs;		
@@ -144,7 +142,7 @@ public class Conexion extends javax.swing.JFrame{
 	         
 		  } catch (Exception e) {
 	         e.printStackTrace();
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 	      }
 //	      JOptionPane.showMessageDialog(this, "Registro Buscado de Manera Exitosa");
 		return rs;		
@@ -163,7 +161,7 @@ public class Conexion extends javax.swing.JFrame{
 	         
 		  } catch (Exception e) {
 	         e.printStackTrace();
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 	      }
 //	      JOptionPane.showMessageDialog(this, "Registro Buscado de Manera Exitosa");
 		return rs;		
@@ -182,7 +180,7 @@ public class Conexion extends javax.swing.JFrame{
 	         
 		  } catch (Exception e) {
 	         e.printStackTrace();
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 	      }
 //	      JOptionPane.showMessageDialog(this, "Operaci�n Realizada de Manera Exitosa");
 	      return rs;
@@ -198,7 +196,7 @@ public class Conexion extends javax.swing.JFrame{
 	        rs = stmt.executeQuery(query);
 	    } catch (Exception e) {
 	    	e.printStackTrace();
-	        JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	        JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 	    }
 //	    JOptionPane.showMessageDialog(this, "Operaci�n Realizada de Manera Exitosa");
 	    return rs;

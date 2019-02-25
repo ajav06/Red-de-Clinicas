@@ -51,7 +51,7 @@ private ResultSet resultSet;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-	        JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	        JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 		}
 		this.cerrarComando();
 		return Consultas;
@@ -121,7 +121,7 @@ private ResultSet resultSet;
 				consultas.add(consulta);
 			}
 		} catch (SQLException e) {
-	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+	         JOptionPane.showMessageDialog(null, this, e.getClass().getName()+": "+e.getMessage(), 0);
 			e.printStackTrace();
 		}
 		this.cerrarComando();
