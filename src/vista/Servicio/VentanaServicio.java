@@ -149,16 +149,16 @@ public class VentanaServicio extends JFrame{
 			
 			btnEliminar = new JButton("Eliminar");
 			
-			JLabel label_2 = new JLabel("Gestionar Paciente");
-			label_2.setHorizontalAlignment(SwingConstants.CENTER);
-			label_2.setForeground(Color.BLUE);
-			label_2.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 25));
+			JLabel lblGestionarServicio = new JLabel("Gestionar Servicio");
+			lblGestionarServicio.setHorizontalAlignment(SwingConstants.CENTER);
+			lblGestionarServicio.setForeground(Color.BLUE);
+			lblGestionarServicio.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 25));
 			GroupLayout groupLayout = new GroupLayout(getContentPane());
 			groupLayout.setHorizontalGroup(
 				groupLayout.createParallelGroup(Alignment.TRAILING)
 					.addGroup(groupLayout.createSequentialGroup()
 						.addGap(31)
-						.addComponent(label_2, GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+						.addComponent(lblGestionarServicio, GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
 						.addGap(27))
 					.addGroup(groupLayout.createSequentialGroup()
 						.addGap(20)
@@ -178,7 +178,7 @@ public class VentanaServicio extends JFrame{
 				groupLayout.createParallelGroup(Alignment.TRAILING)
 					.addGroup(groupLayout.createSequentialGroup()
 						.addContainerGap()
-						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblGestionarServicio, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
 						.addPreferredGap(ComponentPlacement.UNRELATED)
 						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
 						.addGap(20)
