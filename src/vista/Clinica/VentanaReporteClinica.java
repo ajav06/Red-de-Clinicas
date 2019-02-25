@@ -10,6 +10,8 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.AbstractTableModel;
@@ -27,6 +29,7 @@ public class VentanaReporteClinica extends JFrame {
 	private JTextField txtIntervenciones;
 	private JTextField txtConsultas;
 	private JTextField txtTotal;
+	private JButton btnSalir;
 
 	/**
 	 * Create the frame.
@@ -47,7 +50,7 @@ public class VentanaReporteClinica extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Totales", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(51, 51, 51)));
 		
-		JButton btnSalir = new JButton("Salir");
+		btnSalir = new JButton("Salir");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -160,5 +163,14 @@ public class VentanaReporteClinica extends JFrame {
 	
 	public void cargarTabla(AbstractTableModel a) {
 		tblListado.setModel(a);
+	}
+	
+	public void salir() {
+		this.setVisible(false);
+		this.dispose();
+	}
+	
+	public void addListener(ActionListener actionListener) {
+		btnSalir.addActionListener(actionListener);
 	}
 }

@@ -13,10 +13,16 @@ import modelo.ConexionBD;
 public class ClinicaBD extends ConexionBD
 {
 	private ResultSet resultSet;
+	private float totalInter;
+	private float totalConsul;
+	private float total;
 	
 	public ClinicaBD()
 	{
 		super();
+		totalInter = 0;
+		totalConsul = 0;
+		total = 0;
 	}
 	
 	public void registrarClinica(Clinica clinica) 
@@ -269,6 +275,139 @@ public class ClinicaBD extends ConexionBD
 	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
 	      }
 		return exis;
+	}
+	
+	public List<String[]> listaServiciosGlobal() throws SQLException {
+		List<String[]> os = new ArrayList<String[]>();
+		resultSet = this.ejecutarQuery("		select distinct (select tipo_servicio from servicio where ofertaservicio.cod_servicio = servicio.codigo) as tipo,\r\n" + 
+				"		(select nombre from servicio where ofertaservicio.cod_servicio = servicio.codigo) as nombre,\r\n" + 
+				"		precio,\r\n" + 
+				"		codigo::integer\r\n" + 
+				"		from ofertaservicio\r\n" + 
+				"		order by codigo::integer;\r\n");
+		try {
+			while (resultSet.next()) {
+				if (resultSet.getString("nombre")!=null) {
+					String tipo_s = null;
+					String total = null;
+					String precio = null;
+					switch(resultSet.getString("tipo")) {
+					case "i":
+						tipo_s = "Intervención";
+						String cod = resultSet.getString("codigo");
+						ResultSet rs2 = this.ejecutarQuery("select count(cod_oferta) from consulta where cod_oferta = '"+cod+"'");
+						rs2.next();
+						int cant = rs2.getInt("count");
+						float prec = resultSet.getFloat("precio");
+						float t = cant * prec;
+						totalInter+=t;
+						total = String.valueOf(t);
+						precio = String.valueOf(prec);
+						break;
+					
+					case "c":
+						tipo_s = "Consulta";
+						String cod2 = resultSet.getString("codigo");
+						ResultSet rs3 = this.ejecutarQuery("select count(cod_oferta) from intervencion where cod_oferta = '"+cod2+"'");
+						rs3.next();
+						int cant2 = rs3.getInt("count");
+						float prec2 = resultSet.getFloat("precio");
+						float t2 = cant2 * prec2;
+						totalConsul+=t2;
+						total = String.valueOf(t2);
+						precio = String.valueOf(prec2);
+						break;
+					}
+					String[] datos = new String[4];
+
+					String nombre = resultSet.getString("nombre");
+					datos[0] = tipo_s;
+					datos[1] = nombre;
+					datos[2] = precio;
+					datos[3] = total;
+					os.add(datos);
+				}
+			}
+		} catch (SQLException e) {
+	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+			e.printStackTrace();
+		} finally {
+			this.cerrarComando();
+		}
+		return os;
+	}
+	
+	public float totalConsulta() {
+		return totalConsul;
+	}
+	
+	public float totalIntervencion() {
+		return totalInter;
+	}
+	
+	public float totales() {
+		return totalConsul+totalInter;
+	}
+	
+	public List<String[]> listaServiciosIndividiual(String codigo) throws SQLException {
+		List<String[]> os = new ArrayList<String[]>();
+		resultSet = this.ejecutarQuery("		select distinct (select tipo_servicio from servicio where ofertaservicio.cod_servicio = servicio.codigo) as tipo,\r\n" + 
+				"		(select nombre from servicio where ofertaservicio.cod_servicio = servicio.codigo) as nombre,\r\n" + 
+				"		precio,\r\n" + 
+				"		codigo::integer\r\n" + 
+				"		from ofertaservicio\r\n where cod_clinica='" + codigo + "' "+ 
+				"		order by codigo::integer;\r\n");
+		try {
+			while (resultSet.next()) {
+				if (resultSet.getString("nombre")!=null) {
+					String tipo_s = null;
+					String total = null;
+					String precio = null;
+					switch(resultSet.getString("tipo")) {
+					case "i":
+						tipo_s = "Intervención";
+						String cod = resultSet.getString("codigo");
+						ResultSet rs2 = this.ejecutarQuery("select count(cod_oferta) from consulta where cod_oferta = '"+cod+"'");
+						rs2.next();
+						int cant = rs2.getInt("count");
+						float prec = resultSet.getFloat("precio");
+						float t = cant * prec;
+						totalInter+=t;
+						total = String.valueOf(t);
+						precio = String.valueOf(prec);
+						break;
+					
+					case "c":
+						tipo_s = "Consulta";
+						String cod2 = resultSet.getString("codigo");
+						ResultSet rs3 = this.ejecutarQuery("select count(cod_oferta) from intervencion where cod_oferta = '"+cod2+"'");
+						rs3.next();
+						int cant2 = rs3.getInt("count");
+						float prec2 = resultSet.getFloat("precio");
+						float t2 = cant2 * prec2;
+						totalConsul+=t2;
+						total = String.valueOf(t2);
+						precio = String.valueOf(prec2);
+						break;
+					}
+					String[] datos = new String[4];
+
+					String nombre = resultSet.getString("nombre");
+					datos[0] = tipo_s;
+					datos[1] = nombre;
+					datos[2] = precio;
+					datos[3] = total;
+					os.add(datos);
+				}
+			}
+		} catch (SQLException e) {
+	         JOptionPane.showMessageDialog(this, e.getClass().getName()+": "+e.getMessage());
+			e.printStackTrace();
+		} finally {
+			this.cerrarComando();
+		}
+		return os;
+
 	}
 	
 }

@@ -36,6 +36,7 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 	private JButton btnLimpiar;
 	private JButton btnConsultarServicios;
 	private JComboBox comboBox_Estado;
+	private JButton btnConsultarReportes;
 
 	/**
 	 * Create the application.
@@ -50,7 +51,7 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		setBounds(100, 100, 471, 504);
+		setBounds(100, 100, 471, 551);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		
@@ -152,17 +153,20 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 		btnConsultarServicios = new JButton("Consultar");
 		btnConsultarServicios.setForeground(Color.WHITE);
 		btnConsultarServicios.setBackground(Color.DARK_GRAY);
+		
+		btnConsultarReportes = new JButton("Consultar Reportes");
 		GroupLayout gl_panelDatosClin = new GroupLayout(panelDatosClin);
 		gl_panelDatosClin.setHorizontalGroup(
 			gl_panelDatosClin.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelDatosClin.createSequentialGroup()
 					.addGap(36)
-					.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.LEADING, false)
-						.addGroup(gl_panelDatosClin.createSequentialGroup()
+					.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(btnConsultarReportes, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addGroup(Alignment.LEADING, gl_panelDatosClin.createSequentialGroup()
 							.addComponent(lblServiciosOfrecidos)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(btnConsultarServicios, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-						.addGroup(gl_panelDatosClin.createSequentialGroup()
+						.addGroup(Alignment.LEADING, gl_panelDatosClin.createSequentialGroup()
 							.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblCodigo)
 								.addComponent(lblNombre)
@@ -211,7 +215,9 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 					.addGroup(gl_panelDatosClin.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblServiciosOfrecidos)
 						.addComponent(btnConsultarServicios))
-					.addContainerGap(21, Short.MAX_VALUE))
+					.addGap(18)
+					.addComponent(btnConsultarReportes)
+					.addContainerGap(44, Short.MAX_VALUE))
 		);
 		panelDatosClin.setLayout(gl_panelDatosClin);
 		getContentPane().setLayout(groupLayout);
@@ -239,6 +245,7 @@ public class VentanaActualizarClinica extends javax.swing.JFrame{
 		btnCancelar.addActionListener(actionListener);
 		btnLimpiar.addActionListener(actionListener);
 		btnConsultarServicios.addActionListener(actionListener);
+		btnConsultarReportes.addActionListener(actionListener);
 	}
 	
 	public void setCodigo(String cod) {

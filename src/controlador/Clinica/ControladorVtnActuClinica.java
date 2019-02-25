@@ -42,6 +42,13 @@ public class ControladorVtnActuClinica implements ActionListener
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+		} else if (actionCommand.equals("Consultar Reportes")) {
+			try {
+				ControladorVtnReportesIndividual c = new ControladorVtnReportesIndividual(vtnActuCli.getCodigo());
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 	

@@ -163,5 +163,12 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 		btnSeguros.addActionListener(actionListener);
 		btnConsultas.addActionListener(actionListener);
 		btnCitasMedico.addActionListener(actionListener);
+		btnSalir.addActionListener(actionListener);
+		btnReportes.addActionListener(actionListener);
+	}
+	
+	public void salir() {
+		this.setVisible(false);
+		this.dispose();
 	}
 }
