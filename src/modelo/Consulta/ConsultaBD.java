@@ -37,7 +37,14 @@ private ResultSet resultSet;
 				String motivo = resultSet.getString("motivo");
 				String diagnostico = resultSet.getString("diagnostico");
 				String tratamiento = resultSet.getString("tratamiento");
-				Consulta Consulta = new Consulta(cedulaP,clinica,fecha,medico,motivo,diagnostico,tratamiento);
+				Consulta Consulta = new Consulta.Builder(cedulaP)
+						.clinic(clinica)
+						.fech(fecha)
+						.medic(medico)
+						.motiv(motivo)
+						.diagnostic(diagnostico)
+						.tratamient(tratamiento)
+						.build();
 				Consultas.add(Consulta);
 			}
 		} catch (SQLException e) {
@@ -67,7 +74,14 @@ private ResultSet resultSet;
 				String diagnostico = resultSet.getString("diagnostico");
 				String tratamiento = resultSet.getString("tratamiento");
 				
-				consulta = new Consulta(cedulaP,clinica,fecha,medico,motivo,diagnostico,tratamiento);	
+				consulta = new Consulta.Builder(cedulaP)
+						.clinic(clinica)
+						.fech(fecha)
+						.medic(medico)
+						.motiv(motivo)
+						.diagnostic(diagnostico)
+						.tratamient(tratamiento)
+						.build();	
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -92,7 +106,14 @@ private ResultSet resultSet;
 				String motivo = resultSet.getString("motivo");
 				String diagnostico = resultSet.getString("diagnostico");
 				String tratamiento = resultSet.getString("tratamiento");
-				Consulta consulta = new Consulta(cedulaP,clinica,fecha,medico,motivo,diagnostico,tratamiento);
+				Consulta consulta = new Consulta.Builder(cedulaP)
+											.clinic(clinica)
+											.fech(fecha)
+											.medic(medico)
+											.motiv(motivo)
+											.diagnostic(diagnostico)
+											.tratamient(tratamiento)
+											.build();	
 				consultas.add(consulta);
 			}
 		} catch (SQLException e) {

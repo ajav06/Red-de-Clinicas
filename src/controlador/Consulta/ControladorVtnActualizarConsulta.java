@@ -54,9 +54,14 @@ public class ControladorVtnActualizarConsulta implements ActionListener{
 	    		else
 	    	{
 	    		ConsultaBD consultaBD = new ConsultaBD();
-		    	Consulta consulta = new Consulta(vtnActuCon.getCedulaP(),vtnActuCon.getClinica(),
-		    		vtnActuCon.getFecha(),vtnActuCon.getMedico(),
-		    		vtnActuCon.getMotivo(),vtnActuCon.getDiagnostico(),vtnActuCon.getTratamiento());	
+		    	Consulta consulta = new Consulta.Builder(vtnActuCon.getCedulaP())
+		    			.clinic(vtnActuCon.getClinica())
+		    			.fech(vtnActuCon.getFecha())
+		    			.medic(vtnActuCon.getMedico())
+		    			.motiv(vtnActuCon.getMotivo())
+		    			.diagnostic(vtnActuCon.getDiagnostico())
+		    			.tratamient(vtnActuCon.getTratamiento())
+		    			.build();	
 		    	consultaBD.actualizarConsulta(consulta);
 		       vtnActuCon.mostrarMensaje("La Consulta fue actualizada con exito");
 		    	vtnActuCon.blanquearCampos();

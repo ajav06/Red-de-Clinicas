@@ -2,6 +2,62 @@ package modelo.Consulta;
 
 public class Consulta 
 {
+	public static class Builder{
+		private String cedulaP; 
+		private String clinica;
+		private String  fecha;
+		private String medico;
+		private String motivo;
+		private String diagnostico;
+		private String tratamiento;
+
+		public Builder(String cedulaP) {
+			this.cedulaP = cedulaP;
+		}
+		
+		public Builder clinic(String clinica) {
+			this.clinica = clinica;
+			return this;
+		}
+		
+		public Builder fech(String fecha) {
+			this.fecha = fecha;
+			return this;
+		}
+		
+		public Builder medic(String medico) {
+			this.medico = medico;
+			return this;
+		}
+		
+		public Builder motiv(String motivo) {
+			this.motivo = motivo;
+			return this;
+		}
+		
+		public Builder diagnostic(String diagnostico) {
+			this.diagnostico = diagnostico;
+			return this;
+		}
+		
+		public Builder tratamient(String tratamiento) {
+			this.tratamiento = tratamiento;
+			return this;
+		}
+		
+		public Consulta build() {
+			Consulta c = new Consulta();
+			c.cedulaP=cedulaP;
+			c.clinica=clinica;
+			c.fecha=fecha;
+			c.medico=medico;
+			c.motivo=motivo;
+			c.diagnostico=diagnostico;
+			c.tratamiento=tratamiento;
+			return c;
+		}
+	}
+	
 	private String cedulaP; 
 	private String clinica;
 	private String  fecha;
@@ -9,22 +65,12 @@ public class Consulta
 	private String motivo;
 	private String diagnostico;
 	private String tratamiento;
-	public Consulta(String cedulaP, String clinica, String fecha, String medico,String motivo,String diagnostico,String tratamiento)
-	{
-		super();
-		this.cedulaP=cedulaP;
-		this.clinica=clinica;
-		this.fecha=fecha;
-		this.medico=medico;
-		this.motivo=motivo;
-		this.diagnostico=diagnostico;
-		this.tratamiento=tratamiento;
-		
-	}
-	public Consulta()
+	
+	private Consulta()
 	{
 		super();
 	}
+	
 	public String getCedulaP() {
 		return cedulaP;
 	}

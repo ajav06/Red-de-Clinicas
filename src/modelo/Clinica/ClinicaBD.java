@@ -42,8 +42,14 @@ public class ClinicaBD extends ConexionBD
 				String direccion = resultSet.getString("direccion");
 				String telefono = resultSet.getString("telefono");
 				String correo = resultSet.getString("email");
-				Clinica Clinica = new Clinica(codigo,nombre,estado,direccion,telefono,correo);
-				Clinicas.add(Clinica);
+				Clinica clinica = new Clinica.Builder(codigo)
+						.nombre_clini(nombre)
+						.estado_clini(estado)
+						.direccion_clini(direccion)
+						.telefono_clini(telefono)
+						.correo_clini(correo)
+						.build();
+				Clinicas.add(clinica);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -71,7 +77,13 @@ public class ClinicaBD extends ConexionBD
 				String telefono = resultSet.getString("telefono");
 				String correo = resultSet.getString("email");
 				
-				clinica = new Clinica(codigo,nombre, estado,direccion,telefono,correo);	
+				clinica = new Clinica.Builder(codigo)
+						.nombre_clini(nombre)
+						.estado_clini(estado)
+						.direccion_clini(direccion)
+						.telefono_clini(telefono)
+						.correo_clini(correo)
+						.build();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -95,7 +107,13 @@ public class ClinicaBD extends ConexionBD
 				String direccion = resultSet.getString("direccion");
 				String telefono = resultSet.getString("telefono");
 				String correo = resultSet.getString("email");
-				Clinica clinica = new Clinica(codigo,nombre,estado,direccion,telefono,correo);
+				Clinica clinica = new Clinica.Builder(codigo)
+						.nombre_clini(nombre)
+						.estado_clini(estado)
+						.direccion_clini(direccion)
+						.telefono_clini(telefono)
+						.correo_clini(correo)
+						.build();
 				clinicas.add(clinica);
 			}
 		} catch (SQLException e) {
@@ -172,7 +190,11 @@ public class ClinicaBD extends ConexionBD
 				String nombre = resultSet.getString("nombre");
 				float precio = resultSet.getFloat("precio");
 				
-				OfertaServicio o = new OfertaServicio(codigo, tipo_s, nombre, precio);
+				OfertaServicio o = new OfertaServicio.Builder(codigo)
+						.tipo_s(tipo_s)
+						.desc(nombre)
+						.prec(precio)
+						.build();
 				os.add(o);
 			}
 		} catch (SQLException e) {
@@ -205,7 +227,11 @@ public class ClinicaBD extends ConexionBD
 					String nombre = resultSet.getString("nombre");
 					float precio = resultSet.getFloat("precio");
 					
-					OfertaServicio o = new OfertaServicio(codigo, tipo_s, nombre, precio);
+					OfertaServicio o = new OfertaServicio.Builder(codigo)
+							.tipo_s(tipo_s)
+							.desc(nombre)
+							.prec(precio)
+							.build();
 					os.add(o);
 				}
 			}

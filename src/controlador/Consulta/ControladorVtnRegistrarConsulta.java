@@ -47,8 +47,15 @@ private VentanaRegistrarClinica vtnReCon;
 	    	else
 	    	{
 	    		ConsultaBD consultaBD = new ConsultaBD();
-	    		Consulta consulta = new Consulta(vtnReCon.getCedulaP(), vtnReCon.getClinica(),vtnReCon.getFecha(),vtnReCon.getMedico(),vtnReCon.getMotivo(),vtnReCon.getDiagnostico(),vtnReCon.getTratamiento());		    
-	    		consultaBD .registrarConsulta(consulta);
+		    	Consulta consulta = new Consulta.Builder(vtnReCon.getCedulaP())
+		    			.clinic(vtnReCon.getClinica())
+		    			.fech(vtnReCon.getFecha())
+		    			.medic(vtnReCon.getMedico())
+		    			.motiv(vtnReCon.getMotivo())
+		    			.diagnostic(vtnReCon.getDiagnostico())
+		    			.tratamient(vtnReCon.getTratamiento())
+		    			.build();
+		    	consultaBD .registrarConsulta(consulta);
 	    		vtnReCon.mostrarMensaje("La Consulta fue registrada con exito");
 	    		vtnReCon.blanquearCampos();
 	    		vtnReCon.salir();

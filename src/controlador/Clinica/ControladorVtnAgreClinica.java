@@ -51,7 +51,13 @@ public class ControladorVtnAgreClinica implements ActionListener
 	    	else
 	    	{
 	    		ClinicaBD clinicaBD = new ClinicaBD();
-		        Clinica clinica = new Clinica(vtnAgreCli.getCodigo(),vtnAgreCli.getNombre(),vtnAgreCli.getEstado(),vtnAgreCli.getDireccion(),vtnAgreCli.getTelefono(),vtnAgreCli.getCorreo());		    
+		    	Clinica clinica = new Clinica.Builder(vtnAgreCli.getCodigo())
+						.nombre_clini(vtnAgreCli.getNombre())
+						.estado_clini(vtnAgreCli.getEstado())
+						.direccion_clini(vtnAgreCli.getDireccion())
+						.telefono_clini(vtnAgreCli.getTelefono())
+						.correo_clini(vtnAgreCli.getCorreo())
+						.build(); 
 		        clinicaBD .registrarClinica(clinica);
 		    	vtnAgreCli.mostrarMensaje("La Clinica fue incluida con exito");
 		    	vtnAgreCli.blanquearCampos();

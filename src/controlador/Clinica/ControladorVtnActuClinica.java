@@ -62,9 +62,13 @@ public class ControladorVtnActuClinica implements ActionListener
 	    		else
 	    	{
 	    		ClinicaBD clinicaBD = new ClinicaBD();
-		    	Clinica clinica = new Clinica(vtnActuCli.getCodigo(),vtnActuCli.getNombre(),
-		    	vtnActuCli.getEstado(),vtnActuCli.getDireccion(),
-		    	vtnActuCli.getTelefono(),vtnActuCli.getCorreo());	
+		    	Clinica clinica = new Clinica.Builder(vtnActuCli.getCodigo())
+						.nombre_clini(vtnActuCli.getNombre())
+						.estado_clini(vtnActuCli.getEstado())
+						.direccion_clini(vtnActuCli.getDireccion())
+						.telefono_clini(vtnActuCli.getTelefono())
+						.correo_clini(vtnActuCli.getCorreo())
+						.build(); 
 		    	clinicaBD.actualizarClinica(clinica);
 		       vtnActuCli.mostrarMensaje("La Clinica fue actualizada con exito");
 		    	vtnActuCli.blanquearCampos();
