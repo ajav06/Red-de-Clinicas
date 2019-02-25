@@ -15,6 +15,7 @@ import controlador.Consulta.ControladorVtnListaConsulta;
 import controlador.Consulta.ControladorVtnRegistrarConsulta;
 import controlador.Paciente.ControladorVtnListPacientes;
 import controlador.Seguro.ControladorVtnSeguro;
+import controlador.Servicio.ControladorVtnListaServicios;
 import controlador.Clinica.ControladorVentanaMenuClinica;
 import controlador.ControladorVtnReportesGlobal;
 import vista.VentanaPrincipal;
@@ -79,6 +80,14 @@ public class ControladorVtnPrincipal implements ActionListener{
 			try {
 				new ControladorVtnCitasMedico();
 			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		else if(actionCommand.equals("Servicios")) {
+			try {
+				new ControladorVtnListaServicios();
+			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
