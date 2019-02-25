@@ -93,10 +93,18 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 	    		} else if (medicoBD.verificarMedico(vtnMedico.getCedula(), false)==1) {
 	    			vtnMedico.mostrarMensaje("El médico ya está registrado en el sistema.");
 	    		} else {
-			    	Medico medico = new Medico(vtnMedico.getCedula(),vtnMedico.getEspecialidad(),
-			    			vtnMedico.getNombre(),vtnMedico.getApellido(),vtnMedico.getFechaN(),
-			    			vtnMedico.getEdoC(),vtnMedico.getEstado(),vtnMedico.getDireccion(),
-			    			vtnMedico.getTlfCasa(),vtnMedico.getTlfCelular(),vtnMedico.getEmail());
+			    	Medico medico = new Medico.Builder(vtnMedico.getCedula())
+			    			.cod_especialida(vtnMedico.getEspecialidad())
+			    			.nomb(vtnMedico.getNombre())
+			    			.apellid(vtnMedico.getApellido())
+			    			.fechaNacimient(vtnMedico.getFechaN())
+			    			.edo_civi(vtnMedico.getEdoC())
+			    			.estad(vtnMedico.getEstado())
+			    			.direccio(vtnMedico.getDireccion())
+			    			.tlf_cas(vtnMedico.getTlfCasa())
+			    			.nroTelefonic(vtnMedico.getTlfCelular())
+			    			.emai(vtnMedico.getEmail())
+			    			.build();
 			    	medicoBD.registrarMedico(medico);
 			    	this.horarioNuevo();
 			    	vtnMedico.mostrarMensaje("El Médico fue incluido con exito");
@@ -118,10 +126,18 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 	    	else
 	    	{
 	    		MedicoBD medicoBD = new MedicoBD();
-		    	Medico medico = new Medico(vtnMedico.getCedula(),vtnMedico.getEspecialidad(),
-		    			vtnMedico.getNombre(),vtnMedico.getApellido(),vtnMedico.getFechaN(),
-		    			vtnMedico.getEdoC(),vtnMedico.getEstado(),vtnMedico.getDireccion(),
-		    			vtnMedico.getTlfCasa(),vtnMedico.getTlfCelular(),vtnMedico.getEmail());
+		    	Medico medico = new Medico.Builder(vtnMedico.getCedula())
+		    			.cod_especialida(vtnMedico.getEspecialidad())
+		    			.nomb(vtnMedico.getNombre())
+		    			.apellid(vtnMedico.getApellido())
+		    			.fechaNacimient(vtnMedico.getFechaN())
+		    			.edo_civi(vtnMedico.getEdoC())
+		    			.estad(vtnMedico.getEstado())
+		    			.direccio(vtnMedico.getDireccion())
+		    			.tlf_cas(vtnMedico.getTlfCasa())
+		    			.nroTelefonic(vtnMedico.getTlfCelular())
+		    			.emai(vtnMedico.getEmail())
+		    			.build();
 		    	medicoBD.actualizarMedico(medico);
 		    	this.actuHorario();
 		    	vtnMedico.mostrarMensaje("El Médico fue actualizado con exito");
@@ -174,7 +190,10 @@ public class ControladorVtnConModRegEliMedico implements ActionListener{
 				String turno = h[1][i];
 				String cod_cl = h[0][i];
 				String cod = null;
-				t = new Trabajo(cod,cod_cl,turno);
+				t = new Trabajo.Builder(cod)
+						.cod_clinic(cod_cl)
+						.turn(turno)
+						.build();
 				horario.add(t);
 			}
 			MedicoBD medicoBD = new MedicoBD();

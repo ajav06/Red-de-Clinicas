@@ -1,14 +1,39 @@
 package modelo.Medico;
 
 public class Trabajo {
+	public static class Builder{
+		private String codigo;
+		private String cod_clinica;
+		private String turno;
+
+		public Builder(String codigo) {
+			this.codigo = codigo;
+		}
+		
+		public Builder cod_clinic(String cod_clinica) {
+			this.cod_clinica = cod_clinica;
+			return this;
+		}
+		
+		public Builder turn(String turno) {
+			this.turno = turno;
+			return this;
+		}
+		
+		public Trabajo build() {
+			Trabajo t = new Trabajo();
+			t.codigo = codigo;
+			t.cod_clinica = cod_clinica;
+			t.turno = turno;
+			return t;
+		}
+	}
 	private String codigo;
 	private String cod_clinica;
 	private String turno;
 	
-	public Trabajo(String cod, String c, String t) {
-		codigo = cod;
-		cod_clinica = c;
-		turno = t;
+	private Trabajo() {
+		super();
 	}
 
 	public String getCodigo() {

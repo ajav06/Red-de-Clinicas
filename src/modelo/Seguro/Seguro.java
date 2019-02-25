@@ -1,15 +1,39 @@
 package modelo.Seguro;
 
 public class Seguro {
+	public static class Builder{
+		private int codigo;
+		private String nombre;
+		private String descripcion;
+
+		public Builder(int codigo) {
+			this.codigo = codigo;
+		}
+		
+		public Builder nombr(String nombre) {
+			this.nombre = nombre;
+			return this;
+		}
+		
+		public Builder descripcio(String descripcion) {
+			this.descripcion = descripcion;
+			return this;
+		}
+		
+		public Seguro build() {
+			Seguro s = new Seguro();
+			s.codigo=codigo;
+			s.nombre=nombre;
+			s.descripcion=descripcion;
+			return s;
+		}
+	}
 	private int codigo;
 	private String nombre;
 	private String descripcion;
 	
-	public Seguro(int codigo, String nombre, String descripcion) {
+	private Seguro() {
 		super();
-		this.codigo=codigo;
-		this.nombre=nombre;
-		this.descripcion=descripcion;
 	}
 	
 	public int getCodigo() {

@@ -83,7 +83,12 @@ public class ControladorVtnServicio implements ActionListener{
 	private void modificarServicio() {
 		if(vtnServicio.validarCampos()) {
 			ServicioBD servicioDB = new ServicioBD();
-			Servicio servicio = new Servicio(String.valueOf(vtnServicio.getComboBox_Especialidad()), vtnServicio.getTextFieldCodigo(), vtnServicio.getTextField_Nombre(), vtnServicio.getTextField_Descripcion(), vtnServicio.getComboBox_Tipo());
+			Servicio servicio = new Servicio.Builder(String.valueOf(vtnServicio.getComboBox_Especialidad()))
+					.cod_especialida(vtnServicio.getTextFieldCodigo())
+					.nombr(vtnServicio.getTextField_Nombre())
+					.descripcio(vtnServicio.getTextField_Descripcion())
+					.tip(vtnServicio.getComboBox_Tipo())
+					.build();
 			servicioDB.actualizarServicio(servicio);
 			vtnServicio.mostrarMensaje("Servicio Modificado con Exito");
 			vtnServicio.vaciarCampos();
@@ -95,7 +100,12 @@ public class ControladorVtnServicio implements ActionListener{
 	private void registrarServicio() throws NumberFormatException, SQLException {
 		if(vtnServicio.validarCampos()) {
 			ServicioBD servicioDB = new ServicioBD();
-			Servicio servicio = new Servicio(String.valueOf(vtnServicio.getComboBox_Especialidad()), vtnServicio.getTextFieldCodigo(), vtnServicio.getTextField_Nombre(), vtnServicio.getTextField_Descripcion(), vtnServicio.getComboBox_Tipo());
+			Servicio servicio = new Servicio.Builder(String.valueOf(vtnServicio.getComboBox_Especialidad()))
+					.cod_especialida(vtnServicio.getTextFieldCodigo())
+					.nombr(vtnServicio.getTextField_Nombre())
+					.descripcio(vtnServicio.getTextField_Descripcion())
+					.tip(vtnServicio.getComboBox_Tipo())
+					.build();
 			servicioDB.incluirServicio(servicio);
 			vtnServicio.mostrarMensaje("Servicio Incluido con Exito");
 			vtnServicio.vaciarCampos();

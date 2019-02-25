@@ -32,7 +32,12 @@ public class ServicioBD extends ConexionBD{
 			String nombre = resultSet.getString(2);
 			String descripcion = resultSet.getString(3);
 			char tipo = resultSet.getString(5).charAt(0);
-			Servicio servicio= new Servicio(cod_especialidad, codigo, nombre, descripcion, tipo);
+			Servicio servicio= new Servicio.Builder(cod_especialidad)
+					.cod_especialida(codigo)
+					.nombr(nombre)
+					.descripcio(descripcion)
+					.tip(tipo)
+					.build();
 			servicios.add(servicio);
 		}
 		this.cerrarComando();
@@ -49,7 +54,12 @@ public class ServicioBD extends ConexionBD{
 			String nombre = resultSet.getString(2);
 			String descripcion = resultSet.getString(3);
 			char tipo = resultSet.getString(5).charAt(0);
-			Servicio servicio= new Servicio(cod_especialidad, codigo, nombre, descripcion, tipo);
+			Servicio servicio= new Servicio.Builder(cod_especialidad)
+					.cod_especialida(codigo)
+					.nombr(nombre)
+					.descripcio(descripcion)
+					.tip(tipo)
+					.build();
 			servicios.add(servicio);
 		}
 		this.cerrarComando();
@@ -69,9 +79,9 @@ public class ServicioBD extends ConexionBD{
 		ResultSet rs=null;
 		String sql;
 		
-		if (eliminado) //verifica si existe un servicio ELIMINADO con la cédula en cuestión
+		if (eliminado) //verifica si existe un servicio ELIMINADO con la cï¿½dula en cuestiï¿½n
 			sql = "SELECT COUNT(codigo) FROM servicio WHERE estatus='e' AND codigo='"+codigo+"'";
-		else //verifica si existe un servicio ACTIVO con la cédula en cuestión
+		else //verifica si existe un servicio ACTIVO con la cï¿½dula en cuestiï¿½n
 			sql = "SELECT COUNT(codigo) FROM servicio WHERE estatus='a' AND codigo='"+codigo+"'";
 
 		int n = -1;
@@ -123,8 +133,13 @@ public class ServicioBD extends ConexionBD{
 			String nombre = resultSet.getString(2);
 			String descripcion = resultSet.getString(3);
 			char tipo = resultSet.getString(5).charAt(0);
-			servicio= new Servicio(cod_especialidad, codigo, nombre, descripcion, tipo);
-		}
+			servicio= new Servicio.Builder(cod_especialidad)
+					.cod_especialida(codigo)
+					.nombr(nombre)
+					.descripcio(descripcion)
+					.tip(tipo)
+					.build();
+			}
 		this.cerrarComando();
 		return servicio;
 	}
@@ -139,8 +154,13 @@ public class ServicioBD extends ConexionBD{
 			String nombre = resultSet.getString(2);
 			String descripcion = resultSet.getString(3);
 			char tipo = resultSet.getString(5).charAt(0);
-			servicio= new Servicio(cod_especialidad, codigo, nombre, descripcion, tipo);
-		}
+			servicio= new Servicio.Builder(cod_especialidad)
+					.cod_especialida(codigo)
+					.nombr(nombre)
+					.descripcio(descripcion)
+					.tip(tipo)
+					.build();
+			}
 		this.cerrarComando();
 		return servicio;
 	}

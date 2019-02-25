@@ -35,7 +35,10 @@ public class SeguroDB extends ConexionBD {
 			int codigo = resultSet.getInt("codigo");
 			String nombre = resultSet.getString("nombre");
 			String descripcion = resultSet.getString("descripcion");
-			Seguro seguro = new Seguro(codigo, nombre, descripcion);
+			Seguro seguro = new Seguro.Builder(codigo)
+					.nombr(nombre)
+					.descripcio(descripcion)
+					.build();
 			seguros.add(seguro);
 		}
 		this.cerrarComando();
@@ -49,8 +52,11 @@ public class SeguroDB extends ConexionBD {
 			int codigo = resultSet.getInt("codigo");
 			String nombre = resultSet.getString("nombre");
 			String descripcion = resultSet.getString("descripcion");
-			seguro = new Seguro(codigo, nombre, descripcion);
-		}
+			seguro = new Seguro.Builder(codigo)
+					.nombr(nombre)
+					.descripcio(descripcion)
+					.build();
+			}
 		this.cerrarComando();
 		return seguro;
 	}
@@ -62,7 +68,10 @@ public class SeguroDB extends ConexionBD {
 			int numero = resultSet.getInt("numero");
 			int cod_seguro = resultSet.getInt("cod_seguro");
 			String descripcion = resultSet.getString("ced_paciente");
-			seguro = new SeguroPaciente(numero, cod_seguro, descripcion);
+			seguro = new SeguroPaciente.Builder(numero)
+					.cod_segur(cod_seguro)
+					.ced_pacient(descripcion)
+					.build();
 		}
 		this.cerrarComando();
 		return seguro;

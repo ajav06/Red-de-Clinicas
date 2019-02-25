@@ -5,30 +5,98 @@ import java.util.Date;
 import modelo.Persona;
 
 public class Medico extends Persona {
+	public static class Builder{
+		private String cedula;
+		private String nombre;
+		private String apellido;
+		private Date fechaNacimiento;
+		private String direccion; 
+		private String nroTelefonico;
+		private String cod_especialidad;
+		private String estado;
+		private String tlf_casa;
+		private String email;
+		private char edo_civil;
+
+		public Builder(String cedula) {
+			this.cedula = cedula;
+		}
+		
+		public Builder nomb(String nombre) {
+			this.nombre = nombre;
+			return this;
+		}
+		
+		public Builder apellid(String apellido) {
+			this.apellido = apellido;
+			return this;
+		}
+		
+		public Builder fechaNacimient(Date fechaNacimiento) {
+			this.fechaNacimiento = fechaNacimiento;
+			return this;
+		}
+		
+		public Builder direccio(String direccion) {
+			this.direccion = direccion;
+			return this;
+		}
+		
+		public Builder nroTelefonic(String nroTelefonico) {
+			this.nroTelefonico = nroTelefonico;
+			return this;
+		}
+		
+		public Builder cod_especialida(String cod_especialidad) {
+			this.cod_especialidad = cod_especialidad;
+			return this;
+		}
+		
+		public Builder estad(String estado) {
+			this.estado = estado;
+			return this;
+		}
+		
+		public Builder tlf_cas(String tlf_casa) {
+			this.tlf_casa = tlf_casa;
+			return this;
+		}
+		
+		public Builder emai(String email) {
+			this.email = email;
+			return this;
+		}
+		
+		public Builder edo_civi(char edo_civil) {
+			this.edo_civil = edo_civil;
+			return this;
+		}
+		
+		public Medico build() {
+			Medico m = new Medico();
+			m.cedula = cedula;
+			m.cod_especialidad = cod_especialidad;
+			m.nombre = nombre;
+			m.apellido = apellido;
+			m.fechaNacimiento = fechaNacimiento;
+			m.edo_civil = edo_civil;
+			m.estado = estado;
+			m.direccion = direccion;
+			m.tlf_casa = tlf_casa;
+			m.nroTelefonico = nroTelefonico;
+			m.email = email;
+			return m;
+		}
+	}
+	
 	String cod_especialidad, estado, tlf_casa, email;
 	char edo_civil;
 	
-	public Medico() {
+	private Medico() {
 		super();
 
 	}
 	
-	public Medico(String ced, String codesp, String nomb, String ap, Date fechan, char edoc,
-			String edo, String dir, String tlfc, String tlfm, String em) {
-		super();
-		this.cedula = ced;
-		this.cod_especialidad = codesp;
-		this.nombre = nomb;
-		this.apellido = ap;
-		this.fechaNacimiento = fechan;
-		this.edo_civil = edoc;
-		this.estado = edo;
-		this.direccion = dir;
-		this.tlf_casa = tlfc;
-		this.nroTelefonico = tlfm;
-		this.email = em;
-	}
-
 	public String getCod_especialidad() {
 		return cod_especialidad;
 	}

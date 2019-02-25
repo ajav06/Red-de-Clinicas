@@ -51,7 +51,18 @@ public class MedicoBD extends ConexionBD{
 				String tlfcasa = resultSet.getString("tlf_casa");
 				String tlfcelu = resultSet.getString("tlf_movil");
 				String email = resultSet.getString("email");
-				medico = new Medico(cedula, codespec, nombre, apellido, fechan, edoc, edo, dir, tlfcasa, tlfcelu, email);
+				medico = new Medico.Builder(cedula)
+						.cod_especialida(codespec)
+						.nomb(nombre)
+						.apellid(apellido)
+						.fechaNacimient(fechan)
+						.edo_civi(edoc)
+						.estad(edo)
+						.direccio(dir)
+						.tlf_cas(tlfcasa)
+						.nroTelefonic(tlfcelu)
+						.emai(email)
+						.build();
 				medicos.add(medico);
 			}
 		} catch (SQLException e) {
@@ -87,8 +98,19 @@ public class MedicoBD extends ConexionBD{
 				String tlfcasa = resultSet.getString("tlf_casa");
 				String tlfcelu = resultSet.getString("tlf_movil");
 				String email = resultSet.getString("email");
-				medico = new Medico(cedula, codespec, nombre, apellido, fechan, edoc, edo, dir, tlfcasa, tlfcelu, email);
-			}
+				medico = new Medico.Builder(cedula)
+						.cod_especialida(codespec)
+						.nomb(nombre)
+						.apellid(apellido)
+						.fechaNacimient(fechan)
+						.edo_civi(edoc)
+						.estad(edo)
+						.direccio(dir)
+						.tlf_cas(tlfcasa)
+						.nroTelefonic(tlfcelu)
+						.emai(email)
+						.build();
+				}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -117,7 +139,18 @@ public class MedicoBD extends ConexionBD{
 				String tlfcasa = resultSet.getString("tlf_casa");
 				String tlfcelu = resultSet.getString("tlf_movil");
 				String email = resultSet.getString("email");
-				medico = new Medico(cedula, codespec, nombre, apellido, fechan, edoc, edo, dir, tlfcasa, tlfcelu, email);
+				medico = new Medico.Builder(cedula)
+						.cod_especialida(codespec)
+						.nomb(nombre)
+						.apellid(apellido)
+						.fechaNacimient(fechan)
+						.edo_civi(edoc)
+						.estad(edo)
+						.direccio(dir)
+						.tlf_cas(tlfcasa)
+						.nroTelefonic(tlfcelu)
+						.emai(email)
+						.build();
 				medicos.add(medico);
 			}
 		} catch (SQLException e) {
@@ -136,7 +169,10 @@ public class MedicoBD extends ConexionBD{
 				String codigo = resultSet.getString("codigo");
 				String cod_clinica = resultSet.getString("cod_clinica");
 				String turno = resultSet.getString("turno");
-				trabajo = new Trabajo(codigo, cod_clinica, turno);
+				trabajo = new Trabajo.Builder(codigo)
+						.cod_clinic(cod_clinica)
+						.turn(turno)
+						.build();
 				horario.add(trabajo);
 			}
 		} catch (Exception e) {

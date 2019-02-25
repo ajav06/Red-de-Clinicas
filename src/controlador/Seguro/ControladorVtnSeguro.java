@@ -68,7 +68,10 @@ public class ControladorVtnSeguro implements ActionListener{
 				vtnseguro.mostrarMensaje("Debe llenar todos los campos para Incluir");
 			else {
 				seguroDB = new SeguroDB();
-				seguro = new Seguro(Integer.parseInt(vtnseguro.getCodigo()), vtnseguro.getNombre(), vtnseguro.getDescripcion());
+				seguro = new Seguro.Builder(Integer.parseInt(vtnseguro.getCodigo()))
+						.nombr(vtnseguro.getNombre())
+						.descripcio(vtnseguro.getDescripcion())
+						.build();
 				seguroDB.incluirSeguro(seguro);
 				cargarDatosSeguros();
  				vtnseguro.blanquearCampos();
@@ -115,7 +118,10 @@ public class ControladorVtnSeguro implements ActionListener{
 					vtnseguro.modificar(true);
 				}
 			} else {
-					seguro = new Seguro(Integer.parseInt(vtnseguro.getCodigo()), vtnseguro.getNombre(), vtnseguro.getDescripcion());
+					seguro = new Seguro.Builder(Integer.parseInt(vtnseguro.getCodigo()))
+							.nombr(vtnseguro.getNombre())
+							.descripcio(vtnseguro.getDescripcion())
+							.build();
 					seguroDB.modificarSeguro(seguro);
 					cargarDatosSeguros();
 					vtnseguro.blanquearCampos();

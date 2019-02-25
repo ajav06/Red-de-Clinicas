@@ -3,8 +3,11 @@ package modelo.Medico;
 import java.util.Date;
 
 public class ListadoCitas {
-	String ced_Paciente, tipo_Cita, nomb_Clinica;
-	int cod_Trabajo, cod_Oferta;
+	String ced_Paciente;
+	String tipo_Cita;
+	String nomb_Clinica;
+	int cod_Trabajo;
+	int cod_Oferta;
 	Date fecha;
 	
 	public ListadoCitas(String ced_Paciente, String tipo_Cita, int cod_Trabajo, String nomb_Clinica, Date fecha) {

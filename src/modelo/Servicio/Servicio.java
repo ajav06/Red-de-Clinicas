@@ -1,16 +1,55 @@
 package modelo.Servicio;
 
 public class Servicio {
-	private String codigo, cod_especialidad, nombre, descripcion;
+	public static class Builder{
+		private String codigo;
+		private String cod_especialidad;
+		private String nombre;
+		private String descripcion;
+		private char tipo;
+		
+		public Builder(String codigo) {
+			this.codigo = codigo;
+		}
+		
+		public Builder cod_especialida(String cod_especialidad) {
+			this.cod_especialidad = cod_especialidad;
+			return this;
+		}
+		
+		public Builder nombr(String nombre) {
+			this.nombre = nombre;
+			return this;
+		}
+		
+		public Builder descripcio(String descripcion) {
+			this.descripcion = descripcion;
+			return this;
+		}
+		
+		public Builder tip(char tipo) {
+			this.tipo = tipo;
+			return this;
+		}
+		
+		public Servicio build() {
+			Servicio s = new Servicio();
+			s.codigo = codigo;
+			s.cod_especialidad = cod_especialidad;
+			s.nombre = nombre;
+			s.descripcion = descripcion;
+			s.tipo = tipo;
+			return s;
+		}
+	}
+	private String codigo;
+	private String cod_especialidad;
+	private String nombre;
+	private String descripcion;
 	private char tipo;
 	
-	public Servicio(String cod_especialidad, String codigo, String nombre, String descripcion, char tipo) {
+	private Servicio() {
 		super();
-		this.codigo = codigo;
-		this.cod_especialidad = cod_especialidad;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.tipo = tipo;
 	}
 
 	public String getCodigo() {

@@ -132,7 +132,10 @@ public class ControladorVtnPaciente implements ActionListener{
 		    			vtnAgrePac.getDiresccion(), vtnAgrePac.getSeguro());	    
 		    	pacienteBD.actualizarPaciente(paciente);
 		    	SeguroDB seguroDB = new SeguroDB();
-		    	SeguroPaciente seguro = new SeguroPaciente(vtnAgrePac.getNroSgro(), vtnAgrePac.getCodSeguro(), vtnAgrePac.getCedula());
+		    	SeguroPaciente seguro = new SeguroPaciente.Builder(vtnAgrePac.getNroSgro())
+		    			.cod_segur(vtnAgrePac.getCodSeguro())
+		    			.ced_pacient(vtnAgrePac.getCedula())
+		    			.build();
 		    	seguroDB.modificarSeguroPaciente(seguro);
 		    	vtnAgrePac.mostrarMensaje("El Paciente fue Modificado con exito");
 		    	vtnAgrePac.blanquearCampos();
@@ -160,7 +163,10 @@ public class ControladorVtnPaciente implements ActionListener{
 		    			vtnAgrePac.getDiresccion(), vtnAgrePac.getSeguro());	    
 		    	pacienteBD.actualizarPaciente(paciente);
 		    	SeguroDB seguroDB = new SeguroDB();
-		    	SeguroPaciente seguro = new SeguroPaciente(vtnAgrePac.getNroSgro(), vtnAgrePac.getCodSeguro(), vtnAgrePac.getCedula());
+		    	SeguroPaciente seguro = new SeguroPaciente.Builder(vtnAgrePac.getNroSgro())
+		    			.cod_segur(vtnAgrePac.getCodSeguro())
+		    			.ced_pacient(vtnAgrePac.getCedula())
+		    			.build();
 		    	seguroDB.incluirSeguroPaciente(seguro);
 		    	vtnAgrePac.mostrarMensaje("El Paciente fue incluido con exito");
 		    	vtnAgrePac.blanquearCampos();
@@ -185,13 +191,13 @@ public class ControladorVtnPaciente implements ActionListener{
 	    	{
 	    		pacienteBD = new PacienteBD();
 	    		if (pacienteBD.verificarPaciente(vtnAgrePac.getCedula(),true)==1) {
-	    			Object[] opciones = {"Sí","No"};
-	    			int n = JOptionPane.showOptionDialog(null,"El paciente ya existe pero fue eliminado.\n¿Desea reingresar?","Paciente ya existe",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,opciones[1]);
+	    			Object[] opciones = {"Sï¿½","No"};
+	    			int n = JOptionPane.showOptionDialog(null,"El paciente ya existe pero fue eliminado.\nï¿½Desea reingresar?","Paciente ya existe",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,opciones[1]);
 	    			if (n==JOptionPane.YES_OPTION) {
 	    				pacienteBD.reingresarPaciente(vtnAgrePac.getCedula());
 	    			}
 	    		} else if (pacienteBD.verificarPaciente(vtnAgrePac.getCedula(), false)==1) {
-	    			vtnAgrePac.mostrarMensaje("El paciente ya está registrado en el sistema.");
+	    			vtnAgrePac.mostrarMensaje("El paciente ya estï¿½ registrado en el sistema.");
 	    		} else {
 	    			 paciente = new Paciente(vtnAgrePac.getCedula(), vtnAgrePac.getNombre(), vtnAgrePac.getApellido(), vtnAgrePac.getFechaNac(), 
 	    		    			vtnAgrePac.getEdoC(), vtnAgrePac.getEstado(), vtnAgrePac.getEmail(), vtnAgrePac.getTlfCelular(), vtnAgrePac.getTlfCasa(), 

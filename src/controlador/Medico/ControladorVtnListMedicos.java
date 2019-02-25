@@ -137,7 +137,7 @@ public class ControladorVtnListMedicos implements ActionListener {
 	}
 	
 	private void registrarMedicos() {
-		medico = new Medico();
+		medico = new Medico.Builder("").build();
 		try {
 			ControladorVtnConModRegEliMedico c = new ControladorVtnConModRegEliMedico(1);
 		} catch (Exception e) {
