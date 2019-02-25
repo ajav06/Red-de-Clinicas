@@ -2,6 +2,7 @@ package controlador.Consulta;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.sql.SQLException;
 
 import modelo.Clinica.Clinica;
@@ -20,13 +21,14 @@ public class ControladorVtnActualizarConsulta implements ActionListener{
 		super();
 		ClinicaBD cli = new ClinicaBD();
 		MedicoBD med = new MedicoBD();
-		this.vtnActuCon = new VentanaActualizarConsulta(cli.nombresClinicas(),med.nombresMedicos());
+		this.vtnActuCon = new VentanaActualizarConsulta(cli.nombresClinicas(),med.nombresMedicos(),cli.nombresServicios());
 		//this.vtnActuCon.setLocationRelativeTo(null);
 		this.vtnActuCon.setVisible(true);
-		this.vtnActuCon.addListener(this);;
-	     this.vtnActuCon.llenarCampos(consulta.getCedulaP(), consulta.getClinica(),
-	    		 consulta.getFecha(),consulta.getMedico(), consulta.getMotivo(), 
-	    		 consulta.getDiagnostico(),consulta.getTratamiento());;
+		this.vtnActuCon.addListener(this);
+		this.vtnActuCon.mostrarMensaje(consulta.getClinica());
+	    this.vtnActuCon.llenarCampos(consulta.getCedulaP(), consulta.getClinica(),
+	    		 consulta.getFecha(),consulta.getMedico(),Integer.valueOf(consulta.getServicio()), consulta.getMotivo(), 
+	    		 consulta.getDiagnostico(),consulta.getTratamiento());
 	}
 
 	@Override
@@ -54,6 +56,7 @@ public class ControladorVtnActualizarConsulta implements ActionListener{
 	    		else
 	    	{
 	    		ConsultaBD consultaBD = new ConsultaBD();
+
 		    	Consulta consulta = new Consulta.Builder(vtnActuCon.getCedulaP())
 		    			.clinic(vtnActuCon.getClinica())
 		    			.fech(vtnActuCon.getFecha())

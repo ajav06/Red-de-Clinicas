@@ -1,4 +1,5 @@
 package modelo.Consulta;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,8 +22,8 @@ private ResultSet resultSet;
 	
 	public void registrarConsulta(Consulta consulta) 
 	{
-		this.crearRegistro("consulta", "cedulaP,clinica,fecha,medico,motivo,diagnostico,tratamiento,estatus", "'"+consulta.getCedulaP()
-				+"','"+consulta.getClinica()+"','"+consulta.getFecha()+"','"+consulta.getMedico()+"','"+consulta.getMotivo()+"','"+consulta.getDiagnostico()+"','"+consulta.getTratamiento()+"','a'");
+		this.crearRegistro("consulta", "ced_paciente,clinica,fecha,medico,cod_oferta,motivo,diagnostico,tratamiento,estatus", "'"+consulta.getCedulaP()
+				+"','"+consulta.getClinica()+"','"+String.valueOf(consulta.getFecha())+"','"+consulta.getMedico()+"','"+consulta.getServicio()+"','"+consulta.getMotivo()+"','"+consulta.getDiagnostico()+"','"+consulta.getTratamiento()+"','a'");
 	}
 	
 	public List<Consulta> consultarConsultas() throws SQLException {
@@ -30,10 +31,11 @@ private ResultSet resultSet;
 		resultSet = this.consultarTabla("consulta", " WHERE estatus='a' ");
 		try {
 			while (resultSet.next()) {
-				String cedulaP = resultSet.getString("cedulaP");
+				String cedulaP = resultSet.getString("ced_paciente");
 				String clinica = resultSet.getString("clinica");
 				String fecha = resultSet.getString("fecha");
 				String medico = resultSet.getString("medico");
+				String servicio = resultSet.getString("cod_oferta");
 				String motivo = resultSet.getString("motivo");
 				String diagnostico = resultSet.getString("diagnostico");
 				String tratamiento = resultSet.getString("tratamiento");
@@ -56,25 +58,26 @@ private ResultSet resultSet;
 	}
 	public void actualizarConsulta(Consulta consulta) {
 		this.actuRegistro("consulta", "clinica='"+consulta.getClinica()+"',fecha='"+
-				consulta.getFecha()+"',medico='"+consulta.getMedico()+"',motivo='"+consulta.getMotivo()+"',diagnostico='"+consulta.getDiagnostico()+"',tratamiento='"+consulta.getTratamiento()+"'","cedulaP", "'"+consulta.getCedulaP()+"'");
+				consulta.getFecha()+"',medico='"+consulta.getMedico()+"',cod_oferta='"+consulta.getServicio()+"',motivo='"+consulta.getMotivo()+"',diagnostico='"+consulta.getDiagnostico()+"',tratamiento='"+consulta.getTratamiento()+"'","ced_paciente", "'"+consulta.getCedulaP()+"'");
 	}
 	
 	public Consulta buscarConsulta(String cep) throws SQLException 
 	{
 		Consulta consulta = null;
-		resultSet = this.buscarRegistro("consulta", "cedulaP", "'"+cep+"'");
+		resultSet = this.buscarRegistro("consulta", "ced_paciente", "'"+cep+"'");
 
 		try {
 			while (resultSet.next()) {
-				String cedulaP = resultSet.getString("cedulaP");
+				String ced_paciente = resultSet.getString("ced_paciente");
 				String clinica = resultSet.getString("clinica");
 				String fecha = resultSet.getString("fecha");
 				String medico = resultSet.getString("medico");
+				String servicio = resultSet.getString("cod_oferta");
 				String motivo = resultSet.getString("motivo");
 				String diagnostico = resultSet.getString("diagnostico");
 				String tratamiento = resultSet.getString("tratamiento");
 				
-				consulta = new Consulta.Builder(cedulaP)
+				consulta = new Consulta.Builder(ced_paciente)
 						.clinic(clinica)
 						.fech(fecha)
 						.medic(medico)
@@ -99,14 +102,15 @@ private ResultSet resultSet;
 		resultSet = this.consultarTabla("consulta", " WHERE "+filtro);
 		try {
 			while (resultSet.next()) {
-				String cedulaP = resultSet.getString("cedulaP");
+				String ced_paciente = resultSet.getString("ced_paciente");
 				String clinica = resultSet.getString("clinica");
 				String fecha = resultSet.getString("fecha");
 				String medico = resultSet.getString("medico");
+				String servicio = resultSet.getString("cod_oferta");
 				String motivo = resultSet.getString("motivo");
 				String diagnostico = resultSet.getString("diagnostico");
 				String tratamiento = resultSet.getString("tratamiento");
-				Consulta consulta = new Consulta.Builder(cedulaP)
+				Consulta consulta = new Consulta.Builder(ced_paciente)
 											.clinic(clinica)
 											.fech(fecha)
 											.medic(medico)
@@ -127,10 +131,10 @@ private ResultSet resultSet;
 
 	public DefaultComboBoxModel nombresConsulta() throws SQLException{
 		DefaultComboBoxModel cedulaP = new DefaultComboBoxModel();
-		resultSet = this.ejecutarQuery("SELECT cedulaP FROM consulta WHERE estatus = 'a'");
+		resultSet = this.ejecutarQuery("SELECT ced_paciente FROM consulta WHERE estatus = 'a'");
 		try {
 			while (resultSet.next())
-				cedulaP.addElement(resultSet.getString("cedulaP"));
+				cedulaP.addElement(resultSet.getString("ced_paciente"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

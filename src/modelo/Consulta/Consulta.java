@@ -1,5 +1,7 @@
 package modelo.Consulta;
 
+import java.sql.Date;
+
 public class Consulta 
 {
 	public static class Builder{
@@ -60,12 +62,29 @@ public class Consulta
 	
 	private String cedulaP; 
 	private String clinica;
-	private String  fecha;
+	private String servicio;
+	private String fecha;
 	private String medico;
 	private String motivo;
 	private String diagnostico;
 	private String tratamiento;
 	
+	public String getServicio() {
+		return servicio;
+	}
+
+	public void setServicio(String servicio) {
+		this.servicio = servicio;
+	}
+
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+
 	private Consulta()
 	{
 		super();
@@ -83,12 +102,7 @@ public class Consulta
 	public void setClinica(String clinica) {
 		this.clinica = clinica;
 	}
-	public String getFecha() {
-		return fecha;
-	}
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
-	}
+	
 	public String getMedico() {
 		return medico;
 	}
@@ -113,5 +127,6 @@ public class Consulta
 	public void setTratamiento(String tratamiento) {
 		this.tratamiento = tratamiento;
 	}
+	
 	
 }

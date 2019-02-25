@@ -4,6 +4,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 import java.awt.Color;
@@ -19,37 +20,40 @@ import com.toedter.calendar.JDateChooser;
 import bean.*;
 import javax.swing.JTextArea;
 import javax.swing.JFrame;
-import java.awt.EventQueue;
-import javax.swing.JTextField;
-import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextField;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 
 public class VentanaRegistrarClinica extends javax.swing.JFrame
 {
-	private JTextField textFieldFecha;
+	
 	private JTextField textFieldCedulaP;
 	private JButton btnCancelar;
 	private JButton btnRegistrar;
 	private JButton btnLimpiar;
+	private JDateChooser fecha;
 	private JComboBox comboBox_Clinica;
 	private JComboBox comboBox_medicos;
+	private JComboBox comboBoxServicio;
 	private JTextField textFieldDiagnostico;
 	private JTextField textFieldTratamiento;
 	private JTextField textField_Motivo;
 	/**
 	 * Launch the application.
 	 */
-	public VentanaRegistrarClinica(DefaultComboBoxModel clinicas, DefaultComboBoxModel medicos) {
+	public VentanaRegistrarClinica(DefaultComboBoxModel clinicas, DefaultComboBoxModel medicos,DefaultComboBoxModel servicios) {
 		super();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		clinicas.removeElementAt(0);
-		initialize(clinicas, medicos);
+		initialize(clinicas, medicos,servicios);
 		blanquearCampos();
 		//setSize(420,449);
 	}
 
-	private void initialize(DefaultComboBoxModel clinicas, DefaultComboBoxModel medicos) {
+	private void initialize(DefaultComboBoxModel clinicas, DefaultComboBoxModel medicos,DefaultComboBoxModel servicios) {
 		setBounds(100, 100, 733, 546);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
@@ -87,23 +91,23 @@ public class VentanaRegistrarClinica extends javax.swing.JFrame
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-					.addContainerGap(314, Short.MAX_VALUE)
-					.addComponent(btnCancelar)
-					.addGap(305))
-				.addGroup(gl_panel_2.createSequentialGroup()
 					.addGap(130)
 					.addComponent(btnRegistrar)
-					.addPreferredGap(ComponentPlacement.RELATED, 285, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 253, Short.MAX_VALUE)
 					.addComponent(btnLimpiar, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
 					.addGap(115))
 				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGap(19)
-					.addComponent(panDC, GroupLayout.PREFERRED_SIZE, 658, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(23, Short.MAX_VALUE))
-				.addGroup(Alignment.LEADING, gl_panel_2.createSequentialGroup()
 					.addGap(207)
 					.addComponent(lblEnunciado, GroupLayout.PREFERRED_SIZE, 264, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(229, Short.MAX_VALUE))
+					.addContainerGap(197, Short.MAX_VALUE))
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addContainerGap(316, Short.MAX_VALUE)
+					.addComponent(btnCancelar)
+					.addGap(271))
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(panDC, GroupLayout.PREFERRED_SIZE, 673, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
 		);
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
@@ -116,9 +120,9 @@ public class VentanaRegistrarClinica extends javax.swing.JFrame
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnLimpiar)
 						.addComponent(btnRegistrar))
-					.addGap(11)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnCancelar)
-					.addContainerGap())
+					.addGap(34))
 		);
 		
 		JLabel lblNombre = new JLabel("Clinica :");
@@ -133,8 +137,8 @@ public class VentanaRegistrarClinica extends javax.swing.JFrame
 		
 		JLabel lblDiagnostico = new JLabel("Diagnostico :");
 		
-		textFieldFecha = new JTextField();
-		textFieldFecha.setColumns(10);
+		fecha = new JDateChooser();
+		
 		
 		textFieldCedulaP = new JTextFieldValidator(8,JTextFieldValidator.SOLO_NUMEROS);
 		textFieldCedulaP.setColumns(10);
@@ -154,6 +158,10 @@ public class VentanaRegistrarClinica extends javax.swing.JFrame
 		textField_Motivo = new JTextField();
 		textField_Motivo.setColumns(10);
 		
+		JLabel lblServicio = new JLabel("Servicio:");
+		
+		comboBoxServicio = new JComboBox();
+		
 		
 		
 		GroupLayout gl_panDC = new GroupLayout(panDC);
@@ -163,57 +171,80 @@ public class VentanaRegistrarClinica extends javax.swing.JFrame
 					.addGap(26)
 					.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panDC.createSequentialGroup()
-							.addComponent(textFieldDiagnostico, GroupLayout.PREFERRED_SIZE, 288, GroupLayout.PREFERRED_SIZE)
-							.addGap(41)
-							.addComponent(textFieldTratamiento, GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))
-						.addGroup(gl_panDC.createSequentialGroup()
-							.addComponent(lblEstado)
-							.addGap(342))
-						.addGroup(gl_panDC.createSequentialGroup()
-							.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblMotivo)
-								.addComponent(lblCedulaP))
-							.addGap(18)
 							.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_panDC.createSequentialGroup()
-									.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING, false)
-										.addComponent(textFieldFecha)
-										.addComponent(textFieldCedulaP, GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))
+									.addComponent(textFieldDiagnostico, GroupLayout.PREFERRED_SIZE, 288, GroupLayout.PREFERRED_SIZE)
 									.addGap(18)
-									.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING)
+									.addComponent(textFieldTratamiento, GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE))
+								.addGroup(gl_panDC.createSequentialGroup()
+									.addGroup(gl_panDC.createParallelGroup(Alignment.TRAILING)
 										.addGroup(gl_panDC.createSequentialGroup()
-											.addComponent(lblNombre)
-											.addGap(4)
-											.addComponent(comboBox_Clinica, 0, 282, Short.MAX_VALUE))
+											.addComponent(lblMotivo)
+											.addGap(19))
 										.addGroup(gl_panDC.createSequentialGroup()
-											.addComponent(lblMedico)
+											.addGroup(gl_panDC.createParallelGroup(Alignment.TRAILING)
+												.addComponent(lblEstado)
+												.addComponent(lblCedulaP))
+											.addGap(18)))
+									.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING, false)
+										.addGroup(gl_panDC.createSequentialGroup()
 											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(comboBox_medicos, 0, 279, Short.MAX_VALUE))))
-								.addComponent(textField_Motivo, GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)))
+											.addGroup(gl_panDC.createParallelGroup(Alignment.TRAILING, false)
+												.addComponent(textFieldCedulaP, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+												.addComponent(fecha, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
+											.addGap(18)
+											.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING)
+												.addGroup(gl_panDC.createSequentialGroup()
+													.addComponent(lblServicio)
+													.addPreferredGap(ComponentPlacement.RELATED)
+													.addComponent(comboBoxServicio, GroupLayout.PREFERRED_SIZE, 279, GroupLayout.PREFERRED_SIZE))
+												.addGroup(gl_panDC.createSequentialGroup()
+													.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING)
+														.addComponent(lblNombre)
+														.addComponent(lblMedico))
+													.addPreferredGap(ComponentPlacement.RELATED)
+													.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING, false)
+														.addComponent(comboBox_medicos, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+														.addComponent(comboBox_Clinica, 0, 276, Short.MAX_VALUE)))))
+										.addComponent(textField_Motivo))
+									.addPreferredGap(ComponentPlacement.RELATED, 9, Short.MAX_VALUE)))
+							.addContainerGap())
 						.addGroup(gl_panDC.createSequentialGroup()
 							.addGap(107)
 							.addComponent(lblDiagnostico)
-							.addPreferredGap(ComponentPlacement.RELATED, 281, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, 262, Short.MAX_VALUE)
 							.addComponent(lblTratamiento, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
-							.addGap(79)))
-					.addContainerGap())
+							.addGap(123))))
 		);
 		gl_panDC.setVerticalGroup(
 			gl_panDC.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panDC.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textFieldCedulaP, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNombre)
-						.addComponent(comboBox_Clinica, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblCedulaP))
-					.addGap(27)
-					.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblEstado)
-						.addComponent(textFieldFecha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblMedico)
-						.addComponent(comboBox_medicos, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(31)
+					.addGroup(gl_panDC.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_panDC.createSequentialGroup()
+							.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblNombre)
+								.addComponent(comboBox_Clinica, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblMedico)
+								.addComponent(comboBox_medicos, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_panDC.createSequentialGroup()
+							.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
+								.addComponent(textFieldCedulaP, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblCedulaP))
+							.addGap(18)))
+					.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panDC.createSequentialGroup()
+							.addGap(6)
+							.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
+								.addComponent(fecha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblEstado)))
+						.addGroup(gl_panDC.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
+								.addComponent(comboBoxServicio, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblServicio))))
+					.addGap(30)
 					.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblMotivo)
 						.addComponent(textField_Motivo, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
@@ -222,9 +253,9 @@ public class VentanaRegistrarClinica extends javax.swing.JFrame
 						.addComponent(lblDiagnostico)
 						.addComponent(lblTratamiento))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING)
-						.addComponent(textFieldTratamiento, GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-						.addComponent(textFieldDiagnostico, GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
+					.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textFieldDiagnostico, GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+						.addComponent(textFieldTratamiento, GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		panDC.setLayout(gl_panDC);
@@ -246,19 +277,21 @@ public class VentanaRegistrarClinica extends javax.swing.JFrame
 		getContentPane().setLayout(groupLayout);
 		comboBox_Clinica.setModel(clinicas);
 		comboBox_medicos.setModel(medicos);
+		comboBoxServicio.setModel(servicios);
 	}
 	public void blanquearCampos() 
 	{	
 		textFieldCedulaP.setText(null);	
-		textFieldFecha.setText(null);
+		fecha.setDate(null);
 		textFieldDiagnostico.setText(null);
 		textFieldTratamiento.setText(null);
 		comboBox_Clinica.setSelectedIndex(0);
 		
 	}
-	public void llenarCampos(String cli, String med) {
+	public void llenarCampos(String cli, String med,String ser) {
 		comboBox_Clinica.setSelectedItem(cli);
 		comboBox_medicos.setSelectedItem(med);
+		comboBoxServicio.setSelectedItem(ser);
 
 	}
 	
@@ -274,7 +307,7 @@ public class VentanaRegistrarClinica extends javax.swing.JFrame
 	}
 	
 	public String getFecha() {
-		return textFieldFecha.getText();
+		return String.valueOf(fecha.getDate());
 	}
 	
 	public String  getClinica() {
@@ -283,11 +316,13 @@ public class VentanaRegistrarClinica extends javax.swing.JFrame
 	public String  getMedico() {
 		return String.valueOf(comboBox_medicos.getSelectedItem());
 	}
-
+	public String  getServicio() {
+		return String.valueOf(comboBoxServicio.getSelectedIndex());
+	}
 	public String getMotivo() {
 		return textField_Motivo.getText();
 	}
-	
+
 	public String getDiagnostico() {
 		return textFieldDiagnostico.getText();
 	}
@@ -304,4 +339,5 @@ public class VentanaRegistrarClinica extends javax.swing.JFrame
 		this.setVisible(false);
 		this.dispose();
 	}
+	
 }
