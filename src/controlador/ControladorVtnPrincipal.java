@@ -8,6 +8,7 @@ import java.text.ParseException;
 import javax.swing.JOptionPane;
 
 import controlador.Especialidad.ControladorVtnListaEspecialidades;
+import controlador.Intervencion.ControladorVtnListIntervenciones;
 import controlador.Especialidad.ControladorMenuEspecialidades;
 import controlador.Medico.ControladorVtnCitasMedico;
 import controlador.Medico.ControladorVtnListMedicos;
@@ -87,6 +88,14 @@ public class ControladorVtnPrincipal implements ActionListener{
 		else if(actionCommand.equals("Servicios")) {
 			try {
 				new ControladorVtnListaServicios();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		else if(actionCommand.equals("Intervenciones")) {
+			try {
+				new ControladorVtnListIntervenciones();
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

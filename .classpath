@@ -9,6 +9,7 @@
 	<classpathentry exported="true" kind="lib" path="lib/JTextFieldValidator.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/junit-4.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/postgresql-9.3-1104.jdbc41.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/ConexionUniversalBD.jar"/>
+	<classpathentry kind="lib" path="/home/gabriel/git/Red-de-Clinicas/lib/ConexionUniversalBD.jar"/>
+	<classpathentry kind="lib" path="lib/Conexion.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
