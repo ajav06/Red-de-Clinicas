@@ -1,3 +1,12 @@
+//RED DE CLÍNICAS
+//Proyecto de Laboratorio 1
+//
+//Integrantes:
+//Gabriel Roa 25919459
+//Albert Acevedo 26710983
+//Marielba Maldonádo 26088718
+//Juan Cardenas 
+
 package vista.Servicio;
 
 import javax.swing.JFrame;
@@ -81,7 +90,7 @@ public class VentanaListadoServicios extends JFrame{
 			panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 			
 			textField_codigo = new JTextFieldValidator(50, 'Z');
-			textField_codigo.setText("Introduzca C�digo del Servicio o Nombre");
+			textField_codigo.setText("Introduzca C�digo del Servicio o Nombre");
 			textField_codigo.setHorizontalAlignment(SwingConstants.CENTER);
 			textField_codigo.setColumns(10);
 			

@@ -1,3 +1,12 @@
+//RED DE CL√çNICAS
+//Proyecto de Laboratorio 1
+//
+//Integrantes:
+//Gabriel Roa 25919459
+//Albert Acevedo 26710983
+//Marielba Maldon√°do 26088718
+//Juan Cardenas 
+
 package controlador.Servicio;
 
 import java.awt.event.ActionEvent;
@@ -163,7 +172,7 @@ public class ControladorVtnListaServicios implements ActionListener{
 					List<Servicio> servicios = new ArrayList<Servicio>();
 					Servicio servicio = servicioDB.buscarServicio(vtnServicio.getCodigo());
 					if (servicio==null) {
-						this.vtnServicio.mostrarMensaje("MÈdico no encontrado.");
+						this.vtnServicio.mostrarMensaje("MÔøΩdico no encontrado.");
 						cargarDatosServicio();
 					} else {
 						servicios.add(servicio);
@@ -174,7 +183,7 @@ public class ControladorVtnListaServicios implements ActionListener{
 			}
 		} catch (Exception e) {
 			vtnServicio.mostrarMensaje(e.getClass().getName()+": "+e.getMessage());
-			vtnServicio.mostrarMensaje("No se pudo buscar el mÈdico, verifique que los datos sean correctos");
+			vtnServicio.mostrarMensaje("No se pudo buscar el mÔøΩdico, verifique que los datos sean correctos");
 		}
 	}
 

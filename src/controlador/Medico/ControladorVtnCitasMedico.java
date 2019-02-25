@@ -1,3 +1,12 @@
+//RED DE CL√çNICAS
+//Proyecto de Laboratorio 1
+//
+//Integrantes:
+//Gabriel Roa 25919459
+//Albert Acevedo 26710983
+//Marielba Maldon√°do 26088718
+//Juan Cardenas 
+
 package controlador.Medico;
 
 import java.awt.event.ActionEvent;
@@ -62,7 +71,7 @@ public class ControladorVtnCitasMedico implements ActionListener{
 			JTable tabla = vtnCitas.getTblCitas();
 			int fila = tabla.getSelectedRow();
 			if (fila == -1) {
-				vtnCitas.mostrarMensaje("Seleccione un paciente del listado para Ver su InformaciÛn.");
+				vtnCitas.mostrarMensaje("Seleccione un paciente del listado para Ver su InformaciÔøΩn.");
 			} else {
 				String cedula = String.valueOf(tabla.getModel().getValueAt(fila, 0));
 				PacienteBD pacienteBD = new PacienteBD();
@@ -87,18 +96,18 @@ public class ControladorVtnCitasMedico implements ActionListener{
 	private void buscarCitasMedico() {
 		try {
 			if("".equals(vtnCitas.getTextField_Cedula())) {
-				vtnCitas.mostrarMensaje("Por Favor, Ingrese primero el Nro de Cedula del MÈdico, para poder Continuar");
+				vtnCitas.mostrarMensaje("Por Favor, Ingrese primero el Nro de Cedula del MÔøΩdico, para poder Continuar");
 			}
 			else {
 				MedicoBD medicoDB = new MedicoBD();
 				Medico medico = medicoDB.buscarMedico(vtnCitas.getTextField_Cedula());
 				if(medico==null) {
-					vtnCitas.mostrarMensaje("Por Favor, Ingrese primero un Nro de Cedula del MÈdico valido, "
-							+ "\npara poder Continuar, ya que no existe Ning˙n Medico con ese Nro de Cedula");
+					vtnCitas.mostrarMensaje("Por Favor, Ingrese primero un Nro de Cedula del MÔøΩdico valido, "
+							+ "\npara poder Continuar, ya que no existe NingÔøΩn Medico con ese Nro de Cedula");
 				}
 				else {
 					vtnCitas.mostrarMensaje("Bienvenido, Dr./Dra. "+medico.getNombre()+" "+medico.getApellido()+", "
-							+ "\na continuaciÛn su agenda de Citas del DÌa de Hoy");
+							+ "\na continuaciÔøΩn su agenda de Citas del DÔøΩa de Hoy");
 					vtnCitas.setLabelNombre(medico.getNombre()+" "+medico.getApellido());
 					List<ListadoCitas> listado = medicoDB.consultarCitasMedico(medico.getCedula(), vtnCitas.getFechaIni(), vtnCitas.getFechaFin(), vtnCitas.getFiltro());
 					vtnCitas.setResultados(new VentanaCitasMedicoModelo(listado));

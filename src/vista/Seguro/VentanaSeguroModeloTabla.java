@@ -1,3 +1,12 @@
+//RED DE CLÍNICAS
+//Proyecto de Laboratorio 1
+//
+//Integrantes:
+//Gabriel Roa 25919459
+//Albert Acevedo 26710983
+//Marielba Maldonádo 26088718
+//Juan Cardenas 
+
 package vista.Seguro;
 
 import java.util.ArrayList;
@@ -6,7 +15,7 @@ import javax.swing.table.AbstractTableModel;
 import modelo.Seguro.Seguro;
 
 public class VentanaSeguroModeloTabla extends AbstractTableModel{
-	private static String[] titulos = {"Codigo", "Nombre", "Descripci�n"};
+	private static String[] titulos = {"Codigo", "Nombre", "Descripci�n"};
 	private List<Seguro> seguros = new ArrayList<Seguro>();
 	
 	public VentanaSeguroModeloTabla(List<Seguro> seguros) {

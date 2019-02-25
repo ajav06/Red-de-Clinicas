@@ -1,3 +1,12 @@
+//RED DE CLÍNICAS
+//Proyecto de Laboratorio 1
+//
+//Integrantes:
+//Gabriel Roa 25919459
+//Albert Acevedo 26710983
+//Marielba Maldonádo 26088718
+//Juan Cardenas 
+
 package vista.Servicio;
 
 import java.util.ArrayList;
@@ -8,7 +17,7 @@ import javax.swing.table.AbstractTableModel;
 import modelo.Servicio.Servicio;
 
 public class VentanaServicioModelo extends AbstractTableModel{
-	private static String[] titulos = {"Codigo", "Nombre", "Descripci�n", "Especialidad"};
+	private static String[] titulos = {"Codigo", "Nombre", "Descripci�n", "Especialidad"};
 	private List<Servicio> servicios = new ArrayList<Servicio>();
 	
 	public VentanaServicioModelo(List<Servicio> servicios) {

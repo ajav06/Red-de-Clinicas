@@ -1,3 +1,12 @@
+//RED DE CLÍNICAS
+//Proyecto de Laboratorio 1
+//
+//Integrantes:
+//Gabriel Roa 25919459
+//Albert Acevedo 26710983
+//Marielba Maldonádo 26088718
+//Juan Cardenas 
+
 package vista.Medico;
 
 import javax.swing.JFrame;
@@ -60,7 +69,7 @@ public class VentanaCitasMedico extends javax.swing.JFrame{
 
 	private void initGUI() {
 		try {
-			setTitle("Citas M�dico");
+			setTitle("Citas M�dico");
 			JLabel lblCitasMdico = new JLabel("Citas M\u00E9dico");
 			lblCitasMdico.setHorizontalAlignment(SwingConstants.CENTER);
 			lblCitasMdico.setForeground(Color.BLUE);
