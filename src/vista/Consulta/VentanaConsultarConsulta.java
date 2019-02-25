@@ -32,18 +32,19 @@ public class VentanaConsultarConsulta extends javax.swing.JFrame{
 	private JTextField textField_Motivo;
 	private JTextField textField_Clinica;
 	private JTextField textField_Medico;
+	private JComboBox comboBoxServicio;
 	/**
 	 * Launch the application.
 	 */
-	public VentanaConsultarConsulta() {
+	public VentanaConsultarConsulta(DefaultComboBoxModel servicios) {
 		super();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		initialize();
+		initialize(servicios);
 		
 		//setSize(420,449);
 	}
 
-	private void initialize() {
+	private void initialize(DefaultComboBoxModel servicios) {
 		setBounds(100, 100, 733, 463);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
@@ -121,6 +122,11 @@ public class VentanaConsultarConsulta extends javax.swing.JFrame{
 		textField_Medico.setEnabled(false);
 		textField_Medico.setColumns(10);
 		
+		JLabel lblServicio = new JLabel("Servicio:");
+		
+		comboBoxServicio = new JComboBox();
+		comboBoxServicio.setEnabled(false);
+		
 		
 		
 		GroupLayout gl_panDC = new GroupLayout(panDC);
@@ -135,16 +141,16 @@ public class VentanaConsultarConsulta extends javax.swing.JFrame{
 						.addGroup(gl_panDC.createSequentialGroup()
 							.addGap(107)
 							.addComponent(lblDiagnostico)
-							.addPreferredGap(ComponentPlacement.RELATED, 277, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, 281, Short.MAX_VALUE)
 							.addComponent(lblTratamiento, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
 							.addGap(87))
 						.addGroup(gl_panDC.createSequentialGroup()
-							.addGroup(gl_panDC.createParallelGroup(Alignment.TRAILING, false)
+							.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING, false)
 								.addGroup(gl_panDC.createSequentialGroup()
 									.addComponent(textFieldDiagnostico, GroupLayout.PREFERRED_SIZE, 288, GroupLayout.PREFERRED_SIZE)
 									.addGap(41)
 									.addComponent(textFieldTratamiento))
-								.addGroup(Alignment.LEADING, gl_panDC.createSequentialGroup()
+								.addGroup(gl_panDC.createSequentialGroup()
 									.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING)
 										.addComponent(lblMotivo)
 										.addComponent(lblCedulaP))
@@ -156,16 +162,16 @@ public class VentanaConsultarConsulta extends javax.swing.JFrame{
 												.addComponent(textFieldCedulaP, GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))
 											.addGap(18)
 											.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING)
-												.addGroup(gl_panDC.createSequentialGroup()
-													.addComponent(lblNombre)
-													.addPreferredGap(ComponentPlacement.RELATED)
-													.addComponent(textField_Clinica, GroupLayout.PREFERRED_SIZE, 286, GroupLayout.PREFERRED_SIZE))
-												.addGroup(gl_panDC.createSequentialGroup()
-													.addComponent(lblMedico)
-													.addPreferredGap(ComponentPlacement.RELATED)
-													.addComponent(textField_Medico, GroupLayout.PREFERRED_SIZE, 286, GroupLayout.PREFERRED_SIZE))))
+												.addComponent(lblNombre)
+												.addComponent(lblMedico)
+												.addComponent(lblServicio))
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING, false)
+												.addComponent(textField_Medico, GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+												.addComponent(textField_Clinica, GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+												.addComponent(comboBoxServicio, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 										.addComponent(textField_Motivo))))
-							.addPreferredGap(ComponentPlacement.RELATED, 24, Short.MAX_VALUE)))
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 					.addGap(24))
 		);
 		gl_panDC.setVerticalGroup(
@@ -177,13 +183,22 @@ public class VentanaConsultarConsulta extends javax.swing.JFrame{
 						.addComponent(lblNombre)
 						.addComponent(lblCedulaP)
 						.addComponent(textField_Clinica, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(27)
-					.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblEstado)
-						.addComponent(textFieldFecha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblMedico)
-						.addComponent(textField_Medico, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(31)
+					.addGroup(gl_panDC.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panDC.createSequentialGroup()
+							.addGap(27)
+							.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblEstado)
+								.addComponent(textFieldFecha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_panDC.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblMedico)
+								.addComponent(textField_Medico, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblServicio)
+								.addComponent(comboBoxServicio, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+					.addGap(16)
 					.addGroup(gl_panDC.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblMotivo)
 						.addComponent(textField_Motivo, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
@@ -215,14 +230,15 @@ public class VentanaConsultarConsulta extends javax.swing.JFrame{
 					.addContainerGap(64, Short.MAX_VALUE))
 		);
 		getContentPane().setLayout(groupLayout);
-		
+		comboBoxServicio.setModel(servicios);
 	}
 	
-	public void llenarCampos(String cep,String cli,String fec, String med, String mot, String dia,String tra) {
+	public void llenarCampos(String cep,String cli,String fec, String med,int ser, String mot, String dia,String tra) {
 		textFieldCedulaP.setText(cep);
 		textField_Clinica.setText(cli);
 		textFieldFecha.setText(fec);
 		textField_Medico.setText(med);
+		comboBoxServicio.setSelectedIndex(ser);
 		textField_Motivo.setText(mot);
 		textFieldDiagnostico.setText(dia);
 		textFieldTratamiento.setText(tra);
@@ -243,7 +259,9 @@ public class VentanaConsultarConsulta extends javax.swing.JFrame{
 	public String  getMedico() {
 		return textField_Medico.getText();
 	}
-
+	public String  getServicio() {
+		return String.valueOf(comboBoxServicio.getSelectedIndex());
+	}
 	public String getMotivo() {
 		return textField_Motivo.getText();
 	}
@@ -264,5 +282,4 @@ public class VentanaConsultarConsulta extends javax.swing.JFrame{
 		this.setVisible(false);
 		this.dispose();
 	}
-
 }
