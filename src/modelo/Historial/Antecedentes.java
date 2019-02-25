@@ -1,6 +1,195 @@
 package modelo.Historial;
 
 public class Antecedentes {
+	public static class Builder{
+		private int nroHistorial;
+		private String alcohol;
+		private String drogas;
+		private String infusiones;
+		private String tabaco;
+		private String alimentacion;
+		private String diuresis;
+		private String catarsis;
+		private String sueno;
+		private String sexualidad;
+		private String otros_fis;
+		private String cardiacas;
+		private String respiratorias;
+		private String gastrointestinales;
+		private String neufrourologicos;
+		private String neurologicos;
+		private String hematologicos;
+		private String ginecologos;
+		private String infectologicos;
+		private String endocrinologicos;
+		private String quirurgicos;
+		private String traumatoloficos;
+		private String alergicos;
+		private String epidemiologicos;
+		private String otras_enf;
+		private String enf_infancia;
+
+		public Builder(int nroHistorial) {
+			this.nroHistorial = nroHistorial;
+		}
+		
+		public Builder alcoho(String alcohol) {
+			this.alcohol = alcohol;
+			return this;
+		}
+		
+		public Builder droga(String drogas) {
+			this.drogas = drogas;
+			return this;
+		}
+		
+		public Builder infusione(String infusiones) {
+			this.infusiones = infusiones;
+			return this;
+		}
+		
+		public Builder tabac(String tabaco) {
+			this.tabaco = tabaco;
+			return this;
+		}
+		
+		public Builder alimentacio(String alimentacion) {
+			this.alimentacion = alimentacion;
+			return this;
+		}
+		
+		public Builder diuresi(String diuresis) {
+			this.diuresis = diuresis;
+			return this;
+		}
+		
+		public Builder catarsi(String catarsis) {
+			this.catarsis = catarsis;
+			return this;
+		}
+		
+		public Builder suen(String sueno) {
+			this.sueno = sueno;
+			return this;
+		}
+		
+		public Builder sexualida(String sexualidad) {
+			this.sexualidad = sexualidad;
+			return this;
+		}
+		
+		public Builder otros_fi(String otros_fis) {
+			this.otros_fis = otros_fis;
+			return this;
+		}
+		
+		public Builder cardiaca(String cardiacas) {
+			this.cardiacas = cardiacas;
+			return this;
+		}
+		
+		public Builder respiratoria(String respiratorias) {
+			this.respiratorias = respiratorias;
+			return this;
+		}
+		
+		public Builder gastrointestinale(String gastrointestinales) {
+			this.gastrointestinales = gastrointestinales;
+			return this;
+		}
+		
+		public Builder neufrourologico(String neufrourologicos){
+			this.neufrourologicos = neufrourologicos;
+			return this;
+		}
+		
+		public Builder neurologico(String neurologicos){
+			this.neurologicos = neurologicos;
+			return this;			
+		}
+		
+		public Builder hematologico(String hematologicos){
+			this.hematologicos = hematologicos;
+			return this;
+		}
+		
+		public Builder ginecologo(String ginecologos){
+			this.ginecologos = ginecologos;
+			return this;
+		}
+		
+		public Builder infectologico(String infectologicos){
+			this.infectologicos = infectologicos;
+			return this;
+		}
+		
+		public Builder endocrinologico(String endocrinologicos){
+			this.endocrinologicos = endocrinologicos;
+			return this;
+		}
+		
+		public Builder quirurgico(String quirurgicos){
+			this.quirurgicos = quirurgicos;
+			return this;
+		}
+		
+		public Builder traumatolofico(String traumatoloficos){
+			this.traumatoloficos = traumatoloficos;
+			return this;
+		}
+		
+		public Builder alergico(String alergicos){
+			this.alergicos = alergicos;
+			return this;
+		}
+		
+		public Builder epidemiologico(String epidemiologicos){
+			this.epidemiologicos = epidemiologicos;
+			return this;
+		}
+		
+		public Builder otras_en(String otras_enf){
+			this.otras_enf = otras_enf;
+			return this;
+		}
+		
+		public Builder enf_infanci(String enf_infanci){
+			this.enf_infancia = enf_infanci;
+			return this;
+		}
+		
+		public Antecedentes build() {
+			Antecedentes a = new Antecedentes();
+			a.nroHistorial = nroHistorial;
+			a.alcohol = alcohol;
+			a.drogas = drogas;
+			a.infusiones = infusiones;
+			a.tabaco = tabaco;
+			a.alimentacion = alimentacion;
+			a.diuresis = diuresis;
+			a.catarsis = catarsis;
+			a.sueno = sueno;
+			a.sexualidad = sexualidad;
+			a.otros_fis = otros_fis;
+			a.cardiacas = cardiacas;
+			a.respiratorias = respiratorias;
+			a.gastrointestinales = gastrointestinales;
+			a.neufrourologicos = neufrourologicos;
+			a.neurologicos = neurologicos;
+			a.hematologicos = hematologicos;
+			a.ginecologos = ginecologos;
+			a.infectologicos = infectologicos;
+			a.endocrinologicos = endocrinologicos;
+			a.quirurgicos = quirurgicos;
+			a.traumatoloficos = traumatoloficos;
+			a.alergicos = alergicos;
+			a.epidemiologicos = epidemiologicos;
+			a.otras_enf = otras_enf;
+			a.enf_infancia = enf_infancia;
+			return a;
+		}
+		
+	}
 	private int nroHistorial;
 	private String alcohol;
 	private String drogas;
@@ -28,38 +217,8 @@ public class Antecedentes {
 	private String otras_enf;
 	private String enf_infancia;
 	
-	public Antecedentes(int nroHistorial, String alcohol, String drogas, String infusiones, String tabaco,
-			String alimentacion, String diuresis, String catarsis, String sueno, String sexualidad, String otros_fis,
-			String cardiacas, String respiratorias, String gastrointestinales, String neufrourologicos, String neurologicos,
-			String hematologicos, String ginecologos, String infectologicos, String endocrinologicos, String quirurgicos,
-			String traumatoloficos, String alergicos, String epidemiologicos, String otras_enf, String enf_infancia) {
+	private Antecedentes() {
 		super();
-		this.nroHistorial = nroHistorial;
-		this.alcohol = alcohol;
-		this.drogas = drogas;
-		this.infusiones = infusiones;
-		this.tabaco = tabaco;
-		this.alimentacion = alimentacion;
-		this.diuresis = diuresis;
-		this.catarsis = catarsis;
-		this.sueno = sueno;
-		this.sexualidad = sexualidad;
-		this.otros_fis = otros_fis;
-		this.cardiacas = cardiacas;
-		this.respiratorias = respiratorias;
-		this.gastrointestinales = gastrointestinales;
-		this.neufrourologicos = neufrourologicos;
-		this.neurologicos = neurologicos;
-		this.hematologicos = hematologicos;
-		this.ginecologos = ginecologos;
-		this.infectologicos = infectologicos;
-		this.endocrinologicos = endocrinologicos;
-		this.quirurgicos = quirurgicos;
-		this.traumatoloficos = traumatoloficos;
-		this.alergicos = alergicos;
-		this.epidemiologicos = epidemiologicos;
-		this.otras_enf = otras_enf;
-		this.enf_infancia = enf_infancia;
 	}
 	
 	public int getNroHistorial() {

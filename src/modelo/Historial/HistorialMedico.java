@@ -1,6 +1,69 @@
 package modelo.Historial;
 
 public class HistorialMedico {
+	public static class Builder{
+		private String cedPaciente;
+		private int numero;
+		private float  peso;
+		private float altura;
+		private char sexo;
+		private String enfActual;
+		private String anteEnfAct;
+		private String anteFamiliar;
+
+		public Builder(String cedPaciente) {
+			this.cedPaciente = cedPaciente;
+		}
+		
+		public Builder numer(int numero) {
+			this.numero = numero;
+			return this;
+		}
+		
+		public Builder pes(float  peso) {
+			this.peso = peso;
+			return this;
+		}
+		
+		public Builder altur(float altura){
+			this.altura = altura;
+			return this;
+		}
+		
+		public Builder sex(char sexo){
+			this.sexo = sexo;
+			return this;
+		}
+		
+		public Builder enfActua(String enfActual){
+			this.enfActual = enfActual;
+			return this;
+		}
+		
+		public Builder anteEnfAc(String anteEnfAct){
+			this.anteEnfAct = anteEnfAct;
+			return this;
+		}
+		
+		public Builder anteFamilia(String anteFamiliar){
+			this.anteFamiliar = anteFamiliar;
+			return this;
+		}
+		
+		public HistorialMedico build() {
+			HistorialMedico h = new HistorialMedico();
+			h.cedPaciente = cedPaciente;
+			h.numero = numero;
+			h.peso = peso;
+			h.altura = altura;
+			h.sexo = sexo;
+			h.enfActual = enfActual;
+			h.anteEnfAct = anteEnfAct;
+			h.anteFamiliar = anteFamiliar;
+			return h;
+		}
+		
+	}
 	private String cedPaciente;
 	private int numero;
 	private float  peso;
@@ -10,17 +73,8 @@ public class HistorialMedico {
 	private String anteEnfAct;
 	private String anteFamiliar;
 	
-	public HistorialMedico(String cedPaciente, int numero, float  peso, float altura, 
-			char sexo, String enfActual, String anteEnfAct, String anteFamiliar) {
+	private HistorialMedico() {
 		super();
-		this.cedPaciente = cedPaciente;
-		this.numero = numero;
-		this.peso = peso;
-		this.altura = altura;
-		this.sexo = sexo;
-		this.enfActual = enfActual;
-		this.anteEnfAct = anteEnfAct;
-		this.anteFamiliar = anteFamiliar;
 	}
 
 	public String getCedPaciente() {

@@ -89,7 +89,10 @@ public class ControladorVtnAgreEspecialidad implements ActionListener {
 	    	else
 	    	{
 	    		EspecialidadBD especialidadBD = new EspecialidadBD();
-		    	Especialidad especialidad = new Especialidad(vtnAgreEsp.getCodigo(), vtnAgreEsp.getNombre(),vtnAgreEsp.getDescripcion());	    
+		    	Especialidad especialidad = new Especialidad.Builder(vtnAgreEsp.getCodigo())
+		    			.nombr(vtnAgreEsp.getNombre())
+		    			.desc(vtnAgreEsp.getDescripcion())
+		    			.build();	    
 		    	especialidadBD.actualizarEspecialidad(especialidad);
 		    	vtnAgreEsp.mostrarMensaje("La especialidad fue modificada con exito");
 		    	vtnAgreEsp.blanquearCampos();
@@ -112,7 +115,10 @@ public class ControladorVtnAgreEspecialidad implements ActionListener {
 	    	else
 	    	{
 	    		EspecialidadBD especialidadBD = new EspecialidadBD();
-		    	Especialidad especialidad = new Especialidad(vtnAgreEsp.getCodigo(),vtnAgreEsp.getNombre(), vtnAgreEsp.getDescripcion());
+		    	Especialidad especialidad = new Especialidad.Builder(vtnAgreEsp.getCodigo())
+		    			.nombr(vtnAgreEsp.getNombre())
+		    			.desc(vtnAgreEsp.getDescripcion())
+		    			.build();	   
 		    	especialidadBD.registarEspecialidad(especialidad);
 		    	vtnAgreEsp.mostrarMensaje("La especialidad fue incluida con exito");
 		    	vtnAgreEsp.blanquearCampos();

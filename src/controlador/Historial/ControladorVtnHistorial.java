@@ -70,16 +70,45 @@ public class ControladorVtnHistorial implements ActionListener{
 				vtnHistorial.mostrarMensaje("Debe llenar todos los campos para Incluir");
 			else {
 				historialDB = new HistorialMedicoBD();
-				HistorialMedico historial = new HistorialMedico(vtnHistorial.getCedula(), Integer.parseInt(vtnHistorial.getNumero()), Float.parseFloat(vtnHistorial.getPeso()), 
-						Float.parseFloat(vtnHistorial.getAltura()), vtnHistorial.getSexo(), vtnHistorial.getEnfAct(), vtnHistorial.getAnteEnfAct(), vtnHistorial.getAntFami());
+				HistorialMedico historial = new HistorialMedico.Builder(vtnHistorial.getCedula())
+						.numer(Integer.parseInt(vtnHistorial.getNumero()))
+						.pes(Float.parseFloat(vtnHistorial.getPeso()))
+						.altur(Float.parseFloat(vtnHistorial.getAltura()))
+						.sex(vtnHistorial.getSexo())
+						.enfActua(vtnHistorial.getEnfAct())
+						.anteEnfAc(vtnHistorial.getAnteEnfAct())
+						.anteFamilia(vtnHistorial.getAntFami())
+						.build();
 				historialDB.incluirHistorial(historial);
 				
 				antecedentesDB = new AntecedentesBD();
-				Antecedentes antecedente = new Antecedentes(Integer.parseInt(vtnHistorial.getNumero()), vtnHistorial.getAlcohol(), vtnHistorial.getDrogas(), vtnHistorial.getInfuciones(), 
-						vtnHistorial.getTabaco(), vtnHistorial.getAlimentacion(), vtnHistorial.getDiuresis(), vtnHistorial.getCatarsis(), vtnHistorial.getSuenno(), vtnHistorial.getSexualidad(), 
-						vtnHistorial.getOtroFis(), vtnHistorial.getCardiacas(), vtnHistorial.getRespiratorias(), vtnHistorial.getGastrointestinales(), vtnHistorial.getNeofrourologicos(), 
-						vtnHistorial.getNeurologicos(), vtnHistorial.getHematologicos(), vtnHistorial.getGinecologicos(), vtnHistorial.getInfectologicos(), vtnHistorial.getEndocrinologicos(), 
-						vtnHistorial.getQuirurgicos(), vtnHistorial.getTraumatologicos(), vtnHistorial.getAlergicos(), vtnHistorial.getEpidemiologicos(), vtnHistorial.getOtrosEnf(), vtnHistorial.getEnfeIncancia());
+				Antecedentes antecedente = new Antecedentes.Builder(Integer.parseInt(vtnHistorial.getNumero()))
+						.alcoho(vtnHistorial.getAlcohol())
+						.droga(vtnHistorial.getDrogas())
+						.infusione(vtnHistorial.getInfuciones())
+						.tabac(vtnHistorial.getTabaco())
+						.alimentacio(vtnHistorial.getAlimentacion())
+						.diuresi(vtnHistorial.getDiuresis())
+						.catarsi(vtnHistorial.getCatarsis())
+						.suen(vtnHistorial.getSuenno())
+						.sexualida(vtnHistorial.getSexualidad())
+						.otros_fi(vtnHistorial.getOtroFis())
+						.cardiaca(vtnHistorial.getCardiacas())
+						.respiratoria(vtnHistorial.getRespiratorias())
+						.gastrointestinale(vtnHistorial.getGastrointestinales())
+						.neufrourologico(vtnHistorial.getNeofrourologicos())
+						.neurologico(vtnHistorial.getNeurologicos())
+						.hematologico(vtnHistorial.getHematologicos())
+						.ginecologo(vtnHistorial.getGinecologicos())
+						.infectologico(vtnHistorial.getInfectologicos())
+						.endocrinologico(vtnHistorial.getEndocrinologicos())
+						.quirurgico(vtnHistorial.getQuirurgicos())
+						.traumatolofico(vtnHistorial.getTraumatologicos())
+						.alergico(vtnHistorial.getAlergicos())
+						.epidemiologico(vtnHistorial.getEpidemiologicos())
+						.otras_en(vtnHistorial.getOtrosEnf())
+						.enf_infanci(vtnHistorial.getEnfeIncancia())
+						.build();
 				antecedentesDB.incluirAntecedentes(antecedente);
 				
 				vtnHistorial.mostrarMensaje("Historial Incluido con Exito");
@@ -100,16 +129,45 @@ public class ControladorVtnHistorial implements ActionListener{
 				vtnHistorial.mostrarMensaje("Debe llenar todos los campos para Incluir");
 			else {
 				historialDB = new HistorialMedicoBD();
-				HistorialMedico historial = new HistorialMedico(cedula, Integer.parseInt(vtnHistorial.getNumero()), Float.parseFloat(vtnHistorial.getPeso()), 
-						Float.parseFloat(vtnHistorial.getAltura()), vtnHistorial.getSexo(), vtnHistorial.getEnfAct(), vtnHistorial.getAnteEnfAct(), vtnHistorial.getAntFami());
+				HistorialMedico historial = new HistorialMedico.Builder(vtnHistorial.getCedula())
+						.numer(Integer.parseInt(vtnHistorial.getNumero()))
+						.pes(Float.parseFloat(vtnHistorial.getPeso()))
+						.altur(Float.parseFloat(vtnHistorial.getAltura()))
+						.sex(vtnHistorial.getSexo())
+						.enfActua(vtnHistorial.getEnfAct())
+						.anteEnfAc(vtnHistorial.getAnteEnfAct())
+						.anteFamilia(vtnHistorial.getAntFami())
+						.build();
 				historialDB.modificarHistorial(historial);
 				
 				antecedentesDB = new AntecedentesBD();
-				Antecedentes antecedente = new Antecedentes(Integer.parseInt(vtnHistorial.getNumero()), vtnHistorial.getAlcohol(), vtnHistorial.getDrogas(), vtnHistorial.getInfuciones(), 
-						vtnHistorial.getTabaco(), vtnHistorial.getAlimentacion(), vtnHistorial.getDiuresis(), vtnHistorial.getCatarsis(), vtnHistorial.getSuenno(), vtnHistorial.getSexualidad(), 
-						vtnHistorial.getOtroFis(), vtnHistorial.getCardiacas(), vtnHistorial.getRespiratorias(), vtnHistorial.getGastrointestinales(), vtnHistorial.getNeofrourologicos(), 
-						vtnHistorial.getNeurologicos(), vtnHistorial.getHematologicos(), vtnHistorial.getGinecologicos(), vtnHistorial.getInfectologicos(), vtnHistorial.getEndocrinologicos(), 
-						vtnHistorial.getQuirurgicos(), vtnHistorial.getTraumatologicos(), vtnHistorial.getAlergicos(), vtnHistorial.getEpidemiologicos(), vtnHistorial.getOtrosEnf(), vtnHistorial.getEnfeIncancia());
+				Antecedentes antecedente = new Antecedentes.Builder(Integer.parseInt(vtnHistorial.getNumero()))
+						.alcoho(vtnHistorial.getAlcohol())
+						.droga(vtnHistorial.getDrogas())
+						.infusione(vtnHistorial.getInfuciones())
+						.tabac(vtnHistorial.getTabaco())
+						.alimentacio(vtnHistorial.getAlimentacion())
+						.diuresi(vtnHistorial.getDiuresis())
+						.catarsi(vtnHistorial.getCatarsis())
+						.suen(vtnHistorial.getSuenno())
+						.sexualida(vtnHistorial.getSexualidad())
+						.otros_fi(vtnHistorial.getOtroFis())
+						.cardiaca(vtnHistorial.getCardiacas())
+						.respiratoria(vtnHistorial.getRespiratorias())
+						.gastrointestinale(vtnHistorial.getGastrointestinales())
+						.neufrourologico(vtnHistorial.getNeofrourologicos())
+						.neurologico(vtnHistorial.getNeurologicos())
+						.hematologico(vtnHistorial.getHematologicos())
+						.ginecologo(vtnHistorial.getGinecologicos())
+						.infectologico(vtnHistorial.getInfectologicos())
+						.endocrinologico(vtnHistorial.getEndocrinologicos())
+						.quirurgico(vtnHistorial.getQuirurgicos())
+						.traumatolofico(vtnHistorial.getTraumatologicos())
+						.alergico(vtnHistorial.getAlergicos())
+						.epidemiologico(vtnHistorial.getEpidemiologicos())
+						.otras_en(vtnHistorial.getOtrosEnf())
+						.enf_infanci(vtnHistorial.getEnfeIncancia())
+						.build();
 				antecedentesDB.actualizarAntecedentes(antecedente);
 				
 				vtnHistorial.mostrarMensaje("Historial Incluido con Exito");

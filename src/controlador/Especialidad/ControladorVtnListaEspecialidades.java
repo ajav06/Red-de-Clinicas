@@ -40,7 +40,10 @@ public class ControladorVtnListaEspecialidades implements ActionListener{
 			// buscarEspecialidad();
 			EspecialidadBD especialidadBD = new EspecialidadBD();
 			try {
-				especialidad = new Especialidad(String.valueOf(especialidadBD.generarNuevoCodigoEspecialidad()), "", "");
+				especialidad = new Especialidad.Builder(String.valueOf(especialidadBD.generarNuevoCodigoEspecialidad()))
+						.nombr("")
+						.desc("")
+						.build();
 			} catch (NumberFormatException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

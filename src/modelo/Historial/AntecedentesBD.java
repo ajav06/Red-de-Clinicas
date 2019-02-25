@@ -71,11 +71,33 @@ public class AntecedentesBD extends ConexionBD{
 			String epidemiologicos = resultSet.getString("epidemiologicos");
 			String otras_enf = resultSet.getString("otras_enf");
 			String enf_infancia = resultSet.getString("enf_infancia");
-			antecedente = new Antecedentes(nroHistorial, alcohol, drogas, infusiones, tabaco, alimentacion, diuresis, 
-					catarsis, Sueno, sexualidad, otros_fis, cardiacas, respiratorias, gastrointestinales, neufrourologicos, 
-					neurologicos, hematologicos, ginecologos, infectologicos, endocrinologicos, quirurgicos, traumatoloficos, 
-					alergicos, epidemiologicos, otras_enf, enf_infancia);
-					
+			antecedente = new Antecedentes.Builder(nroHistorial)
+					.alcoho(alcohol)
+					.droga(drogas)
+					.infusione(infusiones)
+					.tabac(tabaco)
+					.alimentacio(alimentacion)
+					.diuresi(diuresis)
+					.catarsi(catarsis)
+					.suen(Sueno)
+					.sexualida(sexualidad)
+					.otros_fi(otros_fis)
+					.cardiaca(cardiacas)
+					.respiratoria(respiratorias)
+					.gastrointestinale(gastrointestinales)
+					.neufrourologico(neufrourologicos)
+					.neurologico(neurologicos)
+					.hematologico(hematologicos)
+					.ginecologo(ginecologos)
+					.infectologico(infectologicos)
+					.endocrinologico(endocrinologicos)
+					.quirurgico(quirurgicos)
+					.traumatolofico(traumatoloficos)
+					.alergico(alergicos)
+					.epidemiologico(epidemiologicos)
+					.otras_en(otras_enf)
+					.enf_infanci(enf_infancia)
+					.build();					
 		}
 		
 		this.cerrarComando();

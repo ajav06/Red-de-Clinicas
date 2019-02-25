@@ -37,7 +37,15 @@ public class HistorialMedicoBD extends ConexionBD{
 			String enfermedad_actual = resultSet.getString("enfermedad_actual");
 			String ante_enf = resultSet.getString("ante_enfer_act");
 			String ante_familiar = resultSet.getString("ante_familiar");
-			historial = new HistorialMedico(ced_paciente, numero, peso, altura, sexo, enfermedad_actual, ante_enf, ante_familiar);
+			historial = new HistorialMedico.Builder(ced_paciente)
+					.numer(numero)
+					.pes(peso)
+					.altur(altura)
+					.sex(sexo)
+					.enfActua(enfermedad_actual)
+					.anteEnfAc(ante_enf)
+					.anteFamilia(ante_familiar)
+					.build();
 		}
 		this.cerrarComando();
 		return historial;
@@ -56,8 +64,16 @@ public class HistorialMedicoBD extends ConexionBD{
 			String enfermedad_actual = resultSet.getString("enfermedad_actual");
 			String ante_enf = resultSet.getString("ante_enfer_act");
 			String ante_familiar = resultSet.getString("ante_familiar");
-			historial = new HistorialMedico(ced_paciente, numero, peso, altura, sexo, enfermedad_actual, ante_enf, ante_familiar);
-		}
+			historial = new HistorialMedico.Builder(ced_paciente)
+					.numer(numero)
+					.pes(peso)
+					.altur(altura)
+					.sex(sexo)
+					.enfActua(enfermedad_actual)
+					.anteEnfAc(ante_enf)
+					.anteFamilia(ante_familiar)
+					.build();
+			}
 		this.cerrarComando();
 		return historial;
 	}

@@ -39,7 +39,10 @@ public class EspecialidadBD extends ConexionBD {
 				String nombre = resultSet.getString("nombre");
 				String descripcion = resultSet.getString("descripcion");
 				
-				Especialidad especialidad = new Especialidad(codigo,nombre,descripcion);
+				Especialidad especialidad = new Especialidad.Builder(codigo)
+						.nombr(nombre)
+						.desc(descripcion)
+						.build();
 				especialidades.add(especialidad);
 				
 			}
@@ -75,8 +78,11 @@ public class EspecialidadBD extends ConexionBD {
 				String descripcion = resultSet.getString("descripcion");
 				
 				
-				especialidad = new Especialidad(codigo,nombre,descripcion);
-			}
+				especialidad = new Especialidad.Builder(codigo)
+						.nombr(nombre)
+						.desc(descripcion)
+						.build();			
+				}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -105,7 +111,10 @@ public class EspecialidadBD extends ConexionBD {
 				String nombre = resultSet.getString("nombre");
 				String descripcion = resultSet.getString("descripcion");
 				
-				Especialidad especialidad = new Especialidad(codigo,nombre,descripcion);
+				Especialidad especialidad = new Especialidad.Builder(codigo)
+						.nombr(nombre)
+						.desc(descripcion)
+						.build();
 				especialidades.add(especialidad);
 				
 			}

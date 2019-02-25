@@ -1,21 +1,41 @@
 package modelo.Especialidad;
 
 public class Especialidad {
+
+	public static class Builder{
+		private String codigo;
+		private String nombre;
+		private String descripcion;
+
+		public Builder(String codigo) {
+			this.codigo = codigo;
+		}
+		
+		public Builder nombr(String nombre) {
+			this.nombre = nombre;
+			return this;
+		}
+		
+		public Builder desc(String descripcion) {
+			this.descripcion = descripcion;
+			return this;
+		}
+		
+		public Especialidad build() {
+			Especialidad e = new Especialidad();
+			e.codigo=codigo;
+			e.nombre=nombre;
+			e.descripcion=descripcion;
+			return e;
+		}
+	} 
 	
 private String codigo;
 private String nombre;
 private String descripcion;
 
-
-
-
-
-public Especialidad(String cod,String nom,String des) {
+private Especialidad() {
 	super();
-	this.codigo=cod;
-	this.nombre=nom;
-	this.descripcion=des;
-	
 }
 
 public void setCodigo(String codigo) {
